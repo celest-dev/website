@@ -14,9 +14,10 @@ const config: Config = {
   baseUrl: '/',
 
   // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Celest', // Usually your GitHub org/user name.
-  projectName: 'website', // Usually your repo name.
+  organizationName: 'celest-dev',
+  projectName: 'website',
+  deploymentBranch: 'gh-pages',
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -88,18 +89,16 @@ const config: Config = {
           label: 'About Us',
         },
         {
-          to: 'https://github.com/facebook/docusaurus',  // Update this with your desired URL
-          html: '<img src="/img/Github.svg" class="navbar-custom-image" alt="GitHub Label" />',  // This is the alt text for your image
-          position: 'right',  // or 'left', depending on where you want the image
-          className: 'custom-navbar-img',  // Custom class for styling
-          // Adding the image source here
+          to: 'https://github.com/celest-dev/website',
+          html: '<img src="/img/Github.svg" class="navbar-custom-image" alt="GitHub Label" />',
+          position: 'right',
+          className: 'custom-navbar-img', 
         },
         {
-          to: 'https://github.com/facebook/docusaurus',  // Update this with your desired URL
-          html: '<img src="/img/Twitter.svg" class="navbar-custom-image" alt="X Label" />',  // This is the alt text for your image
-          position: 'right',  // or 'left', depending on where you want the image
-          className: 'custom-navbar-img',  // Custom class for styling
-          // Adding the image source here
+          to: 'https://twitter.com/celest_dev',
+          html: '<img src="/img/Twitter.svg" class="navbar-custom-image" alt="X Label" />',
+          position: 'right',
+          className: 'custom-navbar-img',
         },
       ].filter(Boolean) as any,
     },

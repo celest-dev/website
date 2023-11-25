@@ -46,6 +46,9 @@ devDependencies:
   '@docusaurus/types':
     specifier: ^3.0.0
     version: 3.0.0(react-dom@18.2.0)(react@18.2.0)
+  '@types/node':
+    specifier: ^20.10.0
+    version: 20.10.0
   typescript:
     specifier: ~5.2.2
     version: 5.2.2
@@ -2912,7 +2915,7 @@ packages:
   /@types/sax@1.2.7:
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 20.10.0
     dev: false
 
   /@types/scheduler@0.16.8:
