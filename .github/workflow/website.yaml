@@ -1,0 +1,23 @@
+name: website
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # 4.1.1
+      - name: Install Node.js
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # 4.0.0
+        with:
+          node-version: 20
+      - name: Setup pnpm
+        uses: pnpm/action-setup@d2613e087f2e0aa841925861c5a5f7395d552177 # master
+        with:
+          version: 8
+          run_install: |
+            - args: [--frozen-lockfile, --strict-peer-dependencies]
+      - name: Run build
+        run: pnpm run build
