@@ -1,0 +1,359 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* Nunito for headers. */
+ @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap');
+
+/* Nunito Sans for body. */
+ @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400&family=Nunito:wght@400&display=swap');
+
+/* Poppins for headers. */
+ @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300&family=Nunito:wght@300&family=Poppins:wght@300&display=swap');
+
+/* You can override the default Infima variables here. */
+:root {
+  /* --ifm-color-primary: #02569B; */
+  /* --ifm-color-primary-dark: #01467A; */
+  /* --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #4B9CD3;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e; */
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* updated font for the whole site */
+  --ifm-font-family-base: 'Nunito sans', sans-serif;
+  /* --comand-input-background-color: #4A5568; */
+  --title-color: #042853;
+  --gradient-blue: linear-gradient(100deg, #027DFD 26.96%, #92EBFE 109.1%);
+  --ifm-hero-background-color: none;
+  /* --green-color: #008585; */
+  --feature-icon-color: #34A3FE;
+  --ifm-footer-background-color: var(--gradient-blue);
+  --ifm-background-color: #FBFCFF !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+.get-started-header {
+  color: white;
+}
+
+/* Keeping this here to remember to add a Dart theme */
+[data-theme='dark'] {
+  /* --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3); */
+}
+
+@font-face {
+  font-family: 'gilroy-font';
+  src: url('/Gilroy-Bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.navbar {
+  display: flex;
+  /* justify-content: space-between; */
+  background-color: var(--ifm-background-color);
+  align-items: center;
+  /* padding: 100px 100px 40px 10; */
+  justify-content: center;
+  padding-bottom: 0.2rem;
+}
+
+.navbar__title {
+  font-family: 'gilroy-font';
+  font-size: 2rem; /* Adjust font size as needed */
+  color: var(--title-color);
+  /* move item slight up */
+  /* margin-top: 0.7rem; */
+}
+
+.navbar__item {
+  padding-top: 0.5rem;
+}
+
+.navbar__logo {
+  width : 4.2rem;
+  height: 4.2rem;
+  padding-bottom: 0.5rem;
+  margin-right: 0;
+  text-align: right;
+}
+
+.navbar-custom-image{
+  padding-top: 0.5rem;
+  height: 35px;
+  width: 35px;
+}
+
+.navbar__toggle {
+  color: black;
+}
+
+.navbar-sidebar__back {
+  color: black;
+  background-color: var(--gradient-blue);
+}
+
+.header-title {
+  font-size: 3rem;
+  font-weight: 600;
+  /* set to bold */
+  font-weight: bold;
+  color: white;
+}
+
+.landing-page {
+  font-family: 'Nunito Sans', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.header {
+  background-image: var(--gradient-blue);
+}
+
+.features-header {
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.feature-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 0px 0 1rem 0;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.header-subtitle{
+  color:white;
+}
+
+.col {
+  padding-left: 1.5rem;
+}
+
+.feature-icon {
+  width: 50px; /* Reduce width as needed */
+  height: auto; /* This will maintain the aspect ratio of the icon */
+  margin: 0 auto; /* This centers the icon in its container */
+  color: var(--feature-icon-color);
+  padding-bottom: 1rem;
+}
+
+.feature-card {
+  padding: 30px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 350px;
+}
+
+/* Update code snippets to have a border */
+pre code {
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);; 
+}
+
+.hero {
+  display: block;
+}
+
+.hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.hero-get-started {
+  /* background-color: var(--hero-background-color); */
+  text-align: center;
+  padding: 0 7rem 3rem 7rem;
+  background-image: var(--);
+}
+
+.hero-content {
+  max-width: 600px;
+  padding-left: 1rem;
+}
+
+.hero-media {
+  width: 100%;
+  max-width: 560px; /* Maximum size for the video */
+  /* margin-left: 25px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The CSS classes for the copy button for the curl command */
+.submit-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: var(--hero-background-color); */
+  overflow: hidden;
+  padding: 0rem 8rem;
+  margin: 0 auto;
+  max-width: 650px;
+}
+
+.email-input {
+  border: none;
+  padding: 15px 10px 15px 50px;
+  margin: 0;
+  flex-grow: 1;
+  max-width: 500px;
+  /* color: var(--comand-input-background-color); */
+  background: white url('/img/MdEmail_1.png') no-repeat 15px center;
+  border-radius: 30px;
+  margin: 0 auto;
+}
+
+.email-input:focus {
+  outline: none;
+} 
+
+.submit-button {
+  cursor: pointer;
+  background: var(--title-color);
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  width: 100px; /* Fixed width to maintain button size */
+  transition: background-color 0.6s, transform 0.2s;
+  text-align: center;
+  border-radius: 30px;
+  margin-left: -110px;
+}
+
+.submit-button:hover {
+  background: var(--ifm-color-primary-light);
+}
+
+.submit-button:active {
+  transform: scale(0.1); /* Slight shrink effect to simulate click */
+}
+
+/* Optional: Fixed button width could cause layout shift, consider using min-width instead */
+.submit-button.copied {
+  min-width: 80px; /* Ensures the button doesn't shrink/grow when text changes */
+}
+
+/* Removing margin from the bottom of the first paragraph of a list item in the about us page */
+.about-us li > p:first-of-type {
+  margin: 0.2rem; /* Adjust the value as needed */
+}
+
+.team {
+  background-image: var(--gradient-blue);
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.team-header {
+  color: white
+}
+
+.team-info {
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  padding: 1rem 0 1rem 0;
+  max-width: 80%;
+  margin: 0 auto;
+  color: white;
+}
+
+/* Media query for medium screens */
+@media (max-width: 768px) {
+
+  .hero-inner {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .header-title {
+    font-size: 2.3rem;
+  }
+
+  .header-subtitle {
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .hero-cta {
+    text-align: center;
+  }
+
+  .features {
+    flex-direction: column;
+    align-items: center; /* To center the cards */
+    padding-top: 1rem;
+  }
+
+  .feature-card {
+    width: 60%; /* Take full width of the container */
+    margin-bottom: 0px; /* Optional: adds space between cards */
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .hero-get-started {
+    padding: 0 0.5rem 3rem 0.5rem;
+  }
+
+  .header-title {
+    text-align: center;
+    font-weight: 700;
+  }
+  .col {
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero-get-started {
+    padding: 0 0 3rem 0; 
+  }
+  .submit-form {
+    padding: 0rem 3rem;
+  }
+
+  .features {
+    padding: 0;
+    max-width: 100%;
+  }
+
+}
