@@ -107,7 +107,7 @@ const config: Config = {
         `Copyright © ${new Date().getFullYear()} Teo, Inc.`,
     },
     prism: {
-      theme: prismThemes.github,
+      theme: prismThemes.oneDark,
       darkTheme: prismThemes.dracula,
       additionalLanguages: ['dart'],
     },

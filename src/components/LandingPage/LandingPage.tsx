@@ -5,6 +5,8 @@ import {
   CodeBracketIcon,
 } from "@heroicons/react/24/outline";
 import EmailForm from "./EmailForm";
+import CodeBlock from "@theme/CodeBlock";
+import CodeBlockContainer from "@theme/CodeBlock/Container";
 
 const LandingPage = () => {
   // const youtubeVideoId = 'aHmv3LSsoDI';
@@ -30,18 +32,40 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="hero-media">
-              {/* <iframe 
-            className="youtube-video"
-            src={youtubeEmbedUrl} // Replace with your video
-            title="YouTube video" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowFullScreen>
-          </iframe> */}
-              <img
-                src="/img/data.png"
-                alt="Celest Hero"
-                className="hero-image"
-              />
+              <CodeBlock
+                className="hero-code"
+                language="dart"
+                title="functions/say_hello.dart"
+              >
+                {`
+import 'package:celest/celest.dart';
+import 'package:celest/middleware.dart' as middleware;
+
+@middleware.logRequests()
+Future<String> sayHello(FunctionContext context, String name) async {
+  return 'Hello, $name';
+}
+                `.trim()}
+              </CodeBlock>
+              <CodeBlock
+                className="hero-code"
+                language="dart"
+                title="project.dart"
+              >
+                {`
+class HelloProject extends Project {
+  @override
+  List<String> get environments => ['prod'];
+
+  @override
+  void build(ProjectContext context) {
+    final app = FlutterApp();
+    final sayHello = celest.functions.greeting.sayHello;
+    app.use([sayHello]);
+  }
+}
+                `.trim()}
+              </CodeBlock>
             </div>
           </div>
         </section>

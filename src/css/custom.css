@@ -202,11 +202,17 @@ pre code {
   padding-left: 1rem;
 }
 
+.hero-code {
+  max-width: 500px;
+  font-size: 0.6rem;
+}
+
 .hero-media {
   width: 100%;
   max-width: 560px; /* Maximum size for the video */
   /* margin-left: 25px; */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
