@@ -69,6 +69,14 @@ export default function SignUpFormReact() {
     if (!isValidEmail(email)) {
       setFormState(ERROR);
       setErrorMessage("Please enter a valid email");
+      //
+      if (window.gtag) {
+        window.gtag('event', 'click', {
+          event_category: 'Email Form Landing page',
+          success: false,
+          error: 'Please enter a valid email'
+        });
+      }
       return;
     }
     if (hasRecentSubmission()) return;
@@ -92,6 +100,12 @@ export default function SignUpFormReact() {
         if (ok) {
           resetForm();
           setFormState(SUCCESS);
+          if (window.gtag) {
+            window.gtag('event', 'click', {
+              event_category: 'Email Form Landing page',
+              success: true
+            });
+          }
         } else {
           dataPromise.then((data: any) => {
             setFormState(ERROR);
@@ -105,8 +119,22 @@ export default function SignUpFormReact() {
         // check for cloudflare error
         if (error.message === "Failed to fetch") {
           setErrorMessage("Too many signups, please try again in a little while");
+          if (window.gtag) {
+            window.gtag('event', 'click', {
+              event_category: 'Email Form Landing page',
+              success: false,
+              error: 'Too many signups, please try again in a little while'
+            });
+          }
         } else if (error.message) {
           setErrorMessage(error.message);
+          if (window.gtag) {
+            window.gtag('event', 'click', {
+              event_category: 'Email Form Landing page',
+              success: false,
+              error: error.message
+            });
+          }
         }
         localStorage.setItem("loops-form-timestamp", "");
       });
