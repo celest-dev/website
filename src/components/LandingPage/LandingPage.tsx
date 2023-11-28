@@ -4,6 +4,10 @@ import {
   ForwardIcon,
   CodeBracketIcon,
 } from "@heroicons/react/24/outline";
+import { AiFillApi } from "react-icons/ai";
+import { FaLock, FaDatabase, FaImages } from "react-icons/fa";
+import { MdPolicy } from "react-icons/md";
+
 import EmailForm from "./EmailForm";
 
 const LandingPage = () => {
@@ -42,7 +46,7 @@ const LandingPage = () => {
           </div>
         </section>
       </header>
-      <h2 className="features-header">Activate the builder in you</h2>
+      <h2 className="middle-header">Activate the builder in you</h2>
       <section className="features">
         <div className="feature-card">
           <CloudIcon className="feature-icon" />
@@ -65,6 +69,51 @@ const LandingPage = () => {
           <p>
             Run <code>celest start</code> to see your changes locally instantly.
           </p>
+        </div>
+      </section>
+      <section className="celest-categories">
+        <h2 className="middle-header">Your backend in Dart</h2>
+        <div className="categories">
+          <div className="category-card">
+            <AiFillApi className="category-icon" />
+            <h3 className="category-title">APIs</h3>
+            <p>Define cloud functions to build your APIs for your use cases.</p>
+          </div>
+          <div className="category-card">
+            <FaLock className="category-icon" />
+            <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
+            <h3 className="category-title">Auth</h3>
+            <p>
+              Modern Passwordless and WebAuthN login methods.
+            </p>
+          </div>
+          <div className="category-card">
+            <FaDatabase className="category-icon" />
+            <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
+            <h3 className="category-title">Data</h3>
+            <p>
+              Define your data schema in code and Celest will handle the rest.
+            </p>
+          </div>
+          <div className="category-card">
+          <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
+
+            <FaImages className="category-icon" />
+            <h3 className="category-title">Content</h3>
+            <p>
+              Serve content globally with edge
+              caching built-in.
+            </p>
+          </div>
+          <div className="category-card">
+          <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
+
+            <MdPolicy className="category-icon" />
+            <h3 className="category-title">Policies</h3>
+            <p>
+              Define fine grained access controls for your backend components.
+            </p>
+          </div>
         </div>
       </section>
       <section className="team">

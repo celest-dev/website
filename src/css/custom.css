@@ -126,7 +126,7 @@ h1, h2, h3, h4, h5, h6 {
   background-image: var(--gradient-blue);
 }
 
-.features-header {
+.middle-header {
   text-align: center;
   padding-top: 2rem;
   padding-bottom: 0;
@@ -270,14 +270,57 @@ pre code {
   margin: 0.2rem; /* Adjust the value as needed */
 }
 
-.team {
+.celest-categories{
   background-image: var(--gradient-blue);
-  text-align: center;
-  padding-top: 2rem;
+  color: white;
 }
 
-.team-header {
-  color: white
+.categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 0 1rem 0;
+  max-width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  gap: 5rem;
+}
+
+.category-card{
+  max-width: 250px;
+  width: 60%; /* Take full width of the container */
+  margin-bottom: 0px; /* Optional: adds space between cards */
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  position: relative;
+}
+
+.category-card img {
+  position: absolute;
+  top: 3.1rem; /* Position the top of the image right below the card */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for exact centering */
+  /* You can adjust top and left values as per your design */
+  width: 5rem;
+}
+
+.category-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-top: 0.7rem;
+}
+
+.category-icon{
+  width: 35px; /* Reduce width as needed */
+  height: auto; /* This will maintain the aspect ratio of the icon */
+  margin: 0 auto; /* This centers the icon in its container */
+  color: white;
+  padding-bottom: 1rem;
+}
+
+.team {
+  text-align: center;
+  padding-top: 2rem;
 }
 
 .team-info {
@@ -287,6 +330,14 @@ pre code {
   padding: 1rem 0 1rem 0;
   max-width: 80%;
   margin: 0 auto;
+}
+
+.black-code-block {
+  color: black;
+}
+
+.footer {
+  background-image: var(--gradient-blue);
   color: white;
 }
 
@@ -340,6 +391,10 @@ pre code {
   }
   .col {
     padding-left: 1rem;
+  }
+
+  .categories{
+    gap: 2rem;
   }
 }
 
