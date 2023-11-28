@@ -103,13 +103,18 @@ h1, h2, h3, h4, h5, h6 {
   color: black;
 }
 
-.hero{
-  padding-top: 8rem;
-}
-
 .hero-code {
   max-width: 400px;
   font-size: 0.7rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.hero-code pre code {
+  max-width: 400px;
+  font-size: 0.7rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .navbar-sidebar__back {
@@ -218,6 +223,7 @@ pre code {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 /* The CSS classes for the copy button for the curl command */
@@ -363,6 +369,10 @@ pre code {
 
 /* Media query for medium screens */
 @media (max-width: 768px) {
+
+  .yc-image {
+    padding-bottom: 1rem;
+  }
 
   .hero-inner {
     flex-direction: column;

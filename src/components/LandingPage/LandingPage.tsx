@@ -40,7 +40,7 @@ const LandingPage = () => {
               >
                 {`
 import 'package:celest/celest.dart';
-import 'package:celest/middleware.dart' as middleware;
+import 'middleware.dart' as middleware;
 
 @middleware.logRequests()
 Future<String> sayHello(FunctionContext context, String name) async {
@@ -52,15 +52,24 @@ Future<String> sayHello(FunctionContext context, String name) async {
               <CodeBlock
                 className="hero-code"
                 language="dart"
-                title="celest/apis/myAPI.dart"
+                title="celest/apis/middleware.dart"
               >
                 {`
 import 'package:celest/celest.dart';
-import 'package:celest/middleware.dart' as middleware;
 
-@middleware.logRequests()
-Future<String> sayHello(FunctionContext context, String name) async {
-  return 'Hello, $name';                    
+class logResponses implements Middleware {
+  const logResponses();
+
+@override
+Handler handle(Handler handler) {
+  return (request) async {
+  // you can run code before your cloud function
+  final response = await handler(request);
+  //run code after your cloud function executes
+    print(response);
+      };
+    }
+  }               
 }`.trim()}
               </CodeBlock>
             </div>
