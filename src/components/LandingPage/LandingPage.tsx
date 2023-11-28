@@ -7,6 +7,8 @@ import {
 import { AiFillApi } from "react-icons/ai";
 import { FaLock, FaDatabase, FaImages } from "react-icons/fa";
 import { MdPolicy } from "react-icons/md";
+import CodeBlock from "@theme/CodeBlock";
+import CodeBlockContainer from "@theme/CodeBlock/Container";
 
 import EmailForm from "./EmailForm";
 
@@ -31,11 +33,36 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="hero-media">
-              <img
-                src="/img/data.png"
-                alt="Celest Hero"
-                className="hero-image"
-              />
+              <CodeBlock
+                className="hero-code"
+                language="dart"
+                title="celest/apis/myAPI.dart"
+              >
+                {`
+import 'package:celest/celest.dart';
+import 'package:celest/middleware.dart' as middleware;
+
+@middleware.logRequests()
+Future<String> sayHello(FunctionContext context, String name) async {
+  return 'Hello, $name';                    
+}`.trim()}
+              </CodeBlock>
+              <br />
+              
+              <CodeBlock
+                className="hero-code"
+                language="dart"
+                title="celest/apis/myAPI.dart"
+              >
+                {`
+import 'package:celest/celest.dart';
+import 'package:celest/middleware.dart' as middleware;
+
+@middleware.logRequests()
+Future<String> sayHello(FunctionContext context, String name) async {
+  return 'Hello, $name';                    
+}`.trim()}
+              </CodeBlock>
             </div>
           </div>
         </section>
@@ -72,47 +99,40 @@ const LandingPage = () => {
         </div>
       </section>
       <section className="celest-categories">
-        <h2 className="middle-header">Your backend in Dart</h2>
+        <h2 className="middle-header categories-bottom-header-margin">Your backend in Dart</h2>
         <div className="categories">
           <div className="category-card">
             <AiFillApi className="category-icon" />
             <h3 className="category-title">APIs</h3>
-            <p>Define cloud functions to build your APIs for your use cases.</p>
-          </div>
-          <div className="category-card">
-            <FaLock className="category-icon" />
-            <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
-            <h3 className="category-title">Auth</h3>
-            <p>
-              Modern Passwordless and WebAuthN login methods.
-            </p>
+            <p className="category-description">Build serverless functions that run in the cloud.</p>
           </div>
           <div className="category-card">
             <FaDatabase className="category-icon" />
             <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
             <h3 className="category-title">Data</h3>
-            <p>
-              Define your data schema in code and Celest will handle the rest.
+            <p className="category-description">
+              Define your data schema, relationships, and authorization rules in code.
             </p>
           </div>
           <div className="category-card">
-          <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
-
-            <FaImages className="category-icon" />
-            <h3 className="category-title">Content</h3>
-            <p>
-              Serve content globally with edge
-              caching built-in.
-            </p>
+            <FaLock className="category-icon" />
+            <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
+            <h3 className="category-title">Auth</h3>
+            <p className="category-description">Authenticate your users with Passwordless and WebAuthN.</p>
           </div>
           <div className="category-card">
-          <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
-
+            <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
             <MdPolicy className="category-icon" />
             <h3 className="category-title">Policies</h3>
-            <p>
-              Define fine grained access controls for your backend components.
+            <p className="category-description">
+              Author fine-grained access controls for all your backend components.
             </p>
+          </div>
+          <div className="category-card">
+            <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
+            <FaImages className="category-icon" />
+            <h3 className="category-title">Content</h3>
+            <p className="category-description">Serve content globally with edge caching built-in.</p>
           </div>
         </div>
       </section>

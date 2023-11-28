@@ -103,6 +103,15 @@ h1, h2, h3, h4, h5, h6 {
   color: black;
 }
 
+.hero{
+  padding-top: 8rem;
+}
+
+.hero-code {
+  max-width: 400px;
+  font-size: 0.7rem;
+}
+
 .navbar-sidebar__back {
   color: black;
   background-color: var(--gradient-blue);
@@ -270,6 +279,10 @@ pre code {
   margin: 0.2rem; /* Adjust the value as needed */
 }
 
+.categories-bottom-header-margin {
+  padding-bottom: 1rem;
+}
+
 .celest-categories{
   background-image: var(--gradient-blue);
   color: white;
@@ -284,20 +297,22 @@ pre code {
   margin: 0 auto;
   text-align: center;
   gap: 5rem;
+  padding-bottom: 4rem;
 }
 
 .category-card{
-  max-width: 250px;
-  width: 60%; /* Take full width of the container */
+  flex: 1 1 calc(33.333% - 5rem);
+  max-width: 450px;
+  min-width: 150px;
   margin-bottom: 0px; /* Optional: adds space between cards */
   padding-top: 0.5rem;
-  padding-bottom: 1rem;
+  text-align: center;
   position: relative;
 }
 
 .category-card img {
   position: absolute;
-  top: 3.1rem; /* Position the top of the image right below the card */
+  top: -0.9rem; /* Position the top of the image right below the card */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Adjust for exact centering */
   /* You can adjust top and left values as per your design */
@@ -311,11 +326,16 @@ pre code {
 }
 
 .category-icon{
-  width: 35px; /* Reduce width as needed */
-  height: auto; /* This will maintain the aspect ratio of the icon */
-  margin: 0 auto; /* This centers the icon in its container */
+  width: 35px; 
+  height: auto; 
+  margin: 0 auto; 
   color: white;
-  padding-bottom: 1rem;
+}
+
+.category-description{
+  max-width: 250px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .team {
@@ -394,8 +414,14 @@ pre code {
   }
 
   .categories{
-    gap: 2rem;
+    gap: 4rem;
   }
+  
+  .categories-bottom-header-margin {
+    padding-bottom: 1rem;
+  }
+
+
 }
 
 @media (max-width: 430px) {
@@ -409,6 +435,22 @@ pre code {
   .features {
     padding: 0;
     max-width: 100%;
+  }
+
+  .feature-card {
+    padding-bottom: 0;
+  }
+
+  .categories {
+    gap: 4rem;
+  }
+
+  .middle-header {
+    padding-bottom: 1rem;
+  }
+
+  .categories-bottom-header-margin {
+    padding-bottom: 0;
   }
 
 }
