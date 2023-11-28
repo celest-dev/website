@@ -30,13 +30,6 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="hero-media">
-              {/* <iframe 
-            className="youtube-video"
-            src={youtubeEmbedUrl} // Replace with your video
-            title="YouTube video" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowFullScreen>
-          </iframe> */}
               <img
                 src="/img/data.png"
                 alt="Celest Hero"
@@ -57,7 +50,6 @@ const LandingPage = () => {
         <div className="feature-card">
           <CloudIcon className="feature-icon" />
           <h3 className="feature-title">Managed Backend</h3>
-          {/* <p>You build feature, we take care of deploying and setting up your backend.</p> */}
           <p>
             Use a single command <code>celest deploy</code> to setup your
             backend.
@@ -93,13 +85,6 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-      {/* <section className="testimonials">
-        <h2>What developers think of Celest</h2>
-        <div className="testimonial-card">
-          <blockquote>"The speed and productivity Celest give us is insane. Having all pieces of our apps built in Dart is a dream come true"</blockquote>
-          <cite>- Jane Doe, Lead Developer</cite>
-        </div>
-      </section> */}
     </div>
   );
 };
