@@ -7,15 +7,12 @@ import {
 import EmailForm from "./EmailForm";
 
 const LandingPage = () => {
-  // const youtubeVideoId = 'aHmv3LSsoDI';
-  // const youtubeEmbedUrl = `https://www.youtube.com/embed/${youtubeVideoId}`;
   return (
     <div className="landing-page">
       <header className="header">
         <section className="hero">
           <div className="hero-inner">
             <div className="hero-content">
-              {/* <img src="/img/Celest_Gradient_Icon.png" alt="Celest Logo" className="hero-logo" /> */}
               <h1 className="header-title">
                 Build your backend,
                 <br /> Flutter style.
