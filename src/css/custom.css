@@ -104,7 +104,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-code {
-  max-width: 400px;
   min-width: 400px;
   font-size: 0.7rem;
   white-space: pre-wrap;
@@ -370,6 +369,9 @@ pre code {
 
 /* Media query for medium screens */
 @media (max-width: 768px) {
+  .submit-form {
+    padding: 0rem 3rem;
+  }
 
   .yc-image {
     padding-bottom: 1rem;
