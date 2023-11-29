@@ -15,22 +15,12 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  /* --ifm-color-primary: #02569B; */
-  /* --ifm-color-primary-dark: #01467A; */
-  /* --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #4B9CD3;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e; */
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  /* updated font for the whole site */
   --ifm-font-family-base: 'Nunito sans', sans-serif;
-  /* --comand-input-background-color: #4A5568; */
   --title-color: #042853;
   --gradient-blue: linear-gradient(100deg, #027DFD 26.96%, #92EBFE 109.1%);
   --ifm-hero-background-color: none;
-  /* --green-color: #008585; */
   --feature-icon-color: #34A3FE;
   --ifm-footer-background-color: var(--gradient-blue);
   --ifm-background-color: #FBFCFF !important;
@@ -77,8 +67,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'gilroy-font';
   font-size: 2rem; /* Adjust font size as needed */
   color: var(--title-color);
-  /* move item slight up */
-  /* margin-top: 0.7rem; */
 }
 
 .navbar__item {
@@ -236,7 +224,6 @@ pre code {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: var(--hero-background-color); */
   overflow: hidden;
   padding: 0rem 8rem;
   margin: 0 auto;
@@ -249,7 +236,6 @@ pre code {
   margin: 0;
   flex-grow: 1;
   max-width: 500px;
-  /* color: var(--comand-input-background-color); */
   background: white url('/img/MdEmail_1.png') no-repeat 15px center;
   border-radius: 30px;
   margin: 0 auto;
@@ -277,12 +263,11 @@ pre code {
 }
 
 .submit-button:active {
-  transform: scale(0.1); /* Slight shrink effect to simulate click */
+  transform: scale(0.1);
 }
 
-/* Optional: Fixed button width could cause layout shift, consider using min-width instead */
 .submit-button.copied {
-  min-width: 80px; /* Ensures the button doesn't shrink/grow when text changes */
+  min-width: 80px; 
 }
 
 /* Removing margin from the bottom of the first paragraph of a list item in the about us page */
@@ -315,7 +300,7 @@ pre code {
   flex: 1 1 calc(33.333% - 5rem);
   max-width: 450px;
   min-width: 150px;
-  margin-bottom: 0px; /* Optional: adds space between cards */
+  margin-bottom: 0px; 
   padding-top: 0.5rem;
   text-align: center;
   position: relative;
@@ -325,8 +310,7 @@ pre code {
   position: absolute;
   top: 5.7rem; /* Position the top of the image right below the card */
   left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Adjust for exact centering */
-  /* You can adjust top and left values as per your design */
+  transform: translateX(-50%); 
   width: 5rem;
 }
 
