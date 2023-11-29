@@ -8,7 +8,6 @@ import { AiFillApi } from "react-icons/ai";
 import { FaLock, FaDatabase, FaImages } from "react-icons/fa";
 import { MdPolicy } from "react-icons/md";
 import CodeBlock from "@theme/CodeBlock";
-import CodeBlockContainer from "@theme/CodeBlock/Container";
 
 import EmailForm from "./EmailForm";
 
@@ -36,14 +35,17 @@ const LandingPage = () => {
               <CodeBlock
                 className="hero-code"
                 language="dart"
-                title="celest/apis/myAPI.dart"
+                title="app/celest/apis/my_api.dart    <--    Your API"
               >
                 {`
 import 'package:celest/celest.dart';
 import 'middleware.dart' as middleware;
 
 @middleware.logRequests()
-Future<String> sayHello(FunctionContext context, String name) async {
+String sayHello(
+  FunctionContext context, 
+  String name,
+) {
   return 'Hello, $name';                    
 }`.trim()}
               </CodeBlock>
@@ -52,25 +54,17 @@ Future<String> sayHello(FunctionContext context, String name) async {
               <CodeBlock
                 className="hero-code"
                 language="dart"
-                title="celest/apis/middleware.dart"
+                title="app/lib/main.dart"
               >
                 {`
-import 'package:celest/celest.dart';
-
-class logResponses implements Middleware {
-  const logResponses();
-
-@override
-Handler handle(Handler handler) {
-  return (request) async {
-  // you can run code before your cloud function
-  final response = await handler(request);
-  //run code after your cloud function executes
-    print(response);
-      };
-    }
-  }               
-}`.trim()}
+FutureBuilder(
+  future: celest.apis.myApi.sayHello('Celest'),
+  builder: (_, snapshot) => switch (snapshot) {
+    AsyncSnapshot(:final data?) => Text(data),
+    AsyncSnapshot(:final error?) => Text('Error: $error'),
+    _ => const CircularProgressIndicator(),
+  },
+);`.trim()}
               </CodeBlock>
             </div>
           </div>

@@ -93,6 +93,10 @@ h1, h2, h3, h4, h5, h6 {
   text-align: right;
 }
 
+.string-literal {
+  color: green !important;
+}
+
 .navbar-custom-image{
   padding-top: 0.5rem;
   height: 35px;
@@ -104,15 +108,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-code {
-  min-width: 400px;
-  font-size: 0.7rem;
+  min-width: 500px;
+  font-size: 0.8rem;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
 
 .hero-code pre code {
-  max-width: 400px;
-  font-size: 0.7rem;
+  max-width: 500px;
+  font-size: 0.8rem;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
@@ -194,6 +198,7 @@ pre code {
 
 .hero {
   display: block;
+  padding-bottom: 2.5rem;
 }
 
 .hero-inner {
@@ -318,7 +323,7 @@ pre code {
 
 .category-card img {
   position: absolute;
-  top: -0.9rem; /* Position the top of the image right below the card */
+  top: 5.7rem; /* Position the top of the image right below the card */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Adjust for exact centering */
   /* You can adjust top and left values as per your design */
@@ -329,6 +334,7 @@ pre code {
   font-size: 1.2rem;
   font-weight: 600;
   padding-top: 0.7rem;
+  padding-bottom: 0.6rem;
 }
 
 .category-icon{
