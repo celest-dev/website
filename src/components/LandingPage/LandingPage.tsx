@@ -54,7 +54,7 @@ String sayHello(
               <CodeBlock
                 className="hero-code"
                 language="dart"
-                title="app/lib/main.dart"
+                title="app/lib/main.dart    <--    Your Flutter app"
               >
                 {`
 FutureBuilder(
