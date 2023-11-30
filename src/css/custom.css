@@ -151,7 +151,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 2rem 0 1rem 0;
   margin: 0 auto;
   text-align: center;
-  gap: 3rem;
+  gap: 5rem;
   padding-bottom: 2rem;
 }
 
@@ -409,6 +409,10 @@ pre code {
   
   .categories-bottom-header-margin {
     padding-bottom: 1rem;
+  }
+
+  .features {
+    gap: 1rem;
   }
 
 
