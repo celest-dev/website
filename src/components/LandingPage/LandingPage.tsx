@@ -79,14 +79,6 @@ FutureBuilder(
       <h2 className="middle-header">Activate the builder in you</h2>
       <section className="features">
         <div className="feature-card">
-          <CloudIcon className="feature-icon" />
-          <h3 className="feature-title">Managed Backend</h3>
-          <p>
-            Use a single command <code>celest deploy</code> to setup your
-            backend.
-          </p>
-        </div>
-        <div className="feature-card">
           <CodeBracketIcon className="feature-icon" />
           <h3 className="feature-title">All in Dart</h3>
           <p>
@@ -98,6 +90,14 @@ FutureBuilder(
           <h3 className="feature-title">Iterate locally fast</h3>
           <p>
             Run <code>celest start</code> to see your changes locally instantly.
+          </p>
+        </div>
+        <div className="feature-card">
+          <CloudIcon className="feature-icon" />
+          <h3 className="feature-title">Managed Backend</h3>
+          <p>
+            Use a single command <code>celest deploy</code> to setup your
+            backend.
           </p>
         </div>
       </section>
