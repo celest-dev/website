@@ -69,7 +69,6 @@ export default function SignUpFormReact() {
     if (!isValidEmail(email)) {
       setFormState(ERROR);
       setErrorMessage("Please enter a valid email");
-      //
       if (window.gtag) {
         window.gtag('event', 'click', {
           event_category: 'Email Form Landing page',
