@@ -146,10 +146,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .features {
   display: flex;
-  justify-content: space-around;
-  padding: 0px 0 1rem 0;
-  max-width: 80%;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 0 1rem 0;
   margin: 0 auto;
+  text-align: center;
+  gap: 3rem;
+  padding-bottom: 2rem;
 }
 
 .header-subtitle{
@@ -169,14 +172,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .feature-card {
-  padding: 30px;
-  margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  max-width: 350px;
+  max-width: 300px;
 }
 
 /* Update code snippets to have a border */
@@ -288,12 +289,11 @@ pre code {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 2rem 0 1rem 0;
-  max-width: 80%;
+  padding: 1rem 0 3rem 0;
+  max-width: 1000px;
   margin: 0 auto;
   text-align: center;
-  gap: 5rem;
-  padding-bottom: 4rem;
+  gap: 4rem;
 }
 
 .category-card{
@@ -391,19 +391,6 @@ pre code {
     text-align: center;
   }
 
-  .features {
-    flex-direction: column;
-    align-items: center; /* To center the cards */
-    padding-top: 1rem;
-  }
-
-  .feature-card {
-    width: 60%; /* Take full width of the container */
-    margin-bottom: 0px; /* Optional: adds space between cards */
-    padding-top: 0.5rem;
-    padding-bottom: 1rem;
-  }
-
   .hero-get-started {
     padding: 0 0.5rem 3rem 0.5rem;
   }
@@ -430,22 +417,6 @@ pre code {
 @media (max-width: 430px) {
   .hero-get-started {
     padding: 0 0 3rem 0; 
-  }
-  .submit-form {
-    padding: 0rem 3rem;
-  }
-
-  .features {
-    padding: 0;
-    max-width: 100%;
-  }
-
-  .feature-card {
-    padding-bottom: 0;
-  }
-
-  .categories {
-    gap: 4rem;
   }
 
   .middle-header {
