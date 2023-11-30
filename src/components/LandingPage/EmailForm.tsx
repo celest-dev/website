@@ -176,13 +176,6 @@ export default function SignUpFormReact() {
         <>
           <form
             onSubmit={handleSubmit}
-            // style={{
-            //   display: "flex",
-            //   flexDirection: isInline ? "row" : "column",
-            //   alignItems: "center",
-            //   justifyContent: "center",
-            //   width: "100%",
-            // }}
             className= 'submit-form'
           >
             <input
@@ -193,21 +186,6 @@ export default function SignUpFormReact() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required={true}
-              // style={{
-              //   color: formStyles.formFontColor,
-              //   fontFamily: `'${formStyles.formFont}', sans-serif`,
-              //   fontSize: `${formStyles.formFontSizePx}px`,
-              //   margin: isInline ? "0px 10px 0px 0px" : "0px 0px 10px",
-              //   width: "100%",
-              //   maxWidth: "500px",
-              //   minWidth: "100px",
-              //   background: "#FFFFFF",
-              //   border: "1px solid #D1D5DB",
-              //   boxSizing: "border-box",
-              //   boxShadow: "rgba(0, 0, 0, 0.05) 0px 1px 2px",
-              //   borderRadius: "30px",
-              //   padding: "15px 12px",
-              // }}
             />
             <SignUpFormButton />
           </form>
@@ -265,29 +243,6 @@ export default function SignUpFormReact() {
     return (
       <button
         type="submit"
-        // style={{
-        //   background: formStyles.buttonColor,
-        //   fontSize: `${formStyles.buttonFontSizePx}px`,
-        //   color: formStyles.buttonFontColor,
-        //   fontFamily: `'${formStyles.buttonFont}', sans-serif`,
-        //   width: isInline ? "min-content" : "100%",
-        //   maxWidth: "300px",
-        //   whiteSpace: isInline ? "nowrap" : "normal",
-        //   height: "38px",
-        //   alignItems: "center",
-        //   justifyContent: "center",
-        //   flexDirection: "row",
-        //   padding: "9px 17px",
-        //   boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.05)",
-        //   borderRadius: "30px",
-        //   textAlign: "center",
-        //   fontStyle: "normal",
-        //   fontWeight: 500,
-        //   lineHeight: "20px",
-        //   border: "none",
-        //   cursor: "pointer",
-        //   marginLeft: "-130px",
-        // }}
         className="submit-button"
       >
         {formState === SUBMITTING ? "Please wait..." : formStyles.buttonText}
