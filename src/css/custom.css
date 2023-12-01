@@ -283,7 +283,7 @@ pre code {
 }
 
 .category-card{
-  flex: 1 1 calc(33.333% - 5rem);
+  flex-basis: calc(33.333% - 4rem);
   max-width: 450px;
   min-width: 150px;
   margin-bottom: 0px; 
@@ -391,6 +391,10 @@ pre code {
 
   .categories{
     gap: 4rem;
+  }
+
+  .category-card {
+    flex-basis: calc(50% - 4rem); /* Adjust for two items per row */
   }
   
   .categories-bottom-header-margin {
