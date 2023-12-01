@@ -137,8 +137,9 @@ h1, h2, h3, h4, h5, h6 {
   padding: 2rem 0 1rem 0;
   margin: 0 auto;
   text-align: center;
-  gap: 5rem;
   padding-bottom: 2rem;
+  max-width: 1200px;
+  gap: 2rem
 }
 
 .header-subtitle{
@@ -158,12 +159,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .feature-card {
-  display: flex;
+  flex-basis: calc(33.333% - 4rem);
+  min-width: 250px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   max-width: 300px;
+  margin: 0 auto;
 }
 
 /* Update code snippets to have a border */
@@ -399,10 +402,6 @@ pre code {
   
   .categories-bottom-header-margin {
     padding-bottom: 1rem;
-  }
-
-  .features {
-    gap: 1rem;
   }
 
 
