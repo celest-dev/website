@@ -1,3 +1,4 @@
+import { recordEvent } from "@site/src/common/analytics";
 import { useState } from "react";
 
 const INIT = "INIT";
@@ -6,29 +7,29 @@ const ERROR = "ERROR";
 const SUCCESS = "SUCCESS";
 const formStates = [INIT, SUBMITTING, ERROR, SUCCESS] as const;
 const formStyles = {
-  "id": "clp38odyv0069le0phi4wl0s3",
-  "name": "Default",
-  "formStyle": "inline",
-  "placeholderText": "you@example.com",
-  "formFont": "Nunito Sans",
-  "formFontColor": "#000000",
-  "formFontSizePx": 14,
-  "buttonText": "Join Waitlist",
-  "buttonFont": "Nunito Sans",
-  "buttonFontColor": "#ffffff",
-  "buttonColor": "#042853",
-  "buttonFontSizePx": 14,
-  "successMessage": "Thanks! We'll be in touch!",
-  "successFont": "Nunito Sans",
-  "successFontColor": "#ffffff",
-  "successFontSizePx": 14,
-  "userGroup": "Waitlist"
-}
-const domain = "app.loops.so"
+  id: "clp38odyv0069le0phi4wl0s3",
+  name: "Default",
+  formStyle: "inline",
+  placeholderText: "you@example.com",
+  formFont: "Nunito Sans",
+  formFontColor: "#000000",
+  formFontSizePx: 14,
+  buttonText: "Join Waitlist",
+  buttonFont: "Nunito Sans",
+  buttonFontColor: "#ffffff",
+  buttonColor: "#042853",
+  buttonFontSizePx: 14,
+  successMessage: "Thanks! We'll be in touch!",
+  successFont: "Nunito Sans",
+  successFontColor: "#ffffff",
+  successFontSizePx: 14,
+  userGroup: "Waitlist",
+};
+const domain = "app.loops.so";
 
 export default function SignUpFormReact() {
   const [email, setEmail] = useState("");
-  const [formState, setFormState] = useState<typeof formStates[number]>(INIT);
+  const [formState, setFormState] = useState<(typeof formStates)[number]>(INIT);
   const [errorMessage, setErrorMessage] = useState("");
 
   const resetForm = () => {
@@ -69,6 +70,10 @@ export default function SignUpFormReact() {
     if (!isValidEmail(email)) {
       setFormState(ERROR);
       setErrorMessage("Please enter a valid email");
+      recordEvent("Submit waitlist form", {
+        success: false,
+        errorMessage: "Please enter a valid email",
+      });
       return;
     }
     if (hasRecentSubmission()) return;
@@ -92,6 +97,7 @@ export default function SignUpFormReact() {
         if (ok) {
           resetForm();
           setFormState(SUCCESS);
+          recordEvent("Submit waitlist form", { success: true });
         } else {
           dataPromise.then((data: any) => {
             setFormState(ERROR);
@@ -104,9 +110,20 @@ export default function SignUpFormReact() {
         setFormState(ERROR);
         // check for cloudflare error
         if (error.message === "Failed to fetch") {
-          setErrorMessage("Too many signups, please try again in a little while");
+          setErrorMessage(
+            "Too many signups, please try again in a little while"
+          );
+          recordEvent("Submit waitlist form", {
+            success: false,
+            errorMessage:
+              "Too many signups, please try again in a little while",
+          });
         } else if (error.message) {
           setErrorMessage(error.message);
+          recordEvent("Submit waitlist form", {
+            success: false,
+            errorMessage: error.message,
+          });
         }
         localStorage.setItem("loops-form-timestamp", "");
       });
@@ -146,16 +163,7 @@ export default function SignUpFormReact() {
     default:
       return (
         <>
-          <form
-            onSubmit={handleSubmit}
-            style={{
-              display: "flex",
-              flexDirection: isInline ? "row" : "column",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "100%",
-            }}
-          >
+          <form onSubmit={handleSubmit} className="submit-form">
             <input
               type="text"
               name="email"
@@ -164,21 +172,6 @@ export default function SignUpFormReact() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required={true}
-              style={{
-                color: formStyles.formFontColor,
-                fontFamily: `'${formStyles.formFont}', sans-serif`,
-                fontSize: `${formStyles.formFontSizePx}px`,
-                margin: isInline ? "0px 10px 0px 0px" : "0px 0px 10px",
-                width: "100%",
-                maxWidth: "300px",
-                minWidth: "100px",
-                background: "#FFFFFF",
-                border: "1px solid #D1D5DB",
-                boxSizing: "border-box",
-                boxShadow: "rgba(0, 0, 0, 0.05) 0px 1px 2px",
-                borderRadius: "6px",
-                padding: "8px 12px",
-              }}
             />
             <SignUpFormButton />
           </form>
@@ -234,31 +227,7 @@ export default function SignUpFormReact() {
 
   function SignUpFormButton({ props }: any) {
     return (
-      <button
-        type="submit"
-        style={{
-          background: formStyles.buttonColor,
-          fontSize: `${formStyles.buttonFontSizePx}px`,
-          color: formStyles.buttonFontColor,
-          fontFamily: `'${formStyles.buttonFont}', sans-serif`,
-          width: isInline ? "min-content" : "100%",
-          maxWidth: "300px",
-          whiteSpace: isInline ? "nowrap" : "normal",
-          height: "38px",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "row",
-          padding: "9px 17px",
-          boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.05)",
-          borderRadius: "6px",
-          textAlign: "center",
-          fontStyle: "normal",
-          fontWeight: 500,
-          lineHeight: "20px",
-          border: "none",
-          cursor: "pointer",
-        }}
-      >
+      <button type="submit" className="submit-button">
         {formState === SUBMITTING ? "Please wait..." : formStyles.buttonText}
       </button>
     );

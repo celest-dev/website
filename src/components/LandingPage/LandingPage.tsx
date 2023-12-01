@@ -4,18 +4,20 @@ import {
   ForwardIcon,
   CodeBracketIcon,
 } from "@heroicons/react/24/outline";
+import { AiFillApi } from "react-icons/ai";
+import { FaLock, FaDatabase, FaImages } from "react-icons/fa";
+import { MdPolicy } from "react-icons/md";
+import CodeBlock from "@theme/CodeBlock";
+
 import EmailForm from "./EmailForm";
 
 const LandingPage = () => {
-  // const youtubeVideoId = 'aHmv3LSsoDI';
-  // const youtubeEmbedUrl = `https://www.youtube.com/embed/${youtubeVideoId}`;
   return (
     <div className="landing-page">
       <header className="header">
         <section className="hero">
           <div className="hero-inner">
             <div className="hero-content">
-              {/* <img src="/img/Celest_Gradient_Icon.png" alt="Celest Logo" className="hero-logo" /> */}
               <h1 className="header-title">
                 Build your backend,
                 <br /> Flutter style.
@@ -30,18 +32,36 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="hero-media">
-              {/* <iframe 
-            className="youtube-video"
-            src={youtubeEmbedUrl} // Replace with your video
-            title="YouTube video" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowFullScreen>
-          </iframe> */}
-              <img
-                src="/img/data.png"
-                alt="Celest Hero"
-                className="hero-image"
-              />
+              <CodeBlock
+                className="hero-code"
+                language="dart"
+                title="app/celest/apis/my_api.dart    <--    Your API"
+              >
+                {`
+import 'package:celest/celest.dart';
+import 'package:celest/middleware.dart' as middleware;
+
+@middleware.logRequests()
+String sayHello(String name) {
+  return 'Hello, $name';
+}`.trim()}
+              </CodeBlock>
+              <br />
+              <CodeBlock
+                className="hero-code"
+                language="dart"
+                title="app/lib/main.dart    <--    Your Flutter app"
+              >
+                {`
+FutureBuilder(
+  future: celest.apis.myApi.sayHello('Celest'),
+  builder: (_, snapshot) => switch (snapshot) {
+    AsyncSnapshot(:final data?) => Text(data),
+    AsyncSnapshot(:final error?) => Text('Error: $error'),
+    _ => const CircularProgressIndicator(),
+  },
+);`.trim()}
+              </CodeBlock>
             </div>
           </div>
         </section>
@@ -52,17 +72,8 @@ const LandingPage = () => {
           </div>
         </section>
       </header>
-      <h2 className="features-header">Activate the builder in you</h2>
+      <h2 className="middle-header">Activate the builder in you</h2>
       <section className="features">
-        <div className="feature-card">
-          <CloudIcon className="feature-icon" />
-          <h3 className="feature-title">Managed Backend</h3>
-          {/* <p>You build feature, we take care of deploying and setting up your backend.</p> */}
-          <p>
-            Use a single command <code>celest deploy</code> to setup your
-            backend.
-          </p>
-        </div>
         <div className="feature-card">
           <CodeBracketIcon className="feature-icon" />
           <h3 className="feature-title">All in Dart</h3>
@@ -76,6 +87,62 @@ const LandingPage = () => {
           <p>
             Run <code>celest start</code> to see your changes locally instantly.
           </p>
+        </div>
+        <div className="feature-card">
+          <CloudIcon className="feature-icon" />
+          <h3 className="feature-title">Managed Backend</h3>
+          <p>
+            Use a single command <code>celest deploy</code> to setup your
+            backend.
+          </p>
+        </div>
+      </section>
+      <section className="celest-categories">
+        <h2 className="middle-header categories-bottom-header-margin">
+          Your backend in Dart
+        </h2>
+        <div className="categories">
+          <div className="category-card">
+            <AiFillApi className="category-icon" />
+            <h3 className="category-title">APIs</h3>
+            <p className="category-description">
+              Build serverless functions that run in the cloud.
+            </p>
+          </div>
+          <div className="category-card">
+            <FaDatabase className="category-icon" />
+            <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
+            <h3 className="category-title">Data</h3>
+            <p className="category-description">
+              Define your data schema, relationships, and authorization rules in
+              code.
+            </p>
+          </div>
+          <div className="category-card">
+            <FaLock className="category-icon" />
+            <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
+            <h3 className="category-title">Auth</h3>
+            <p className="category-description">
+              Authenticate your users with Passwordless and WebAuthN.
+            </p>
+          </div>
+          <div className="category-card">
+            <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
+            <MdPolicy className="category-icon" />
+            <h3 className="category-title">Policies</h3>
+            <p className="category-description">
+              Author fine-grained access controls for all your backend
+              components.
+            </p>
+          </div>
+          <div className="category-card">
+            <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
+            <FaImages className="category-icon" />
+            <h3 className="category-title">Content</h3>
+            <p className="category-description">
+              Serve content globally with edge caching built-in.
+            </p>
+          </div>
         </div>
       </section>
       <section className="team">
@@ -93,13 +160,6 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-      {/* <section className="testimonials">
-        <h2>What developers think of Celest</h2>
-        <div className="testimonial-card">
-          <blockquote>"The speed and productivity Celest give us is insane. Having all pieces of our apps built in Dart is a dream come true"</blockquote>
-          <cite>- Jane Doe, Lead Developer</cite>
-        </div>
-      </section> */}
     </div>
   );
 };

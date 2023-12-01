@@ -15,22 +15,12 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  /* --ifm-color-primary: #02569B; */
-  /* --ifm-color-primary-dark: #01467A; */
-  /* --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #4B9CD3;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e; */
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  /* updated font for the whole site */
   --ifm-font-family-base: 'Nunito sans', sans-serif;
-  /* --comand-input-background-color: #4A5568; */
   --title-color: #042853;
   --gradient-blue: linear-gradient(100deg, #027DFD 26.96%, #92EBFE 109.1%);
   --ifm-hero-background-color: none;
-  /* --green-color: #008585; */
   --feature-icon-color: #34A3FE;
   --ifm-footer-background-color: var(--gradient-blue);
   --ifm-background-color: #FBFCFF !important;
@@ -44,18 +34,6 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
-/* Keeping this here to remember to add a Dart theme */
-[data-theme='dark'] {
-  /* --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3); */
-}
-
 @font-face {
   font-family: 'gilroy-font';
   src: url('/Gilroy-Bold.otf') format('opentype');
@@ -65,10 +43,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar {
   display: flex;
-  /* justify-content: space-between; */
   background-color: var(--ifm-background-color);
   align-items: center;
-  /* padding: 100px 100px 40px 10; */
   justify-content: center;
   padding-bottom: 0.2rem;
 }
@@ -77,8 +53,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'gilroy-font';
   font-size: 2rem; /* Adjust font size as needed */
   color: var(--title-color);
-  /* move item slight up */
-  /* margin-top: 0.7rem; */
 }
 
 .navbar__item {
@@ -93,6 +67,10 @@ h1, h2, h3, h4, h5, h6 {
   text-align: right;
 }
 
+.string-literal {
+  color: green !important;
+}
+
 .navbar-custom-image{
   padding-top: 0.5rem;
   height: 35px;
@@ -101,6 +79,20 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar__toggle {
   color: black;
+}
+
+.hero-code {
+  min-width: 500px;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.hero-code pre code {
+  max-width: 500px;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .navbar-sidebar__back {
@@ -126,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
   background-image: var(--gradient-blue);
 }
 
-.features-header {
+.middle-header {
   text-align: center;
   padding-top: 2rem;
   padding-bottom: 0;
@@ -140,10 +132,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .features {
   display: flex;
-  justify-content: space-around;
-  padding: 0px 0 1rem 0;
-  max-width: 80%;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 0 1rem 0;
   margin: 0 auto;
+  text-align: center;
+  padding-bottom: 2rem;
+  max-width: 1100px;
+  gap: 2rem
 }
 
 .header-subtitle{
@@ -163,14 +159,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .feature-card {
-  padding: 30px;
-  margin: 10px;
-  display: flex;
+  flex-basis: calc(33.333% - 4rem);
+  min-width: 250px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  max-width: 350px;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 /* Update code snippets to have a border */
@@ -180,6 +176,7 @@ pre code {
 
 .hero {
   display: block;
+  padding-bottom: 2.5rem;
 }
 
 .hero-inner {
@@ -209,6 +206,7 @@ pre code {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 /* The CSS classes for the copy button for the curl command */
@@ -216,7 +214,6 @@ pre code {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: var(--hero-background-color); */
   overflow: hidden;
   padding: 0rem 8rem;
   margin: 0 auto;
@@ -229,7 +226,6 @@ pre code {
   margin: 0;
   flex-grow: 1;
   max-width: 500px;
-  /* color: var(--comand-input-background-color); */
   background: white url('/img/MdEmail_1.png') no-repeat 15px center;
   border-radius: 30px;
   margin: 0 auto;
@@ -257,12 +253,11 @@ pre code {
 }
 
 .submit-button:active {
-  transform: scale(0.1); /* Slight shrink effect to simulate click */
+  transform: scale(0.1);
 }
 
-/* Optional: Fixed button width could cause layout shift, consider using min-width instead */
 .submit-button.copied {
-  min-width: 80px; /* Ensures the button doesn't shrink/grow when text changes */
+  min-width: 80px; 
 }
 
 /* Removing margin from the bottom of the first paragraph of a list item in the about us page */
@@ -270,14 +265,67 @@ pre code {
   margin: 0.2rem; /* Adjust the value as needed */
 }
 
-.team {
-  background-image: var(--gradient-blue);
-  text-align: center;
-  padding-top: 2rem;
+.categories-bottom-header-margin {
+  padding-bottom: 1rem;
 }
 
-.team-header {
-  color: white
+.celest-categories{
+  background-image: var(--gradient-blue);
+  color: white;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem 0 3rem 0;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  gap: 4rem;
+}
+
+.category-card{
+  flex-basis: calc(33.333% - 4rem);
+  max-width: 450px;
+  min-width: 150px;
+  margin-bottom: 0px; 
+  padding-top: 0.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.category-card img {
+  position: absolute;
+  top: 5.7rem; /* Position the top of the image right below the card */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); 
+  width: 5rem;
+}
+
+.category-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-top: 0.7rem;
+  padding-bottom: 0.6rem;
+}
+
+.category-icon{
+  width: 35px; 
+  height: auto; 
+  margin: 0 auto; 
+  color: white;
+}
+
+.category-description{
+  max-width: 250px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.team {
+  text-align: center;
+  padding-top: 2rem;
 }
 
 .team-info {
@@ -287,11 +335,26 @@ pre code {
   padding: 1rem 0 1rem 0;
   max-width: 80%;
   margin: 0 auto;
+}
+
+.black-code-block {
+  color: black;
+}
+
+.footer {
+  background-image: var(--gradient-blue);
   color: white;
 }
 
 /* Media query for medium screens */
 @media (max-width: 768px) {
+  .submit-form {
+    padding: 0rem 3rem;
+  }
+
+  .yc-image {
+    padding-bottom: 1rem;
+  }
 
   .hero-inner {
     flex-direction: column;
@@ -317,19 +380,6 @@ pre code {
     text-align: center;
   }
 
-  .features {
-    flex-direction: column;
-    align-items: center; /* To center the cards */
-    padding-top: 1rem;
-  }
-
-  .feature-card {
-    width: 60%; /* Take full width of the container */
-    margin-bottom: 0px; /* Optional: adds space between cards */
-    padding-top: 0.5rem;
-    padding-bottom: 1rem;
-  }
-
   .hero-get-started {
     padding: 0 0.5rem 3rem 0.5rem;
   }
@@ -341,19 +391,33 @@ pre code {
   .col {
     padding-left: 1rem;
   }
+
+  .categories{
+    gap: 4rem;
+  }
+
+  .category-card {
+    flex-basis: calc(50% - 4rem); /* Adjust for two items per row */
+  }
+  
+  .categories-bottom-header-margin {
+    padding-bottom: 1rem;
+  }
+
+
 }
 
 @media (max-width: 430px) {
   .hero-get-started {
     padding: 0 0 3rem 0; 
   }
-  .submit-form {
-    padding: 0rem 3rem;
+
+  .middle-header {
+    padding-bottom: 1rem;
   }
 
-  .features {
-    padding: 0;
-    max-width: 100%;
+  .categories-bottom-header-margin {
+    padding-bottom: 0;
   }
 
 }
