@@ -39,18 +39,14 @@ const LandingPage = () => {
               >
                 {`
 import 'package:celest/celest.dart';
-import 'middleware.dart' as middleware;
+import 'package:celest/middleware.dart' as middleware;
 
 @middleware.logRequests()
-String sayHello(
-  FunctionContext context, 
-  String name,
-) {
-  return 'Hello, $name';                    
+String sayHello(String name) {
+  return 'Hello, $name';
 }`.trim()}
               </CodeBlock>
               <br />
-              
               <CodeBlock
                 className="hero-code"
                 language="dart"
@@ -102,40 +98,50 @@ FutureBuilder(
         </div>
       </section>
       <section className="celest-categories">
-        <h2 className="middle-header categories-bottom-header-margin">Your backend in Dart</h2>
+        <h2 className="middle-header categories-bottom-header-margin">
+          Your backend in Dart
+        </h2>
         <div className="categories">
           <div className="category-card">
             <AiFillApi className="category-icon" />
             <h3 className="category-title">APIs</h3>
-            <p className="category-description">Build serverless functions that run in the cloud.</p>
+            <p className="category-description">
+              Build serverless functions that run in the cloud.
+            </p>
           </div>
           <div className="category-card">
             <FaDatabase className="category-icon" />
             <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
             <h3 className="category-title">Data</h3>
             <p className="category-description">
-              Define your data schema, relationships, and authorization rules in code.
+              Define your data schema, relationships, and authorization rules in
+              code.
             </p>
           </div>
           <div className="category-card">
             <FaLock className="category-icon" />
             <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
             <h3 className="category-title">Auth</h3>
-            <p className="category-description">Authenticate your users with Passwordless and WebAuthN.</p>
+            <p className="category-description">
+              Authenticate your users with Passwordless and WebAuthN.
+            </p>
           </div>
           <div className="category-card">
             <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
             <MdPolicy className="category-icon" />
             <h3 className="category-title">Policies</h3>
             <p className="category-description">
-              Author fine-grained access controls for all your backend components.
+              Author fine-grained access controls for all your backend
+              components.
             </p>
           </div>
           <div className="category-card">
             <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
             <FaImages className="category-icon" />
             <h3 className="category-title">Content</h3>
-            <p className="category-description">Serve content globally with edge caching built-in.</p>
+            <p className="category-description">
+              Serve content globally with edge caching built-in.
+            </p>
           </div>
         </div>
       </section>

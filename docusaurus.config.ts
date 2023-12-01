@@ -104,7 +104,7 @@ const config: Config = {
     },
     footer: {
       copyright:
-        `Copyright © ${new Date().getFullYear()} Teo, Inc.`,
+        `Copyright © ${new Date().getFullYear()} Celest`,
     },
     prism: {
       theme: prismThemes.github,

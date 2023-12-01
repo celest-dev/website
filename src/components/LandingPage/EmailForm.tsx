@@ -7,29 +7,29 @@ const ERROR = "ERROR";
 const SUCCESS = "SUCCESS";
 const formStates = [INIT, SUBMITTING, ERROR, SUCCESS] as const;
 const formStyles = {
-  "id": "clp38odyv0069le0phi4wl0s3",
-  "name": "Default",
-  "formStyle": "inline",
-  "placeholderText": "you@example.com",
-  "formFont": "Nunito Sans",
-  "formFontColor": "#000000",
-  "formFontSizePx": 14,
-  "buttonText": "Join Waitlist",
-  "buttonFont": "Nunito Sans",
-  "buttonFontColor": "#ffffff",
-  "buttonColor": "#042853",
-  "buttonFontSizePx": 14,
-  "successMessage": "Thanks! We'll be in touch!",
-  "successFont": "Nunito Sans",
-  "successFontColor": "#ffffff",
-  "successFontSizePx": 14,
-  "userGroup": "Waitlist"
-}
-const domain = "app.loops.so"
+  id: "clp38odyv0069le0phi4wl0s3",
+  name: "Default",
+  formStyle: "inline",
+  placeholderText: "you@example.com",
+  formFont: "Nunito Sans",
+  formFontColor: "#000000",
+  formFontSizePx: 14,
+  buttonText: "Join Waitlist",
+  buttonFont: "Nunito Sans",
+  buttonFontColor: "#ffffff",
+  buttonColor: "#042853",
+  buttonFontSizePx: 14,
+  successMessage: "Thanks! We'll be in touch!",
+  successFont: "Nunito Sans",
+  successFontColor: "#ffffff",
+  successFontSizePx: 14,
+  userGroup: "Waitlist",
+};
+const domain = "app.loops.so";
 
 export default function SignUpFormReact() {
   const [email, setEmail] = useState("");
-  const [formState, setFormState] = useState<typeof formStates[number]>(INIT);
+  const [formState, setFormState] = useState<(typeof formStates)[number]>(INIT);
   const [errorMessage, setErrorMessage] = useState("");
 
   const resetForm = () => {
@@ -70,9 +70,10 @@ export default function SignUpFormReact() {
     if (!isValidEmail(email)) {
       setFormState(ERROR);
       setErrorMessage("Please enter a valid email");
-   
-      recordEvent('Submit waitlist form', {success: false, errorMessage: 'Please enter a valid email'});
-
+      recordEvent("Submit waitlist form", {
+        success: false,
+        errorMessage: "Please enter a valid email",
+      });
       return;
     }
     if (hasRecentSubmission()) return;
@@ -96,9 +97,7 @@ export default function SignUpFormReact() {
         if (ok) {
           resetForm();
           setFormState(SUCCESS);
-         
-            recordEvent('Submit waitlist form', {success: true});
-      
+          recordEvent("Submit waitlist form", { success: true });
         } else {
           dataPromise.then((data: any) => {
             setFormState(ERROR);
@@ -111,14 +110,20 @@ export default function SignUpFormReact() {
         setFormState(ERROR);
         // check for cloudflare error
         if (error.message === "Failed to fetch") {
-          setErrorMessage("Too many signups, please try again in a little while");
-      
-            recordEvent('Submit waitlist form', {success: false, errorMessage: 'Too many signups, please try again in a little while'});
- 
+          setErrorMessage(
+            "Too many signups, please try again in a little while"
+          );
+          recordEvent("Submit waitlist form", {
+            success: false,
+            errorMessage:
+              "Too many signups, please try again in a little while",
+          });
         } else if (error.message) {
           setErrorMessage(error.message);
-            recordEvent('Submit waitlist form', {success: false, errorMessage: error.message});
-          
+          recordEvent("Submit waitlist form", {
+            success: false,
+            errorMessage: error.message,
+          });
         }
         localStorage.setItem("loops-form-timestamp", "");
       });
@@ -158,10 +163,7 @@ export default function SignUpFormReact() {
     default:
       return (
         <>
-          <form
-            onSubmit={handleSubmit}
-            className= 'submit-form'
-          >
+          <form onSubmit={handleSubmit} className="submit-form">
             <input
               type="text"
               name="email"
@@ -225,10 +227,7 @@ export default function SignUpFormReact() {
 
   function SignUpFormButton({ props }: any) {
     return (
-      <button
-        type="submit"
-        className="submit-button"
-      >
+      <button type="submit" className="submit-button">
         {formState === SUBMITTING ? "Please wait..." : formStyles.buttonText}
       </button>
     );
