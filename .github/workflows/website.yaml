@@ -1,0 +1,49 @@
+name: website
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+# These permissions are needed for deploying to GitHub Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build_deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # 4.1.1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@d2613e087f2e0aa841925861c5a5f7395d552177 # master
+        with:
+          version: 8
+      - name: Install Node.js
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # 4.0.0
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-apth: pnpm-lock.yaml
+      - name: Install packages
+        run: pnpm install --frozen-lockfile --strict-peer-dependencies
+      - name: Run build
+        run: pnpm run build
+      - name: Setup Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@f156874f8191504dae5b037505266ed5dda6c382 # 3.0.6
+      - name: Upload artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@a753861a5debcf57bf8b404356158c8e1e33150c # 2.0.0
+        with:
+          path: './build'
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        id: deployment
+        uses: actions/deploy-pages@de14547edc9944350dc0481aa5b7afb08e75f254 # 2.0.5
