@@ -35,32 +35,29 @@ const LandingPage = () => {
               <CodeBlock
                 className="hero-code"
                 language="dart"
-                title="app/celest/apis/my_api.dart    <--    Your API"
+                title="app/celest/apis/my_api.dart    ←    Your API"
               >
                 {`
 import 'package:celest/celest.dart';
-import 'package:celest/middleware.dart' as middleware;
+import 'package:celest/api.dart' as api;
 
-@middleware.logRequests()
+@api.authenticated()
 String sayHello(String name) {
-  return 'Hello, $name';
+  return 'Hello, $name!';
 }`.trim()}
               </CodeBlock>
               <br />
               <CodeBlock
                 className="hero-code"
                 language="dart"
-                title="app/lib/main.dart    <--    Your Flutter app"
+                title="app/lib/main.dart    ←    Your Flutter app"
               >
                 {`
-FutureBuilder(
-  future: celest.apis.myApi.sayHello('Celest'),
-  builder: (_, snapshot) => switch (snapshot) {
-    AsyncSnapshot(:final data?) => Text(data),
-    AsyncSnapshot(:final error?) => Text('Error: $error'),
-    _ => const CircularProgressIndicator(),
-  },
-);`.trim()}
+import 'celest/client.dart';
+Future<void> callFunction() async {
+  final res = await celest.apis.myApi.sayHello('Celest');
+  print(res); // Hello, Celest!
+}`.trim()}
               </CodeBlock>
             </div>
           </div>
