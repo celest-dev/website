@@ -5,29 +5,34 @@
  */
 
 /* Nunito for headers. */
- @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap");
 
 /* Nunito Sans for body. */
- @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400&family=Nunito:wght@400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400&family=Nunito:wght@400&display=swap");
 
 /* Poppins for headers. */
- @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300&family=Nunito:wght@300&family=Poppins:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300&family=Nunito:wght@300&family=Poppins:wght@300&display=swap");
 
 /* You can override the default Infima variables here. */
 :root {
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --ifm-font-family-base: 'Nunito sans', sans-serif;
+  --ifm-font-family-base: "Nunito sans", sans-serif;
   --title-color: #042853;
-  --gradient-blue: linear-gradient(100deg, #027DFD 26.96%, #92EBFE 109.1%);
+  --gradient-blue: linear-gradient(100deg, #027dfd 26.96%, #92ebfe 109.1%);
   --ifm-hero-background-color: none;
-  --feature-icon-color: #34A3FE;
+  --feature-icon-color: #34a3fe;
   --ifm-footer-background-color: var(--gradient-blue);
-  --ifm-background-color: #FBFCFF !important;
+  --ifm-background-color: #fbfcff !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
 }
 
 .get-started-header {
@@ -35,13 +40,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @font-face {
-  font-family: 'gilroy-font';
-  src: url('/Gilroy-Bold.otf') format('opentype');
+  font-family: "gilroy-font";
+  src: url("/Gilroy-Bold.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
-body, html {
+body,
+html {
   max-width: 100%;
   overflow-x: hidden;
 }
@@ -55,7 +61,7 @@ body, html {
 }
 
 .navbar__title {
-  font-family: 'gilroy-font';
+  font-family: "gilroy-font";
   font-size: 2rem; /* Adjust font size as needed */
   color: var(--title-color);
 }
@@ -65,7 +71,7 @@ body, html {
 }
 
 .navbar__logo {
-  width : 4.2rem;
+  width: 4.2rem;
   height: 4.2rem;
   padding-bottom: 0.5rem;
   margin-right: 0;
@@ -76,7 +82,7 @@ body, html {
   color: green !important;
 }
 
-.navbar-custom-image{
+.navbar-custom-image {
   padding-top: 0.5rem;
   height: 35px;
   width: 35px;
@@ -113,7 +119,7 @@ body, html {
 }
 
 .landing-page {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   color: #333;
   line-height: 1.6;
 }
@@ -143,11 +149,11 @@ body, html {
   text-align: center;
   padding-bottom: 2rem;
   max-width: 1100px;
-  gap: 2rem
+  gap: 2rem;
 }
 
-.header-subtitle{
-  color:white;
+.header-subtitle {
+  color: white;
 }
 
 .col {
@@ -175,7 +181,7 @@ body, html {
 
 /* Update code snippets to have a border */
 pre code {
-  border: 0.1rem solid rgba(0, 0, 0, 0.1);; 
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
 }
 
 .hero {
@@ -231,14 +237,14 @@ pre code {
   margin: 0;
   flex-grow: 1;
   max-width: 500px;
-  background: white url('/img/email-icon.png') no-repeat 15px center;
+  background: white url("/img/email-icon.png") no-repeat 15px center;
   border-radius: 30px;
   margin: 0 auto;
 }
 
 .email-input:focus {
   outline: none;
-} 
+}
 
 .submit-button {
   cursor: pointer;
@@ -263,7 +269,7 @@ pre code {
 }
 
 .submit-button.copied {
-  min-width: 80px; 
+  min-width: 80px;
 }
 
 /* Removing margin from the bottom of the first paragraph of a list item in the about us page */
@@ -275,7 +281,7 @@ pre code {
   padding-bottom: 1rem;
 }
 
-.celest-categories{
+.celest-categories {
   background-image: var(--gradient-blue);
   color: white;
 }
@@ -291,11 +297,11 @@ pre code {
   gap: 4rem;
 }
 
-.category-card{
+.category-card {
   flex-basis: calc(33.333% - 4rem);
   max-width: 450px;
   min-width: 150px;
-  margin-bottom: 0px; 
+  margin-bottom: 0px;
   padding-top: 0.5rem;
   text-align: center;
   position: relative;
@@ -305,7 +311,7 @@ pre code {
   position: absolute;
   top: 5.7rem; /* Position the top of the image right below the card */
   left: 50%; /* Center horizontally */
-  transform: translateX(-50%); 
+  transform: translateX(-50%);
   width: 5rem;
 }
 
@@ -316,14 +322,14 @@ pre code {
   padding-bottom: 0.6rem;
 }
 
-.category-icon{
-  width: 35px; 
-  height: auto; 
-  margin: 0 auto; 
+.category-icon {
+  width: 35px;
+  height: auto;
+  margin: 0 auto;
   color: white;
 }
 
-.category-description{
+.category-description {
   max-width: 250px;
   margin: 0 auto;
   text-align: center;
@@ -398,29 +404,28 @@ pre code {
     padding-left: 1rem;
   }
 
-  .categories{
+  .categories {
     gap: 4rem;
   }
 
   .category-card {
     flex-basis: calc(50% - 4rem); /* Adjust for two items per row */
   }
-  
+
   .categories-bottom-header-margin {
     padding-bottom: 1rem;
   }
 
-@media (max-width: 520px) {
+  @media (max-width: 520px) {
     .hero-code pre code {
       font-size: 0.65rem;
     }
   }
-
 }
 
 @media (max-width: 430px) {
   .hero-get-started {
-    padding: 0 0 3rem 0; 
+    padding: 0 0 3rem 0;
   }
 
   .categories-bottom-header-margin {
@@ -436,5 +441,4 @@ pre code {
     padding-left: 0rem;
     padding-right: 0rem;
   }
-
 }
