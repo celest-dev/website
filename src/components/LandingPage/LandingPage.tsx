@@ -54,6 +54,7 @@ String sayHello(String name) {
               >
                 {`
 import 'celest/client.dart';
+
 Future<void> callFunction() async {
   final res = await celest.apis.myApi.sayHello('Celest');
   print(res); // Hello, Celest!

@@ -88,15 +88,12 @@ body, html {
 
 .hero-code {
   font-size: 0.8rem;
-  min-width: 370px;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   margin: 0 1rem;
 }
 
 .hero-code pre code {
-  min-width: 420px;
-  max-width: 420px; 
   font-size: 0.7rem;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
@@ -436,10 +433,6 @@ pre code {
 
   .header-title{
     margin-right: 4px;
-  }
-
-  .hero-code pre code {
-    max-width: 350px; 
   }
 
 }

@@ -119,7 +119,7 @@ const config: Config = {
       copyright: `Copyright © ${new Date().getFullYear()} Celest`,
     },
     prism: {
-      theme: prismThemes.github,
+      theme: prismThemes.oneLight,
       darkTheme: prismThemes.dracula,
       additionalLanguages: ["dart"],
     },
