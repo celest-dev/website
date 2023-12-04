@@ -438,7 +438,10 @@ pre code {
   }
 
   .hero-content {
-    padding-left: 0rem;
-    padding-right: 0rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .header-title {
+    font-size: 2.2rem;
   }
 }
