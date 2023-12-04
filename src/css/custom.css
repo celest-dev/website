@@ -87,17 +87,21 @@ body, html {
 }
 
 .hero-code {
-  min-width: 350px;
+  margin: 0 1rem;
   font-size: 0.8rem;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
 
 .hero-code pre code {
-  max-width: 350px;
   font-size: 0.8rem;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+}
+@media (max-width: 520px) {
+  .hero-code pre code {
+    font-size: 0.65rem;
+  }
 }
 
 .navbar-sidebar__back {
