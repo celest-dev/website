@@ -1,27 +1,27 @@
 # Website
 
-This is the official website of Celest, the cloud platform for Flutter.
+The homepage of [Celest](https://celest.dev), the cloud platform for Flutter.
 
-This website is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator.
+## Development
 
-### Installation
+This website is built using [Docusaurus 3](https://docusaurus.io/). To contribute, you will need to install [pnpm](https://pnpm.io/).
 
-```
+### Setup
+
+Start by cloning the repository and installing its dependencies.
+
+```console
+$ git clone https://github.com/celest-dev/website
+$ cd website
 $ pnpm install
 ```
 
 ### Local Development
 
-```
-$ pnpm start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+To start a local development server, run `pnpm start`. Most changes will be reflected live without having to restart the server.
 
 ### Build
 
-```
-$ pnpm build
-```
+To build the website for production, run `pnpm build`. This command generates static content into the `build` directory.
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+To view the production build locally, run `pnpm serve`.
