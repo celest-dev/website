@@ -400,11 +400,12 @@ pre code {
   }
 
   .categories {
-    gap: 4rem;
+    gap: 2rem;
   }
 
   .category-card {
-    flex-basis: calc(50% - 4rem); /* Adjust for two items per row */
+    /* Adjust for two items per row */
+    flex-basis: calc(50% - 4rem);
   }
 
   .categories-bottom-header-margin {
@@ -423,7 +424,6 @@ pre code {
 
   .categories {
     padding-top: 2rem;
-    gap: 2rem;
   }
 
   .hero-content {
