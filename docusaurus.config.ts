@@ -66,6 +66,7 @@ const config: Config = {
   ],
 
   themeConfig: {
+    image: "img/open-graph.png",
     head: [
       {
         tagName: "meta",
