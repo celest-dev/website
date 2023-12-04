@@ -41,6 +41,11 @@ h1, h2, h3, h4, h5, h6 {
   font-style: normal;
 }
 
+body, html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .navbar {
   display: flex;
   background-color: var(--ifm-background-color);
@@ -82,14 +87,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-code {
-  min-width: 500px;
+  min-width: 350px;
   font-size: 0.8rem;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
 
 .hero-code pre code {
-  max-width: 500px;
+  max-width: 350px;
   font-size: 0.8rem;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
@@ -419,6 +424,10 @@ pre code {
 
   .categories-bottom-header-margin {
     padding-bottom: 0;
+  }
+
+  .header-title{
+    margin-right: 4px;
   }
 
 }
