@@ -28,7 +28,7 @@ const LandingPage = () => {
                 IDE.
               </p>
               <div className="hero-cta">
-                <img src="/img/YC.svg" alt="YC Logo" className="yc-image" />
+                <img src="/img/yc-badge.svg" alt="YC Logo" className="yc-image" />
               </div>
             </div>
             <div className="hero-media">
@@ -111,7 +111,7 @@ FutureBuilder(
           </div>
           <div className="category-card">
             <FaDatabase className="category-icon" />
-            <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
+            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
             <h3 className="category-title">Data</h3>
             <p className="category-description">
               Define your data schema, relationships, and authorization rules in
@@ -120,14 +120,14 @@ FutureBuilder(
           </div>
           <div className="category-card">
             <FaLock className="category-icon" />
-            <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
+            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
             <h3 className="category-title">Auth</h3>
             <p className="category-description">
               Authenticate your users with Passwordless and WebAuthN.
             </p>
           </div>
           <div className="category-card">
-            <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
+            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
             <MdPolicy className="category-icon" />
             <h3 className="category-title">Policies</h3>
             <p className="category-description">
@@ -136,7 +136,7 @@ FutureBuilder(
             </p>
           </div>
           <div className="category-card">
-            <img src="/img/Coming_Soon.svg" alt="Coming Soon Badge" />
+            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
             <FaImages className="category-icon" />
             <h3 className="category-title">Content</h3>
             <p className="category-description">
@@ -149,12 +149,12 @@ FutureBuilder(
         <h2 className="team-header">Meet the Celest team</h2>
         <div className="team-info">
           <div className="team-member">
-            <img src="/img/Dillon.png" alt="Dillon Nys" />
+            <img src="/img/dillon.png" alt="Dillon Nys" />
             <h3>Dillon Nys</h3>
             <p>Founder, Engineering</p>
           </div>
           <div className="team-member">
-            <img src="/img/Abdallah.png" alt="Abdallah Shaban" />
+            <img src="/img/abdallah.png" alt="Abdallah Shaban" />
             <h3>Abdallah Shaban</h3>
             <p>Founder, Product</p>
           </div>

@@ -226,7 +226,7 @@ pre code {
   margin: 0;
   flex-grow: 1;
   max-width: 500px;
-  background: white url('/img/MdEmail_1.png') no-repeat 15px center;
+  background: white url('/img/email-icon.png') no-repeat 15px center;
   border-radius: 30px;
   margin: 0 auto;
 }
