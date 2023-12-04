@@ -433,4 +433,8 @@ pre code {
   .header-title {
     font-size: 2rem;
   }
+
+  .email-input {
+    font-size: 16px;
+  }
 }
