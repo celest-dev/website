@@ -418,12 +418,13 @@ pre code {
     padding: 0 0 3rem 0; 
   }
 
-  .middle-header {
-    padding-bottom: 1rem;
-  }
-
   .categories-bottom-header-margin {
     padding-bottom: 0;
+  }
+
+  .categories {
+    padding-top: 2rem;
+    gap: 2rem;
   }
 
   .header-title{
