@@ -23,9 +23,9 @@ const LandingPage = () => {
                 <br /> Flutter style.
               </h1>
               <p className="header-subtitle">
-                From your Flutter app, to building your backend in the cloud,
-                Celest helps you build every piece of your Flutter app in your
-                IDE.
+                From your Flutter app to your backend in the cloud, 
+                Celest helps you build every piece of your app in Dart,
+                all without leaving your IDE.
               </p>
               <div className="hero-cta">
                 <img src="/img/yc-badge.svg" alt="YC Logo" className="yc-image" />
