@@ -12,6 +12,7 @@ declare global {
 }
 
 type GTagEventProps = {
+  category?: string;
   errorMessage?: String;
   success?: boolean;
 };

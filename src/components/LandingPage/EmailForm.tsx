@@ -70,7 +70,8 @@ export default function SignUpFormReact() {
     if (!isValidEmail(email)) {
       setFormState(ERROR);
       setErrorMessage("Please enter a valid email");
-      recordEvent("Submit waitlist form", {
+      recordEvent("click", {
+        category: "Submit waitlist form",
         success: false,
         errorMessage: "Please enter a valid email",
       });
@@ -97,7 +98,10 @@ export default function SignUpFormReact() {
         if (ok) {
           resetForm();
           setFormState(SUCCESS);
-          recordEvent("Submit waitlist form", { success: true });
+          recordEvent("click", {
+            category: "Submit waitlist form",
+            success: true,
+          });
         } else {
           dataPromise.then((data: any) => {
             setFormState(ERROR);
@@ -113,14 +117,15 @@ export default function SignUpFormReact() {
           setErrorMessage(
             "Too many signups, please try again in a little while"
           );
-          recordEvent("Submit waitlist form", {
+          recordEvent("click", {
+            category: "Submit waitlist form",
             success: false,
-            errorMessage:
-              "Too many signups, please try again in a little while",
+            errorMessage: "Too many signups, please try again in a little while",
           });
         } else if (error.message) {
           setErrorMessage(error.message);
-          recordEvent("Submit waitlist form", {
+          recordEvent("click", {
+            category: "Submit waitlist form",
             success: false,
             errorMessage: error.message,
           });
