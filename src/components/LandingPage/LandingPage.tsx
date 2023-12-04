@@ -35,7 +35,7 @@ const LandingPage = () => {
               <CodeBlock
                 className="hero-code"
                 language="dart"
-                title="app/celest/apis/my_api.dart    ←    Your API"
+                title="app/celest/apis/my_api.dart  ←  Your API"
               >
                 {`
 import 'package:celest/celest.dart';
@@ -50,13 +50,14 @@ String sayHello(String name) {
               <CodeBlock
                 className="hero-code"
                 language="dart"
-                title="app/lib/main.dart    ←    Your Flutter app"
+                title="app/lib/main.dart  ←  Your Flutter app"
               >
                 {`
 import 'celest/client.dart';
 
 Future<void> callFunction() async {
-  final res = await celest.apis.myApi.sayHello('Celest');
+  final res =
+    await celest.apis.myApi.sayHello('Celest');
   print(res); // Hello, Celest!
 }`.trim()}
               </CodeBlock>

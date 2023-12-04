@@ -98,11 +98,15 @@ html {
   overflow-wrap: anywhere;
   margin: 0 1rem;
 }
-
 .hero-code pre code {
   font-size: 0.7rem;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+}
+@media (max-width: 520px) {
+  .hero-code pre code {
+    font-size: 0.65rem;
+  }
 }
 
 .navbar-sidebar__back {
@@ -198,10 +202,8 @@ pre code {
 }
 
 .hero-get-started {
-  /* background-color: var(--hero-background-color); */
   text-align: center;
   padding: 0 7rem 3rem 7rem;
-  background-image: var(--);
 }
 
 .hero-content {
@@ -212,8 +214,6 @@ pre code {
 
 .hero-media {
   width: 100%;
-  max-width: 560px; /* Maximum size for the video */
-  /* margin-left: 25px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -225,10 +225,6 @@ pre code {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  padding: 0rem 8rem;
-  margin: 0 auto;
-  max-width: 650px;
 }
 
 .email-input {
@@ -236,10 +232,9 @@ pre code {
   padding: 15px 10px 15px 50px;
   margin: 0;
   flex-grow: 1;
-  max-width: 500px;
+  max-width: 450px;
   background: white url("/img/email-icon.png") no-repeat 15px center;
   border-radius: 30px;
-  margin: 0 auto;
 }
 
 .email-input:focus {
@@ -359,9 +354,9 @@ pre code {
 }
 
 /* Media query for medium screens */
-@media (max-width: 768px) {
+@media (max-width: 855px) {
   .submit-form {
-    padding: 0rem 3rem;
+    margin: 0rem 1.5rem;
   }
 
   .yc-image {
@@ -414,12 +409,6 @@ pre code {
 
   .categories-bottom-header-margin {
     padding-bottom: 1rem;
-  }
-
-  @media (max-width: 520px) {
-    .hero-code pre code {
-      font-size: 0.65rem;
-    }
   }
 }
 
