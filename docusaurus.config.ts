@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Celest',
   tagline: 'A managed cloud platform to build full-stack Flutter and Dart apps',
-  favicon: 'img/Celest_Gradient_Icon.png',
+  favicon: 'img/logo.png',
 
   // Set the production url of your site here
   url: 'https://celest.dev',
@@ -60,19 +60,17 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
     colorMode: {
       defaultMode: 'light',
       disableSwitch: true,
       respectPrefersColorScheme: false,
     },
-    image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'Celest',
       logo: {
         className: 'navbar-logo',
         alt: 'Celest Logo',
-        src: 'img/Celest_Gradient_Icon.png',
+        src: 'img/logo.png',
       },
       items: [
         process.env.NODE_ENV === 'development' && {
@@ -90,13 +88,13 @@ const config: Config = {
         },
         {
           to: 'https://github.com/celest-dev/website',
-          html: '<img src="/img/Github.svg" class="navbar-custom-image" alt="GitHub Label" />',
+          html: '<img src="/img/github.svg" class="navbar-custom-image" alt="GitHub Page" />',
           position: 'right',
           className: 'custom-navbar-img', 
         },
         {
           to: 'https://twitter.com/celest_dev',
-          html: '<img src="/img/Twitter.svg" class="navbar-custom-image" alt="X Label" />',
+          html: '<img src="/img/x.svg" class="navbar-custom-image" alt="X/Twitter Page" />',
           position: 'right',
           className: 'custom-navbar-img',
         },
