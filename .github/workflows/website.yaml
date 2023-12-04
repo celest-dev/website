@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
-          cache-dependency-apth: pnpm-lock.yaml
+          cache-dependency-path: pnpm-lock.yaml
       - name: Install packages
         run: pnpm install --frozen-lockfile --strict-peer-dependencies
       - name: Run build
@@ -52,7 +52,7 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
-          cache-dependency-apth: pnpm-lock.yaml
+          cache-dependency-path: pnpm-lock.yaml
       - name: Install packages
         run: pnpm install --frozen-lockfile --strict-peer-dependencies
       - name: Run build

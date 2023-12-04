@@ -3,7 +3,7 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
-  title: "Celest",
+  title: "Celest - The Flutter cloud platform",
   tagline: "A managed cloud platform to build full-stack Flutter and Dart apps",
   favicon: "img/logo.png",
 
@@ -38,22 +38,22 @@ const config: Config = {
           process.env.NODE_ENV === "production"
             ? false
             : {
-                sidebarPath: "./sidebars.ts",
-                // Please change this to your repo.
-                // Remove this to remove the "edit this page" links.
-                editUrl:
-                  "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-              },
+              sidebarPath: "./sidebars.ts",
+              // Please change this to your repo.
+              // Remove this to remove the "edit this page" links.
+              editUrl:
+                "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            },
         blog:
           process.env.NODE_ENV === "production"
             ? false
             : {
-                showReadingTime: true,
-                // Please change this to your repo.
-                // Remove this to remove the "edit this page" links.
-                editUrl:
-                  "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-              },
+              showReadingTime: true,
+              // Please change this to your repo.
+              // Remove this to remove the "edit this page" links.
+              editUrl:
+                "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            },
         theme: {
           customCss: "./src/css/custom.css",
         },
@@ -67,14 +67,32 @@ const config: Config = {
 
   themeConfig: {
     image: "img/open-graph.png",
-    head: [
+    metadata: [
       {
-        tagName: "meta",
-        attributes: {
-          name: "viewport",
-          content: "width=device-width, initial-scale=1.0, maximum-scale=1.0",
-        },
+        name: "viewport",
+        content: "width=device-width, initial-scale=1.0, maximum-scale=1.0",
       },
+      {
+        name: "twitter:title",
+        content: "Celest - The Flutter cloud platform",
+      },
+      {
+        name: "twitter:site",
+        content: "@celest_dev",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "A managed cloud platform to build full-stack Flutter and Dart apps",
+      },
+      {
+        name: "twitter:domain",
+        content: "celest.dev",
+      },
+      {
+        name: "twitter:url",
+        content: "https://celest.dev",
+      }
     ],
     colorMode: {
       defaultMode: "light",
