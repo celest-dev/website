@@ -87,15 +87,14 @@ body, html {
 }
 
 .hero-code {
-  min-width: 350px;
   font-size: 0.8rem;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+  margin: 0 1rem;
 }
 
 .hero-code pre code {
-  max-width: 350px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
@@ -201,7 +200,8 @@ pre code {
 
 .hero-content {
   max-width: 600px;
-  padding-left: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .hero-media {
@@ -410,6 +410,11 @@ pre code {
     padding-bottom: 1rem;
   }
 
+@media (max-width: 520px) {
+    .hero-code pre code {
+      font-size: 0.65rem;
+    }
+  }
 
 }
 
@@ -427,8 +432,9 @@ pre code {
     gap: 2rem;
   }
 
-  .header-title{
-    margin-right: 4px;
+  .hero-content {
+    padding-left: 0rem;
+    padding-right: 0rem;
   }
 
 }
