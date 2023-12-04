@@ -1,6 +1,6 @@
 # Website
 
-The homepage of [Celest](https://celest.dev), the cloud platform for Flutter.
+The home of [Celest's](https://celest.dev) Website, the Flutter cloud platform.
 
 ## Development
 
