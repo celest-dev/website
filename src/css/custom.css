@@ -200,7 +200,8 @@ pre code {
 
 .hero-content {
   max-width: 600px;
-  padding-left: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .hero-media {
@@ -431,8 +432,9 @@ pre code {
     gap: 2rem;
   }
 
-  .header-title{
-    margin-right: 4px;
+  .hero-content {
+    padding-left: 0rem;
+    padding-right: 0rem;
   }
 
 }
