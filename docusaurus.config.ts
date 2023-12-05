@@ -55,7 +55,7 @@ const config: Config = {
           environment: "${process.env.NODE_ENV}",
           integrations: [
             new Sentry.BrowserTracing({
-              traceOrigins: ["localhost", "celest.dev"],
+              traceOrigins: ["*"],
               tracePropagationTargets: ["*"],
             }),
             new Sentry.Replay(),
