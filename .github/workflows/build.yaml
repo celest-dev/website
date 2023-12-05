@@ -23,3 +23,7 @@ jobs:
         run: pnpm install --frozen-lockfile --strict-peer-dependencies
       - name: Run build
         run: pnpm run build
+      - name: Check HTML
+        uses: anishathalye/proof-html@7dc4ab1eb4b36b12d0012657111b180770867139 # 2.1.2
+        with:
+          directory: ./build
