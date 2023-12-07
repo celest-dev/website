@@ -6,6 +6,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { AiFillApi } from "react-icons/ai";
 import { FaLock, FaDatabase, FaImages } from "react-icons/fa";
+import { FiCloudLightning } from "react-icons/fi";
 import { MdPolicy } from "react-icons/md";
 import CodeBlock from "@theme/CodeBlock";
 
@@ -118,11 +119,10 @@ Future<void> callFunction() async {
             </p>
           </div>
           <div className="category-card">
-            <MdPolicy className="category-icon" />
-            <h3 className="category-title">Codegenerated Client</h3>
+            <FiCloudLightning className="category-icon" />
+            <h3 className="category-title">Dart Client</h3>
             <p className="category-description">
-              Author fine-grained access controls for all your backend
-              components.
+              Use an auto-generated Dart client to connect to your Celest project.
             </p>
           </div>
           <div className="category-card">
