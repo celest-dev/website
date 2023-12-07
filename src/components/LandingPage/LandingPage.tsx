@@ -118,6 +118,14 @@ Future<void> callFunction() async {
             </p>
           </div>
           <div className="category-card">
+            <MdPolicy className="category-icon" />
+            <h3 className="category-title">Codegenerated Client</h3>
+            <p className="category-description">
+              Author fine-grained access controls for all your backend
+              components.
+            </p>
+          </div>
+          <div className="category-card">
             <FaDatabase className="category-icon" />
             <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
             <h3 className="category-title">Data</h3>
