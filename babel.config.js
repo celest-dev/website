@@ -2,7 +2,7 @@
 
 // Fixes issues with older versions of Chrome in production,
 // e.g. https://celest.sentry.io/issues/4704582275/
-let targets;
+let targets = {};
 if (process.env.NODE_ENV === 'production') {
   targets = { chrome: '58' };
 }
