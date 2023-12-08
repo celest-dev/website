@@ -5,8 +5,9 @@ import {
   CodeBracketIcon,
 } from "@heroicons/react/24/outline";
 import { AiFillApi } from "react-icons/ai";
-import { FaLock, FaDatabase, FaImages } from "react-icons/fa";
-import { MdPolicy } from "react-icons/md";
+import { FaLock, FaDatabase, FaImages, FaServer } from "react-icons/fa";
+import { FiCloudLightning } from "react-icons/fi";
+import { MdPolicy,  MdOutlineComputer} from "react-icons/md";
 import CodeBlock from "@theme/CodeBlock";
 
 import EmailForm from "./EmailForm";
@@ -24,7 +25,7 @@ const LandingPage = () => {
               </h1>
               <p className="header-subtitle">
                 From your Flutter app to your backend in the cloud, Celest helps
-                you build every piece of your app in Dart, all without leaving
+                you build every piece of your application in Dart, all without leaving
                 your IDE.
               </p>
               <div className="hero-cta">
@@ -64,9 +65,8 @@ String sayHello(String name) {
                 {`
 import 'celest/client.dart';
 
-Future<void> callFunction() async {
-  final res =
-    await celest.apis.myApi.sayHello('Celest');
+Future<void> introduceMyself() async {
+  final res = await apis.myApi.sayHello('Celest');
   print(res); // Hello, Celest!
 }`.trim()}
               </CodeBlock>
@@ -149,6 +149,35 @@ Future<void> callFunction() async {
             <h3 className="category-title">Content</h3>
             <p className="category-description">
               Serve content globally with edge caching built-in.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="celest-categories-client">
+        <h2 className="middle-header categories-bottom-header-margin">
+          Accelerate building your app
+        </h2>
+        <div className="categories">
+          <div className="category-card">
+            <MdOutlineComputer className="category-icon-client" />
+            <h3 className="category-title">Hot Reload</h3>
+            <p className="category-description">
+              Iterate locally fast, see your backend changes instantly.
+            </p>
+          </div>
+          <div className="category-card">
+            <FiCloudLightning className="category-icon-client" />
+            <h3 className="category-title">Dart Client</h3>
+            <p className="category-description">
+              Connect to your Celest project effortlessly using a code-generated Dart
+              client.
+            </p>
+          </div>
+          <div className="category-card">
+            <FaServer className="category-icon-client" />
+            <h3 className="category-title">Cloud Logging</h3>
+            <p className="category-description">
+              Configure and track logs from your backend in your IDE.
             </p>
           </div>
         </div>
