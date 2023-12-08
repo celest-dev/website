@@ -93,13 +93,13 @@ html {
 }
 
 .hero-code {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   margin: 0 1rem;
 }
 .hero-code pre code {
-  font-size: 0.7rem;
+  font-size: 0.77rem;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
@@ -158,6 +158,7 @@ html {
 
 .header-subtitle {
   color: white;
+  padding-right: 1rem;
 }
 
 .col {
@@ -208,8 +209,8 @@ pre code {
 
 .hero-content {
   max-width: 600px;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1rem;
+  padding-right: 0.4rem;
 }
 
 .hero-media {
@@ -366,7 +367,7 @@ pre code {
 }
 
 /* Media query for medium screens */
-@media (max-width: 855px) {
+@media (max-width: 1000px) {
   .submit-form {
     margin: 0rem 1.5rem;
   }

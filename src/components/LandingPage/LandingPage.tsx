@@ -25,7 +25,7 @@ const LandingPage = () => {
               </h1>
               <p className="header-subtitle">
                 From your Flutter app to your backend in the cloud, Celest helps
-                you build every piece of your app in Dart, all without leaving
+                you build every piece of your application in Dart, all without leaving
                 your IDE.
               </p>
               <div className="hero-cta">
@@ -65,9 +65,8 @@ String sayHello(String name) {
                 {`
 import 'celest/client.dart';
 
-Future<void> callFunction() async {
-  final res =
-    await celest.apis.myApi.sayHello('Celest');
+Future<void> introduceMyself() async {
+  final res = await apis.myApi.sayHello('Celest');
   print(res); // Hello, Celest!
 }`.trim()}
               </CodeBlock>
