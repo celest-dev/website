@@ -361,10 +361,9 @@ pre code {
   color: var(--feature-icon-color);
 }
 
-/* .footer {
-  background-image: var(--gradient-blue);
-  color: white;
-} */
+.footer {
+  border-top: 1px dotted lightgrey;
+}
 
 /* Media query for medium screens */
 @media (max-width: 855px) {
