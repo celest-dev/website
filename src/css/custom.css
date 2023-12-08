@@ -330,7 +330,13 @@ pre code {
   text-align: center;
 }
 
+.celest-categories-client {
+  background-image: var(--ifm-background-color);
+}
+
 .team {
+  background-image: var(--gradient-blue);
+  color: white;
   text-align: center;
   padding-top: 2rem;
 }
@@ -348,10 +354,17 @@ pre code {
   color: black;
 }
 
-.footer {
+.category-icon-client {
+  width: 35px;
+  height: auto;
+  margin: 0 auto;
+  color: var(--feature-icon-color);
+}
+
+/* .footer {
   background-image: var(--gradient-blue);
   color: white;
-}
+} */
 
 /* Media query for medium screens */
 @media (max-width: 855px) {
