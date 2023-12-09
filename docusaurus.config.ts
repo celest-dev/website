@@ -158,7 +158,7 @@ const config: Config = {
           label: "About Us",
         },
         {
-          to: "https://github.com/celest-dev/website",
+          to: "https://github.com/celest-dev/celest",
           html: '<img src="/img/github.svg" class="navbar-custom-image" alt="GitHub Page" />',
           position: "right",
           className: "custom-navbar-img",
