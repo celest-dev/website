@@ -102,6 +102,20 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: '/twitter',
+            to: '/?utm_source=twitter&utm_medium=social&utm_campaign=website%2Breferral&utm_id=twitter%2Bbio',
+          }
+        ]
+      }
+    ]
+  ],
+
   themeConfig: {
     image: "img/open-graph.png",
     metadata: [
