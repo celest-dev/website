@@ -271,6 +271,21 @@ pre code {
   margin: 0.2rem; /* Adjust the value as needed */
 }
 
+/* Align videos in a responsive row with some padding */
+#yc-videos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+#yc-videos iframe {
+  width: 100%;
+  max-width: 400px;
+  height: 250px;
+}
+
 .categories-bottom-header-margin {
   padding-bottom: 1rem;
 }

@@ -22,6 +22,15 @@ Our sole passion is Dart and Flutter. We champion the Dart ethos of _run on all 
 
 Founded by Dillon Nys and Abdallah Shaban, both former members of the AWS Amplify Flutter team, Celest emerged from a clear and pressing need in the Flutter community. As Dart's popularity has surged, developers are seeking a backend solution that mirrors Flutter's exceptional developer experience. This need inspires us to build Celest.
 
+We applied to Y Combinator with nothing more than an idea and a vision. We were accepted into the Winter 2024 batch and are very excited to learn from world-class entrepreneurs.
+
+To learn more about our journey to YC, check out our official [listing](https://www.ycombinator.com/companies/celest) and our founder/demo videos below.
+
+<div id="yc-videos">
+   <iframe src="https://www.youtube.com/embed/Br9aStq5u2Y?si=gAJfTve_vH8hO8lC" title="Celest | YC W24 - Founder Intro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+   <iframe src="https://www.youtube.com/embed/Sva7fHQfcsw?si=ZWVftkB6f7qq1UEd" title="Celest | YC W24 - Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 ## Our Tenets
 
 1. **We focus on foundations**
