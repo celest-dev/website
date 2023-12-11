@@ -169,6 +169,12 @@ const config: Config = {
           position: "right",
           className: "custom-navbar-img",
         },
+        {
+          to: "https://www.youtube.com/@celest-dev",
+          html: '<img src="/img/youtube.svg" class="navbar-custom-image" alt="Youtube Channel" />',
+          position: "right",
+          className: "custom-navbar-img",
+        },
       ].filter(Boolean) as any,
     },
     footer: {
