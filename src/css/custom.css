@@ -103,7 +103,7 @@ html {
 }
 @media (max-width: 520px) {
   :root {
-    --ifm-code-font-size: 0.65rem;
+    --ifm-code-font-size: 0.62rem;
   }
 }
 
