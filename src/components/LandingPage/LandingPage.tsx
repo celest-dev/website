@@ -112,7 +112,7 @@ Future<void> introduceMyself() async {
         <div className="categories">
           <div className="category-card">
             <AiFillApi className="category-icon" />
-            <h3 className="category-title">APIs</h3>
+            <h3 className="category-title">Functions</h3>
             <p className="category-description">
               Build serverless functions that run in the cloud.
             </p>
