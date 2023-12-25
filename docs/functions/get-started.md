@@ -11,9 +11,10 @@ To use Celest in your Flutter app, you need the following prerequisites:
 2. Start a new fluter project using the `flutter create` command
 3. Install the Celest CLI using a shell command
 
-Note
 
+:::warning
 This is an example and will not work just yet. Join the [waitlist](https://celest.dev) to get access when we launch!
+:::
 
 ```shell
 $ curl --proto '=https' --tlsv1.2 https://install.celest.dev | sh

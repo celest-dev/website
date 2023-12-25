@@ -8,10 +8,9 @@ Creating serverless APIs and functions with Celest enables you to connect and ag
 
 To get started with building your first API, navigate to the `<flutter_app>/celest/apis/` folder and create a file named `<api_name>.dart`. You can create as many API files as you want in this directory.
 
-
-Tip
-
+:::tip
 Access to your APIs is denied by default. What this means is that you’ll need to add the `@api.anonymous()` annotation to the top of the file for APIs to be publicly accessible.
+:::
 
 ```dart
 // Enables public access to the API.
