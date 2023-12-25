@@ -6,6 +6,9 @@ sidebar_position: 3
 
 Creating functions with Celest enables you to connect and aggregate information from different parts of your backend, and build custom business logic that runs completely in the cloud. You define your functions as regular Dart functions, and Celest takes care of setting up and managing the backend infrastructure around them.
 
+
+![Function Call Flow](img/function.png)
+
 To get started with building your first function, navigate to the `<flutter_app>/celest/functions/` folder and create a file named `<function_file>.dart`. You can create as many function files as you want in this directory. The name of the file is used to organize and retrieve these functions.
 
 :::tip
