@@ -4,9 +4,9 @@ sidebar_position: 7
 
 # Create Custom Exceptions
 
-You can create custom exception types in your backend to control how APIs and cloud functions behave when there are errors. This enables you to have clear exceptions thrown in your Flutter app that you can react to.
+You can create custom exception types in your backend to control how functions behave when there are errors. This enables you to have clear exceptions thrown in your Flutter app that you can react to.
 
-Below is an example of how to define a custom exception. You can create exceptions in any folder inside your `celest` folder. For this example, the exception type is defined in `<flutter_app>/celest/apis/my_exception.dart`.
+Below is an example of how to define a custom exception. You can create exceptions in any folder inside your `celest` folder. For this example, the exception type is defined in `<flutter_app>/celest/functions/my_exception.dart`.
 
 ```dart
 class MyException implements Exception {

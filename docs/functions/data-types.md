@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Use Custom Data Types
 
-With Celest serverless APIs and functions, serialization is handled out-of-the-box in most cases. In situations requiring custom serialization, we support any custom classes that you’re already using without any extra setup.
+With Celest Functions, serialization is handled out-of-the-box in most cases. In situations requiring custom serialization, we support any custom classes that you’re already using without any extra setup.
 
 Imagine you're working on an e-commerce application with an `Order` class defined in your codebase.
 

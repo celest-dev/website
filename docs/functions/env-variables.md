@@ -14,11 +14,11 @@ import 'package:celest/celest.dart';
 const EnvironmentVariable greetingUrl = EnvironmentVariable(name: 'GREETING_URL');
 ```
 
-To ensure a cloud function has access to the variable when it runs, pass it as a parameter and annotate with the variable definition. Here, the greeting service URL will be securely injected by the server when your function starts.
+To ensure a function has access to the variable when it runs, pass it as a parameter and annotate with the variable definition. Here, the greeting service URL will be securely injected by the server when your function starts.
 
 
 :::note 
-Annotated parameters (like `greetingUrl`) will not appear in the generated client, but can be used in your backend when unit testing and mocking (see **Testing your backend resources** below).
+Annotated parameters (like `greetingUrl`) will not appear in the generated client, but can be used in your backend when unit testing and mocking (see [Testing your backend resources](/docs//functions/testing)).
 :::
 
 ```dart
