@@ -7,7 +7,7 @@ sidebar_position: 4
 ## Using middleware for your APIs and cloud functions
 Middleware enables you to have logic that can run before and/or after your cloud function executes. In Celest, you can define your own middleware and attach it to all functions in an API or to specific cloud functions.
 
-To define your middleware, go to your `<flutter_app>/celest/apis/` folder, and create a `middlware.dart` file (the name of the file is up to you). The following code snippet shows two middleware for logging requests and responses being defined.
+To define your middleware, go to your `<flutter_app>/celest/functions/` folder, and create a `middleware.dart` file (the name of the file is up to you). The following code snippet shows two middleware for logging requests and responses being defined.
 
 ```dart
 import 'package:celest/celest.dart';
@@ -40,11 +40,13 @@ class logResponses implements Middleware {
 }
 ```
 
-To attach a middleware to a cloud function, annotate the function with an instance of the middleware. The following is an example of using the request and response logging middleware in an API.
+To attach a middleware to a function, annotate the function with an instance of the middleware. The following is an example of using the request and response logging middleware in an API.
+
+![Middleware for each function](img/individual-middleware.png)
 
 ```dart
 import 'package:celest/celest.dart';
-import 'package:celest/api/middleware.dart' as middleware;
+import 'package:celest/functions/middleware.dart' as middleware;
 
 // Logs requests for only this function.
 @middleware.logRequests()
@@ -65,7 +67,9 @@ Future<String> sayGoodbye(
 }
 ```
 
-You can alternatively set up middleware to run for all functions inside an API file by applying the middleware annotation at the top of your API file as shown below.
+You can alternatively set up middleware to run for all functions inside a functions file by applying the middleware annotation at the top of your functions file as shown below.
+
+![File wide middleware](img/file-middleware.png)
 
 ```dart
 // Logs requests of every function defined in this API.
@@ -73,7 +77,7 @@ You can alternatively set up middleware to run for all functions inside an API f
 library;
 
 import 'package:celest/celest.dart';
-import 'package:celest/api/middleware.dart' as middleware;
+import 'package:celest/functions/middleware.dart' as middleware;
 
 Future<String> sayHello(
   FunctionContext context, 
@@ -90,7 +94,7 @@ Future<String> sayGoodbye(
 }
 ```
 
-You also have the option to compose middleware by applying multiple middleware to the API or cloud function. In the following example, four middleware are composed and will execute in top-down order. When a user calls `sayHello`, the execution order of the middleware will be: `first`, `second`, `third`, then `fourth`.
+You also have the option to compose middleware by applying multiple middleware to the function. In the following example, four middleware are composed and will execute in top-down order. When a user calls `sayHello`, the execution order of the middleware will be: `first`, `second`, `third`, then `fourth`.
 
 ```dart
 @middleware.first()
