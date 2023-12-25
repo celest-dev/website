@@ -67,9 +67,11 @@ When communicating with your backend, Celest will serialize the `Order` class as
 
 If you need custom handling over serialization logic, add a `fromJson` constructor and `toJson` method to your datatype. Celest will use your custom `fromJson`/`toJson` implementations instead when transmitting the type to and from your backend.
 
-Note
 
+:::note
 Here, the `Price.toJson` method is used to upper-case the `currency` value.
+:::
+
 ```dart
 class Price {
   // ...

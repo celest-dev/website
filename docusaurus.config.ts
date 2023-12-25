@@ -73,7 +73,7 @@ const config: Config = {
       {
         docs:
           process.env.NODE_ENV === "production"
-            ? true
+            ? false
             : {
               sidebarPath: "./sidebars.ts",
               // Please change this to your repo.
