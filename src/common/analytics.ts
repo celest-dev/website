@@ -1,3 +1,5 @@
+import type { PostHog } from 'posthog-js';
+
 type GTagFunction = (
   command: 'config' | 'event' | 'set', 
   eventNameOrConfigId: string, 
@@ -8,8 +10,10 @@ type GTagFunction = (
 declare global {
   interface Window {
     gtag: GTagFunction;
+    posthog: PostHog;
   }
 }
+
 
 type GTagEventProps = {
   category?: string;
@@ -20,5 +24,8 @@ type GTagEventProps = {
 export const recordEvent = (eventName: string, props?: GTagEventProps) => {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', eventName, props);
+  }
+  if (typeof window !== 'undefined' && window.posthog) {
+    window.posthog.capture(eventName, props);
   }
 };

@@ -33,6 +33,7 @@
     "@docusaurus/types": "^3.0.1",
     "@types/node": "^20.10.3",
     "@types/react": "^18.2.42",
+    "posthog-js": "^1.96.1",
     "typescript": "~5.2.2"
   },
   "browserslist": {
