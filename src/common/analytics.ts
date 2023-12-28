@@ -29,3 +29,9 @@ export const recordEvent = (eventName: string, props?: GTagEventProps) => {
     window.posthog.capture(eventName, props);
   }
 };
+
+export const identifyUser = (email: string) => {
+  if (typeof window !== 'undefined' && window.posthog) {
+    window.posthog.setPersonProperties({ email });
+  }
+};
