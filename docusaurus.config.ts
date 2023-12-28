@@ -193,7 +193,7 @@ const config: Config = {
       ].filter(Boolean) as any,
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} Celest`,
+      copyright: `Copyright © ${new Date().getFullYear()} Teo, Inc.`,
     },
     prism: {
       theme: prismThemes.oneLight,
