@@ -4,6 +4,10 @@ sidebar_position: 3
 
 # Create a Function
 
+:::warning
+Ensure you have completed [Setting up Celest](/docs/functions/get-started.md) prior to reading this section.
+:::
+
 Creating functions with Celest enables you to connect and aggregate information from different parts of your backend, and build custom business logic that runs completely in the cloud. You define your functions as regular Dart functions, and Celest takes care of setting up and managing the backend infrastructure around them.
 
 
