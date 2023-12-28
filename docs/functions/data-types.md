@@ -36,7 +36,7 @@ class Price {
 }
 ```
 
-You can use this `Order` type in any cloud function as both a parameter or return value, without the need to manually add serialization logic.
+You can use this `Order` type in any Celest Function as both a parameter or return value, without the need to manually add serialization logic.
 
 ```dart
 import 'package:celest/celest.dart';
@@ -65,12 +65,11 @@ When communicating with your backend, Celest will serialize the `Order` class as
 }
 ```
 
+
+## Custom Serialization Logic
 If you need custom handling over serialization logic, add a `fromJson` constructor and `toJson` method to your datatype. Celest will use your custom `fromJson`/`toJson` implementations instead when transmitting the type to and from your backend.
 
-
-:::note
 Here, the `Price.toJson` method is used to upper-case the `currency` value.
-:::
 
 ```dart
 class Price {

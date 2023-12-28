@@ -4,15 +4,15 @@ sidebar_position: 4
 
 # Add Middleware
 
-## Using middleware for your APIs and cloud functions
-Middleware enables you to have logic that can run before and/or after your cloud function executes. In Celest, you can define your own middleware and attach it to all functions in an API or to specific cloud functions.
+## Using middleware with your Celest Functions
+Middleware enables you to have logic that can run before and/or after your function executes. In Celest, you can define your own middleware and attach it to all functions in a file or to a specific function.
 
-To define your middleware, go to your `<flutter_app>/celest/functions/` folder, and create a `middleware.dart` file (the name of the file is up to you). The following code snippet shows two middleware for logging requests and responses being defined.
+To define your middleware, go to your `<flutter_app>/celest/functions/` folder, and create a `middleware.dart` file (the name of the file is up to you). The following code snippet shows the definition of two middleware for logging requests and responses.
 
 ```dart
 import 'package:celest/celest.dart';
 
-// A middleware that prints requests to your cloud function.
+// A middleware that prints requests to your function.
 class logRequests implements Middleware {
   const logRequests();
 
@@ -25,7 +25,7 @@ class logRequests implements Middleware {
   }
 }
 
-// A middleware that prints responses from your cloud function.
+// A middleware that prints responses from your function.
 class logResponses implements Middleware {
   const logResponses();
 
@@ -40,7 +40,8 @@ class logResponses implements Middleware {
 }
 ```
 
-To attach a middleware to a function, annotate the function with an instance of the middleware. The following is an example of using the request and response logging middleware in an API.
+## Applying Middleware to Single Function
+To attach a middleware to a function, annotate the function with an instance of the middleware. The following is an example of using the request and response logging middleware with a function.
 
 ![Middleware for each function](img/individual-middleware.png)
 
@@ -67,12 +68,13 @@ Future<String> sayGoodbye(
 }
 ```
 
+## Applying Middleware to All Functions in a File
 You can alternatively set up middleware to run for all functions inside a functions file by applying the middleware annotation at the top of your functions file as shown below.
 
 ![File wide middleware](img/file-middleware.png)
 
 ```dart
-// Logs requests of every function defined in this API.
+// Logs requests of every function defined in this file.
 @middleware.logRequests()
 library;
 
@@ -94,6 +96,7 @@ Future<String> sayGoodbye(
 }
 ```
 
+## Stacking Middlewares
 You also have the option to compose middleware by applying multiple middleware to the function. In the following example, four middleware are composed and will execute in top-down order. When a user calls `sayHello`, the execution order of the middleware will be: `first`, `second`, `third`, then `fourth`.
 
 ```dart

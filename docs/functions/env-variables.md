@@ -2,7 +2,7 @@
 sidebar_position: 8
 ---
 
-# Set the Environment Variables
+# Managing Environment Variables
 
 Environment variables can be used to provide environment-specific configuration to your backend. They allow you to keep their values separate from your codebase, improving flexibility when running in different environments.
 

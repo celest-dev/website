@@ -12,11 +12,11 @@ Creating functions with Celest enables you to connect and aggregate information 
 To get started with building your first function, navigate to the `<flutter_app>/celest/functions/` folder and create a file named `<function_file>.dart`. You can create as many function files as you want in this directory. The name of the file is used to organize and retrieve these functions.
 
 :::tip
-Access to your APIs is denied by default. What this means is that you’ll need to add the `@functions.public()` annotation to the top of the file for APIs to be publicly accessible.
+Access to your functions is denied by default. What this means is that you’ll need to add the `@functions.public()` annotation to the top of the file for functions to be publicly accessible.
 :::
 
 ```dart
-// Enables public access to the API.
+// Enables public access to the function.
 @functions.public()
 library;
 
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      // Call your cloud function like a normal Dart function!
+      // Call your function like a normal Dart function!
       future: celest.functions.greeting.sayHello('Celest'),
       builder: (_, snapshot) => switch (snapshot) {
         AsyncSnapshot(:final data?) => Text(data),

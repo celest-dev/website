@@ -6,7 +6,7 @@ sidebar_position: 5
 
 Celest enables you to use logging to capture important information as your functions execute. Within your function code, you can use `print()` statements or a custom logger which prints to the terminal. These logs will appear in the same terminal where the `celest start` command is running and be accessible when running remotely post-deploy.
 
-Here is an example of using print statements in your cloud function definition.
+Here is an example of using print statements in your function definition.
 
 ```dart
 import 'package:celest/celest.dart';
@@ -28,7 +28,7 @@ Future<String> sayGoodbye(
 }
 ```
 
-When you call the cloud function, these logs will be streamed locally.
+When you call the function, these logs will be streamed locally.
 
 ```shell
 $ celest start

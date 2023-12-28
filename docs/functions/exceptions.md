@@ -42,7 +42,7 @@ import 'celest/client.dart' as celest;
 
 Future<String> getGreeting(String name) async {
   try {
-    return await celest.apis.greeting.sayHello(name);
+    return await celest.functions.greeting.sayHello(name);
   // Catch the exception type defined in your backend
   } on MyException catch (e) {
     print('Uh oh! Could not greet $name: $e');
