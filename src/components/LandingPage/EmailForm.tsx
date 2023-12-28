@@ -1,4 +1,4 @@
-import { recordEvent } from "@site/src/common/analytics";
+import { identifyUser, recordEvent } from "@site/src/common/analytics";
 import { useState } from "react";
 
 const INIT = "INIT";
@@ -98,6 +98,7 @@ export default function SignUpFormReact() {
         if (ok) {
           resetForm();
           setFormState(SUCCESS);
+          identifyUser(email);
           recordEvent("click", {
             category: "Submit waitlist form",
             success: true,
