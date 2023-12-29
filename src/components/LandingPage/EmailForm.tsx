@@ -54,7 +54,7 @@ export default function SignUpFormReact() {
     ) {
       setFormState(ERROR);
       setErrorMessage("Too many signups, please try again in a little while");
-      recordEvent("waitlist - Too many sign ups", {
+      recordEvent("waitlist.error", {
         category: "Submit waitlist form",
         success: false,
         errorMessage: "Too many signups, please try again in a little while",
@@ -75,7 +75,7 @@ export default function SignUpFormReact() {
     if (!isValidEmail(email)) {
       setFormState(ERROR);
       setErrorMessage("Please enter a valid email");
-      recordEvent("waitlist - Email format incorrect", {
+      recordEvent("waitlist.error", {
         category: "Submit waitlist form",
         success: false,
         errorMessage: "Please enter a valid email",
@@ -104,7 +104,7 @@ export default function SignUpFormReact() {
           resetForm();
           setFormState(SUCCESS);
           identifyUser(email);
-          recordEvent("waitlist - success", {
+          recordEvent("waitlist.success", {
             category: "Submit waitlist form",
             success: true,
           });
@@ -123,14 +123,14 @@ export default function SignUpFormReact() {
           setErrorMessage(
             "An error occured, please try again later"
           );
-          recordEvent("Waitlist - Cloudflare error", {
+          recordEvent("Waitlist.error", {
             category: "Submit waitlist form",
             success: false,
             errorMessage: "Failed to fetch - cloudflare error",
           });
         } else if (error.message) {
           setErrorMessage(error.message);
-          recordEvent("waitlist - Error, check error message", {
+          recordEvent("waitlist.error", {
             category: "Submit waitlist form",
             success: false,
             errorMessage: error.message,
