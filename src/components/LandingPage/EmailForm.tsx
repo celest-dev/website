@@ -123,7 +123,7 @@ export default function SignUpFormReact() {
           setErrorMessage(
             "An error occured, please try again later"
           );
-          recordEvent("Waitlist.error", {
+          recordEvent("waitlist.error", {
             category: "Submit waitlist form",
             success: false,
             errorMessage: "Failed to fetch - cloudflare error",
