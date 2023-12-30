@@ -14,6 +14,15 @@ import EmailForm from "./EmailForm";
 import Link from "@docusaurus/Link";
 
 const LandingPage = () => {
+  useEffect(() => {
+    const setDownloadLink = () => {
+      let userAgent = navigator.userAgent;
+      console.log(userAgent);
+    };
+
+    setDownloadLink();
+  }, []);
+
   return (
     <div className="landing-page">
       <header className="header">
@@ -30,6 +39,20 @@ const LandingPage = () => {
                 your IDE.
               </p>
               <div className="hero-cta">
+                
+
+                <div className="download-button-container">
+                  <p className="download-text">
+                    Install and try Celest today.
+                  </p>
+                  <a
+                    href="https://download-link.com"
+                    target="_blank"
+                    className="download-button"
+                  >
+                    <IoMdDownload className="download-icon" /> Download Celest
+                  </a>
+                </div>
                 <a
                   href="https://www.ycombinator.com/companies/celest"
                   target="_blank"
@@ -76,7 +99,7 @@ Future<void> introduceMyself() async {
         </section>
         <section className="hero-get-started">
           <div>
-            <h2 className="get-started-header">Want To Stay Updated?</h2>
+            <h2 className="get-started-header">Want early access?</h2>
             <EmailForm />
           </div>
         </section>
