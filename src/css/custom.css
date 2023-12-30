@@ -379,6 +379,47 @@ pre code {
   border-top: 1px dotted lightgrey;
 }
 
+.download-text {
+  color: white;
+  margin-bottom: 0;
+  /* add underline for text */
+  text-decoration: underline;
+}
+
+.download-button-container {
+  text-align: center;
+  padding: 0 7rem 3rem 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-button {
+  display: inline-block;
+  background-color: #ff7f50; /* Coral orange, adjust as needed */
+  color: white;
+  padding: 10px 15px;
+  margin-top: 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* max-width: fit-content; */
+}
+
+.download-button:hover {
+  background-color: #ff6347; /* Darker shade of orange (Tomato) for hover effect */
+}
+
+.download-icon {
+  margin-right: 8px; /* Space between icon and text */
+  font-size: 1.2rem; /* Adjust icon size as needed */
+}
+
 /* Media query for medium screens */
 @media (max-width: 1000px) {
   .submit-form {

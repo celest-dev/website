@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   CloudIcon,
   ForwardIcon,
@@ -7,12 +7,22 @@ import {
 import { AiFillApi } from "react-icons/ai";
 import { FaLock, FaDatabase, FaImages, FaServer } from "react-icons/fa";
 import { FiCloudLightning } from "react-icons/fi";
-import { MdPolicy,  MdOutlineComputer} from "react-icons/md";
+import { IoMdDownload } from "react-icons/io";
+import { MdPolicy, MdOutlineComputer } from "react-icons/md";
 import CodeBlock from "@theme/CodeBlock";
 
 import EmailForm from "./EmailForm";
 
 const LandingPage = () => {
+  useEffect(() => {
+    const setDownloadLink = () => {
+      let userAgent = navigator.userAgent;
+      console.log(userAgent);
+    };
+
+    setDownloadLink();
+  }, []);
+
   return (
     <div className="landing-page">
       <header className="header">
@@ -25,10 +35,24 @@ const LandingPage = () => {
               </h1>
               <p className="header-subtitle">
                 From your Flutter app to your backend in the cloud, Celest helps
-                you build every piece of your application in Dart, all without leaving
-                your IDE.
+                you build every piece of your application in Dart, all without
+                leaving your IDE.
               </p>
               <div className="hero-cta">
+                
+
+                <div className="download-button-container">
+                  <p className="download-text">
+                    Install and try Celest today.
+                  </p>
+                  <a
+                    href="https://download-link.com"
+                    target="_blank"
+                    className="download-button"
+                  >
+                    <IoMdDownload className="download-icon" /> Download Celest
+                  </a>
+                </div>
                 <a
                   href="https://www.ycombinator.com/companies/celest"
                   target="_blank"
@@ -75,7 +99,7 @@ Future<void> introduceMyself() async {
         </section>
         <section className="hero-get-started">
           <div>
-            <h2 className="get-started-header">Interested in Early Access?</h2>
+            <h2 className="get-started-header">Want To Stay Updated?</h2>
             <EmailForm />
           </div>
         </section>
@@ -131,7 +155,8 @@ Future<void> introduceMyself() async {
             <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
             <h3 className="category-title">Auth</h3>
             <p className="category-description">
-              Authenticate your users with social sign-in, passwordless and WebAuthn.
+              Authenticate your users with social sign-in, passwordless and
+              WebAuthn.
             </p>
           </div>
           <div className="category-card">
@@ -169,8 +194,8 @@ Future<void> introduceMyself() async {
             <FiCloudLightning className="category-icon-client" />
             <h3 className="category-title">Dart Client</h3>
             <p className="category-description">
-              Connect to your Celest project effortlessly using a code-generated Dart
-              client.
+              Connect to your Celest project effortlessly using a code-generated
+              Dart client.
             </p>
           </div>
           <div className="category-card">
