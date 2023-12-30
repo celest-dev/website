@@ -14,56 +14,6 @@ import EmailForm from "./EmailForm";
 import Link from "@docusaurus/Link";
 
 const LandingPage = () => {
-  const [operatingSystem, setOperatingSystem] = useState({
-    name: "Other",
-    downloadLink: "",
-  });
-
-  useEffect(() => {
-    const setDownloadLink = () => {
-      let userAgent: String = navigator.userAgent;
-
-      console.log(userAgent);
-      if (userAgent.includes("Macintosh")) {
-        setOperatingSystem({
-          name: "MacOS",
-          downloadLink: "https://download-link.com",
-        });
-      }
-
-      if (userAgent.includes("Windows")) {
-        setOperatingSystem({
-          name: "Windows",
-          downloadLink: "https://download-link.com",
-        });
-      }
-
-      if (userAgent.includes("Linux")) {
-        setOperatingSystem({
-          name: "Linux",
-          downloadLink: "https://download-link.com",
-        });
-      }
-
-      if (userAgent.includes("iPhone")) {
-        setOperatingSystem({
-          name: "Other",
-          downloadLink: "https://download-link.com",
-        });
-      }
-
-      if (userAgent.includes("Android")) {
-        setOperatingSystem({
-          name: "Other",
-          downloadLink: "https://download-link.com",
-        });
-      }
-      console.log(operatingSystem);
-    };
-
-    setDownloadLink();
-  }, []);
-
   return (
     <div className="landing-page">
       <header className="header">
@@ -80,17 +30,7 @@ const LandingPage = () => {
                 your IDE.
               </p>
               <div className="hero-cta">
-                <div className="download-button-container">
-                  {/* <p className="download-text">Install and try Celest today.</p> */}
-                  <a
-                    href= {operatingSystem.downloadLink}
-                    target="_blank"
-                    className="download-button"
-                  >
-                    <IoMdDownload className="download-icon" /> Install Celest
-                  </a>
-                </div>
-                {/* <a
+                <a
                   href="https://www.ycombinator.com/companies/celest"
                   target="_blank"
                 >
@@ -193,6 +133,8 @@ Future<void> introduceMyself() async {
             <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
             <h3 className="category-title">Auth</h3>
             <p className="category-description">
+              Authenticate your users with social sign-in, passwordless and
+              WebAuthn.
               Authenticate your users with social sign-in, passwordless and
               WebAuthn.
               Authenticate your users with social sign-in, passwordless and
