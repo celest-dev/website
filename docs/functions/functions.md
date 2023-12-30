@@ -17,6 +17,8 @@ To get started with building your first function, navigate to the `<flutter_app>
 
 :::tip
 Access to your functions is denied by default. What this means is that you’ll need to add the `@functions.public()` annotation to the top of the file for functions to be publicly accessible.
+
+This can be defined for all functions in a file or on a per-function basis. (Same syntax as [middleware](/docs/functions/middleware#applying-middleware-to-single-function))
 :::
 
 ```dart
