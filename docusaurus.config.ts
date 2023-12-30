@@ -189,7 +189,7 @@ const config: Config = {
           ? false
           : { to: "/blog", label: "Blog", position: "left" },
         {
-          docId: "about-us",
+          docid: "about-us",
           to: "/about-us",
           position: "left",
           label: "About Us",

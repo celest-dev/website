@@ -8,6 +8,7 @@ import { AiFillApi } from "react-icons/ai";
 import { FaLock, FaDatabase, FaImages, FaServer } from "react-icons/fa";
 import { FiCloudLightning } from "react-icons/fi";
 import { IoMdDownload } from "react-icons/io";
+import { IoMdDownload } from "react-icons/io";
 import { MdPolicy, MdOutlineComputer } from "react-icons/md";
 import CodeBlock from "@theme/CodeBlock";
 
@@ -15,6 +16,15 @@ import EmailForm from "./EmailForm";
 import Link from "@docusaurus/Link";
 
 const LandingPage = () => {
+  useEffect(() => {
+    const setDownloadLink = () => {
+      let userAgent = navigator.userAgent;
+      console.log(userAgent);
+    };
+
+    setDownloadLink();
+  }, []);
+
   return (
     <div className="landing-page">
       <header className="header">
@@ -33,6 +43,20 @@ const LandingPage = () => {
                 leaving your IDE.
               </p>
               <div className="hero-cta">
+                
+
+                <div className="download-button-container">
+                  <p className="download-text">
+                    Install and try Celest today.
+                  </p>
+                  <a
+                    href="https://download-link.com"
+                    target="_blank"
+                    className="download-button"
+                  >
+                    <IoMdDownload className="download-icon" /> Download Celest
+                  </a>
+                </div>
                 <a
                   href="https://www.ycombinator.com/companies/celest"
                   target="_blank"
@@ -79,7 +103,7 @@ Future<void> introduceMyself() async {
         </section>
         <section className="hero-get-started">
           <div>
-            <h2 className="get-started-header">Interested in Early Access?</h2>
+            <h2 className="get-started-header">Want To Stay Updated?</h2>
             <EmailForm />
           </div>
         </section>
@@ -136,6 +160,8 @@ Future<void> introduceMyself() async {
             <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
             <h3 className="category-title">Auth</h3>
             <p className="category-description">
+              Authenticate your users with social sign-in, passwordless and
+              WebAuthn.
               Authenticate your users with social sign-in, passwordless and
               WebAuthn.
               Authenticate your users with social sign-in, passwordless and
