@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CloudIcon,
   ForwardIcon,
@@ -14,10 +14,37 @@ import CodeBlock from "@theme/CodeBlock";
 import EmailForm from "./EmailForm";
 
 const LandingPage = () => {
+
+  const [operatingSystem, setOperatingSystem] = useState({
+    name: "Other",
+    downloadLink: ""
+  });
+
   useEffect(() => {
     const setDownloadLink = () => {
-      let userAgent = navigator.userAgent;
+      let userAgent: String = navigator.userAgent;
+
       console.log(userAgent);
+      if (userAgent.includes("Macintosh")) {
+        setOperatingSystem({name: "MacOS", downloadLink: "https://download-link.com"}); 
+      }
+
+      if (userAgent.includes("Windows")) {
+        setOperatingSystem({name: "Windows", downloadLink: "https://download-link.com"}); 
+      }
+
+      if (userAgent.includes("Linux")) {
+        setOperatingSystem({name: "Linux", downloadLink: "https://download-link.com"}); 
+      }
+
+      if (userAgent.includes("iPhone")) {
+        setOperatingSystem({name: "Other", downloadLink: "https://download-link.com"}); 
+      }
+
+      if (userAgent.includes("Android")) {
+        setOperatingSystem({name: "Other", downloadLink: "https://download-link.com"}); 
+      }
+      console.log(operatingSystem);
     };
 
     setDownloadLink();
@@ -39,21 +66,17 @@ const LandingPage = () => {
                 leaving your IDE.
               </p>
               <div className="hero-cta">
-                
-
                 <div className="download-button-container">
-                  <p className="download-text">
-                    Install and try Celest today.
-                  </p>
+                  {/* <p className="download-text">Install and try Celest today.</p> */}
                   <a
-                    href="https://download-link.com"
+                    href= {operatingSystem.downloadLink}
                     target="_blank"
                     className="download-button"
                   >
-                    <IoMdDownload className="download-icon" /> Download Celest
+                    <IoMdDownload className="download-icon" /> Install Celest
                   </a>
                 </div>
-                <a
+                {/* <a
                   href="https://www.ycombinator.com/companies/celest"
                   target="_blank"
                 >
@@ -62,7 +85,7 @@ const LandingPage = () => {
                     alt="YC Logo"
                     className="yc-image"
                   />
-                </a>
+                </a> */}
               </div>
             </div>
             <div className="hero-media">

@@ -379,12 +379,11 @@ pre code {
   border-top: 1px dotted lightgrey;
 }
 
-.download-text {
+/* .download-text {
   color: white;
   margin-bottom: 0;
-  /* add underline for text */
   text-decoration: underline;
-}
+} */
 
 .download-button-container {
   text-align: center;
@@ -397,13 +396,12 @@ pre code {
 
 .download-button {
   display: inline-block;
-  background-color: #ff7f50; /* Coral orange, adjust as needed */
-  color: white;
+  background-color: white;  
+  color: black;
   padding: 10px 15px;
   margin-top: 1rem;
   border-radius: 5px;
   text-decoration: none;
-  font-weight: bold;
   transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
@@ -412,7 +410,8 @@ pre code {
 }
 
 .download-button:hover {
-  background-color: #ff6347; /* Darker shade of orange (Tomato) for hover effect */
+  background-color: #f2f2f2;
+  text-decoration: none;
 }
 
 .download-icon {
