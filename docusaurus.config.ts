@@ -166,8 +166,9 @@ const config: Config = {
           docId: "intro",
           label: "Docs",
         },
+        {to: '/blog', label: 'Blog', position: 'left'},
         {
-          docid: "about-us",
+          docId: "about-us",
           to: "/about-us",
           position: "left",
           label: "About Us",
