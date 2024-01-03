@@ -1,8 +1,8 @@
 ---
-slug: welcome
+slug: first-release
 title: Welcome
 authors: [ abdallah ,dillon]
-tags: [facebook, hello, docusaurus]
+tags: [cli, cloud functions]
 ---
 
 [Docusaurus blogging features](https://docusaurus.io/docs/blog) are powered by the [blog plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog).
