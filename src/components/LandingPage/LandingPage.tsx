@@ -66,17 +66,7 @@ const LandingPage = () => {
                 leaving your IDE.
               </p>
               <div className="hero-cta">
-                <div className="download-button-container">
-                  {/* <p className="download-text">Install and try Celest today.</p> */}
-                  <a
-                    href= {operatingSystem.downloadLink}
-                    target="_blank"
-                    className="download-button"
-                  >
-                    <IoMdDownload className="download-icon" /> Install Celest
-                  </a>
-                </div>
-                {/* <a
+                <a
                   href="https://www.ycombinator.com/companies/celest"
                   target="_blank"
                 >
@@ -85,7 +75,7 @@ const LandingPage = () => {
                     alt="YC Logo"
                     className="yc-image"
                   />
-                </a> */}
+                </a>
               </div>
             </div>
             <div className="hero-media">
