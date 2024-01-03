@@ -186,6 +186,12 @@ const config: Config = {
           className: "custom-navbar-img",
         },
         {
+          to: "https://discord.gg/vgWwpsXH",
+          html: '<img src="/img/discord.png" class="navbar-custom-image" alt="Discord Server" />',
+          position: "right",
+          className: "custom-navbar-img",
+        },
+        {
           to: "https://www.youtube.com/@celest-dev",
           html: '<img src="/img/youtube.svg" class="navbar-custom-image" alt="Youtube Channel" />',
           position: "right",
