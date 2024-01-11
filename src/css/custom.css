@@ -379,6 +379,58 @@ pre code {
   border-top: 1px dotted lightgrey;
 }
 
+.download-page {
+  margin: 2rem 10rem;
+}
+
+.download-page-title {
+  font-size: 2rem;
+  font-weight: 600;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.operating-system-download-image {
+  width: 50px; /* Reduce width as needed */
+  height: auto; /* This will maintain the aspect ratio of the icon */
+  margin: 0 auto; /* This centers the icon in its container */
+  padding-bottom: 1rem;
+}
+
+.operating-system-download-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 0 1rem 0;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 2rem;
+  max-width: 1100px;
+  gap: 2rem;
+}
+
+.operating-system-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.operating-system-card {
+  flex-basis: calc(33.333% - 4rem);
+  min-width: 250px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.download-page-subtitle{
+  font-size: 1.2rem;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
 /* Media query for medium screens */
 @media (max-width: 1000px) {
   .submit-form {
