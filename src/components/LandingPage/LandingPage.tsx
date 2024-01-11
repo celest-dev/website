@@ -16,10 +16,9 @@ import EmailForm from "./EmailForm";
 import Link from "@docusaurus/Link";
 
 const LandingPage = () => {
-
   const [operatingSystem, setOperatingSystem] = useState({
     name: "Other",
-    downloadLink: ""
+    downloadLink: "",
   });
 
   useEffect(() => {
@@ -28,23 +27,38 @@ const LandingPage = () => {
 
       console.log(userAgent);
       if (userAgent.includes("Macintosh")) {
-        setOperatingSystem({name: "MacOS", downloadLink: "https://download-link.com"}); 
+        setOperatingSystem({
+          name: "MacOS",
+          downloadLink: "https://download-link.com",
+        });
       }
 
       if (userAgent.includes("Windows")) {
-        setOperatingSystem({name: "Windows", downloadLink: "https://download-link.com"}); 
+        setOperatingSystem({
+          name: "Windows",
+          downloadLink: "https://download-link.com",
+        });
       }
 
       if (userAgent.includes("Linux")) {
-        setOperatingSystem({name: "Linux", downloadLink: "https://download-link.com"}); 
+        setOperatingSystem({
+          name: "Linux",
+          downloadLink: "https://download-link.com",
+        });
       }
 
       if (userAgent.includes("iPhone")) {
-        setOperatingSystem({name: "Other", downloadLink: "https://download-link.com"}); 
+        setOperatingSystem({
+          name: "Other",
+          downloadLink: "https://download-link.com",
+        });
       }
 
       if (userAgent.includes("Android")) {
-        setOperatingSystem({name: "Other", downloadLink: "https://download-link.com"}); 
+        setOperatingSystem({
+          name: "Other",
+          downloadLink: "https://download-link.com",
+        });
       }
       console.log(operatingSystem);
     };
