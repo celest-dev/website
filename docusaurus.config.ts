@@ -100,7 +100,8 @@ const config: Config = {
           process.env.NODE_ENV === "production"
             ? false
             : {
-              showReadingTime: true,
+              showReadingTime: false,
+              blogTitle: "Celest Blog",   
               // Please change this to your repo.
               // Remove this to remove the "edit this page" links.
               editUrl:

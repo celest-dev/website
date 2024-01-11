@@ -3,7 +3,13 @@ slug: first-release
 title: Welcome
 authors: [ abdallah ,dillon]
 tags: [cli, cloud functions]
+date: on & 2023-10-10
+keywords: [cloud functions, flutter backend]
 ---
+
+This is an amazing blog post that talks about various interesting topics.
+
+<!--truncate-->
 
 ## test something
 
