@@ -8,7 +8,7 @@ const DownloadPage = () => {
       <div className="download-page">
         <h2 className="download-page-title">Download Celest CLI</h2>
         <p className="download-page-subtitle">
-          Start building your backend with the Celest CLI. Use the Celest CLI to create, build, and deploy your backend in Dart.
+          Use the Celest CLI to create, build, and deploy your backend in Dart.
         </p>
         <section className="operating-system-download-section">
           <div className="operating-system-card">
@@ -26,6 +26,7 @@ const DownloadPage = () => {
             <h3 className="operating-system-card-title">Linux</h3>
             <p><a>ARM</a> / <a>Intel (x64)</a></p>
           </div>
+          <p>After installing the Celest CLI, visit our <a href="/docs">documentation</a> to start building your backend with Celest</p>
         </section>
       </div>
     </Layout>
