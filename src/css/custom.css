@@ -273,6 +273,13 @@ pre code {
   min-width: 80px;
 }
 
+/* adjusts the color of comments in code snippets to make it more accessible */
+span.token.comment {
+  /* CSS properties */
+  color: rgb(113, 111, 111) !important;  /* Override color */
+  /* Add more properties as needed */
+}
+
 /* Removing margin from the bottom of the first paragraph of a list item in the about us page */
 .about-us li > p:first-of-type {
   margin: 0.2rem; /* Adjust the value as needed */

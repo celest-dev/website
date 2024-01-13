@@ -4,7 +4,7 @@ title: Setting Up Celest
 description: Learn how to set up and use Celest in your Flutter project.
 ---
 
-# Setting Up Celest
+# Setting up Celest
 
 This guide will walk you through how to download and install the Celest CLI on your machine. The Celest CLI is what you will interact with the most when building and deploying your backend.
 
@@ -17,7 +17,7 @@ To use Celest in your Flutter app, you need the following prerequisites:
 
 That’s it! You are now ready to start building your backend - all in Dart!
 
-## Starting a New Celest Project
+## Starting a new Celest project
 After installing the Celest CLI, navigate to the root of your Flutter project and run the following command.
 
 ```shell    
