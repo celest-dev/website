@@ -95,6 +95,8 @@ const config: Config = {
               // Remove this to remove the "edit this page" links.
               editUrl:
                 "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+              sidebarCollapsed: false,
+              // sidebarCollapsible: false
             },
         blog:
           process.env.NODE_ENV === "production"
@@ -163,8 +165,8 @@ const config: Config = {
         process.env.NODE_ENV === "development" && {
           position: "left",
           type: "doc",
-          to: "docs/intro.md",
-          docId: "intro",
+          to: "docs/overview.md",
+          docId: "overview",
           label: "Docs",
         },
         {to: '/download', label: 'Download', position: 'left'},
