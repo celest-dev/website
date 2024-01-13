@@ -4,7 +4,7 @@ sidebar_position: 9
 
 # Testing your functions
 
-The functions you define are Dart functions and can be tested like any other. 
+Celest Functions you define are Dart functions and can be tested using any of the available Dart testing packages or frameworks.
 
 ## Writing your tests
 
@@ -27,3 +27,14 @@ void main() {
   });
 }
 ```
+
+You can then run your tests by navigating to your `celest/test` folder in your terminal, and then running the following command:
+
+```shell
+dart test
+```
+
+Your terminal would then let you know if all your tests pass, or if there are any failed tests that you need to review.
+
+## Next steps
+You have now learned how to write tests for your Celest Functions.

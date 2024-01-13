@@ -106,6 +106,12 @@ html {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+
+/* Prevents the first column in a table from wrapping inside the docs site */
+.markdown table td:first-child, .markdown table th:first-child {
+  white-space: nowrap;
+}
+
 @media (max-width: 520px) {
   :root {
     --ifm-code-font-size: 0.62rem;
