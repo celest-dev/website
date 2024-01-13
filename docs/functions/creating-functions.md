@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Creating a Function
+# Creating a function
 
 :::info
 Ensure you have completed [Setting up Celest](/docs/get-started.md) prior to reading this section.

@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# Use Custom Data Types
+# Using custom data types
 
 With Celest Functions, serialization is handled out-of-the-box in most cases. In situations requiring custom serialization, we support any custom classes that you’re already using without any extra setup.
 
