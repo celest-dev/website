@@ -4,7 +4,10 @@ sidebar_position: 6
 
 # Using custom data types
 
-With Celest Functions, serialization is handled out-of-the-box in most cases. In situations requiring custom serialization, we support any custom classes that you’re already using without any extra setup.
+With Celest Functions, you can use any of the standard Dart types available such as `int` or `string`, and you can also use your own custom datatypes that you have created. Handling the transfer and formatting of data from your Flutter app to your backend, which is called serialization, is handled out-of-the-box in most cases. In situations requiring custom serialization, you can write custom logic for serializing the request/responses which we can use instead for your Celest Functions.
+
+
+# Writing an example of using
 
 Imagine you're working on an e-commerce application with an `Order` class defined in your codebase.
 
@@ -45,13 +48,14 @@ import 'types/order.dart';
 
 Future<String> createOrder(
   FunctionContext context,
+  // highlight-next-line
   Order customerOrder,
 ) async {
 	// ...
 }
 ```
 
-When communicating with your backend, Celest will serialize the `Order` class as a JSON map with the field names as keys.
+When communicating with your backend, Celest will serialize the `Order` class as a JSON map with the field names as keys. The resulting information transferred over to your backend will have the following shape.
 
 ```json
 {
@@ -66,7 +70,8 @@ When communicating with your backend, Celest will serialize the `Order` class as
 ```
 
 
-## Custom Serialization Logic
+## Writing custom serialization logic
+
 If you need custom handling over serialization logic, add a `fromJson` constructor and `toJson` method to your datatype. Celest will use your custom `fromJson`/`toJson` implementations instead when transmitting the type to and from your backend.
 
 Here, the `Price.toJson` method is used to upper-case the `currency` value.
