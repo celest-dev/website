@@ -2,6 +2,8 @@
 sidebar_position: 11
 ---
 
+# Using HTTP calls
+
 ### Calling Celest Functions with HTTP requests
 If you'd like to use your Celest Functions outside of your Flutter/Dart app, you still can! Celest functions are exposed as HTTP endpoints which can be called via any HTTP client from any programming language or toolchain.
 

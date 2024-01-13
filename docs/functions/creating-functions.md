@@ -82,4 +82,4 @@ class MyApp extends StatelessWidget {
 
 ## Next steps
 
-You now know how to create Celest Functions and connect to them from your Flutter app. We have other guides to help explain how to use features such as Middleware, using custom data types, and managing environment variables. 
+You now know how to create Celest Functions and connect to them from your Flutter app. We have other guides to help explain how to use features such as [attaching middleware](/docs/functions/middleware.md), using [custom data types](/docs/functions/data-types.md), and [managing environment variables](/docs/functions/env-variables.md). 

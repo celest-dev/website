@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# Creating custom exceptions
+# Defining custom exceptions
 
 You can create custom exception types in your backend to control how functions behave when there are errors. This enables you to have clear exceptions thrown in your Flutter app that you can react to.
 

@@ -34,8 +34,10 @@ flutter_app/
     ├── functions/
     │   ├── greeting.dart # a function definition
     │   └── middleware.dart # middleware definitions
+    ├── test/ # a folder for adding tests to your backend
     └── config/
         └── env.dart # environment variables
+    
 ```
 
 ## Deploying your backend resources
