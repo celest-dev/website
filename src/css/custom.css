@@ -85,7 +85,12 @@ html {
 .navbar-custom-image {
   padding-top: 0.5rem;
   height: 35px;
+  width: auto;
+}
+
+.discord-navbar-image {
   width: 35px;
+  height: auto;
 }
 
 .navbar__toggle {
@@ -239,6 +244,8 @@ pre code {
 .email-input:focus {
   outline: none;
 }
+
+
 
 .submit-button {
   cursor: pointer;

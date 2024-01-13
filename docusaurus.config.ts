@@ -191,7 +191,7 @@ const config: Config = {
         },
         {
           to: "https://discord.gg/vgWwpsXH",
-          html: '<img src="/img/discord.png" class="navbar-custom-image" alt="Discord Server" />',
+          html: '<img src="/img/discord.png" class="navbar-custom-image discord-navbar-image" alt="Discord Server" />',
           position: "right",
           className: "custom-navbar-img",
         },
