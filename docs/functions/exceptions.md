@@ -55,3 +55,7 @@ Future<String> getGreeting(String name) async {
   // highlight-end
 }
 ```
+
+## Next steps
+
+You have now learned how to create and throw custom exceptions in your Celest Functions. We have additional guides to teach you about [managing environment variables](/docs/functions/env-variables.md) and [creating tests for your functions](/docs/functions/testing.md).

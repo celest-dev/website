@@ -37,4 +37,4 @@ dart test
 Your terminal would then let you know if all your tests pass, or if there are any failed tests that you need to review.
 
 ## Next steps
-You have now learned how to write tests for your Celest Functions.
+You have now learned how to write tests for your Celest Functions. We have additional guides to help you with learning about [installing 3rd party Dart packages](/docs/functions/packages.md) in your Celest backend, and how to interact with your Celest Functions [using HTTP calls](/docs/functions/http-requests.md).
