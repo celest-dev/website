@@ -451,6 +451,11 @@ span.token.comment {
   text-align: center;
 }
 
+/* increase size of code words/blocks in headers for docs */
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+  font-size: 1.2rem;
+}
+
 /* Media query for medium screens */
 @media (max-width: 1000px) {
   .submit-form {
