@@ -4,7 +4,9 @@ sidebar_position: 8
 
 # Managing environment variables
 
-Environment variables can be used to provide environment-specific configuration to your backend. They allow you to keep their values separate from your codebase, improving flexibility when running in different environments.
+Environment variables can be used to provide environment-specific configuration to your backend. They allow you to keep their values separate from your codebase by removing sensitive configuration information, improving the security flexibility when running in different environments.
+
+# Setting up environment variables
 
 To set up environment variables in your backend, navigate to the `<flutter_app>/celest/config/env.dart` file and list all the variables you’ll need throughout your backend.
 
