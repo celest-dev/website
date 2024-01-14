@@ -143,4 +143,4 @@ Since middleware can apply logic before and after a function runs, the compositi
 
 ## Next steps
 
-You now know how to attach and stack middleware to a single or group of functions.
+You now know how to attach and stack middleware to a single or group of functions. You can follow our more of our guides to learn more about [using logging](/docs/functions/logging.md) or [defining custom exceptions](/docs/functions/exceptions.md) for your Celest Functions. 

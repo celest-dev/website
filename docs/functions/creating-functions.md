@@ -5,7 +5,7 @@ sidebar_position: 3
 # Creating a function
 
 :::info
-Ensure you have completed [Setting up Celest](/docs/get-started.md) prior to reading this section.
+Please complete [setting up Celest](/docs/get-started.md) prior to reading this guide.
 :::
 
 Creating functions with Celest enables you to connect and aggregate information from different parts of your backend, and build custom business logic that runs completely in the cloud. You define your functions as regular Dart functions, and Celest takes care of setting up and managing the backend for you.
@@ -45,7 +45,13 @@ Future<String> sayGoodbye(
 }
 ```
 
-The above code snippet is all you need to define your functions! You can now go to your terminal to run the `celest start` command. This command will spin up a local environment for you to test your changes, and it will also code-generate a Celest client for your frontend Flutter app to make it easier to connect to your Celest Functions.
+The above code snippet is all you need to define your functions! You can now go to your terminal and run the following command.
+
+```shell
+celest start
+```
+
+This command will spin up a local environment for you and watch for changes to your Celest Functions to test your changes, and it will also code-generate a Celest client for your frontend Flutter app to make it easier to connect to your Celest Functions.
 
 ## Connecting to your Celest Functions
 
@@ -53,10 +59,12 @@ The following code snippet is an example of how you would use the generated clie
 
 ```dart
 import 'package:flutter/material.dart';
+// imports the Celest code-generated client
 // highlight-next-line
 import 'package:flutter_app/celest/client.dart' as celest;
 
 void main() {
+  // initializes Celest in your Flutter app
   // highlight-next-line
   celest.init();
   runApp(const MyApp());
@@ -68,7 +76,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      // Call your function like a normal Dart function!
+      // Call your Celest Function using the code-generated client
       // highlight-next-line
       future: celest.functions.greeting.sayHello('Celest'),
       builder: (_, snapshot) => switch (snapshot) {

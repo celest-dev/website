@@ -14,4 +14,4 @@ Running functions in the cloud provides you with a separation layer between your
 
 ## Next steps
 
-You now have an understanding of the use cases that Celest Functions enable! You can follow our next guide to start building your first Celest Function.
+You now have an understanding of the use cases that Celest Functions enable! You can follow our next guide to start [building your first Celest Function](/docs/functions/creating-functions.md).

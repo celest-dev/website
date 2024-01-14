@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Using Logging
+# Using logging
 
 Celest enables you to use logging to capture important information as your functions execute. Within your function code, you can use `print()` statements or a custom logger which prints to the terminal. These logs will appear in the same terminal where the `celest start` command is running.
 
@@ -41,3 +41,7 @@ Celest is running on http://localhost:7777…
 Hello, Celest
 Goodbye, Celest
 ```
+
+## Next steps
+
+You have now learned how to use Logging to help you understand how your Celest Functions are behaving, or debug specific scenarios or flows. You follow more of our guides to learn about [testing your functions](/docs/functions/testing.md) and [installing 3rd party Dart packages](/docs/functions/packages.md) that might be helpful for your use cases.
