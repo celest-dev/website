@@ -4,10 +4,10 @@ sidebar_position: 6
 
 # Using custom data types
 
-With Celest Functions, you can use any of the standard Dart types available such as `int` or `string`, and you can also use your own custom datatypes that you have created. Handling the transfer and formatting of data from your Flutter app to your backend, which is called serialization, is handled out-of-the-box in most cases. In situations requiring custom serialization, you can write custom logic for serializing the request/responses which we can use instead for your Celest Functions.
+With Celest Functions, you can use any of the standard Dart types available such as `int` or `string`, and you can also use your own custom data types that you have created. Handling the transfer and formatting of data from your Flutter app to your backend, which is called serialization, is handled out-of-the-box in most cases. In situations requiring custom serialization, you can write your own logic which we can use instead for serializing the request/responses of your Celest Functions.
 
 
-# Writing an example of using
+# Custom data type example
 
 Imagine you're working on an e-commerce application with an `Order` class defined in your codebase.
 
@@ -44,6 +44,7 @@ You can use this `Order` type in any Celest Function as both a parameter or retu
 ```dart
 import 'package:celest/celest.dart';
 
+// highlight-next-line
 import 'types/order.dart';
 
 Future<String> createOrder(
@@ -72,7 +73,7 @@ When communicating with your backend, Celest will serialize the `Order` class as
 
 ## Writing custom serialization logic
 
-If you need custom handling over serialization logic, add a `fromJson` constructor and `toJson` method to your datatype. Celest will use your custom `fromJson`/`toJson` implementations instead when transmitting the type to and from your backend.
+If you need custom handling for you serialization logic, simplify add a `fromJson` and `toJson` methods to your data type. Celest will use your custom `fromJson`/`toJson` implementations instead when transmitting the type to and from your backend.
 
 Here, the `Price.toJson` method is used to upper-case the `currency` value.
 
@@ -84,22 +85,31 @@ class Price {
     // ...
   }
 
+  // highlight-start
   Map<String, dynamic> toJson() => {
       'currency': currency.name.toUpperCase(),
       'dollars': dollars,
       'cents': cents,
     };
+  // highlight-end
 }
 ```
+
+The resulting JSON response for the `currency` will now be returned as upper case.
 
  ```json
 {
   "id": 123,
   "customerName": "Celest",
   "price": {
+    // highlight-next-line
     "currency": "USD",
     "dollars": 100,
     "cents": 34
   }
 }
 ```
+
+## Next steps
+
+You have now learned about how Celest handles the serialization of requests/responses to your functions, and how to write your own custom serialization logic if needed. You can learn about more features of Celest functions by following our guides for [defining custom exceptions](/docs/functions/exceptions.md) and [managing environment variables](/docs/functions/env-variables.md).
