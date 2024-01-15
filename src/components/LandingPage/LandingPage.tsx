@@ -86,28 +86,28 @@ Future<void> introduceMyself() async {
           <CodeBracketIcon className="feature-icon" />
           <h3 className="feature-title">All in Dart</h3>
           <p>
-            Build your backend features all in Dart, with no additional tooling!
+            Build your backend features all in Dart, with no additional packages or tooling!
           </p>
         </div>
         <div className="feature-card">
           <ForwardIcon className="feature-icon" />
           <h3 className="feature-title">Iterate locally fast</h3>
           <p>
-            Run <code>celest start</code> to see your changes locally instantly.
+            Run <code>celest start</code> to test your changes instantly.
           </p>
         </div>
         <div className="feature-card">
           <CloudIcon className="feature-icon" />
           <h3 className="feature-title">Managed Backend</h3>
           <p>
-            Use a single command <code>celest deploy</code> to setup your
+            Use a single command <code>celest deploy</code> to update your
             backend.
           </p>
         </div>
       </section>
       <section className="celest-categories">
         <h2 className="middle-header categories-bottom-header-margin">
-          Your backend in Dart
+          Code your backend in Dart
         </h2>
         <div className="categories">
           <div className="category-card">
@@ -148,28 +148,28 @@ Future<void> introduceMyself() async {
             <FaImages className="category-icon" />
             <h3 className="category-title">Content</h3>
             <p className="category-description">
-              Serve content globally with edge caching built-in.
+              Serve content globally with edge caching built in.
             </p>
           </div>
         </div>
       </section>
       <section className="celest-categories-client">
         <h2 className="middle-header categories-bottom-header-margin">
-          Accelerate building your app
+          Accelerate development of your Flutter app
         </h2>
         <div className="categories">
           <div className="category-card">
             <MdOutlineComputer className="category-icon-client" />
             <h3 className="category-title">Hot Reload</h3>
             <p className="category-description">
-              Iterate locally fast, see your backend changes instantly.
+              Test your backend changes fast&mdash;just like Flutter!
             </p>
           </div>
           <div className="category-card">
             <FiCloudLightning className="category-icon-client" />
             <h3 className="category-title">Dart Client</h3>
             <p className="category-description">
-              Connect to your Celest project effortlessly using a code-generated Dart
+              Connect your Flutter app to your Celest project using a code-generated
               client.
             </p>
           </div>
