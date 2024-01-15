@@ -232,7 +232,7 @@ Future<void> introduceMyself() async {
             <FiCloudLightning className="category-icon-client" />
             <h3 className="category-title">Dart Client</h3>
             <p className="category-description">
-              Connect to your Celest project effortlessly using a code-generated Dart
+              Connect your Flutter app to your Celest project using a code-generated
               client.
             </p>
           </div>
