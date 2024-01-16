@@ -4,20 +4,11 @@
  * work well for content-centric websites.
  */
 
-/* Nunito for headers. */
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap");
-
-/* Nunito Sans for body. */
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400&family=Nunito:wght@400&display=swap");
-
-/* Poppins for headers. */
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300&family=Nunito:wght@300&family=Poppins:wght@300&display=swap");
-
 /* You can override the default Infima variables here. */
 :root {
   --ifm-code-font-size: 0.77rem;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --ifm-font-family-base: "Nunito sans", sans-serif;
+  --ifm-font-family-base: "Nunito Sans", sans-serif;
   --title-color: #042853;
   --gradient-blue: linear-gradient(100deg, #027dfd 26.96%, #92ebfe 109.1%);
   --ifm-hero-background-color: none;
@@ -40,9 +31,9 @@ h6 {
 }
 
 @font-face {
-  font-family: "gilroy-font";
+  font-family: Gilroy;
   src: url("/Gilroy-Bold.otf") format("opentype");
-  font-weight: normal;
+  font-weight: bold;
   font-style: normal;
 }
 
@@ -61,7 +52,8 @@ html {
 }
 
 .navbar__title {
-  font-family: "gilroy-font";
+  font-family: 'Gilroy', sans-serif;
+  font-weight: bold;
   font-size: 2rem; /* Adjust font size as needed */
   color: var(--title-color);
 }
@@ -114,8 +106,6 @@ html {
 
 .header-title {
   font-size: 3rem;
-  font-weight: 600;
-  /* set to bold */
   font-weight: bold;
   color: white;
 }
@@ -139,7 +129,7 @@ html {
 
 .feature-title {
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .features {
@@ -326,7 +316,7 @@ pre code {
 
 .category-title {
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: bold;
   padding-top: 0.7rem;
   padding-bottom: 0.6rem;
 }
@@ -419,7 +409,7 @@ pre code {
 
   .header-title {
     text-align: center;
-    font-weight: 700;
+    font-weight: bold;
   }
   .col {
     padding-left: 1rem;
