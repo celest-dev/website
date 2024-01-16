@@ -195,6 +195,8 @@ Future<void> introduceMyself() async {
             <p className="category-description">
               Authenticate your users with social sign-in, passwordless and
               WebAuthn.
+              Authenticate your users with social sign-in, passwordless and
+              WebAuthn.
             </p>
           </div>
           <div className="category-card">
@@ -232,8 +234,8 @@ Future<void> introduceMyself() async {
             <FiCloudLightning className="category-icon-client" />
             <h3 className="category-title">Dart Client</h3>
             <p className="category-description">
-              Connect your Flutter app to your Celest project using a code-generated
-              client.
+              Connect your Flutter app to your Celest project using a
+              code-generated client.
             </p>
           </div>
           <div className="category-card">
