@@ -456,6 +456,76 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
   font-size: 1.2rem;
 }
 
+/* center headers in the download page */
+.center-download-page-headers{
+  text-align: center;
+}
+
+
+/* provide styling for the detected OS installer card in the download page */
+.detected-operating-system-card{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* add spacing for the detected OS installer section in the download page */
+.detected-operating-system-section{
+  padding: 1rem 0rem 4rem;
+}
+
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.operating-system-download-image {
+  margin-right: 10px;
+}
+
+.download-button:hover {
+  background-color: #333; /* Darker on hover */
+}
+
+/* adds styling for detected image for operating system in the download page */
+.detected-system-download-image{
+  width: 70px;
+  height: auto; 
+  margin: 0 auto; /*This centers the icon in its container */
+}
+
+/* adds styling for the detected name and architecture in the download page */
+.detected-operating-system-name-top{
+  display:block;
+  color:white;
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.detected-operating-system-name-bottom{
+  display:block;
+  color:white;
+  margin-top: -0.5rem;
+  margin-bottom: 0;
+  margin-left: 0.5rem;
+  font-size: 2rem;
+  text-align: left;
+}
+
 /* Media query for medium screens */
 @media (max-width: 1000px) {
   .submit-form {
@@ -517,6 +587,12 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
 }
 
 @media (max-width: 430px) {
+
+  /* decrease margin and padding for smaller screens for the download page */
+  .download-page {
+    margin: 1rem 1rem;
+  }
+
   .hero-get-started {
     padding: 0 0 3rem 0;
   }
