@@ -28,6 +28,8 @@ const LandingPage = () => {
                 From your Flutter app to your backend in the cloud, Celest helps
                 you build every piece of your application in Dart, all without
                 leaving your IDE.
+                you build every piece of your application in Dart, all without
+                leaving your IDE.
               </p>
               <div className="hero-cta">
                 <a
@@ -87,7 +89,8 @@ Future<void> introduceMyself() async {
           <CodeBracketIcon className="feature-icon" />
           <h3 className="feature-title">All in Dart</h3>
           <p>
-            Build your backend features all in Dart, with no additional packages or tooling!
+            Build your backend features all in Dart, with no additional packages
+            or tooling!
           </p>
         </div>
         <div className="feature-card">
@@ -134,6 +137,8 @@ Future<void> introduceMyself() async {
             <p className="category-description">
               Authenticate your users with social sign-in, passwordless and
               WebAuthn.
+              Authenticate your users with social sign-in, passwordless and
+              WebAuthn.
             </p>
           </div>
           <div className="category-card">
@@ -171,8 +176,8 @@ Future<void> introduceMyself() async {
             <FiCloudLightning className="category-icon-client" />
             <h3 className="category-title">Dart Client</h3>
             <p className="category-description">
-              Connect your Flutter app to your Celest project using a code-generated
-              client.
+              Connect your Flutter app to your Celest project using a
+              code-generated client.
             </p>
           </div>
           <div className="category-card">
