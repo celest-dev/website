@@ -1,30 +1,19 @@
 import type { PostHog } from 'posthog-js';
 
-type GTagFunction = (
-  command: 'config' | 'event' | 'set', 
-  eventNameOrConfigId: string, 
-  params?: GTagEventProps | { [key: string]: any }
-) => void;
-
 // Extend the Window interface
 declare global {
   interface Window {
-    gtag: GTagFunction;
     posthog: PostHog;
   }
 }
 
-
-type GTagEventProps = {
+type EventProps = {
   category?: string;
   errorMessage?: String;
   success?: boolean;
 };
 
-export const recordEvent = (eventName: string, props?: GTagEventProps) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', eventName, props);
-  }
+export const recordEvent = (eventName: string, props?: EventProps) => {
   if (typeof window !== 'undefined' && window.posthog) {
     window.posthog.capture(eventName, props);
   }
