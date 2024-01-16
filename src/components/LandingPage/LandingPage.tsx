@@ -126,7 +126,7 @@ Future<void> introduceMyself() async {
         </section>
         <section className="hero-get-started">
           <div>
-            <h2 className="get-started-header">Want To Stay Updated?</h2>
+            <h2 className="get-started-header">Want to stay updated?</h2>
             <EmailForm />
           </div>
         </section>
