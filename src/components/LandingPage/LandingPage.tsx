@@ -7,7 +7,7 @@ import {
 import { AiFillApi } from "react-icons/ai";
 import { FaLock, FaDatabase, FaImages, FaServer } from "react-icons/fa";
 import { FiCloudLightning } from "react-icons/fi";
-import { MdPolicy,  MdOutlineComputer} from "react-icons/md";
+import { MdPolicy, MdOutlineComputer } from "react-icons/md";
 import CodeBlock from "@theme/CodeBlock";
 
 import EmailForm from "./EmailForm";
@@ -25,8 +25,8 @@ const LandingPage = () => {
               </h1>
               <p className="header-subtitle">
                 From your Flutter app to your backend in the cloud, Celest helps
-                you build every piece of your application in Dart, all without leaving
-                your IDE.
+                you build every piece of your application in Dart, all without
+                leaving your IDE.
               </p>
               <div className="hero-cta">
                 <a
@@ -86,7 +86,8 @@ Future<void> introduceMyself() async {
           <CodeBracketIcon className="feature-icon" />
           <h3 className="feature-title">All in Dart</h3>
           <p>
-            Build your backend features all in Dart, with no additional packages or tooling!
+            Build your backend features all in Dart, with no additional packages
+            or tooling!
           </p>
         </div>
         <div className="feature-card">
@@ -131,7 +132,8 @@ Future<void> introduceMyself() async {
             <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
             <h3 className="category-title">Auth</h3>
             <p className="category-description">
-              Authenticate your users with social sign-in, passwordless and WebAuthn.
+              Authenticate your users with social sign-in, passwordless and
+              WebAuthn.
             </p>
           </div>
           <div className="category-card">
@@ -169,8 +171,8 @@ Future<void> introduceMyself() async {
             <FiCloudLightning className="category-icon-client" />
             <h3 className="category-title">Dart Client</h3>
             <p className="category-description">
-              Connect your Flutter app to your Celest project using a code-generated
-              client.
+              Connect your Flutter app to your Celest project using a
+              code-generated client.
             </p>
           </div>
           <div className="category-card">
