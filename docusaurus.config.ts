@@ -164,7 +164,7 @@ const config: Config = {
           label: "Docs",
         },
         {to: '/download', label: 'Download', position: 'left'},
-        {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/blog/', label: 'Blog', position: 'left'},
         {
           docId: "about-us",
           to: "/about-us",
