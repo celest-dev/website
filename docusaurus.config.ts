@@ -31,6 +31,7 @@ const config: Config = {
   },
 
   headTags: [
+    // Sentry
     {
       tagName: "link",
       attributes: {
@@ -65,6 +66,8 @@ const config: Config = {
       });
       `,
     },
+
+    // PostHog
     {
       tagName: "link",
       attributes: {
@@ -80,6 +83,30 @@ const config: Config = {
       posthog.init('phc_IzYKGpBnjbb4GM7JsfaIzIu34EVh4PqgbZLVuihCaSm',{api_host:'https://eu.posthog.com'})
       `,
     },
+
+    // Fonts
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      }
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: 'anonymous',
+      }
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        href: 'https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400&family=Poppins:wght@300&display=swap',
+        rel: 'stylesheet',
+      }
+    }
   ],
 
   presets: [
