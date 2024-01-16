@@ -19,7 +19,6 @@ const DownloadPage = () => {
       os = "Linux";
     else os = "Unknown";
 
-
     // Detect architecture
     let architecture = "Unknown";
     if (navigator.userAgentData) {
@@ -79,12 +78,10 @@ const DownloadPage = () => {
         <a href={downloadLink} className="download-button">
           {Icon && <Icon className="detected-system-download-image" />}
           <div>
-          <p className="detected-operating-system-name-top">
-            Download for
-          </p>
-          <p className="detected-operating-system-name-bottom">
-            {osName} {architecture}
-          </p>
+            <p className="detected-operating-system-name-top">Download for</p>
+            <p className="detected-operating-system-name-bottom">
+              {osName} {architecture}
+            </p>
           </div>
         </a>
       </div>
@@ -169,8 +166,8 @@ const DownloadPage = () => {
           </div>
           <p>
             After installing the Celest CLI, visit our{" "}
-            <a href="/docs">documentation</a> to start building your backend
-            with Celest
+            <a href="/docs/get-started">documentation</a> to start building
+            your backend with Celest
           </p>
         </section>
       </div>
