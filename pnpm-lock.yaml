@@ -11,14 +11,21 @@ dependencies:
   '@docusaurus/plugin-google-gtag':
     specifier: ^3.0.1
     version: 3.1.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
+    version: 3.1.0(@docusaurus/types@3.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
+  '@docusaurus/plugin-google-gtag':
+    specifier: ^3.0.1
+    version: 3.1.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
   '@docusaurus/preset-classic':
     specifier: ^3.0.1
+    version: 3.1.0(@algolia/client-search@4.22.1)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.13.0)(typescript@5.2.2)
     version: 3.1.0(@algolia/client-search@4.22.1)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.13.0)(typescript@5.2.2)
   '@docusaurus/theme-classic':
     specifier: ^3.0.1
     version: 3.1.0(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
+    version: 3.1.0(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
   '@heroicons/react':
     specifier: ^2.0.18
+    version: 2.1.1(react@18.2.0)
     version: 2.1.1(react@18.2.0)
   '@mdx-js/react':
     specifier: ^3.0.0
@@ -4681,8 +4688,8 @@ packages:
     resolution: {integrity: sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==}
     hasBin: true
 
-  /follow-redirects@1.15.4:
-    resolution: {integrity: sha512-Cr4D/5wlrb0z9dgERpUL3LrmPKVDsETIJhaCMeDfuFYcqa5bldGV6wBsAN6X/vxlXQtFBMrXdXxdL8CbDTGniw==}
+  /follow-redirects@1.15.5:
+    resolution: {integrity: sha512-vSFWUON1B+yAw1VN4xMfxgn5fTUiaOzAJCKBwIIgT/+7CuGy9+r+5gITvP62j3RmaD5Ph65UaERdOSRGUzZtgw==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -5257,7 +5264,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.15.3
+      follow-redirects: 1.15.5
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
