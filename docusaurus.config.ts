@@ -203,7 +203,12 @@ const config: Config = {
         },
         {
           to: "https://twitter.com/celest_dev",
-          html: '<img src="/img/x.svg" class="navbar-custom-image" alt="X/Twitter Page" />',
+          html: `
+          <picture>
+            <source srcset="/img/x.webp" type="image/webp">
+            <img class="navbar-custom-image" src="/img/x.png" alt="X/Twitter Page" />
+          </picture>
+          `,
           position: "right",
           className: "custom-navbar-img",
         },

@@ -75,9 +75,9 @@ html {
 }
 
 .navbar-custom-image {
-  padding-top: 0.5rem;
-  height: 35px;
-  width: 35px;
+  margin-top: 0.5rem;
+  height: 30px;
+  width: 30px;
 }
 
 .navbar__toggle {
