@@ -155,12 +155,6 @@ const config: Config = {
       respectPrefersColorScheme: false,
     },
     navbar: {
-      title: "Celest",
-      logo: {
-        className: "navbar-logo",
-        alt: "Celest Logo",
-        src: "img/logo.png",
-      },
       items: [
         process.env.NODE_ENV === "development" && {
           position: "left",
