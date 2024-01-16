@@ -193,12 +193,18 @@ Future<void> introduceMyself() async {
         <h2 className="team-header">Meet the Celest team</h2>
         <div className="team-info">
           <div className="team-member">
-            <img src="/img/dillon.png" alt="Dillon Nys" />
+            <picture>
+              <source srcSet="/img/dillon.webp" type="image/webp" />
+              <img src="/img/dillon.png" alt="Dillon Nys" />
+            </picture>
             <h3>Dillon Nys</h3>
             <p>Founder, Engineering</p>
           </div>
           <div className="team-member">
-            <img src="/img/abdallah.png" alt="Abdallah Shaban" />
+            <picture>
+              <source srcSet="/img/abdallah.webp" type="image/webp" />
+              <img src="/img/abdallah.png" alt="Abdallah Shaban" />
+            </picture>
             <h3>Abdallah Shaban</h3>
             <p>Founder, Product</p>
           </div>
