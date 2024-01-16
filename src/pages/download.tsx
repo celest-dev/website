@@ -19,7 +19,6 @@ const DownloadPage = () => {
       os = "Linux";
     else os = "Unknown";
 
-    console.log(userAgent);
 
     // Detect architecture
     let architecture = "Unknown";
@@ -75,7 +74,6 @@ const DownloadPage = () => {
       default:
         Icon = null; // or some default icon
     }
-    console.log(downloadLink);
     return (
       <div className="detected-operating-system-card">
         <a href={downloadLink} className="download-button">
@@ -96,13 +94,13 @@ const DownloadPage = () => {
   // set download link based on OS and architecture
   const getDownloadLink = (os, architecture) => {
     if (os === "Windows" && architecture === "Intel (x64)")
-      return "https://releases.celest.dev/windows_x64/0.1.0/celest-0.1.0-windows_x64.zip";
+      return "https://releases.celest.dev/windows_x64/0.1.0/celest-0.1.0-windows_x64.appx";
     else if (os === "Windows" && architecture === "ARM")
-      return "https://releases.celest.dev/windows_arm64/0.1.0/celest-0.1.0-windows_arm64.zip";
+      return "https://releases.celest.dev/windows_arm64/0.1.0/celest-0.1.0-windows_arm64.appx";
     else if (os === "Apple" && architecture === "Intel (x64)")
-      return "https://releases.celest.dev/macos_x64/0.1.0/celest-0.1.0-macos_x64.zip";
+      return "https://releases.celest.dev/macos_x64/0.1.0/celest-0.1.0-macos_x64.pkg";
     else if (os === "Apple" && architecture === "Silicon")
-      return "https://releases.celest.dev/macos_arm64/0.1.0/celest-0.1.0-macos_arm64.zip";
+      return "https://releases.celest.dev/macos_arm64/0.1.0/celest-0.1.0-macos_arm64.pkg";
     else if (os === "Linux" && architecture === "Intel (x64)")
       return "https://releases.celest.dev/linux_x64/0.1.0/celest-0.1.0-linux_x64.zip";
     else if (os === "Linux" && architecture === "ARM")
@@ -119,7 +117,7 @@ const DownloadPage = () => {
       !architecture ||
       architecture === "Unknown"
     ) {
-      return <p>Operating system and architecture not detected</p>;
+      return;
     }
     return (
       <section className="detected-operating-system-section">
