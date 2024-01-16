@@ -26,10 +26,8 @@ const LandingPage = () => {
               </h1>
               <p className="header-subtitle">
                 From your Flutter app to your backend in the cloud, Celest helps
-                you build every piece of your application in Dart, all without
-                leaving your IDE.
-                you build every piece of your application in Dart, all without
-                leaving your IDE.
+                you build every piece of your application in Dart, all without leaving
+                your IDE.
               </p>
               <div className="hero-cta">
                 <a
