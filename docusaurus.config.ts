@@ -33,21 +33,21 @@ const config: Config = {
   headTags: [
     // Sentry
     {
-      tagName: "link",
+      tagName: 'link',
       attributes: {
-        rel: "preconnect",
-        href: "https://js.sentry-cdn.com",
-      },
+        rel: 'preconnect',
+        href: 'https://js.sentry-cdn.com',
+      }
     },
     {
-      tagName: "script",
+      tagName: 'script',
       attributes: {
         src: "https://js.sentry-cdn.com/5e1c9ebbaa5b3f636fc63ba5003412d2.min.js",
         crossorigin: "anonymous",
       },
     },
     {
-      tagName: "script",
+      tagName: 'script',
       attributes: {},
       innerHTML: `
       Sentry.onLoad(function() {
@@ -113,23 +113,29 @@ const config: Config = {
     [
       "classic",
       {
-        docs: {
-          sidebarPath: "./sidebars.ts",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-          sidebarCollapsed: false,
-          // sidebarCollapsible: false
-        },
-        blog: {
-          showReadingTime: false,
-          blogTitle: "Celest Blog",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-        },
+        docs:
+          process.env.NODE_ENV === "production"
+            ? false
+            : {
+              sidebarPath: "./sidebars.ts",
+              // Please change this to your repo.
+              // Remove this to remove the "edit this page" links.
+              editUrl:
+                "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+              sidebarCollapsed: false,
+              // sidebarCollapsible: false
+            },
+        blog:
+          process.env.NODE_ENV === "production"
+            ? false
+            : {
+              showReadingTime: false,
+              blogTitle: "Celest Blog",   
+              // Please change this to your repo.
+              // Remove this to remove the "edit this page" links.
+              editUrl:
+                "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            },
         theme: {
           customCss: "./src/css/custom.css",
         },
