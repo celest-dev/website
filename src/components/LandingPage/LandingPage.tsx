@@ -14,56 +14,7 @@ import CodeBlock from "@theme/CodeBlock";
 import EmailForm from "./EmailForm";
 
 const LandingPage = () => {
-  const [operatingSystem, setOperatingSystem] = useState({
-    name: "Other",
-    downloadLink: "",
-  });
-
-  useEffect(() => {
-    const setDownloadLink = () => {
-      let userAgent: String = navigator.userAgent;
-
-      console.log(userAgent);
-      if (userAgent.includes("Macintosh")) {
-        setOperatingSystem({
-          name: "MacOS",
-          downloadLink: "https://download-link.com",
-        });
-      }
-
-      if (userAgent.includes("Windows")) {
-        setOperatingSystem({
-          name: "Windows",
-          downloadLink: "https://download-link.com",
-        });
-      }
-
-      if (userAgent.includes("Linux")) {
-        setOperatingSystem({
-          name: "Linux",
-          downloadLink: "https://download-link.com",
-        });
-      }
-
-      if (userAgent.includes("iPhone")) {
-        setOperatingSystem({
-          name: "Other",
-          downloadLink: "https://download-link.com",
-        });
-      }
-
-      if (userAgent.includes("Android")) {
-        setOperatingSystem({
-          name: "Other",
-          downloadLink: "https://download-link.com",
-        });
-      }
-      console.log(operatingSystem);
-    };
-
-    setDownloadLink();
-  }, []);
-
+ 
   return (
     <div className="landing-page">
       <header className="header">
