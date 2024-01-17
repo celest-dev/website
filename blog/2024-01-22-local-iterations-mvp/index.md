@@ -26,7 +26,7 @@ In future releases, Celest will also handle deploying and managing the infrastru
 
 ## **What’s next for Celest?**
 
-We can't wait to share more updates and continue building Celest with you. We’re on this adventure together, and your thoughts, feedback, and ideas are what will shape Celest’s future. Our next area of focus will be on opening up public access to Celest and enabling deployments for all Flutter developers.
+We can't wait to share more updates and continue building Celest with you. We’re on this adventure together, and your thoughts, feedback, and ideas are what will shape Celest’s future. Our next area of focus will be on opening up public access to Celest and enabling cloud deployments and backend management for all Flutter developers.
 
 We're excited to work alongside you as we develop Celest. This journey is a collaborative one, and your insights, feedback, and suggestions are vital in shaping the future of Celest. Our next goal is to enable backend deployments and open up access to all Flutter developers.
 
