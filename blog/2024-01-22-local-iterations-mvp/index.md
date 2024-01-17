@@ -1,28 +1,28 @@
 ---
 slug: local-iterations-release
-title: First CLI release (Local Iterations)
+title: First CLI release for Local Iterations
 authors: [ abdallah ,dillon]
 date: on & 2024-01-22
 keywords: [cloud functions, flutter backend]
 ---
 
-It's with immense excitement we write our first blog post announcing our first release of the Celest CLI! Today is not just about introducing our product; it’s about sharing a piece of our dream with the Flutter community that we deeply cherish.
+It's with immense excitement we write our first blog post announcing our first release of the Celest CLI, enabling you to experience Celest and building your backend locally on your development machine! Today is not just about introducing our product; it’s about sharing a piece of our dream with the Flutter community that we deeply cherish.
 
 <!--truncate-->
 
 Celest is a managed cloud platform that enables Flutter developers to build their backends in Dart, without needing additional tooling. With this release, we are making our CLI and Celest Functions available to you to build and experiment with locally. In response to the excited reaction we’ve received from the Flutter community, we decided to release this version as early as we could to help give you a feel of the Celest experience.
 
-The following is a video that shows you the installation steps and a quick demo of the Celest CLI and Functions.
+The following is a video that shows you the installation steps and a quick demo of the Celest CLI and functions.
 
 TODO: Video placeholder.
 
 ## Why would I want to use Celest Functions?
 
-Celest Functions enable you to write custom business logic in Dart that runs in the Cloud. Since Celest Functions are Dart Functions, you can reuse code between your frontend Flutter app and your Celest backend. You can also add and use 3rd party packages from the Flutter ecosystem in your backend.
+Celest Functions enable you to write custom business logic in Dart that runs in the Cloud. Celest Functions are our first "Cloud Widget" that we are introducing to help bridge the gap of building backend components in Dart. Since Celest Functions are Dart Functions, you can reuse code between your frontend Flutter app and your Celest backend. You can also add and use 3rd party packages from the Flutter ecosystem in your backend.
 
 Using Celest Functions creates an API layer for you between your business logic in the cloud, and the UI of your Flutter app. This makes it easier to add features to your Celest Functions while reducing the need to release a new app version to the app stores.
 
-In future releases, Celest will also handle deploying and managing the infrastructure for your Functions.
+In future releases, Celest will also handle deploying and managing the infrastructure for your functions.
 
 ## **What’s next for Celest?**
 
