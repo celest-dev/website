@@ -78,7 +78,7 @@ To ensure a function has access to the variable when it runs, pass it as a param
 
 :::tip 
 
-Annotated parameters (like `greetingUrl`) will not appear in the code-generated Celest client, but can be used in your backend when unit testing and mocking (see [Testing your backend resources](/docs//functions/testing)).
+Annotated parameters (like `greetingUrl`) will not appear in the code-generated Celest client, but can be used in your backend when unit testing and mocking (see [Testing your backend resources](/docs//functions/testing.md)).
 
 :::
 

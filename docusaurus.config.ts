@@ -32,21 +32,21 @@ const config: Config = {
 
   headTags: [
     {
-      tagName: 'link',
+      tagName: "link",
       attributes: {
-        rel: 'preconnect',
-        href: 'https://js.sentry-cdn.com',
-      }
+        rel: "preconnect",
+        href: "https://js.sentry-cdn.com",
+      },
     },
     {
-      tagName: 'script',
+      tagName: "script",
       attributes: {
         src: "https://js.sentry-cdn.com/5e1c9ebbaa5b3f636fc63ba5003412d2.min.js",
         crossorigin: "anonymous",
       },
     },
     {
-      tagName: 'script',
+      tagName: "script",
       attributes: {},
       innerHTML: `
       Sentry.onLoad(function() {
@@ -63,17 +63,17 @@ const config: Config = {
           tracesSampleRate: 0.5, // Capture 100% of the transactions
         });
       });
-      `
+      `,
     },
     {
-      tagName: 'link',
+      tagName: "link",
       attributes: {
-        rel: 'preconnect',
-        href: 'https://eu.posthog.com',
+        rel: "preconnect",
+        href: "https://eu.posthog.com",
       },
     },
     {
-      tagName: 'script',
+      tagName: "script",
       attributes: {},
       innerHTML: `
       !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -86,29 +86,23 @@ const config: Config = {
     [
       "classic",
       {
-        docs:
-          process.env.NODE_ENV === "production"
-            ? false
-            : {
-              sidebarPath: "./sidebars.ts",
-              // Please change this to your repo.
-              // Remove this to remove the "edit this page" links.
-              editUrl:
-                "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-              sidebarCollapsed: false,
-              // sidebarCollapsible: false
-            },
-        blog:
-          process.env.NODE_ENV === "production"
-            ? false
-            : {
-              showReadingTime: false,
-              blogTitle: "Celest Blog",   
-              // Please change this to your repo.
-              // Remove this to remove the "edit this page" links.
-              editUrl:
-                "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-            },
+        docs: {
+          sidebarPath: "./sidebars.ts",
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl:
+            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          sidebarCollapsed: false,
+          // sidebarCollapsible: false
+        },
+        blog: {
+          showReadingTime: false,
+          blogTitle: "Celest Blog",
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl:
+            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+        },
         theme: {
           customCss: "./src/css/custom.css",
         },
@@ -147,7 +141,7 @@ const config: Config = {
       {
         name: "twitter:url",
         content: "https://celest.dev",
-      }
+      },
     ],
     colorMode: {
       defaultMode: "light",
@@ -156,15 +150,15 @@ const config: Config = {
     },
     navbar: {
       items: [
-        process.env.NODE_ENV === "development" && {
+        {
           position: "left",
           type: "doc",
           to: "docs/overview.md",
           docId: "overview",
           label: "Docs",
         },
-        {to: '/download', label: 'Download', position: 'left'},
-        {to: '/blog/', label: 'Blog', position: 'left'},
+        { to: "/download", label: "Download", position: "left" },
+        { to: "/blog", label: "Blog", position: "left" },
         {
           docId: "about-us",
           to: "/about-us",
