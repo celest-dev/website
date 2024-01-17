@@ -150,15 +150,21 @@ const config: Config = {
     },
     navbar: {
       items: [
-        {
-          position: "left",
-          type: "doc",
-          to: "docs/overview.md",
-          docId: "overview",
-          label: "Docs",
-        },
-        { to: "/download", label: "Download", position: "left" },
-        { to: "/blog", label: "Blog", position: "left" },
+        process.env.NODE_ENV === "production"
+          ? false
+          : {
+              position: "left",
+              type: "doc",
+              to: "docs/overview.md",
+              docId: "overview",
+              label: "Docs",
+            },
+        process.env.NODE_ENV === "production"
+          ? false
+          : { to: "/download", label: "Download", position: "left" },
+        process.env.NODE_ENV === "production"
+          ? false
+          : { to: "/blog", label: "Blog", position: "left" },
         {
           docId: "about-us",
           to: "/about-us",
