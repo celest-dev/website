@@ -16,7 +16,6 @@ import EmailForm from "./EmailForm";
 import Link from "@docusaurus/Link";
 
 const LandingPage = () => {
- 
   return (
     <div className="landing-page">
       <header className="header">
