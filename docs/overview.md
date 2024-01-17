@@ -16,7 +16,9 @@ Celest offers sets of functionality that are grouped based on their use cases an
 
 Check out this video that shows you the Celest experience.
 
-TODO: Add video
+<div id="docs-videos">
+   <iframe src="https://www.youtube.com/embed/Br9aStq5u2Y?si=gAJfTve_vH8hO8lC" title="Celest | Local CLI Experience" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 ## What can I build with Celest?
 At a high level, the following are the "Cloud Widgets" that are available for you to build with Celest.

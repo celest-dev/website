@@ -304,6 +304,24 @@ span.token.comment {
   width: 100%;
   max-width: 400px;
   height: 250px;
+  border-radius: 20px;
+}
+
+
+/* Adjusting the size and positon of iframe videos in docs */
+#docs-videos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+#docs-videos iframe {
+  width: 100%;
+  border-radius: 20px;
+  /* max-width: 400px; */
+  height: 450px;
 }
 
 .categories-bottom-header-margin {
