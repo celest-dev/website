@@ -14,7 +14,6 @@ import CodeBlock from "@theme/CodeBlock";
 import EmailForm from "./EmailForm";
 
 const LandingPage = () => {
- 
   return (
     <div className="landing-page">
       <header className="header">
