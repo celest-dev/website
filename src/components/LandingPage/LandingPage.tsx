@@ -11,6 +11,7 @@ import { MdPolicy, MdOutlineComputer } from "react-icons/md";
 import CodeBlock from "@theme/CodeBlock";
 
 import EmailForm from "./EmailForm";
+import Link from "@docusaurus/Link";
 
 const LandingPage = () => {
   return (
@@ -193,7 +194,26 @@ Future<void> introduceMyself() async {
               <img src="/img/dillon.png" alt="Dillon Nys" />
             </picture>
             <h3>Dillon Nys</h3>
-            <p>Founder, Engineering</p>
+            <span>Founder, Engineering</span>
+            <div className="team-member-social">
+              <Link href="https://twitter.com/dillonthedev">
+                <picture>
+                  <source srcSet="/img/x.webp" type="image/webp" />
+                  <img
+                    className="navbar-custom-image"
+                    src="/img/x.png"
+                    alt="Dillon's X/Twitter Page"
+                  />
+                </picture>
+              </Link>
+              <Link href="https://www.linkedin.com/in/dillon-nys/">
+                <img
+                  className="navbar-custom-image"
+                  src="/img/linkedin-black.svg"
+                  alt="Dillon's LinkedIn Page"
+                />
+              </Link>
+            </div>
           </div>
           <div className="team-member">
             <picture>
@@ -201,7 +221,26 @@ Future<void> introduceMyself() async {
               <img src="/img/abdallah.png" alt="Abdallah Shaban" />
             </picture>
             <h3>Abdallah Shaban</h3>
-            <p>Founder, Product</p>
+            <span>Founder, Product</span>
+            <div className="team-member-social">
+              <Link href="https://twitter.com/AbdallahSh07" target="_blank">
+                <picture>
+                  <source srcSet="/img/x.webp" type="image/webp" />
+                  <img
+                    className="navbar-custom-image"
+                    src="/img/x.png"
+                    alt="Abdallah's X/Twitter Page"
+                  />
+                </picture>
+              </Link>
+              <Link href="https://www.linkedin.com/in/abdallahshaban/">
+                <img
+                  className="navbar-custom-image"
+                  src="/img/linkedin-black.svg"
+                  alt="Abdallah's LinkedIn Page"
+                />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
