@@ -204,7 +204,7 @@ const config: Config = {
           to: "https://twitter.com/celest_dev",
           html: `
           <picture>
-            <source srcset="/img/x.webp" type="image/webp">
+            <source srcset="/img/x.webp" type="image/webp" />
             <img class="navbar-custom-image" src="/img/x.png" alt="X/Twitter Page" />
           </picture>
           `,
@@ -214,6 +214,12 @@ const config: Config = {
         {
           to: "https://discord.gg/vgWwpsXH",
           html: '<img src="/img/discord.png" class="navbar-custom-image discord-navbar-image" alt="Discord Server" />',
+          position: "right",
+          className: "custom-navbar-img",
+        },
+        {
+          to: "https://www.linkedin.com/company/celest-dev/",
+          html: '<img src="/img/linkedin-black.svg" class="navbar-custom-image" alt="LinkedIn Page" />',
           position: "right",
           className: "custom-navbar-img",
         },
