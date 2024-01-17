@@ -26,3 +26,7 @@ At a high level, the following are the features that are available for you to bu
 | Data (coming soon) | Define your data schema, relationships, and authorization rules in code. |
 | Content (coming soon) | Serve content globally with edge caching built-in. |
 | Policies (coming soon) | Author fine-grained access controls for all your backend components. |
+
+## Next steps
+
+You can follow our next guide to learn more about how to [set up the Celest CLI](/docs/get-started.md) and get started with building your backend in Dart.
