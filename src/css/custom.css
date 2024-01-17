@@ -354,6 +354,12 @@ pre code {
   margin: 0 auto;
 }
 
+.team-info .team-member-social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .black-code-block {
   color: black;
 }
