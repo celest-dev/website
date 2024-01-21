@@ -39,7 +39,7 @@ const LandingPage = () => {
                     alt="YC Logo"
                     className="yc-image"
                   />
-                </a> */}
+                </a>
               </div>
             </div>
             <div className="hero-media">
@@ -133,10 +133,6 @@ Future<void> introduceMyself() async {
             <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
             <h3 className="category-title">Auth</h3>
             <p className="category-description">
-              Authenticate your users with social sign-in, passwordless and
-              WebAuthn.
-              Authenticate your users with social sign-in, passwordless and
-              WebAuthn.
               Authenticate your users with social sign-in, passwordless and
               WebAuthn.
             </p>
