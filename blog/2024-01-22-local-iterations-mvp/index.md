@@ -16,7 +16,7 @@ The following is a video that shows you the installation steps and a quick demo 
 
 TODO: Video placeholder.
 
-## Why would I want to use Celest Functions?
+## Why use Celest Functions?
 
 Celest Functions enable you to write custom business logic in Dart that runs in the Cloud. Celest Functions are our first "Cloud Widget" that we are introducing to help bridge the gap of building backend components in Dart. Since Celest Functions are Dart Functions, you can reuse code between your frontend Flutter app and your Celest backend. You can also add and use 3rd party packages from the Flutter ecosystem in your backend.
 
