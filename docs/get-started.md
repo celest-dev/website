@@ -33,7 +33,6 @@ flutter_app/
 └── celest/
     ├── functions/
     │   ├── greeting.dart # a function definition
-    │   └── middleware.dart # middleware definitions
     ├── test/ # a folder for adding tests to your backend
     └── config/
         └── env.dart # environment variables
