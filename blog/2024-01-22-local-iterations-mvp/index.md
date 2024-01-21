@@ -24,7 +24,7 @@ Using Celest Functions creates an API layer for you between your business logic 
 
 In future releases, Celest will also handle deploying and managing the infrastructure for your functions.
 
-## **What’s next for Celest?**
+## What’s next for Celest?
 
 We can't wait to share more updates and continue building Celest with you. We’re on this adventure together, and your thoughts, feedback, and ideas are what will shape Celest’s future. Our next area of focus will be on opening up public access to Celest and enabling cloud deployments and backend management for all Flutter developers.
 
