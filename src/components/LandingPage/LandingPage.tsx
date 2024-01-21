@@ -7,8 +7,6 @@ import {
 import { AiFillApi } from "react-icons/ai";
 import { FaLock, FaDatabase, FaImages, FaServer } from "react-icons/fa";
 import { FiCloudLightning } from "react-icons/fi";
-import { IoMdDownload } from "react-icons/io";
-import { IoMdDownload } from "react-icons/io";
 import { MdPolicy, MdOutlineComputer } from "react-icons/md";
 import CodeBlock from "@theme/CodeBlock";
 
@@ -34,17 +32,7 @@ const LandingPage = () => {
                 leaving your IDE.
               </p>
               <div className="hero-cta">
-                <div className="download-button-container">
-                  {/* <p className="download-text">Install and try Celest today.</p> */}
-                  <a
-                    href= {operatingSystem.downloadLink}
-                    target="_blank"
-                    className="download-button"
-                  >
-                    <IoMdDownload className="download-icon" /> Install Celest
-                  </a>
-                </div>
-                {/* <a
+                <a
                   href="https://www.ycombinator.com/companies/celest"
                   target="_blank"
                 >
@@ -53,7 +41,7 @@ const LandingPage = () => {
                     alt="YC Logo"
                     className="yc-image"
                   />
-                </a> */}
+                </a>
               </div>
             </div>
             <div className="hero-media">
@@ -147,10 +135,6 @@ Future<void> introduceMyself() async {
             <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
             <h3 className="category-title">Auth</h3>
             <p className="category-description">
-              Authenticate your users with social sign-in, passwordless and
-              WebAuthn.
-              Authenticate your users with social sign-in, passwordless and
-              WebAuthn.
               Authenticate your users with social sign-in, passwordless and
               WebAuthn.
             </p>
