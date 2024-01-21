@@ -68,7 +68,7 @@ const DownloadPage = () => {
     (event: React.MouseEvent<HTMLAnchorElement>) => {
       // Logic for ARM click
       recordEvent("click_download_cli", {
-        DownloadCLIAutoDetectOperatingSystem: autoDetectOperatingSystemValue,
+        downloadCLIAutoDetectOperatingSystem: autoDetectOperatingSystemValue,
         downloadCLIOperatingSystemArchitecture: architecture,
         downloadCLIOperatingSystemName: operatingSystem,
       });
@@ -186,6 +186,23 @@ const DownloadPage = () => {
               >
                 Intel (x64)
               </a>
+              <a
+                href={getDownloadLink("Windows", "ARM")}
+                onClick={handleDownloadLinkEventTrigger(true, "ARM", "Windows")}
+              >
+                ARM
+              </a>{" "}
+              /{" "}
+              <a
+                href={getDownloadLink("Windows", "Intel (x64)")}
+                onClick={handleDownloadLinkEventTrigger(
+                  true,
+                  "Intel (x64)",
+                  "Windows"
+                )}
+              >
+                Intel (x64)
+              </a>
             </p>
           </div>
           <div className="operating-system-card">
@@ -215,6 +232,23 @@ const DownloadPage = () => {
             <FaLinux className="operating-system-download-image" />
             <h3 className="operating-system-card-title">Linux</h3>
             <p>
+              <a
+                href={getDownloadLink("Linux", "ARM)")}
+                onClick={handleDownloadLinkEventTrigger(true, "ARM", "Linux")}
+              >
+                ARM
+              </a>{" "}
+              /{" "}
+              <a
+                href={getDownloadLink("Linux", "Intel (x64))")}
+                onClick={handleDownloadLinkEventTrigger(
+                  true,
+                  "Intel (x64)",
+                  "Linux"
+                )}
+              >
+                Intel (x64)
+              </a>
               <a
                 href={getDownloadLink("Linux", "ARM)")}
                 onClick={handleDownloadLinkEventTrigger(true, "ARM", "Linux")}

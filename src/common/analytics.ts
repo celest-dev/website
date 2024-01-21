@@ -11,7 +11,7 @@ type EventProps = {
   category?: string;
   errorMessage?: String;
   success?: boolean;
-  DownloadCLIAutoDetectOperatingSystem?: boolean;
+  downloadCLIAutoDetectOperatingSystem?: boolean;
   downloadCLIOperatingSystemName?: string;
   downloadCLIOperatingSystemArchitecture?: string;
 };
