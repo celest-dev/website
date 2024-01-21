@@ -10,7 +10,7 @@ It's with immense excitement we write our first blog post announcing our first r
 
 <!--truncate-->
 
-Celest is a managed cloud platform that enables Flutter developers to build their backends in Dart, without needing additional tooling. With this release, we are making our CLI and Celest Functions available to you to build and experiment with locally. In response to the excited reaction we’ve received from the Flutter community, we decided to release this version as early as we could to help give you a feel of the Celest experience.
+Celest is a managed cloud platform that enables Flutter developers to build their backends in Dart, without needing additional tooling. With this release, we are making our CLI and Celest Functions available to you to build and experiment with locally. In response to the excited reaction we’ve received from the Flutter community, we are releasing this version as early as we can to help give you a feel of the Celest experience.
 
 The following is a video that shows you the installation steps and a quick demo of the Celest CLI and functions.
 
