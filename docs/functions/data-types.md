@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Using custom data types
 
-With Celest Functions, you can use any of the standard Dart types available such as `int` or `string`, and you can also use your own custom data types that you have created. Handling the transfer and formatting of data from your Flutter app to your backend, which is called serialization, is handled out-of-the-box in most cases. In situations requiring custom serialization, you can write your own logic which we can use instead for serializing the request/responses of your Celest Functions.
+With Celest Functions, you can use any of the standard Dart types available such as `int` or `string`, and you can also use your own custom data types that you have created. Handling the transfer and formatting of data from your Flutter app to your backend, which is called serialization, is handled out-of-the-box in most cases. In situations requiring custom serialization, you can write your own logic which we can use instead for serializing the request/response of your Celest Functions.
 
 
 # Custom data type example

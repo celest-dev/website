@@ -14,11 +14,12 @@ You primarily interact with Celest using the Celest CLI. Once you download and i
 
 Celest offers sets of functionality that are grouped based on their use cases and are called "Cloud Widgets". You can use these widgets for building your backend, and connecting your frontend Flutter application to accomplish specific use cases such as Authentication, Data, and Storage.
 
-Check out this video that shows you the Celest experience.
+<!-- Check out this video that shows you the Celest experience.
+TODO: add the local iterations launch video.
 
 <div id="docs-videos">
    <iframe src="https://www.youtube.com/embed/Br9aStq5u2Y?si=gAJfTve_vH8hO8lC" title="Celest | Local CLI Experience" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
+</div> -->
 
 ## What can I build with Celest?
 At a high level, the following are the "Cloud Widgets" that are available for you to build with Celest.
