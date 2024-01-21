@@ -19,6 +19,9 @@ type GTagEventProps = {
   category?: string;
   errorMessage?: String;
   success?: boolean;
+  autoDetectOperatingSystem?: boolean;
+  operatingSystem?: string;
+  architecture?: string;
 };
 
 export const recordEvent = (eventName: string, props?: GTagEventProps) => {

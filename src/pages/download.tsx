@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaLinux, FaWindows, FaApple } from "react-icons/fa";
+import { recordEvent } from "../common/analytics";
 import Layout from "@theme/Layout";
 
 const DownloadPage = () => {
@@ -57,6 +58,23 @@ const DownloadPage = () => {
     }
   }, []);
 
+  // Event handler for download link click used for recording analytics
+  const handleDownloadLinkEventTrigger =
+    (
+      autoDetectOperatingSystemValue: boolean,
+      architecture: string,
+      operatingSystem: string
+    ) =>
+    (event: React.MouseEvent<HTMLAnchorElement>) => {
+      // Logic for ARM click
+      recordEvent("download_cli", {
+        autoDetectOperatingSystem: autoDetectOperatingSystemValue,
+        architecture: architecture,
+        operatingSystem: operatingSystem,
+      });
+      // Add any other logic or function calls here
+    };
+
   // Component for detected OS Card
   const OSCard = ({ osName, downloadLink, architecture }) => {
     let Icon;
@@ -75,7 +93,11 @@ const DownloadPage = () => {
     }
     return (
       <div className="detected-operating-system-card">
-        <a href={downloadLink} className="download-button">
+        <a
+          href={downloadLink}
+          className="download-button"
+          onClick={handleDownloadLinkEventTrigger(true, architecture, osName)}
+        >
           {Icon && <Icon className="detected-system-download-image" />}
           <div>
             <p className="detected-operating-system-name-top">Download for</p>
@@ -147,27 +169,75 @@ const DownloadPage = () => {
             <FaWindows className="operating-system-download-image" />
             <h3 className="operating-system-card-title">Windows</h3>
             <p>
-              <a>ARM</a> / <a>Intel (x64)</a>
+              <a
+                href={getDownloadLink("Windows", "ARM")}
+                onClick={handleDownloadLinkEventTrigger(true, "ARM", "Windows")}
+              >
+                ARM
+              </a>{" "}
+              /{" "}
+              <a
+                href={getDownloadLink("Windows", "Intel (x64)")}
+                onClick={handleDownloadLinkEventTrigger(
+                  true,
+                  "Intel (x64)",
+                  "Windows"
+                )}
+              >
+                Intel (x64)
+              </a>
             </p>
           </div>
           <div className="operating-system-card">
             <FaApple className="operating-system-download-image" />
             <h3 className="operating-system-card-title">Apple</h3>
             <p>
-              <a>Apple Silicon (ARM)</a> / <a>Intel (x64)</a>
+              <a
+                href={getDownloadLink("Apple", "ARM")}
+                onClick={handleDownloadLinkEventTrigger(true, "ARM", "Apple")}
+              >
+                Apple Silicon (ARM)
+              </a>{" "}
+              /{" "}
+              <a
+                href={getDownloadLink("Apple", "Intel (x64)")}
+                onClick={handleDownloadLinkEventTrigger(
+                  true,
+                  "Intel (x64)",
+                  "Apple"
+                )}
+              >
+                Intel (x64)
+              </a>
             </p>
           </div>
           <div className="operating-system-card">
             <FaLinux className="operating-system-download-image" />
             <h3 className="operating-system-card-title">Linux</h3>
             <p>
-              <a>ARM</a> / <a>Intel (x64)</a>
+              <a
+                href={getDownloadLink("Linux", "ARM)")}
+                onClick={handleDownloadLinkEventTrigger(true, "ARM", "Linux")}
+              >
+                ARM
+              </a>{" "}
+              /{" "}
+              <a
+                href={getDownloadLink("Linux", "Intel (x64))")}
+                onClick={handleDownloadLinkEventTrigger(
+                  true,
+                  "Intel (x64)",
+                  "Linux"
+                )}
+              >
+                Intel (x64)
+              </a>
             </p>
           </div>
           <p>
             After installing the Celest CLI, visit our{" "}
-            <a href="/docs/get-started">documentation</a> to start building
-            your backend with Celest
+            <a href="/docs/get-started">documentation</a> to start building your
+            backend with Celest
           </p>
         </section>
       </div>
