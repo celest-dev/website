@@ -193,8 +193,8 @@ const DownloadPage = () => {
             <h3 className="operating-system-card-title">Apple</h3>
             <p>
               <a
-                href={getDownloadLink("Apple", "ARM")}
-                onClick={handleDownloadLinkEventTrigger(true, "ARM", "Apple")}
+                href={getDownloadLink("Apple", "Silicon")}
+                onClick={handleDownloadLinkEventTrigger(true, "Silicon", "Apple")}
               >
                 Apple Silicon (ARM)
               </a>{" "}
