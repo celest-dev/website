@@ -216,14 +216,14 @@ const DownloadPage = () => {
             <h3 className="operating-system-card-title">Linux</h3>
             <p>
               <a
-                href={getDownloadLink("Linux", "ARM)")}
+                href={getDownloadLink("Linux", "ARM")}
                 onClick={handleDownloadLinkEventTrigger(true, "ARM", "Linux")}
               >
                 ARM
               </a>{" "}
               /{" "}
               <a
-                href={getDownloadLink("Linux", "Intel (x64))")}
+                href={getDownloadLink("Linux", "Intel (x64)")}
                 onClick={handleDownloadLinkEventTrigger(
                   true,
                   "Intel (x64)",
