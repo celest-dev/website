@@ -68,9 +68,9 @@ const DownloadPage = () => {
     (event: React.MouseEvent<HTMLAnchorElement>) => {
       // Logic for ARM click
       recordEvent("download_cli", {
-        autoDetectOperatingSystem: autoDetectOperatingSystemValue,
-        architecture: architecture,
-        operatingSystem: operatingSystem,
+        DownloadCLIAutoDetectOperatingSystem: autoDetectOperatingSystemValue,
+        downloadCLIOperatingSystemArchitecture: architecture,
+        downloadCLIOperatingSystemName: operatingSystem,
       });
       // Add any other logic or function calls here
     };
