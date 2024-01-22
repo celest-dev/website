@@ -86,27 +86,27 @@ const config: Config = {
 
     // Fonts
     {
-      tagName: "link",
+      tagName: 'link',
       attributes: {
-        rel: "preconnect",
-        href: "https://fonts.googleapis.com",
-      },
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      }
     },
     {
-      tagName: "link",
+      tagName: 'link',
       attributes: {
-        rel: "preconnect",
-        href: "https://fonts.gstatic.com",
-        crossorigin: "anonymous",
-      },
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: 'anonymous',
+      }
     },
     {
-      tagName: "link",
+      tagName: 'link',
       attributes: {
-        href: "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400&family=Poppins:wght@300&display=swap",
-        rel: "stylesheet",
-      },
-    },
+        href: 'https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400&family=Poppins:wght@300&display=swap',
+        rel: 'stylesheet',
+      }
+    }
   ],
 
   presets: [
@@ -139,16 +139,16 @@ const config: Config = {
 
   plugins: [
     [
-      "@docusaurus/plugin-client-redirects",
+      '@docusaurus/plugin-client-redirects',
       {
         redirects: [
           {
-            to: "https://discord.gg/KtMAfSDXGQ",
-            from: "/discord",
-          },
+            to: 'https://discord.gg/KtMAfSDXGQ',
+            from: '/discord',
+          }
         ],
       },
-    ],
+    ]
   ],
 
   themeConfig: {
@@ -187,15 +187,20 @@ const config: Config = {
     },
     navbar: {
       items: [
-        {
-          position: "left",
-          type: "doc",
-          to: "docs/overview.md",
-          docId: "overview",
-          label: "Docs",
-        },
+        process.env.NODE_ENV === "production"
+          ? false
+          : {
+            position: "left",
+            type: "doc",
+            to: "docs/overview.md",
+            docId: "overview",
+            label: "Docs",
+          },
         { to: "/download", label: "Download", position: "left" },
-        { to: "/blog", label: "Blog", position: "left" },
+       
+        process.env.NODE_ENV === "production"
+        ? false
+        : { to: "/blog", label: "Blog", position: "left" },
         {
           docid: "about-us",
           to: "/about-us",
