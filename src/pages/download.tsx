@@ -2,9 +2,16 @@ import React, { useEffect, useState } from "react";
 import { FaLinux, FaWindows, FaApple } from "react-icons/fa";
 import { recordEvent } from "../common/analytics";
 import Layout from "@theme/Layout";
+import { IconType } from "react-icons";
+
+type DownloadState = {
+  os: string | null;
+  architecture: string | null;
+  downloadLink: string | null;
+};
 
 const DownloadPage = () => {
-  const [detectedSystem, setDetectedSystem] = useState({
+  const [detectedSystem, setDetectedSystem] = useState<DownloadState>({
     os: null,
     architecture: null,
     downloadLink: null,
@@ -77,7 +84,7 @@ const DownloadPage = () => {
 
   // Component for detected OS Card
   const OSCard = ({ osName, downloadLink, architecture }) => {
-    let Icon;
+    let Icon: IconType | null;
     switch (osName) {
       // case "Windows":
       //   Icon = FaWindows;
@@ -111,19 +118,15 @@ const DownloadPage = () => {
   };
 
   // set download link based on OS and architecture
-  const getDownloadLink = (os, architecture) => {
-    if (os === "Windows" && architecture === "Intel (x64)")
-      return "https://releases.celest.dev/windows_x64/0.1.0/celest-0.1.0-windows_x64.appx";
-    else if (os === "Windows" && architecture === "ARM")
-      return "https://releases.celest.dev/windows_arm64/0.1.0/celest-0.1.0-windows_arm64.appx";
-    else if (os === "Apple" && architecture === "Intel (x64)")
-      return "https://releases.celest.dev/macos_x64/0.1.0/celest-0.1.0-macos_x64.pkg";
+  const getDownloadLink = (os: string, architecture: string) => {
+    if (os === "Apple" && architecture === "Intel (x64)")
+      return "https://releases.celest.dev/macos_x64/latest/celest-latest-macos_x64.pkg";
     else if (os === "Apple" && architecture === "Silicon")
-      return "https://releases.celest.dev/macos_arm64/0.1.0/celest-0.1.0-macos_arm64.pkg";
+      return "https://releases.celest.dev/macos_arm64/latest/celest-latest-macos_arm64.pkg";
     else if (os === "Linux" && architecture === "Intel (x64)")
-      return "https://releases.celest.dev/linux_x64/0.1.0/celest-0.1.0-linux_x64.zip";
+      return "https://releases.celest.dev/linux_x64/latest/celest-latest-linux_x64.zip";
     else if (os === "Linux" && architecture === "ARM")
-      return "https://releases.celest.dev/linux_arm64/0.1.0/celest-0.1.0-linux_arm64.zip";
+      return "https://releases.celest.dev/linux_arm64/latest/celest-latest-linux_arm64.zip";
     else return "#"; // Placeholder link
   };
 
@@ -195,7 +198,11 @@ const DownloadPage = () => {
             <p>
               <a
                 href={getDownloadLink("Apple", "Silicon")}
-                onClick={handleDownloadLinkEventTrigger(true, "Silicon", "Apple")}
+                onClick={handleDownloadLinkEventTrigger(
+                  true,
+                  "Silicon",
+                  "Apple"
+                )}
               >
                 Apple Silicon (ARM)
               </a>{" "}
