@@ -9,7 +9,7 @@ With Celest Functions, you can use any of the standard Dart types available such
 
 # Custom data type example
 
-Imagine you're working on an e-commerce application with an `Order` class defined in your codebase.
+Imagine you're working on an e-commerce application with an `Order` class defined in your codebase. In order to have Celest use that custom class, you need to place it in the `<Flutter_App>/celest/lib/models.dart` file.
 
 ```dart
 class Order {
@@ -45,7 +45,7 @@ Use this `Order` type in any Celest Function as both a parameter or return value
 import 'package:celest/celest.dart';
 
 // highlight-next-line
-import 'types/order.dart';
+import 'package:celest_backend/models.dart';
 
 Future<String> createOrder(
   FunctionContext context,

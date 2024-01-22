@@ -51,7 +51,7 @@ The following code snippet is an example of how you would use the generated clie
 import 'package:flutter/material.dart';
 // imports the Celest code-generated client
 // highlight-next-line
-import 'package:cli_celest/client.dart';
+import 'package:celest_backend/client.dart';
 
 void main() {
   // initializes Celest in your Flutter app
