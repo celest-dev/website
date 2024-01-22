@@ -31,9 +31,8 @@ At a high level, the following "Cloud Widgets" are available for you when buildi
 
 :::info
 
-**Note:** Celest is currently in beta and not all of the Cloud Widgets are available yet. We will be rolling out new features and functionality over the coming months.
-If there's a use case you'd like to see which isn't listed here, please let us know by [creating an issue](https://github.com/celest-dev/celest/issues/new/choose) in our GitHub repo
-or chatting with us on [Discord](https://celest.dev/discord).
+**Note:** We will be rolling out new features and functionality over the coming months. If there's a use case you'd like to see which isn't listed here, please let us know by [creating an issue](https://github.com/celest-dev/celest/issues/new/choose) 
+in our GitHub repo or chatting with us on [Discord](https://celest.dev/discord).
 
 :::
 
