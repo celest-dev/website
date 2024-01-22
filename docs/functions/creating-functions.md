@@ -8,7 +8,7 @@ sidebar_position: 3
 Please complete [setting up Celest](/docs/get-started.md) prior to reading this guide.
 :::
 
-Creating functions with Celest enables you to connect and aggregate information from different parts of your backend, and build custom business logic that runs completely in the cloud. You define your functions as regular Dart functions, and Celest takes care of setting up and managing the backend for you.
+Creating functions with Celest enables you to connect and aggregate information from different parts of your backend, and build custom business logic that runs completely in the cloud. You define your functions as regular Dart functions, and Celest takes care of deploying and managing the backend for you.
 
 
 <!-- TODO: Determine if I need another image here for explaining functions ![Function Call Flow](img/function.png) -->
@@ -51,7 +51,7 @@ The following code snippet is an example of how you would use the generated clie
 import 'package:flutter/material.dart';
 // imports the Celest code-generated client
 // highlight-next-line
-import 'package:flutter_app/celest/client.dart' as celest;
+import 'package:cli_celest/client.dart';
 
 void main() {
   // initializes Celest in your Flutter app
@@ -80,4 +80,4 @@ class MyApp extends StatelessWidget {
 
 ## Next steps
 
-You now know how to create Celest Functions and connect to them from your Flutter app. We have other guides to help explain how to use features such as [using logging](/docs/functions/logging.md), using [custom data types](/docs/functions/data-types.md), and [managing environment variables](/docs/functions/env-variables.md). 
+You now know how to create Celest Functions and connect to them from your Flutter app. We have other guides to help explain how to use features such as [logging](/docs/functions/logging.md), [using custom data types](/docs/functions/data-types.md), and [managing environment variables](/docs/functions/env-variables.md). 
