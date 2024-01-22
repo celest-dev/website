@@ -12,64 +12,15 @@ Multiple environment support is not currently available. You can now manage envi
 
 :::
 
-## Setting up environment variables
-
 :::tip
 
 Environment variables you set are only accessible in your backend.
 
 :::
 
-You have multiple options when setting up environment variables. You can either use the CLI to set up specific variables individually, or use a `.env` file to upload a group of variables for each of your environmnets.
+## Updating environment variables with `.env` file
 
-### Updating specific environment variables
-
-You can use the Celest CLI to set up specific environment variables that you want to change. You can use the following command to update multiple environment variables if needed.
-
-```shell
-celest env set variable1_name=value1 variable2_name=<value2`.
-```
-
-### Updating environment variables with `.env` file
-
-In order to change multiple environment variables and their values using a `.env` file, create a `.env` file and drop it in the `<flutter_app>/celest/config/` directory. Then, run the following command in your terminal.
-
-```shell
-celest env set
-```
-
-Once this command runs, you will be prompted whether you want to update all the variables in the `.env` file, or select specific ones for update.
-
-
-## Retreiving environment variable values
-
-Using the Celest CLI, you can retrieve of the values of environment variables that you have set up. To retrieve specific environment variable values, you can use the following command.
-
-```shell
-celest env get variable1 variable2
-```
-
-This command will print the values for these environment variables in your terminal. To retrieve all environment variable values simply do not include any variable names as shown in the following command.
-
-```shell
-celest env get
-```
-
-This command will print the values of all your environment variables in your terminal.
-
-## Deleting environment variables
-
-You can delete environment variables that you no longer need. To delete a single or multiple environment variables you can use the following command.
-
-```shell
-celest env delete variable1 variable2
-```
-
-:::tip
-
-To prevent accidently messing up your environment configuration, there isn't a command from Celest to remove ALL your environment variables.
-
-:::
+In order to change multiple environment variables and their values using a `.env` file, create a `.env` file and drop it in the `<flutter_app>/celest/config/` directory. When you run the `celest start` command in your console, your environment variables will automatically be updated with the values in your `.env` file.
 
 ## Using environment variables with Celest Functions
 
