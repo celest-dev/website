@@ -28,7 +28,7 @@ In future releases, Celest will also handle deploying and managing the infrastru
 
 We can't wait to share more updates and continue building Celest with you. We’re on this adventure together, and your thoughts, feedback, and ideas are what will shape Celest’s future. Our next area of focus will be on opening up public access to Celest and enabling cloud deployments and backend management for all Flutter developers.
 
-Visit our [documentation](https://celest.dev/docs) to learn more about this new release and using the Celest CLI and Functions. Join our [Discord server](https://discord.gg/vgWwpsXH) to give us feedback about your experience with this or future releases, in addition to connecting with other Flutter and Dart enthusiasts.
+Visit our [documentation](https://celest.dev/docs) to learn more about this new release and using the Celest CLI and Functions. Join our [Discord server](https://discord.gg/KtMAfSDXGQ) to give us feedback about your experience with this or future releases, in addition to connecting with other Flutter and Dart enthusiasts.
 
 **Cheers to New Beginnings,**
 
