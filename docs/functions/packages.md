@@ -16,4 +16,4 @@ $ dart pub add http
 
 ## Next steps
 
-You have now learned how to install 3rd party packages to use with your Celest Functions. You can learn more about other functionality of Celest such as how to interact with your Celest Functions [using HTTP calls](/docs/functions/http-requests.md).
+You have now learned how to install 3rd party packages to use with your Celest Functions. Follow our guides to learn more about other functionality of Celest such as how to interact with your Celest Functions [using HTTP calls](/docs/functions/http-requests.md).
