@@ -88,15 +88,19 @@ const DownloadPage = () => {
     switch (osName) {
       case "Windows":
         Icon = FaWindows;
+        recordEvent("detected_operating_system", {downloadCLIAutoDetectOperatingSystem: true, downloadCLIOperatingSystemArchitecture: architecture, downloadCLIOperatingSystemName: osName})
         break;
       case "Apple":
         Icon = FaApple;
+        recordEvent("detected_operating_system", {downloadCLIAutoDetectOperatingSystem: true, downloadCLIOperatingSystemArchitecture: architecture, downloadCLIOperatingSystemName: osName})
         break;
       case "Linux":
         Icon = FaLinux;
+        recordEvent("detected_operating_system", {downloadCLIAutoDetectOperatingSystem: true, downloadCLIOperatingSystemArchitecture: architecture, downloadCLIOperatingSystemName: osName})
         break;
       default:
         Icon = null; // or some default icon
+        recordEvent("detected_operating_system", {downloadCLIAutoDetectOperatingSystem: true, downloadCLIOperatingSystemArchitecture: architecture, downloadCLIOperatingSystemName: osName})
     }
     return (
       <div className="detected-operating-system-card">
