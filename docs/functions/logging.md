@@ -8,7 +8,7 @@ Celest enables you to use logging to capture helpful information to debug your f
 
 ## Adding logs to your functions
 
-Here is an example of using print statements in your Celest Function definition.
+Here is an example of using print statements to log the input of `name` in a Celest Function.
 
 ```dart
 import 'package:celest/celest.dart';
@@ -38,8 +38,8 @@ When you call the function, these logs will be streamed locally and shown in the
 $ celest start
 Celest is running on http://localhost:7777…
 
-Hello, Celest
-Goodbye, Celest
+[sayHello] Hello, Celest
+[sayHello] Goodbye, Celest
 ```
 
 ## Next steps
