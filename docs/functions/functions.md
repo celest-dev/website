@@ -13,7 +13,7 @@ Creating functions with Celest enables you to connect and aggregate information 
 
 ![Function Call Flow](img/function.png)
 
-To get started with building your first function, navigate to the `<flutter_app>/celest/functions/` folder and create a file named `<function_file>.dart`. You can create as many function files as you want in this directory. The name of the file is used to organize and retrieve these functions.
+To get started with building your first function, navigate to the `<flutter_app>/celest/functions/` folder and create a file named `<function_file>.dart`. You have the ability to create as many function files as you want in this directory. The name of the file is used to organize and retrieve these functions.
 
 :::tip
 Access to your functions is denied by default. What this means is that you’ll need to add the `@functions.public()` annotation to the top of the file for functions to be publicly accessible.
