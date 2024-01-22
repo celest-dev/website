@@ -88,15 +88,19 @@ const DownloadPage = () => {
     switch (osName) {
       case "Windows":
         Icon = FaWindows;
+        recordEvent("detected_operating_system", {downloadCLIAutoDetectOperatingSystem: true, downloadCLIOperatingSystemArchitecture: architecture, downloadCLIOperatingSystemName: osName})
         break;
       case "Apple":
         Icon = FaApple;
+        recordEvent("detected_operating_system", {downloadCLIAutoDetectOperatingSystem: true, downloadCLIOperatingSystemArchitecture: architecture, downloadCLIOperatingSystemName: osName})
         break;
       case "Linux":
         Icon = FaLinux;
+        recordEvent("detected_operating_system", {downloadCLIAutoDetectOperatingSystem: true, downloadCLIOperatingSystemArchitecture: architecture, downloadCLIOperatingSystemName: osName})
         break;
       default:
         Icon = null; // or some default icon
+        recordEvent("detected_operating_system", {downloadCLIAutoDetectOperatingSystem: true, downloadCLIOperatingSystemArchitecture: architecture, downloadCLIOperatingSystemName: osName})
     }
     return (
       <div className="detected-operating-system-card">
@@ -127,6 +131,10 @@ const DownloadPage = () => {
       return "https://releases.celest.dev/linux_x64/latest/celest-latest-linux_x64.zip";
     else if (os === "Linux" && architecture === "ARM")
       return "https://releases.celest.dev/linux_arm64/latest/celest-latest-linux_arm64.zip";
+    else if (os === "Windows" && architecture === "Intel (x64)")
+      return "https://releases.celest.dev/windows_x64/latest/celest-latest-windows_x64.appx";
+    else if (os === "Windows" && architecture === "ARM")
+      return "https://releases.celest.dev/windows_arm64/latest/celest-latest-windows_arm64.appx";
     else return "#"; // Placeholder link
   };
 
@@ -136,7 +144,6 @@ const DownloadPage = () => {
     if (
       !os ||
       os === "Unknown" ||
-      os === "Windows" ||
       !architecture ||
       architecture === "Unknown"
     ) {
@@ -173,7 +180,7 @@ const DownloadPage = () => {
             <FaWindows className="operating-system-download-image" />
             <h3 className="operating-system-card-title">Windows</h3>
             <p>
-              {/* <a
+              <a
                 href={getDownloadLink("Windows", "ARM")}
                 onClick={handleDownloadLinkEventTrigger(true, "ARM", "Windows")}
               >
@@ -189,8 +196,7 @@ const DownloadPage = () => {
                 )}
               >
                 Intel (x64)
-              </a> */}
-              Coming soon!
+              </a>
             </p>
           </div>
           <div className="operating-system-card">
