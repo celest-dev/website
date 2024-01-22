@@ -34,4 +34,4 @@ At a high level, the following are the "Cloud Widgets" that are available for yo
 
 ## Next steps
 
-You can follow our next guide to learn more about how to [set up the Celest CLI](/docs/get-started.md) and get started with building your backend in Dart.
+Follow our next guide to learn more about how to [set up the Celest CLI](/docs/get-started.md) and get started with building your backend in Dart.
