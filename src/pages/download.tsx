@@ -79,9 +79,9 @@ const DownloadPage = () => {
   const OSCard = ({ osName, downloadLink, architecture }) => {
     let Icon;
     switch (osName) {
-      case "Windows":
-        Icon = FaWindows;
-        break;
+      // case "Windows":
+      //   Icon = FaWindows;
+      //   break;
       case "Apple":
         Icon = FaApple;
         break;
@@ -169,7 +169,7 @@ const DownloadPage = () => {
             <FaWindows className="operating-system-download-image" />
             <h3 className="operating-system-card-title">Windows</h3>
             <p>
-              <a
+              {/* <a
                 href={getDownloadLink("Windows", "ARM")}
                 onClick={handleDownloadLinkEventTrigger(true, "ARM", "Windows")}
               >
@@ -185,7 +185,8 @@ const DownloadPage = () => {
                 )}
               >
                 Intel (x64)
-              </a>
+              </a> */}
+              Coming soon!
             </p>
           </div>
           <div className="operating-system-card">
