@@ -7,7 +7,7 @@ description: Learn more about Celest and how it helps you build the backend for 
 # Overview
 
 ## What is Celest?
-Celest is a fully managed cloud platform that enables you to build your backend in Dart. You can build the use cases you need without needing additional tooling or context switching to different programming languages. Since you write your backend in Dart, Celest also enables you to share logic and code between your Flutter app and your backend.
+Celest is a fully managed cloud platform built for Flutter developers that enables you to build your backend in Dart. You can build the use cases you need without needing additional tooling or context switching to different programming languages. Since you write your backend in Dart, Celest also enables you to share logic and code between your Flutter app and your backend.
 
 ## How do I use Celest?
 You primarily interact with Celest using the Celest CLI. Once you download and install the CLI, run the `celest start` command to create a new `celest` folder in your Flutter project which will contain all of your backend logic. Use the Celest CLI to build your project locally and then use the code-generated client to connect to your backend. Once you feel confident with your changes, use the CLI to deploy your backend and have it be completely managed by Celest.
