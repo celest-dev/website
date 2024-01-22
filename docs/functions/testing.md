@@ -28,7 +28,7 @@ void main() {
 }
 ```
 
-You can then run your tests by navigating to your `celest/test` folder in your terminal, and then running the following command:
+Run your tests by navigating to your `celest/test` folder in your console, and then running the following command:
 
 ```shell
 dart test
