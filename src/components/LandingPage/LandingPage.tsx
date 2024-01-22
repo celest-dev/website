@@ -49,9 +49,6 @@ const LandingPage = () => {
                 title="app/celest/apis/my_api.dart  ←  Your API"
               >
                 {`
-import 'package:celest/celest.dart';
-import 'package:celest/api.dart' as api;
-
 String sayHello(String name) {
   return 'Hello, $name!';
 }`.trim()}
