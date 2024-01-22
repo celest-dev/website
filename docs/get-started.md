@@ -35,7 +35,9 @@ flutter_app/
     ├── functions/
     │   └── greeting.dart # Function definition
     │── lib/
-    │   └── client.dart # Connects your flutter app to the backend
+    │   │── client.dart # Connects your flutter app to the backend
+    │   ├── models.dart # contains all custom data types
+    │   └── exceptions # contains all custom error exceptions
     ├── test/ # Folder for adding tests to your backend
     └── config/
         └── env.dart # Environment variables
