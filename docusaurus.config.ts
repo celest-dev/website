@@ -224,12 +224,6 @@ const config: Config = {
           className: "custom-navbar-img",
         },
         {
-          to: "https://www.linkedin.com/company/celest-dev/",
-          html: '<img src="/img/linkedin-black.svg" class="navbar-custom-image" alt="LinkedIn Page" />',
-          position: "right",
-          className: "custom-navbar-img",
-        },
-        {
           to: "https://www.youtube.com/@celest-dev",
           html: '<img src="/img/youtube.svg" class="navbar-custom-image" alt="Youtube Channel" />',
           position: "right",
