@@ -4,14 +4,14 @@ sidebar_position: 10
 
 # Installing 3rd party Dart packages
 
-Your Celest backend is a pure Dart application. So any Dart packages which can be used in a Dart app can be used in your functions. For example, to communicate with systems outside of Celest, you can use the `http`, `dio`, or any other package you are familiar with.
+Your Celest backend is a pure Dart application. Any Dart packages which can be used in a Dart app can be used in your functions. For example, to communicate with systems outside of Celest, you could use `package:http`, `package:dio`, or any other HTTP client compatible with pure Dart.
 
 ## Adding a Dart package to your backend
 
-To add a package for use in your backend, navigate in your terminal to the `<Flutter_App>/celest` folder and then run the `dart pub add <package-name>` command.
+To add a package for use in your backend, navigate in your terminal to the `<flutter_app>/celest` folder and then run the `dart pub add <package-name>` command.
 
 ```shell
-$ dart pub add <Package-Name>
+$ dart pub add <package-name>
 ```
 
 ## Next steps
