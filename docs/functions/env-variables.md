@@ -20,7 +20,7 @@ Environment variables you set are only accessible in your backend.
 
 ## Updating environment variables
 
-In order to change multiple environment variables and their values, create a `.env` file and drop it in the `<flutter_app>/celest/config/` directory. When you run the `celest start` command in your console, your environment variables will automatically be updated with the values in your `.env` file.
+In order to change multiple environment variables and their values, create a `.env` file and drop it in the `<Flutter_App>/celest/config/` directory. When you run the `celest start` command in your console, your environment variables will automatically be updated with the values in your `.env` file.
 
 ## Using environment variables with Celest Functions
 
