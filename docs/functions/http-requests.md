@@ -21,7 +21,7 @@ The following is a list of the HTTP response code conventions used by Celest.
 
 ## Error formats
 
-When a function fails with an exception or error, the response will carry a 4xx/5xx status code and JSON body with an `error` key. If the exception is a user-defined exception type, the `error` field itself is encoded as a JSON message.
+When a function fails with an exception or error, the HTTP response will carry a 4xx/5xx status code and JSON body with an `error` key. If the exception is a user-defined exception type, the `error` field itself is encoded as a JSON message.
 
 For example, let us assume you have a custom exception called `MyException` type defined in the example below.
 
