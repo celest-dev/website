@@ -52,7 +52,6 @@ const LandingPage = () => {
 import 'package:celest/celest.dart';
 import 'package:celest/api.dart' as api;
 
-@api.authenticated()
 String sayHello(String name) {
   return 'Hello, $name!';
 }`.trim()}
