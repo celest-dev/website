@@ -86,9 +86,9 @@ const DownloadPage = () => {
   const OSCard = ({ osName, downloadLink, architecture }) => {
     let Icon: IconType | null;
     switch (osName) {
-      // case "Windows":
-      //   Icon = FaWindows;
-      //   break;
+      case "Windows":
+        Icon = FaWindows;
+        break;
       case "Apple":
         Icon = FaApple;
         break;
@@ -136,6 +136,7 @@ const DownloadPage = () => {
     if (
       !os ||
       os === "Unknown" ||
+      os === "Windows" ||
       !architecture ||
       architecture === "Unknown"
     ) {
