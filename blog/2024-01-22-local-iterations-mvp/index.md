@@ -12,10 +12,6 @@ It's with immense excitement that we write our first blog post announcing the fi
 
 Celest is a managed cloud platform that enables Flutter developers to build their backends in Dart, without any additional tooling. With this release, we are making our CLI and Celest Functions available to you to build and experiment with locally. In response to the excited reaction we’ve received from the Flutter community, we chose to release this version now so that we can give you a taste of the Celest experience and get your feedback early.
 
-The following is a video that shows you the installation steps and a quick demo of the Celest CLI and functions.
-
-TODO: Video placeholder.
-
 ## Why use Celest?
 
 Celest and its Functions offering enable you to write custom business logic in Dart that runs in the cloud. Celest Functions is the first "Cloud Widget" we are introducing to help bridge the gap of building backend components completely in Dart. Since Celest Functions are just Dart functions, they enable you to reuse code between your Flutter app and your backend with full type safety between the two. All of the third-party packages you're familiar with from the Dart ecosystem can now be used in your backend.
