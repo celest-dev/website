@@ -57,4 +57,4 @@ However, if the function threw a `StateError`, it would look like this where the
 
 ## Next steps
 
-You have now learned about the conventions that Celest uses when passing data between your backend and your Flutter application, in addition to the format of the request/response and the HTTP response codes supported. With this knowledge, you can now integrate with your Celest Functions directly using HTTP calls if you are not using a Flutter app.
+You have now learned about the conventions that Celest uses when passing data between your backend and your Flutter application, in addition to the format of the request/response and the HTTP response codes supported. With this knowledge, know know how to connect to your Celest Functions directly using HTTP calls if you are not using a Flutter app.
