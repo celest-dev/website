@@ -8,7 +8,7 @@ You can create custom exception types in your backend to throw specific errors a
 
 ## Using custom exceptions
 
-Below is an example of how to define a custom exception. You can create exceptions in any Dart file inside your `celest` folder. For this example, the exception type is defined in `<flutter_app>/celest/functions/my_exception.dart`.
+Below is an example of how to define a custom exception. You can create exceptions inside your `celest/lib/exceptions.dart` file.
 
 ```dart
 class MyException implements Exception {
@@ -23,7 +23,7 @@ You can then throw these exceptions in your Celest Functions whenever needed as 
 ```dart
 import 'package:celest/celest.dart';
 
-import 'my_exception.dart';
+import 'package:celest_backend/exceptions.dart';
 
 Future<String> sayHello(
   FunctionContext context, 
@@ -41,7 +41,7 @@ Future<String> sayHello(
 In your Flutter app, the same `MyException` type will be thrown by the generated client if an error occurs.
 
 ```dart
-import 'celest/client.dart' as celest;
+import 'package:celest_backend/client.dart';
 
 Future<String> getGreeting(String name) async {
   try {

@@ -4,7 +4,7 @@ sidebar_position: 11
 
 # Using HTTP calls
 
-If you'd like to use your Celest Functions outside of your Flutter/Dart app, you still can! Celest Functions are exposed as HTTP endpoints which can be called via any HTTP client from any programming language or toolchain.
+If you'd like to use your Celest Functions outside of your Flutter app, you still can! Celest Functions are exposed as HTTP endpoints which can be called via any HTTP client from any programming language or toolchain.
 
 ## Celest's HTTP conventions
 
@@ -21,7 +21,7 @@ The following is a list of the HTTP response code conventions used by Celest.
 
 ## Error formats
 
-When a function fails with an exception or error, the response will carry a 4xx/5xx status code and JSON body with an `error` key. If the exception is a user-defined exception type, the `error` field itself is encoded as a JSON message.
+When a function fails with an exception or error, the HTTP response will carry a 4xx/5xx status code and JSON body with an `error` key. If the exception is a user-defined exception type, the `error` field itself is encoded as a JSON message.
 
 For example, let us assume you have a custom exception called `MyException` type defined in the example below.
 
@@ -57,4 +57,4 @@ However, if the function threw a `StateError`, it would look like this where the
 
 ## Next steps
 
-You have now learned about the conventions that Celest uses when passing data between your backend and your Flutter application, in addition to the format of the request/response and the HTTP response codes supported. With this knowledge, you can now integrate with your Celest Functions directly using HTTP calls if you are not using a Flutter app.
+You have now learned about the conventions that Celest uses when passing data between your backend and your Flutter application, in addition to the format of the request/response and the HTTP response codes supported. With this knowledge, you now know how to connect to your Celest Functions directly using HTTP calls if you are not using a Flutter app.

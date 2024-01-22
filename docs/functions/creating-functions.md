@@ -8,7 +8,7 @@ sidebar_position: 3
 Please complete [setting up Celest](/docs/get-started.md) prior to reading this guide.
 :::
 
-Creating functions with Celest enables you to connect and aggregate information from different parts of your backend, and build custom business logic that runs completely in the cloud. You define your functions as regular Dart functions, and Celest takes care of setting up and managing the backend for you.
+Creating functions with Celest enables you to connect and aggregate information from different parts of your backend, and build custom business logic that runs completely in the cloud. You define your functions as regular Dart functions, and Celest takes care of deploying and managing the backend for you.
 
 
 <!-- TODO: Determine if I need another image here for explaining functions ![Function Call Flow](img/function.png) -->
@@ -17,19 +17,9 @@ Creating functions with Celest enables you to connect and aggregate information 
 
 To get started with building your first function, navigate to the `<flutter_app>/celest/functions/` folder and create a file named `<function_file>.dart`. You can create as many function files as you want in this directory. Think of each file as a way to organize and create multiple Celest Functions under the same path.
 
-:::tip
-Access to your functions is denied by default. You’ll need to add the `@functions.public()` annotation to the top of the file for functions to be publicly accessible.
-
-You can enable public access to specific functions or for all functions in your file.
-:::
-
 When writing your Celest Functions, you define them as normal Dart functions as shown in the following code snippet.
 
 ```dart
-// Enables public access to all functions in this file.
-@functions.public()
-library;
-
 import 'package:celest/functions.dart' as functions;
 
 Future<String> sayHello(
@@ -45,7 +35,7 @@ Future<String> sayGoodbye(
 }
 ```
 
-The above code snippet is all you need to define your functions! You can now go to your terminal and run the following command.
+The above code snippet is all you need to define your functions! Go to your console and run the following command.
 
 ```shell
 celest start
@@ -61,7 +51,7 @@ The following code snippet is an example of how you would use the generated clie
 import 'package:flutter/material.dart';
 // imports the Celest code-generated client
 // highlight-next-line
-import 'package:flutter_app/celest/client.dart' as celest;
+import 'package:celest_backend/client.dart';
 
 void main() {
   // initializes Celest in your Flutter app
@@ -90,4 +80,4 @@ class MyApp extends StatelessWidget {
 
 ## Next steps
 
-You now know how to create Celest Functions and connect to them from your Flutter app. We have other guides to help explain how to use features such as [attaching middleware](/docs/functions/middleware.md), using [custom data types](/docs/functions/data-types.md), and [managing environment variables](/docs/functions/env-variables.md). 
+You now know how to create Celest Functions and connect to them from your Flutter app. We have other guides to help explain how to use features such as [logging](/docs/functions/logging.md), [using custom data types](/docs/functions/data-types.md), and [managing environment variables](/docs/functions/env-variables.md). 

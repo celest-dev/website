@@ -4,12 +4,12 @@ sidebar_position: 6
 
 # Using custom data types
 
-With Celest Functions, you can use any of the standard Dart types available such as `int` or `string`, and you can also use your own custom data types that you have created. Handling the transfer and formatting of data from your Flutter app to your backend, which is called serialization, is handled out-of-the-box in most cases. In situations requiring custom serialization, you can write your own logic which we can use instead for serializing the request/response of your Celest Functions.
+With Celest Functions, you can use any of the standard Dart types available such as `int` or `string`, and you can also use your own custom data types. Handling the transfer and formatting of data from your Flutter app to your backend, which is called serialization, is handled out-of-the-box in most cases. In situations requiring custom serialization, you can write your own logic which we can use instead for serializing the request/response of your Celest Functions.
 
 
 # Custom data type example
 
-Imagine you're working on an e-commerce application with an `Order` class defined in your codebase.
+Imagine you're working on an e-commerce application with an `Order` class defined in your codebase. In order to have Celest use that custom class, you need to place it in the `<Flutter_App>/celest/lib/models.dart` file.
 
 ```dart
 class Order {
@@ -39,20 +39,20 @@ class Price {
 }
 ```
 
-You can use this `Order` type in any Celest Function as both a parameter or return value, without the need to manually add serialization logic.
+Use this `Order` type in any Celest Function as both a parameter or return value, without the need to manually add serialization logic.
 
 ```dart
 import 'package:celest/celest.dart';
 
 // highlight-next-line
-import 'types/order.dart';
+import 'package:celest_backend/models.dart';
 
 Future<String> createOrder(
   FunctionContext context,
   // highlight-next-line
   Order customerOrder,
 ) async {
-	// ...
+  // your function logic goes here
 }
 ```
 
@@ -112,4 +112,4 @@ The resulting JSON response for the `currency` will now be returned as upper cas
 
 ## Next steps
 
-You have now learned about how Celest handles the serialization of requests/responses to your functions, and how to write your own custom serialization logic if needed. You can learn about more features of Celest Functions by following our guides for [defining custom exceptions](/docs/functions/exceptions.md) and [managing environment variables](/docs/functions/env-variables.md).
+You have now learned about how Celest handles the serialization of requests/responses to your functions, and how to use your own custom types and serialization logic. Learn about more features of Celest Functions by following our guides for [defining custom exceptions](/docs/functions/exceptions.md) and [managing environment variables](/docs/functions/env-variables.md).

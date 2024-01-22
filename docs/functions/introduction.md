@@ -6,11 +6,11 @@ description: Learn about Celest Functions' use cases.
 
 # Understanding Celest Functions
 
-Celest Functions are "Cloud Widgets" that enable you to run custom business logic in the cloud, all in Dart, with no additional tooling. With Celest, you can connect to your tools or existing backend resources to retrieve and communicate data to create the experience needed for your Flutter app. 
+Celest Functions are "Cloud Widgets" that enable you to run custom business logic in your backend, all in Dart, with no additional tooling. With Celest Functions, you are able to your existing data sources to create the experiences needed for your Flutter app. 
 
 ## Why would I want to use Celest Functions?
 
-Running functions in the cloud provides you with a separation layer between your business logic in the cloud, and the UI of your Flutter app. This also enables you to add features to your cloud functions while reducing the need to deploy a new version of your app to the app stores.
+Celest Functions enable you to integrate with your existing tools or data sources and serve that information to your Flutter app. Additionally, running Celest Functions in the cloud provides you with a separation layer between your business logic, and the UI of your Flutter app. This enables you to add features to your Celest Functions, without needing a new version deployed to the app store.
 
 ## Next steps
 
