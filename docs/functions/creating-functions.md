@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Hello Celest'),
+          title: const Text('Homepage'),
         ),
         body: Center(
           child: FutureBuilder(
