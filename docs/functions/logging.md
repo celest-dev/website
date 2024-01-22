@@ -36,7 +36,7 @@ When you call the function, these logs will be streamed locally and shown in the
 
 ```shell
 $ celest start
-Celest is running on http://localhost:7777…
+✓ Celest is running on http://localhost:7777
 
 [sayHello] Hello, Celest
 [sayHello] Goodbye, Celest
@@ -44,4 +44,4 @@ Celest is running on http://localhost:7777…
 
 ## Next steps
 
-You have now learned how to use Logging to help you understand how your Celest Functions are behaving, or debug specific scenarios or flows. You follow more of our guides to learn about [testing your functions](/docs/functions/testing.md) and [installing 3rd party Dart packages](/docs/functions/packages.md) that might be helpful for your use cases.
+You have now learned how to use Logging to help you understand how your Celest Functions are behaving, or debug specific scenarios or flows. Follow our guides to learn about [testing your functions](/docs/functions/testing.md) and [using 3rd party Dart packages](/docs/functions/packages.md).
