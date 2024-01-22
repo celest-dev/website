@@ -12,8 +12,8 @@ This guide will walk you through how to download and install the Celest CLI on y
 ## Prerequisites
 To use Celest in your Flutter app, you need the following prerequisites:
 
-1. Install [Flutter](https://docs.flutter.dev/get-started/install?gclid=CjwKCAiA44OtBhAOEiwAj4gpOfIZAnxSZ-twuX9JFVUCECOMzKyK65rK4h5o_v_d39cOsu6NrxefzBoCJK4QAvD_BwE&gclsrc=aw.ds)
-2. Start a new fluter project
+1. Install [Flutter](https://docs.flutter.dev/get-started/install)
+2. Create a new Flutter project (or use an existing one)
 3. [Download](/download) and install the Celest CLI
 
 That’s it! You are now ready to start building your backend - all in Dart!
@@ -32,15 +32,13 @@ The CLI will also create a folder in your project called `celest`, which will in
 ```shell
 flutter_app/
 └── celest/
+    ├── config/
+    │   └── .env            # Environment variables
     ├── functions/
-    │   └── greeting.dart # Function definition
-    │── lib/
-    │   │── client.dart # Connects your flutter app to the backend
-    │   ├── models.dart # contains all custom data types
-    │   └── exceptions # contains all custom error exceptions
-    ├── test/ # Folder for adding tests to your backend
-    └── config/
-        └── env.dart # Environment variables
+    │   │── client.dart     # Code-generated client for your Flutter app
+    │   ├── models.dart     # Custom API models
+    │   └── exceptions.dart # Custom API exceptions
+    └── test/               # Tests for your backend
     
 ```
 
@@ -48,7 +46,7 @@ flutter_app/
 
 :::info
 
-Deploying your backend is not currently available. You can still experiment and build your Celest backend locally. We are working hard to bring backend deployment and management to you. Please join our [waitlist](/) to stay updated on our progress.
+Deploying your backend is not currently available, but you can still experiment and build your Celest backend locally. We are working hard to bring backend deployment and management to you. Please join our [waitlist](/) to stay updated on our progress.
 
 :::
 

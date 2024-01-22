@@ -2,16 +2,17 @@
 sidebar_position: 6
 ---
 
-# Using custom data types
+# Defining custom data types
 
-With Celest Functions, you can use any of the standard Dart types available such as `int` or `string`, and you can also use your own custom data types. Handling the transfer and formatting of data from your Flutter app to your backend, which is called serialization, is handled out-of-the-box in most cases. In situations requiring custom serialization, you can write your own logic which we can use instead for serializing the request/response of your Celest Functions.
-
+With Celest Functions, you can use any of the core Dart types available such as `int`, `String`, and `DateTime`. You can also use your own custom data types. Celest will handle the transfer and formatting of data from your Flutter app to your backend, also known as serialization, out-of-the-box in most cases. In situations requiring custom serialization, you can write your own logic which will be used instead.
 
 # Custom data type example
 
-Imagine you're working on an e-commerce application with an `Order` class defined in your codebase. In order to have Celest use that custom class, you need to place it in the `<Flutter_App>/celest/lib/models.dart` file.
+Imagine you're working on an e-commerce application with an `Order` class defined in your codebase. In order to have Celest use that custom class, you need to place it in the `<flutter_app>/celest/lib/models.dart` file.
 
 ```dart
+// celest/lib/models.dart
+
 class Order {
   const Order ({
     required this.id,
@@ -39,20 +40,19 @@ class Price {
 }
 ```
 
-Use this `Order` type in any Celest Function as both a parameter or return value, without the need to manually add serialization logic.
+Use this `Order` type in any Celest Function as either a parameter or return value, without adding serialization logic.
 
 ```dart
-import 'package:celest/celest.dart';
+// celest/functions/orders.dart
 
 // highlight-next-line
 import 'package:celest_backend/models.dart';
 
 Future<String> createOrder(
-  FunctionContext context,
   // highlight-next-line
   Order customerOrder,
 ) async {
-  // your function logic goes here
+  // Function logic goes here
 }
 ```
 
@@ -60,12 +60,14 @@ When communicating with your backend, Celest will serialize the `Order` class as
 
 ```json
 {
-  "id": 123,
-  "customerName": "Celest",
-  "price": {
-    "currency": "usd",
-    "dollars": 100,
-    "cents": 34
+  "customerOrder": {
+    "id": 123,
+    "customerName": "Celest",
+    "price": {
+      "currency": "usd",
+      "dollars": 100,
+      "cents": 34
+    }
   }
 }
 ```
@@ -78,6 +80,8 @@ If you need custom handling for you serialization logic, simplify add a `fromJso
 Here, the `Price.toJson` method is used to upper-case the `currency` value.
 
 ```dart
+// celest/lib/models.dart
+
 class Price {
   // ...
 
@@ -97,15 +101,19 @@ class Price {
 
 The resulting JSON response for the `currency` will now be returned as upper case.
 
- ```json
+ ```diff
 {
-  "id": 123,
-  "customerName": "Celest",
-  "price": {
-    // highlight-next-line
-    "currency": "USD",
-    "dollars": 100,
-    "cents": 34
+  "customerOrder": {
+    "id": 123,
+    "customerName": "Celest",
+    "price": {
+      // highlight-start
+      "currency": "USD",
+-     "currency": "usd",
+      // highlight-end
+      "dollars": 100,
+      "cents": 34
+    }
   }
 }
 ```
