@@ -49,11 +49,7 @@ const LandingPage = () => {
                 title="app/celest/apis/my_api.dart  ←  Your API"
               >
                 {`
-import 'package:celest/celest.dart';
-import 'package:celest/api.dart' as api;
-
-@api.authenticated()
-String sayHello(String name) {
+String hello(String name) {
   return 'Hello, $name!';
 }`.trim()}
               </CodeBlock>
@@ -64,10 +60,10 @@ String sayHello(String name) {
                 title="app/lib/main.dart  ←  Your Flutter app"
               >
                 {`
-import 'celest/client.dart';
+import 'package:celest_backend/client.dart';
 
 Future<void> introduceMyself() async {
-  final res = await apis.myApi.sayHello('Celest');
+  final res = await celest.myApi.hello('Celest');
   print(res); // Hello, Celest!
 }`.trim()}
               </CodeBlock>
