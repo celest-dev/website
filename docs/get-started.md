@@ -32,7 +32,7 @@ The CLI will also create a folder in your project called `celest`, which will in
 flutter_app/
 └── celest/
     ├── functions/
-    │   ├── greeting.dart # a function definition
+    │   └── greeting.dart # a function definition
     ├── test/ # a folder for adding tests to your backend
     └── config/
         └── env.dart # environment variables
