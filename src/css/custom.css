@@ -75,9 +75,14 @@ html {
 }
 
 .navbar-custom-image {
-  margin-top: 0.5rem;
-  height: 30px;
-  width: 30px;
+  padding-top: 0.5rem;
+  height: 35px;
+  width: auto;
+}
+
+.discord-navbar-image {
+  width: 35px;
+  height: auto;
 }
 
 .navbar__toggle {
@@ -93,6 +98,12 @@ html {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+
+/* Prevents the first column in a table from wrapping inside the docs site */
+.markdown table td:first-child, .markdown table th:first-child {
+  white-space: nowrap;
+}
+
 @media (max-width: 520px) {
   :root {
     --ifm-code-font-size: 0.62rem;
@@ -230,6 +241,8 @@ pre code {
   outline: none;
 }
 
+
+
 .submit-button {
   cursor: pointer;
   background: var(--title-color);
@@ -256,6 +269,13 @@ pre code {
   min-width: 80px;
 }
 
+/* adjusts the color of comments in code snippets to make it more accessible */
+span.token.comment {
+  /* CSS properties */
+  color: rgb(113, 111, 111) !important;  /* Override color */
+  /* Add more properties as needed */
+}
+
 /* Removing margin from the bottom of the first paragraph of a list item in the about us page */
 .about-us li > p:first-of-type {
   margin: 0.2rem; /* Adjust the value as needed */
@@ -274,6 +294,24 @@ pre code {
   width: 100%;
   max-width: 400px;
   height: 250px;
+  border-radius: 20px;
+}
+
+
+/* Adjusting the size and positon of iframe videos in docs */
+#docs-videos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+#docs-videos iframe {
+  width: 100%;
+  border-radius: 20px;
+  /* max-width: 400px; */
+  height: 450px;
 }
 
 .categories-bottom-header-margin {
@@ -375,6 +413,135 @@ pre code {
   border-top: 1px dotted lightgrey;
 }
 
+.download-page {
+  margin: 2rem 10rem;
+}
+
+.download-page-title {
+  font-size: 2rem;
+  font-weight: 600;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.operating-system-download-image {
+  width: 50px; /* Reduce width as needed */
+  height: auto; /* This will maintain the aspect ratio of the icon */
+  margin: 0 auto; /* This centers the icon in its container */
+  padding-bottom: 1rem;
+}
+
+.operating-system-download-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 0 1rem 0;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 2rem;
+  max-width: 1100px;
+  gap: 2rem;
+}
+
+.operating-system-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.operating-system-card {
+  flex-basis: calc(33.333% - 4rem);
+  min-width: 250px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.download-page-subtitle{
+  font-size: 1.2rem;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+/* increase size of code words/blocks in headers for docs */
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+  font-size: 1.2rem;
+}
+
+/* center headers in the download page */
+.center-download-page-headers{
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+
+/* provide styling for the detected OS installer card in the download page */
+.detected-operating-system-card{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* add spacing for the detected OS installer section in the download page */
+.detected-operating-system-section{
+  padding: 1rem 0rem 4rem;
+}
+
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.operating-system-download-image {
+  margin-right: 10px;
+}
+
+.download-button:hover {
+  background-color: #333; /* Darker on hover */
+  color:white;
+}
+
+/* adds styling for detected image for operating system in the download page */
+.detected-system-download-image{
+  width: 70px;
+  height: auto; 
+  margin: 0 auto; /*This centers the icon in its container */
+}
+
+/* adds styling for the detected name and architecture in the download page */
+.detected-operating-system-name-top{
+  display:block;
+  color:white;
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.detected-operating-system-name-bottom{
+  display:block;
+  color:white;
+  margin-top: -0.5rem;
+  margin-bottom: 0;
+  margin-left: 0.5rem;
+  font-size: 2rem;
+  text-align: left;
+}
+
 /* Media query for medium screens */
 @media (max-width: 1000px) {
   .submit-form {
@@ -436,6 +603,12 @@ pre code {
 }
 
 @media (max-width: 430px) {
+
+  /* decrease margin and padding for smaller screens for the download page */
+  .download-page {
+    margin: 1rem 1rem;
+  }
+
   .hero-get-started {
     padding: 0 0 3rem 0;
   }

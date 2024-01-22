@@ -2,11 +2,13 @@
 sidebar_position: 7
 ---
 
-# Create Custom Exceptions
+# Defining custom exceptions
 
-You can create custom exception types in your backend to control how functions behave when there are errors. This enables you to have clear exceptions thrown in your Flutter app that you can react to.
+You can create custom exception types in your backend to throw specific errors and react to them accordingly in your Flutter app.
 
-Below is an example of how to define a custom exception. You can create exceptions in any folder inside your `celest` folder. For this example, the exception type is defined in `<flutter_app>/celest/functions/my_exception.dart`.
+## Using custom exceptions
+
+Below is an example of how to define a custom exception. You can create exceptions in any Dart file inside your `celest` folder. For this example, the exception type is defined in `<flutter_app>/celest/functions/my_exception.dart`.
 
 ```dart
 class MyException implements Exception {
@@ -16,7 +18,7 @@ class MyException implements Exception {
 }
 ```
 
-You can then throw these exceptions in your functions whenever needed as shown below.
+You can then throw these exceptions in your Celest Functions whenever needed as shown below.
 
 ```dart
 import 'package:celest/celest.dart';
@@ -29,6 +31,7 @@ Future<String> sayHello(
 ) async {
   // Perform custom validation
   if (name.isEmpty) {
+    // highlight-next-line
     throw MyException('Input cannot be empty');
  }
   return 'Hello, $name';
@@ -44,9 +47,15 @@ Future<String> getGreeting(String name) async {
   try {
     return await celest.functions.greeting.sayHello(name);
   // Catch the exception type defined in your backend
+  // highlight-start
   } on MyException catch (e) {
     print('Uh oh! Could not greet $name: $e');
     rethrow;
   }
+  // highlight-end
 }
 ```
+
+## Next steps
+
+You have now learned how to create and throw custom exceptions in your Celest Functions. We have additional guides to teach you about [managing environment variables](/docs/functions/env-variables.md) and [creating tests for your functions](/docs/functions/testing.md).

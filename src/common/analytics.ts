@@ -11,6 +11,9 @@ type EventProps = {
   category?: string;
   errorMessage?: String;
   success?: boolean;
+  downloadCLIAutoDetectOperatingSystem?: boolean;
+  downloadCLIOperatingSystemName?: string;
+  downloadCLIOperatingSystemArchitecture?: string;
 };
 
 export const recordEvent = (eventName: string, props?: EventProps) => {
