@@ -112,4 +112,4 @@ The resulting JSON response for the `currency` will now be returned as upper cas
 
 ## Next steps
 
-You have now learned about how Celest handles the serialization of requests/responses to your functions, and how to write your own custom serialization logic if needed. Learn about more features of Celest Functions by following our guides for [defining custom exceptions](/docs/functions/exceptions.md) and [managing environment variables](/docs/functions/env-variables.md).
+You have now learned about how Celest handles the serialization of requests/responses to your functions, and how to use your own custom types and serialization logic. Learn about more features of Celest Functions by following our guides for [defining custom exceptions](/docs/functions/exceptions.md) and [managing environment variables](/docs/functions/env-variables.md).
