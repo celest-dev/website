@@ -11,8 +11,10 @@ You can create custom exception types in your backend to throw specific errors a
 Below is an example of how to define a custom exception. You can create exceptions inside your `celest/lib/exceptions.dart` file.
 
 ```dart
-class MyException implements Exception {
-  const MyException(this.message);
+// celest/lib/exceptions.dart
+
+class BadNameException implements Exception {
+  const BadNameException(this.message);
 
   final String message;
 }
@@ -21,18 +23,15 @@ class MyException implements Exception {
 You can then throw these exceptions in your Celest Functions whenever needed as shown below.
 
 ```dart
-import 'package:celest/celest.dart';
+// celest/functions/greeting.dart
 
 import 'package:celest_backend/exceptions.dart';
 
-Future<String> sayHello(
-  FunctionContext context, 
-  String name,
-) async {
+Future<String> sayHello(String name) async {
   // Perform custom validation
   if (name.isEmpty) {
     // highlight-next-line
-    throw MyException('Input cannot be empty');
+    throw const BadNameException('Name cannot be empty');
  }
   return 'Hello, $name';
 }
@@ -48,7 +47,7 @@ Future<String> getGreeting(String name) async {
     return await celest.functions.greeting.sayHello(name);
   // Catch the exception type defined in your backend
   // highlight-start
-  } on MyException catch (e) {
+  } on BadNameException catch (e) {
     print('Uh oh! Could not greet $name: $e');
     rethrow;
   }

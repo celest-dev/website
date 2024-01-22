@@ -4,62 +4,54 @@ sidebar_position: 8
 
 # Managing environment variables
 
-Environment variables can be used to provide your Flutter app with environment-specific configuration from your backend. They allow you to keep configuration values separate from your codebase, improving the security and flexibility when connecting your Flutter app to different environments.
-
-:::info
-
-Multiple environment support is not currently available. You can now manage environment variables for your local development environment with Celest. We are working hard to bring backend deployment and management to you. Please join our [waitlist](/) to stay updated on our progress.
-
-:::
+Environment variables can be used to provide your Flutter app with environment-specific configuration. They allow you to keep configuration values separate from your codebase, improving flexibility when deploying your backend to different environments.
 
 :::tip
 
-Environment variables you set are only accessible in your backend.
+Environment variables are only accessible in your backend.
 
 :::
 
-## Updating environment variables
+## Creating environment variables
 
-In order to change multiple environment variables and their values, create a `.env` file and drop it in the `<Flutter_App>/celest/config/` directory. When you run the `celest start` command in your console, your environment variables will automatically be updated with the values in your `.env` file.
+In order to define environment variables and their values, create a `.env` file in the `<flutter_app>/celest/config/` directory. When you run the `celest start` command in your console, your environment variables will be read from the `.env` file and made available to your backend functions.
 
 ## Using environment variables with Celest Functions
 
-To ensure a function has access to environment variables when it runs, pass it as a parameter and annotate with the variable definition. In the following code snippet, the greeting service URL will be securely injected by the server when your function starts.
-
+To provide a function access to an environment variable when it runs, pass it as a parameter and annotate with the variable definition. In the following code snippet, a greeting service URL will be securely injected by the server when your function starts.
 
 :::tip 
 
-Annotated parameters (like `greetingUrl`) will not appear in the code-generated Celest client, but can be used in your backend when unit testing and mocking (see [testing your Celest Functions](/docs//functions/testing.md)).
+Annotated parameters (like `greetingUrl`) will not appear in the code-generated Celest client, but can be used in your backend when unit testing and mocking (see [Testing your functions](/docs/functions/testing.md)).
 
 :::
 
 ```dart
-import 'package:celest/celest.dart';
 import 'package:http/http.dart' as http;
 
+import '../resources.dart';
+
 Future<String> sayHello(
-  FunctionContext context, 
   String name, {
   // highlight-next-line
-  @envVariables.greetingUrl required String greetingUrl,
+  @env.greetingUrl required Uri greetingUrl,
 }) async {
-  // highlight-start
   // Call an external greeting service.
   final response = await http.post(
-    Uri.parse(greetingUrl).replace(path: '/sayHello'),
+    // highlight-next-line
+    greetingUrl.resolve('/say-hello'),
     body: jsonEncode({
       'name': name,
     }),
   );
-  // highlight-end
   if (response.statusCode != 200) {
-    return "An error has occured";
+    throw Exception("An error occured calling the greeting service");
   }
   return response.body;
 }
 ```
 
-With this example, the Celest Function has been granted access to the environment variable, and its value was accessed securely in the backend without it being exposed to the frontend code-generated Celest client in your Flutter app.
+When the Celest Function runs, it will automatically have access to the environment variable. Its value is stored securely and is never hard-coded in your codebase or in the deployed Celest Function.
 
 ## Next steps
 

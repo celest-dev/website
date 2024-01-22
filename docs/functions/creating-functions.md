@@ -5,51 +5,44 @@ sidebar_position: 3
 # Creating a function
 
 :::info
-Please complete [setting up Celest](/docs/get-started.md) prior to reading this guide.
+Please complete [Setting up Celest](/docs/get-started.md) prior to reading this guide.
 :::
 
-Creating functions with Celest enables you to connect and aggregate information from different parts of your backend, and build custom business logic that runs completely in the cloud. You define your functions as regular Dart functions, and Celest takes care of deploying and managing the backend for you.
-
+Create serverless functions with Celest to connect and aggregate information from different parts of your backend, and build custom business logic that runs completely in the cloud. You define your functions as regular Dart functions and Celest takes care of deploying and managing the backend for you.
 
 <!-- TODO: Determine if I need another image here for explaining functions ![Function Call Flow](img/function.png) -->
 
 ## Building Celest Functions  
 
-To get started with building your first function, navigate to the `<flutter_app>/celest/functions/` folder and create a file named `<function_file>.dart`. You can create as many function files as you want in this directory. Think of each file as a way to organize and create multiple Celest Functions under the same path.
+To get started building your first function, navigate to the `<flutter_app>/celest/functions/` folder and create a file named `<api_name>.dart`. You can create as many APIs as you want in this directory. Think of each file as a way to organize and group multiple Celest Functions of similar functionality into a single namespace.
 
-When writing your Celest Functions, you define them as normal Dart functions as shown in the following code snippet.
+Celest Functions are defined as top-level functions as shown below.
 
 ```dart
-import 'package:celest/functions.dart' as functions;
-
-Future<String> sayHello(
-  String name,
-) async {
+Future<String> sayHello(String name) async {
   return 'Hello, $name';
 }
 
-Future<String> sayGoodbye(
-  String name,
-) async {
+Future<String> sayGoodbye(String name) async {
   return 'Goodbye, $name';
 }
 ```
 
-The above code snippet is all you need to define your functions! Go to your console and run the following command.
+That's all you need to define your API! Go to your console and run the following command.
 
 ```shell
 celest start
 ```
 
-This command will spin up a local environment for you and watch for changes to your Celest Functions to test your changes, and it will also code-generate a Celest client for your frontend Flutter app to make it easier to connect to your Celest Functions.
+A local environment will spin up for you and watch for changes to your Celest Functions. A client is also generated for your which you can import in your Flutter app to automatically connect to your Celest Functions.
 
 ## Connecting to your Celest Functions
 
-The following code snippet is an example of how you would use the generated client in your `main.dart` file. The code snippet shows you how to connect to your Celest Function using the code-generated Celest client, and show a circular progress indicator as you await the response back from your backend.
+The following is an example of how you would use the generated client in your `main.dart` file to call a Celest Function and show the response from the backend.
 
 ```dart
 import 'package:flutter/material.dart';
-// imports the Celest code-generated client
+// Import the code-generated Celest client
 // highlight-next-line
 import 'package:celest_backend/client.dart';
 
@@ -65,14 +58,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      // Call your Celest Function using the code-generated client
-      // highlight-next-line
-      future: celest.functions.greeting.sayHello('Celest'),
-      builder: (_, snapshot) => switch (snapshot) {
-        AsyncSnapshot(:final data?) => Text(data),
-        _ => const CircularProgressIndicator(),
-      },
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Hello Celest'),
+        ),
+        body: Center(
+          child: FutureBuilder(
+            // Call your Celest Function using the code-generated client
+            // highlight-next-line
+            future: celest.functions.greeting.sayHello('Celest'),
+            builder: (_, snapshot) => switch (snapshot) {
+              AsyncSnapshot(:final data?) => Text(data),
+              AsyncSnapshot(:final error?) =>
+                Text('${error.runtimeType}: $error'),
+              _ => const CircularProgressIndicator(),
+            },
+          ),
+        ),
+      ),
     );
   }
 }
@@ -80,4 +84,4 @@ class MyApp extends StatelessWidget {
 
 ## Next steps
 
-You now know how to create Celest Functions and connect to them from your Flutter app. We have other guides to help explain how to use features such as [logging](/docs/functions/logging.md), [using custom data types](/docs/functions/data-types.md), and [managing environment variables](/docs/functions/env-variables.md). 
+You now know how to create Celest Functions and connect them to your Flutter app. We have other guides to help explain how to use features such as [logging](/docs/functions/logging.md), [using custom data types](/docs/functions/data-types.md), and [managing environment variables](/docs/functions/env-variables.md). 

@@ -137,6 +137,20 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: 'https://discord.gg/KtMAfSDXGQ',
+            from: '/discord',
+          }
+        ],
+      },
+    ]
+  ],
+
   themeConfig: {
     image: "img/open-graph.png",
     metadata: [
@@ -176,12 +190,12 @@ const config: Config = {
         process.env.NODE_ENV === "production"
           ? false
           : {
-              position: "left",
-              type: "doc",
-              to: "docs/overview.md",
-              docId: "overview",
-              label: "Docs",
-            },
+            position: "left",
+            type: "doc",
+            to: "docs/overview.md",
+            docId: "overview",
+            label: "Docs",
+          },
         process.env.NODE_ENV === "production"
           ? false
           : { to: "/download", label: "Download", position: "left" },
@@ -212,7 +226,7 @@ const config: Config = {
           className: "custom-navbar-img",
         },
         {
-          to: "https://discord.gg/KtMAfSDXGQ",
+          to: "https://celest.dev/discord",
           html: '<img src="/img/discord.png" class="navbar-custom-image discord-navbar-image" alt="Discord Server" />',
           position: "right",
           className: "custom-navbar-img",
@@ -237,7 +251,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.oneLight,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ["dart"],
+      additionalLanguages: ["dart", "json", "diff"],
     },
   } satisfies Preset.ThemeConfig,
 };

@@ -8,6 +8,9 @@ dependencies:
   '@docusaurus/core':
     specifier: ^3.0.1
     version: 3.1.0(@docusaurus/types@3.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
+  '@docusaurus/plugin-client-redirects':
+    specifier: ^3.1.0
+    version: 3.1.0(@docusaurus/types@3.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
   '@docusaurus/preset-classic':
     specifier: ^3.0.1
     version: 3.1.0(@algolia/client-search@4.22.1)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.13.0)(typescript@5.2.2)
@@ -1741,6 +1744,44 @@ packages:
       - supports-color
       - uglify-js
       - webpack-cli
+
+  /@docusaurus/plugin-client-redirects@3.1.0(@docusaurus/types@3.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-CuFbdciMGvtGYiIPSOpj5idsHOQUcqZWTLCmZV3ePhviekm4dRZm1+QK/BxigmSTL5ICJMGbtOQnz7bgFSWHqg==}
+    engines: {node: '>=18.0'}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      '@docusaurus/core': 3.1.0(@docusaurus/types@3.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
+      '@docusaurus/logger': 3.1.0
+      '@docusaurus/utils': 3.1.0(@docusaurus/types@3.1.0)
+      '@docusaurus/utils-common': 3.1.0(@docusaurus/types@3.1.0)
+      '@docusaurus/utils-validation': 3.1.0(@docusaurus/types@3.1.0)
+      eta: 2.2.0
+      fs-extra: 11.2.0
+      lodash: 4.17.21
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      tslib: 2.6.2
+    transitivePeerDependencies:
+      - '@docusaurus/types'
+      - '@parcel/css'
+      - '@rspack/core'
+      - '@swc/core'
+      - '@swc/css'
+      - bufferutil
+      - csso
+      - debug
+      - esbuild
+      - eslint
+      - lightningcss
+      - supports-color
+      - typescript
+      - uglify-js
+      - utf-8-validate
+      - vue-template-compiler
+      - webpack-cli
+    dev: false
 
   /@docusaurus/plugin-content-blog@3.1.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2):
     resolution: {integrity: sha512-iMa6WBaaEdYuxckvJtLcq/HQdlA4oEbCXf/OFfsYJCCULcDX7GDZpKxLF3X1fLsax3sSm5bmsU+CA0WD+R1g3A==}
