@@ -4,7 +4,7 @@ sidebar_position: 8
 
 # Managing environment variables
 
-Environment variables can be used to provide environment-specific configuration to your backend. They allow you to keep their values separate from your codebase by removing sensitive configuration information, improving the security flexibility when running in different environments.
+Environment variables can be used to provide your Flutter app with environment-specific configuration from your backend. They allow you to keep configuration values separate from your codebase, improving the security and flexibility when connecting your Flutter app to different environments.
 
 :::info
 
