@@ -146,6 +146,10 @@ const config: Config = {
             to: "https://discord.gg/KtMAfSDXGQ",
             from: "/discord",
           },
+          {
+            to: '/docs/overview',
+            from: '/docs',
+          }
         ],
       },
     ],
