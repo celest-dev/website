@@ -18,18 +18,18 @@ Environment variables you set are only accessible in your backend.
 
 :::
 
-## Updating environment variables with `.env` file
+## Updating environment variables
 
-In order to change multiple environment variables and their values using a `.env` file, create a `.env` file and drop it in the `<flutter_app>/celest/config/` directory. When you run the `celest start` command in your console, your environment variables will automatically be updated with the values in your `.env` file.
+In order to change multiple environment variables and their values, create a `.env` file and drop it in the `<flutter_app>/celest/config/` directory. When you run the `celest start` command in your console, your environment variables will automatically be updated with the values in your `.env` file.
 
 ## Using environment variables with Celest Functions
 
-To ensure a function has access to the variable when it runs, pass it as a parameter and annotate with the variable definition. Here, the greeting service URL will be securely injected by the server when your function starts.
+To ensure a function has access to environment variables when it runs, pass it as a parameter and annotate with the variable definition. In the following code snippet, the greeting service URL will be securely injected by the server when your function starts.
 
 
 :::tip 
 
-Annotated parameters (like `greetingUrl`) will not appear in the code-generated Celest client, but can be used in your backend when unit testing and mocking (see [Testing your backend resources](/docs//functions/testing.md)).
+Annotated parameters (like `greetingUrl`) will not appear in the code-generated Celest client, but can be used in your backend when unit testing and mocking (see [testing your Celest Functions](/docs//functions/testing.md)).
 
 :::
 
@@ -43,6 +43,7 @@ Future<String> sayHello(
   // highlight-next-line
   @envVariables.greetingUrl required String greetingUrl,
 }) async {
+  // highlight-start
   // Call an external greeting service.
   final response = await http.post(
     Uri.parse(greetingUrl).replace(path: '/sayHello'),
@@ -50,19 +51,11 @@ Future<String> sayHello(
       'name': name,
     }),
   );
+  // highlight-end
   if (response.statusCode != 200) {
-    throw GreetingException(
-      'Failed to say hello to $name: ${response.body}',
-    );
+    return "An error has occured";
   }
   return response.body;
-}
-
-// Custom exception for my Celest Function
-class GreetingException implements Exception {
-  const GreetingException(this.message);
-
-  final String message;
 }
 ```
 
