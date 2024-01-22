@@ -199,9 +199,7 @@ const config: Config = {
           docId: "overview",
           label: "Docs",
         },
-        process.env.NODE_ENV === "production"
-          ? false
-          : { to: "/blog", label: "Blog", position: "left" },
+        { to: "/blog", label: "Blog", position: "left" },
         {
           docid: "about-us",
           to: "/about-us",
