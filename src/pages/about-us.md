@@ -26,9 +26,9 @@ We applied to Y Combinator with nothing more than an idea and a vision. We were 
 
 To learn more about our journey to YC, check out our official [listing](https://www.ycombinator.com/companies/celest) and our founder/demo videos below.
 
-<div id="yc-videos">
-   <iframe src="https://www.youtube.com/embed/Br9aStq5u2Y?si=gAJfTve_vH8hO8lC" title="Celest | YC W24 - Founder Intro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-   <iframe src="https://www.youtube.com/embed/Sva7fHQfcsw?si=ZWVftkB6f7qq1UEd" title="Celest | YC W24 - Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div id="yc-videos" className="video-row">
+   <iframe src="https://www.youtube.com/embed/Br9aStq5u2Y?si=gAJfTve_vH8hO8lC" title="Celest | YC W24 - Founder Intro" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+   <iframe src="https://www.youtube.com/embed/Sva7fHQfcsw?si=ZWVftkB6f7qq1UEd" title="Celest | YC W24 - Demo" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
 </div>
 
 ## Our Tenets

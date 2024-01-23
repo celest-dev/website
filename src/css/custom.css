@@ -282,11 +282,14 @@ span.token.comment {
 }
 
 /* Align videos in a responsive row with some padding */
-#yc-videos {
+.video-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
+}
+
+#yc-videos {
   padding-bottom: 2rem;
 }
 
@@ -297,6 +300,9 @@ span.token.comment {
   border-radius: 20px;
 }
 
+#intro-video iframe {
+  border-radius: 20px;
+}
 
 /* Adjusting the size and positon of iframe videos in docs */
 #docs-videos {
