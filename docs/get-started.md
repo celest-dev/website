@@ -34,12 +34,12 @@ flutter_app/
 └── celest/
     ├── config/
     │   └── .env            # Environment variables
-    ├── functions/
+    ├── functions/          # Celest Functions folder
+    ├── lib/
     │   │── client.dart     # Code-generated client for your Flutter app
     │   ├── models.dart     # Custom API models
     │   └── exceptions.dart # Custom API exceptions
     └── test/               # Tests for your backend
-    
 ```
 
 ## Deploying your backend resources
