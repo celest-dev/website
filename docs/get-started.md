@@ -35,6 +35,7 @@ flutter_app/
     ├── config/
     │   └── .env            # Environment variables
     ├── functions/          # Celest Functions folder
+    |   └── greeting.dart   # Example API file
     ├── lib/
     │   │── client.dart     # Code-generated client for your Flutter app
     │   ├── models.dart     # Custom API models
