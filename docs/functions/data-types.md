@@ -4,11 +4,11 @@ sidebar_position: 6
 
 # Defining custom data types
 
-With Celest Functions, you can use any of the core Dart types available such as `int`, `String`, and `DateTime`. You can also use your own custom data types. Celest will handle the transfer and formatting of data from your Flutter app to your backend, also known as serialization, out-of-the-box in most cases. In situations requiring custom serialization, you can write your own logic which will be used instead.
+With Celest Functions, you can use any of the core Dart types available such as `int`, `String`, and `DateTime`. You can also use your custom data types. Celest will handle the transfer and formatting of data from your Flutter app to your backend, also known as serialization, out-of-the-box in most cases. In situations requiring custom serialization, you can write your logic which will be used instead.
 
 # Custom data type example
 
-Imagine you're working on an e-commerce application with an `Order` class defined in your codebase. In order to have Celest use that custom class, you need to place it in the `<flutter_app>/celest/lib/models.dart` file.
+Imagine you're working on an e-commerce application with an `Order` class defined in your codebase. To have Celest use that custom class, you need to place it in the `<flutter_app>/celest/lib/models.dart` file.
 
 ```dart
 // celest/lib/models.dart
@@ -75,7 +75,7 @@ When communicating with your backend, Celest will serialize the `Order` class as
 
 ## Writing custom serialization logic
 
-If you need custom handling for you serialization logic, simplify add a `fromJson` and `toJson` methods to your data type. Celest will use your custom `fromJson`/`toJson` implementations instead when transmitting the type to and from your backend.
+If you need custom handling for your serialization logic, add the `fromJson` and `toJson` methods to your data type. Celest will use your custom `fromJson`/`toJson` implementations when transmitting the type to and from your backend.
 
 Here, the `Price.toJson` method is used to upper-case the `currency` value.
 
@@ -120,4 +120,4 @@ The resulting JSON response for the `currency` will now be returned as upper cas
 
 ## Next steps
 
-You have now learned about how Celest handles the serialization of requests/responses to your functions, and how to use your own custom types and serialization logic. Learn about more features of Celest Functions by following our guides for [defining custom exceptions](/docs/functions/exceptions.md) and [managing environment variables](/docs/functions/env-variables.md).
+You have now learned how Celest handles the serialization of requests/responses to your functions, and how to use your own custom types and serialization logic. Learn about more features of Celest Functions by following our guides for [defining custom exceptions](/docs/functions/exceptions.md) and [managing environment variables](/docs/functions/env-variables.md).
