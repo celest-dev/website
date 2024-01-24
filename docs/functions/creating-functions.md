@@ -14,7 +14,7 @@ Create serverless functions with Celest to connect and aggregate information fro
 
 ## Building Celest Functions  
 
-To get started building your first function, navigate to the `<flutter_app>/celest/functions/` folder and create a file named `<api_name>.dart`. You can create as many APIs as you want in this directory. Think of each file as a way to organize and group multiple Celest Functions of similar functionality into a single namespace.
+To get started building your first serverless cloud function, navigate to the `<flutter_app>/celest/functions/` folder and create a file named `<api_name>.dart`. You can create as many APIs as you want in this directory. Think of each file as a way to organize and group multiple Celest Functions of similar functionality into a single namespace.
 
 Celest Functions are defined as top-level functions as shown below.
 
