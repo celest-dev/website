@@ -3,7 +3,7 @@ sidebar_position: 4
 description: Learn more about Celest and how it helps you build the backend for your Flutter app.
 ---
 
-# CLI Commands Reference
+# CLI commands reference
 
 The following is a list of all the available commands from the Celest CLI. You can visit our [download](/download) page to install the Celest CLI on your development machine.
 

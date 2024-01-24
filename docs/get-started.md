@@ -1,12 +1,12 @@
 ---
 sidebar_position: 2
-title: Setting Up Celest
+title: Getting started
 description: Learn how to set up and use Celest in your Flutter project.
 ---
 
-# Setting up Celest
+# Getting started
 
-This guide will walk you through how to download and install the Celest CLI on your development machine. The Celest CLI is what powers the majority of the Celest experience.
+This guide will walk you through how to set up Celest on your development machine, and how to create a new project.
 
 
 ## Prerequisites
