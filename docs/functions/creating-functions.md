@@ -42,7 +42,7 @@ The following is an example of how you would use the generated client in your `m
 
 ```dart
 import 'package:flutter/material.dart';
-// Import the code-generated Celest client
+// Import the generated Celest client
 // highlight-next-line
 import 'package:celest_backend/client.dart';
 

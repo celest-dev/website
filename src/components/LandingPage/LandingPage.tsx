@@ -169,7 +169,7 @@ Future<void> introduceMyself() async {
             <h3 className="category-title">Dart Client</h3>
             <p className="category-description">
               Connect your Flutter app to your Celest project using a
-              code-generated client.
+              generated client.
             </p>
           </div>
           <div className="category-card">

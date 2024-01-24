@@ -50,7 +50,7 @@ flutter_app/
     ├── functions/          # Celest Functions folder
     |   └── greeting.dart   # Example API file
     ├── lib/
-    │   │── client.dart     # Code-generated client for your Flutter app
+    │   │── client.dart     # Generated client for your Flutter app
     │   ├── models.dart     # Custom API models
     │   └── exceptions.dart # Custom API exceptions
     └── test/               # Tests for your backend
@@ -74,7 +74,7 @@ That's all you need to define your API! Now, you can connect your Flutter app to
 
 ```dart
 import 'package:flutter/material.dart';
-// Import the code-generated Celest client
+// Import the generated Celest client
 // highlight-next-line
 import 'package:celest_backend/client.dart';
 
