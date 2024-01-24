@@ -114,6 +114,8 @@ class MyApp extends StatelessWidget {
 }
 ```
 
+You have now set up your Celest project and integrated it into your Flutter app. Follow our [guides](/docs/functions/introduction.md) to learn more about using Celest Functions.
+
 ## Deploying your backend resources
 
 :::info
