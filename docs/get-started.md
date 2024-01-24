@@ -70,7 +70,7 @@ Future<String> sayGoodbye(String name) async {
 }
 ```
 
-That's all you need to define your API! Now, you can connect your Flutter app to your cloud functions by using the code-generated client as shown in the following example. Replace the contents of the `main.dart` file in your Flutter app to the following code-snippet.
+That's all you need to define your API! Now, you can connect your Flutter app to your cloud functions by using the Celest client as shown in the following example. Replace the contents of the `main.dart` file in your Flutter app to the following code-snippet.
 
 ```dart
 import 'package:flutter/material.dart';

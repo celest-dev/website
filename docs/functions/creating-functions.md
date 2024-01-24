@@ -38,7 +38,7 @@ A local environment will spin up for you and watch for changes to your Celest Fu
 
 ## Connecting to your Celest Functions
 
-The following is an example of how you would use the generated client in your `main.dart` file to call a Celest Function and show the response from the backend.
+The following is an example of how you would use the Celest client in your `main.dart` file to call a Celest Function and show the response from the backend.
 
 ```dart
 import 'package:flutter/material.dart';
