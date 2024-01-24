@@ -100,7 +100,7 @@ const DownloadPage = () => {
         break;
       default:
         Icon = null; // or some default icon
-        recordEvent("detected_operating_system", {downloadCLIAutoDetectOperatingSystem: true, downloadCLIOperatingSystemArchitecture: architecture, downloadCLIOperatingSystemName: osName})
+        recordEvent("detected_operating_system", {downloadCLIAutoDetectOperatingSystem: false, downloadCLIOperatingSystemArchitecture: architecture, downloadCLIOperatingSystemName: osName})
     }
     return (
       <div className="detected-operating-system-card">
