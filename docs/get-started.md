@@ -19,7 +19,20 @@ To use Celest in your Flutter app, you need the following prerequisites:
 That’s it! You are now ready to start building your backend - all in Dart!
 
 ## Starting a new Celest project
-After installing the Celest CLI, navigate to the root of your Flutter project in your console and run the following command.
+
+Start by first creating a new Flutter project. You can also just add Celest to an existing Flutter project. To start a new Flutter project, go to your console and run the following command.
+
+```shell
+$ flutter create <flutter_app>
+```
+
+Then, navigate to your new Flutter app directory.
+
+```shell
+$ cd <flutter_app>
+```
+
+Once you are in your Flutter app directory, run the following command to initialize your Celest project.
 
 ```shell    
 $ celest start
@@ -57,7 +70,7 @@ Future<String> sayGoodbye(String name) async {
 }
 ```
 
-That's all you need to define your API! Now, you can connect your Flutter app to your cloud functions by using the code-generated client as shown in the following example.
+That's all you need to define your API! Now, you can connect your Flutter app to your cloud functions by using the code-generated client as shown in the following example. Replace the contents of the `main.dart` file in your Flutter app to the following code-snippet.
 
 ```dart
 import 'package:flutter/material.dart';
