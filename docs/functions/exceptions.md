@@ -37,7 +37,7 @@ Future<String> sayHello(String name) async {
 }
 ```
 
-In your Flutter app, the same `MyException` type will be thrown by the generated client if an error occurs.
+In your Flutter app, the same `BadNameException` type will be thrown by the generated client if an error occurs.
 
 ```dart
 import 'package:celest_backend/client.dart';
