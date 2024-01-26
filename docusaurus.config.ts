@@ -4,7 +4,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 const config: Config = {
   title: "Celest - The Flutter cloud platform",
-  tagline: "A managed cloud platform to build full-stack Flutter and Dart apps",
+  tagline: "A platform-as-a-service to build full-stack Flutter and Dart apps",
   favicon: "img/logo.png",
 
   // Set the production url of your site here
@@ -173,7 +173,7 @@ const config: Config = {
       {
         name: "twitter:description",
         content:
-          "A managed cloud platform to build full-stack Flutter and Dart apps",
+          "A platform-as-a-service to build full-stack Flutter and Dart apps",
       },
       {
         name: "twitter:domain",

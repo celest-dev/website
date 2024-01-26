@@ -10,7 +10,7 @@ classname: about-us
 
 ## Who We Are
 
-Celest is a managed cloud platform for Flutter and Dart developers. We are introducing "Cloud Widgets", a set of primitives which enable you to declaratively define every piece of your backend and infrastructure in Dart.
+Celest is a platform-as-a-service for Flutter and Dart developers. It empowers Flutter developers with the tools and capabilities they need to become full-stack developers. We are building "Cloud Widgets", a set of features that you'll use to declaratively define every piece of your backend and infrastructure in Dart.
 
 We are a Y Combinator-backed company, and we are rapidly building to become the preferred choice of Flutter and Dart developers needing a holistic backend solution.
 
