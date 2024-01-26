@@ -83,7 +83,7 @@ Future<void> introduceMyself() async {
           <CodeBracketIcon className="feature-icon" />
           <h3 className="feature-title">All in Dart</h3>
           <p>
-            Build your backend features all in Dart, with no additional packages
+            Build your backend features in Dart, with no additional packages
             or tooling!
           </p>
         </div>
@@ -96,7 +96,7 @@ Future<void> introduceMyself() async {
         </div>
         <div className="feature-card">
           <CloudIcon className="feature-icon" />
-          <h3 className="feature-title">Managed Backend</h3>
+          <h3 className="feature-title">Serverless Backend</h3>
           <p>
             Use a single command <code>celest deploy</code> to update your
             backend.
