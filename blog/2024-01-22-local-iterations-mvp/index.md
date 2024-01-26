@@ -10,7 +10,7 @@ It's with immense excitement that we write our first blog post announcing the fi
 
 <!--truncate-->
 
-Celest is a Platform-as-a-Service that enables Flutter developers to build their backends in Dart, without any additional tooling. With this release, we are making our CLI and Celest Functions available to you to build and experiment with locally. In response to the excited reaction we’ve received from the Flutter community, we chose to release this version now so that we can give you a taste of the Celest experience and get your feedback early.
+Celest is a platform-as-a-service that enables Flutter developers to build their backends in Dart, without any additional tooling. With this release, we are making our CLI and Celest Functions available to you to build and experiment with locally. In response to the excited reaction we’ve received from the Flutter community, we chose to release this version now so that we can give you a taste of the Celest experience and get your feedback early.
 
 Check out our video that walks you through the Celest experience!
 
