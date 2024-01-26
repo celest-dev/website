@@ -10,6 +10,8 @@ type DownloadState = {
   downloadLink: string | null;
 };
 
+type DownloadType = "installer" | "archive";
+
 const DownloadPage = () => {
   const [detectedSystem, setDetectedSystem] = useState<DownloadState>({
     os: null,
@@ -88,19 +90,35 @@ const DownloadPage = () => {
     switch (osName) {
       case "Windows":
         Icon = FaWindows;
-        recordEvent("detected_operating_system", {downloadCLIAutoDetectOperatingSystem: true, downloadCLIOperatingSystemArchitecture: architecture, downloadCLIOperatingSystemName: osName})
+        recordEvent("detected_operating_system", {
+          downloadCLIAutoDetectOperatingSystem: true,
+          downloadCLIOperatingSystemArchitecture: architecture,
+          downloadCLIOperatingSystemName: osName,
+        });
         break;
       case "Apple":
         Icon = FaApple;
-        recordEvent("detected_operating_system", {downloadCLIAutoDetectOperatingSystem: true, downloadCLIOperatingSystemArchitecture: architecture, downloadCLIOperatingSystemName: osName})
+        recordEvent("detected_operating_system", {
+          downloadCLIAutoDetectOperatingSystem: true,
+          downloadCLIOperatingSystemArchitecture: architecture,
+          downloadCLIOperatingSystemName: osName,
+        });
         break;
       case "Linux":
         Icon = FaLinux;
-        recordEvent("detected_operating_system", {downloadCLIAutoDetectOperatingSystem: true, downloadCLIOperatingSystemArchitecture: architecture, downloadCLIOperatingSystemName: osName})
+        recordEvent("detected_operating_system", {
+          downloadCLIAutoDetectOperatingSystem: true,
+          downloadCLIOperatingSystemArchitecture: architecture,
+          downloadCLIOperatingSystemName: osName,
+        });
         break;
       default:
         Icon = null; // or some default icon
-        recordEvent("detected_operating_system", {downloadCLIAutoDetectOperatingSystem: false, downloadCLIOperatingSystemArchitecture: architecture, downloadCLIOperatingSystemName: osName})
+        recordEvent("detected_operating_system", {
+          downloadCLIAutoDetectOperatingSystem: false,
+          downloadCLIOperatingSystemArchitecture: architecture,
+          downloadCLIOperatingSystemName: osName,
+        });
     }
     return (
       <div className="detected-operating-system-card">
@@ -122,20 +140,37 @@ const DownloadPage = () => {
   };
 
   // set download link based on OS and architecture
-  const getDownloadLink = (os: string, architecture: string) => {
-    if (os === "Apple" && architecture === "Intel (x64)")
+  const getDownloadLink = (
+    os: string,
+    architecture: string,
+    type: DownloadType = "installer"
+  ) => {
+    if (os === "Apple" && architecture === "Intel (x64)") {
       return "https://releases.celest.dev/macos_x64/latest/celest-latest-macos_x64.pkg";
-    else if (os === "Apple" && architecture === "Silicon")
+    } else if (os === "Apple" && architecture === "Silicon") {
       return "https://releases.celest.dev/macos_arm64/latest/celest-latest-macos_arm64.pkg";
-    else if (os === "Linux" && architecture === "Intel (x64)")
-      return "https://releases.celest.dev/linux_x64/latest/celest-latest-linux_x64.zip";
-    else if (os === "Linux" && architecture === "ARM")
-      return "https://releases.celest.dev/linux_arm64/latest/celest-latest-linux_arm64.zip";
-    else if (os === "Windows" && architecture === "Intel (x64)")
+    } else if (os === "Linux") {
+      if (type == "installer") {
+        switch (architecture) {
+          case "Intel (x64)":
+            return "https://releases.celest.dev/linux_x64/latest/celest-latest-linux_x64.deb";
+          case "ARM":
+            return "https://releases.celest.dev/linux_arm64/latest/celest-latest-linux_arm64.deb";
+        }
+      } else {
+        switch (architecture) {
+          case "Intel (x64)":
+            return "https://releases.celest.dev/linux_x64/latest/celest-latest-linux_x64.zip";
+          case "ARM":
+            return "https://releases.celest.dev/linux_arm64/latest/celest-latest-linux_arm64.zip";
+        }
+      }
+    } else if (os === "Windows" && architecture === "Intel (x64)") {
       return "https://releases.celest.dev/windows_x64/latest/celest-latest-windows_x64.appx";
-    else if (os === "Windows" && architecture === "ARM")
+    } else if (os === "Windows" && architecture === "ARM") {
       return "https://releases.celest.dev/windows_arm64/latest/celest-latest-windows_arm64.appx";
-    else return "#"; // Placeholder link
+    }
+    return "#"; // Placeholder link
   };
 
   // render the right component based on detected OS
@@ -229,16 +264,39 @@ const DownloadPage = () => {
           <div className="operating-system-card">
             <FaLinux className="operating-system-download-image" />
             <h3 className="operating-system-card-title">Linux</h3>
-            <p>
+            <p className="no-bottom-margin">
+              {" "}
+              deb: &nbsp;
               <a
-                href={getDownloadLink("Linux", "ARM")}
+                href={getDownloadLink("Linux", "ARM", "installer")}
                 onClick={handleDownloadLinkEventTrigger(true, "ARM", "Linux")}
               >
                 ARM
               </a>{" "}
               /{" "}
               <a
-                href={getDownloadLink("Linux", "Intel (x64)")}
+                href={getDownloadLink("Linux", "Intel (x64)", "installer")}
+                onClick={handleDownloadLinkEventTrigger(
+                  true,
+                  "Intel (x64)",
+                  "Linux"
+                )}
+              >
+                Intel (x64)
+              </a>
+            </p>
+            <p className="no-bottom-margin">
+              {" "}
+              zip: &nbsp;
+              <a
+                href={getDownloadLink("Linux", "ARM", "archive")}
+                onClick={handleDownloadLinkEventTrigger(true, "ARM", "Linux")}
+              >
+                ARM
+              </a>{" "}
+              /{" "}
+              <a
+                href={getDownloadLink("Linux", "Intel (x64)", "archive")}
                 onClick={handleDownloadLinkEventTrigger(
                   true,
                   "Intel (x64)",

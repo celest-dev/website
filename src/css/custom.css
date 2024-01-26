@@ -94,9 +94,14 @@ html {
   overflow-wrap: anywhere;
   margin: 0 1rem;
 }
+
 .hero-code pre code {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+}
+
+.no-bottom-margin {
+  margin-bottom: 0.2rem;
 }
 
 /* Prevents the first column in a table from wrapping inside the docs site */
