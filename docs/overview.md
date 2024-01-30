@@ -8,7 +8,7 @@ description: Learn more about Celest and how it helps you build the backend for 
 
 ## What is Celest?
 
-Celest is a platform-as-a-service for Flutter developers that enables you to build your backend entirely in Dart. Build the use cases you need without any additional tooling or context switching to different programming languages. Since you are writing your backend in Dart, Celest enables you to share logic and code between your Flutter app and your backend.
+Celest is a Backend-as-a-Service for Flutter developers that enables you to build your backend entirely in Dart. Build the use cases you need without any additional tooling or context switching to different programming languages. Since you are writing your backend in Dart, Celest enables you to share logic and code between your Flutter app and your backend.
 
 ## How do I use Celest?
 
