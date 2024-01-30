@@ -118,7 +118,7 @@ Future<void> introduceMyself() async {
           </div>
           <div className="category-card">
             <FaDatabase className="category-icon" />
-            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" title="coming soon!" />
+            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" title="Coming soon!" />
             <h3 className="category-title">Data</h3>
             <p className="category-description">
               Define your data schema, relationships, and authorization rules in
