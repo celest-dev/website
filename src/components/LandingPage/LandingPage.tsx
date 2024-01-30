@@ -38,6 +38,7 @@ const LandingPage = () => {
                     src="/img/yc-badge.svg"
                     alt="YC Logo"
                     className="yc-image"
+                    title="Y Combinator"
                   />
                 </a>
               </div>
@@ -117,7 +118,7 @@ Future<void> introduceMyself() async {
           </div>
           <div className="category-card">
             <FaDatabase className="category-icon" />
-            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
+            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" title="coming soon!" />
             <h3 className="category-title">Data</h3>
             <p className="category-description">
               Define your data schema, relationships, and authorization rules in
@@ -126,7 +127,7 @@ Future<void> introduceMyself() async {
           </div>
           <div className="category-card">
             <FaLock className="category-icon" />
-            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
+            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" title="coming soon!" />
             <h3 className="category-title">Auth</h3>
             <p className="category-description">
               Authenticate your users with social sign-in, passwordless and
@@ -134,7 +135,7 @@ Future<void> introduceMyself() async {
             </p>
           </div>
           <div className="category-card">
-            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
+            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" title="coming soon!" />
             <MdPolicy className="category-icon" />
             <h3 className="category-title">Policies</h3>
             <p className="category-description">
@@ -143,7 +144,7 @@ Future<void> introduceMyself() async {
             </p>
           </div>
           <div className="category-card">
-            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" />
+            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" title="coming soon!" />
             <FaImages className="category-icon" />
             <h3 className="category-title">Content</h3>
             <p className="category-description">
@@ -186,19 +187,20 @@ Future<void> introduceMyself() async {
         <div className="team-info">
           <div className="team-member">
             <picture>
-              <source srcSet="/img/dillon.webp" type="image/webp" />
-              <img src="/img/dillon.png" alt="Dillon Nys" />
+              <source srcSet="/img/dillon.webp" type="image/webp" title="Dillon Nys - Founder, Engineering at Celest" />
+              <img src="/img/dillon.png" alt="Dillon Nys" title="Dillon Nys - Founder, Engineering at Celest" />
             </picture>
             <h3>Dillon Nys</h3>
             <span>Founder, Engineering</span>
             <div className="team-member-social">
               <Link href="https://twitter.com/dillonthedev">
                 <picture>
-                  <source srcSet="/img/x.webp" type="image/webp" />
+                  <source srcSet="/img/x.webp" type="image/webp" title="Dillon Nys twitter account" />
                   <img
                     className="navbar-custom-image"
                     src="/img/x.png"
-                    alt="Dillon's X/Twitter Page"
+                    alt="Dillon Nys X/Twitter account"
+                    title="Dillon Nys X/Twitter account"
                   />
                 </picture>
               </Link>
@@ -206,26 +208,28 @@ Future<void> introduceMyself() async {
                 <img
                   className="navbar-custom-image"
                   src="/img/linkedin-black.svg"
-                  alt="Dillon's LinkedIn Page"
+                  alt="Dillon Nys LinkedIn account"
+                  title="Dillon Nys LinkedIn account"
                 />
               </Link>
             </div>
           </div>
           <div className="team-member">
             <picture>
-              <source srcSet="/img/abdallah.webp" type="image/webp" />
-              <img src="/img/abdallah.png" alt="Abdallah Shaban" />
+              <source srcSet="/img/abdallah.webp" type="image/webp" title="Abdallah Shaban - Founder, Product at Celest" />
+              <img src="/img/abdallah.png" alt="Abdallah Shaban" title="Abdallah Shaban - Founder, Product at Celest" />
             </picture>
             <h3>Abdallah Shaban</h3>
             <span>Founder, Product</span>
             <div className="team-member-social">
               <Link href="https://twitter.com/AbdallahSh07" target="_blank">
                 <picture>
-                  <source srcSet="/img/x.webp" type="image/webp" />
+                  <source srcSet="/img/x.webp" type="image/webp" title="Abdallah Shaban Twitter/X account" />
                   <img
                     className="navbar-custom-image"
                     src="/img/x.png"
-                    alt="Abdallah's X/Twitter Page"
+                    alt="Abdallah Shaban X/Twitter account"
+                    title="Abdallah Shaban Twitter/X account"
                   />
                 </picture>
               </Link>
@@ -233,7 +237,8 @@ Future<void> introduceMyself() async {
                 <img
                   className="navbar-custom-image"
                   src="/img/linkedin-black.svg"
-                  alt="Abdallah's LinkedIn Page"
+                  alt="Abdallah Shaban LinkedIn account"
+                  title="Abdallah Shaban LinkedIn account"
                 />
               </Link>
             </div>
