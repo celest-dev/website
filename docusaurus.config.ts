@@ -173,7 +173,7 @@ const config: Config = {
       {
         name: "twitter:description",
         content:
-          "A backend-as-a-service to build full-stack Flutter and Dart apps",
+          "A backend-as-a-service (BaaS) to build full-stack Flutter and Dart apps",
       },
       {
         name: "twitter:domain",
