@@ -9,6 +9,7 @@ import { FaLock, FaDatabase, FaImages, FaServer } from "react-icons/fa";
 import { FiCloudLightning } from "react-icons/fi";
 import { MdPolicy, MdOutlineComputer } from "react-icons/md";
 import CodeBlock from "@theme/CodeBlock";
+import Calendar from "./calendar";
 
 import EmailForm from "./EmailForm";
 import Link from "@docusaurus/Link";
@@ -244,6 +245,7 @@ Future<void> introduceMyself() async {
             </div>
           </div>
         </div>
+        <Calendar/>
       </section>
     </div>
   );
