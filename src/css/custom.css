@@ -109,6 +109,11 @@ html {
   white-space: nowrap;
 }
 
+/* Adjusts the margin on the calendar section on the homepage */
+.calendar{
+  margin-top: 1rem;
+}
+
 @media (max-width: 520px) {
   :root {
     --ifm-code-font-size: 0.62rem;
@@ -551,6 +556,11 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
   margin-left: 0.5rem;
   font-size: 2rem;
   text-align: left;
+}
+
+.calendar-div{
+  margin-top: 2rem;
+  text-align: center;
 }
 
 /* Media query for medium screens */
