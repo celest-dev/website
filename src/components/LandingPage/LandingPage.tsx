@@ -6,6 +6,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { AiFillApi } from "react-icons/ai";
 import { FaLock, FaDatabase, FaImages, FaServer } from "react-icons/fa";
+import { RiExternalLinkLine } from "react-icons/ri";
 import { FiCloudLightning } from "react-icons/fi";
 import { MdPolicy, MdOutlineComputer } from "react-icons/md";
 import CodeBlock from "@theme/CodeBlock";
@@ -21,6 +22,9 @@ const LandingPage = () => {
         <section className="hero">
           <div className="hero-inner">
             <div className="hero-content">
+              <div className="hero-new-release">
+                <a className="hero-new-release-link" href="/blog/local-iterations-release">🚀 Celest CLI available now <RiExternalLinkLine className="new-release-icon"/></a>
+              </div>
               <h1 className="header-title">
                 Build your backend,
                 <br /> Flutter style.

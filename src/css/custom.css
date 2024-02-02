@@ -563,6 +563,40 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
   text-align: center;
 }
 
+/* adds styling for the new release banner in the hero section of the homepage */
+.hero-new-release {
+  color: white;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 0.5rem; /* If you want to remove the bottom margin */
+  padding-right: 3rem;
+}
+
+/* styles the link for new releases on the homepage */
+.hero-new-release-link {
+  display: inline-block; /* Make the link behave like a block but fit content */
+  padding: 0.35rem 1rem; /* Adjust padding to your liking */
+  color: black; /* Text color */
+  background-color: white; /* Background color */
+  text-decoration: none; /* Remove underline */
+  border-radius: 20px; /* Rounded corners for the chip effect */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2); /* Optional: adds a slight shadow for depth */
+  white-space: nowrap; /* Keeps the chip text in one line */
+}
+
+.hero-new-release-link:hover {
+  color: white; /* Text color on hover */
+  background-color: #007bff; /* Background color on hover */
+  text-decoration: none; /* Ensure underline doesn't reappear on hover */
+}
+
+.new-release-icon{
+  vertical-align: middle;
+  transform: translateY(-0.1rem);
+}
+
 /* Media query for medium screens */
 @media (max-width: 1000px) {
   .submit-form {
@@ -618,8 +652,12 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
     flex-basis: calc(50% - 4rem);
   }
 
-  .categories-bottom-header-margin {
-    padding-bottom: 1rem;
+  .hero-new-release{
+    padding-right: 0;
+  }
+
+  .hero-new-release-link {
+    padding-right: 1rem;
   }
 }
 
