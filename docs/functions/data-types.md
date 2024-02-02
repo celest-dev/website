@@ -8,7 +8,7 @@ With Celest Functions, you can use any of the core Dart types available such as 
 
 :::info
 
-Celest does not support the following types:
+Celest does not support the following Dart types:
 - `Stream`
 - `Object`
 - `Dynamic`
