@@ -85,8 +85,8 @@ Future<void> introduceMyself() async {
           <CodeBracketIcon className="feature-icon" />
           <h3 className="feature-title">All in Dart</h3>
           <p>
-            Build your backend features in Dart, with no additional packages
-            or tooling!
+            Build your backend features in Dart, with no additional packages or
+            tooling!
           </p>
         </div>
         <div className="feature-card">
@@ -119,7 +119,11 @@ Future<void> introduceMyself() async {
           </div>
           <div className="category-card">
             <FaDatabase className="category-icon" />
-            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" title="Coming soon!" />
+            <img
+              src="/img/coming-soon.svg"
+              alt="Coming Soon Badge"
+              title="Coming soon!"
+            />
             <h3 className="category-title">Data</h3>
             <p className="category-description">
               Define your data schema, relationships, and authorization rules in
@@ -128,7 +132,11 @@ Future<void> introduceMyself() async {
           </div>
           <div className="category-card">
             <FaLock className="category-icon" />
-            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" title="coming soon!" />
+            <img
+              src="/img/coming-soon.svg"
+              alt="Coming Soon Badge"
+              title="coming soon!"
+            />
             <h3 className="category-title">Auth</h3>
             <p className="category-description">
               Authenticate your users with social sign-in, passwordless and
@@ -136,7 +144,11 @@ Future<void> introduceMyself() async {
             </p>
           </div>
           <div className="category-card">
-            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" title="coming soon!" />
+            <img
+              src="/img/coming-soon.svg"
+              alt="Coming Soon Badge"
+              title="coming soon!"
+            />
             <MdPolicy className="category-icon" />
             <h3 className="category-title">Policies</h3>
             <p className="category-description">
@@ -145,7 +157,11 @@ Future<void> introduceMyself() async {
             </p>
           </div>
           <div className="category-card">
-            <img src="/img/coming-soon.svg" alt="Coming Soon Badge" title="coming soon!" />
+            <img
+              src="/img/coming-soon.svg"
+              alt="Coming Soon Badge"
+              title="coming soon!"
+            />
             <FaImages className="category-icon" />
             <h3 className="category-title">Content</h3>
             <p className="category-description">
@@ -170,8 +186,8 @@ Future<void> introduceMyself() async {
             <FiCloudLightning className="category-icon-client" />
             <h3 className="category-title">Dart Client</h3>
             <p className="category-description">
-              Connect your Flutter app to your Celest project using a
-              generated client.
+              Connect your Flutter app to your Celest project using a generated
+              client.
             </p>
           </div>
           <div className="category-card">
@@ -188,15 +204,27 @@ Future<void> introduceMyself() async {
         <div className="team-info">
           <div className="team-member">
             <picture>
-              <source srcSet="/img/dillon.webp" type="image/webp" title="Dillon Nys - Founder, Engineering at Celest" />
-              <img src="/img/dillon.png" alt="Dillon Nys" title="Dillon Nys - Founder, Engineering at Celest" />
+              <source
+                srcSet="/img/dillon.webp"
+                type="image/webp"
+                title="Dillon Nys - Founder, Engineering at Celest"
+              />
+              <img
+                src="/img/dillon.png"
+                alt="Dillon Nys"
+                title="Dillon Nys - Founder, Engineering at Celest"
+              />
             </picture>
             <h3>Dillon Nys</h3>
             <span>Founder, Engineering</span>
             <div className="team-member-social">
               <Link href="https://twitter.com/dillonthedev">
                 <picture>
-                  <source srcSet="/img/x.webp" type="image/webp" title="Dillon Nys twitter account" />
+                  <source
+                    srcSet="/img/x.webp"
+                    type="image/webp"
+                    title="Dillon Nys twitter account"
+                  />
                   <img
                     className="navbar-custom-image"
                     src="/img/x.png"
@@ -217,15 +245,27 @@ Future<void> introduceMyself() async {
           </div>
           <div className="team-member">
             <picture>
-              <source srcSet="/img/abdallah.webp" type="image/webp" title="Abdallah Shaban - Founder, Product at Celest" />
-              <img src="/img/abdallah.png" alt="Abdallah Shaban" title="Abdallah Shaban - Founder, Product at Celest" />
+              <source
+                srcSet="/img/abdallah.webp"
+                type="image/webp"
+                title="Abdallah Shaban - Founder, Product at Celest"
+              />
+              <img
+                src="/img/abdallah.png"
+                alt="Abdallah Shaban"
+                title="Abdallah Shaban - Founder, Product at Celest"
+              />
             </picture>
             <h3>Abdallah Shaban</h3>
             <span>Founder, Product</span>
             <div className="team-member-social">
               <Link href="https://twitter.com/AbdallahSh07" target="_blank">
                 <picture>
-                  <source srcSet="/img/x.webp" type="image/webp" title="Abdallah Shaban Twitter/X account" />
+                  <source
+                    srcSet="/img/x.webp"
+                    type="image/webp"
+                    title="Abdallah Shaban Twitter/X account"
+                  />
                   <img
                     className="navbar-custom-image"
                     src="/img/x.png"
@@ -245,7 +285,12 @@ Future<void> introduceMyself() async {
             </div>
           </div>
         </div>
-        <Calendar/>
+      </section>
+      <section className="calendar">
+        <h2 className="middle-header">Schedule a call</h2>
+        <div className="calendar-div">
+          <Calendar />
+        </div>
       </section>
     </div>
   );
