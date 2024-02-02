@@ -45,8 +45,6 @@ The CLI will also create a folder in your project called `celest`, which will in
 ```shell
 flutter_app/
 └── celest/
-    ├── config/
-    │   └── .env            # Environment variables
     ├── functions/          # Celest Functions folder
     |   └── greeting.dart   # Example API file
     ├── lib/

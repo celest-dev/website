@@ -14,7 +14,7 @@ Environment variables are only accessible in your backend.
 
 ## Creating environment variables
 
-In order to define environment variables and their values, create a `.env` file in the `<flutter_app>/celest/config/` directory. When you run the `celest start` command in your console, your environment variables will be read from the `.env` file and made available to your backend functions.
+To define environment variables and their values, create a `config` folder inside the `celest` folder, and then create a `.env` file inside it. When you run the `celest start` command in your console, your environment variables will be read from the `.env` file and made available to your Celest backend locally.
 
 ## Using environment variables with Celest Functions
 

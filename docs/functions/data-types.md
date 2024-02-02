@@ -6,6 +6,16 @@ sidebar_position: 6
 
 With Celest Functions, you can use any of the core Dart types available such as `int`, `String`, and `DateTime`. You can also use your custom data types. Celest will handle the transfer and formatting of data from your Flutter app to your backend, also known as serialization, out-of-the-box in most cases. In situations requiring custom serialization, you can write your logic which will be used instead.
 
+:::info
+
+Celest does not support the following Dart types as parameter or return types. `Object` and `dynamic` may only be used as the value type of a `Map`.
+
+- `Stream`
+- `Object`
+- `dynamic`
+
+:::
+
 # Custom data type example
 
 Imagine you're working on an e-commerce application with an `Order` class defined in your codebase. To have Celest use that custom class, you need to place it in the `<flutter_app>/celest/lib/models.dart` file.
