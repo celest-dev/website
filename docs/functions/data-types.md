@@ -8,10 +8,11 @@ With Celest Functions, you can use any of the core Dart types available such as 
 
 :::info
 
-Celest does not support the following Dart types:
+Celest does not support the following Dart types as parameter or return types. `Object` and `dynamic` may only be used as the value type of a `Map`.
+
 - `Stream`
 - `Object`
-- `Dynamic`
+- `dynamic`
 
 :::
 
