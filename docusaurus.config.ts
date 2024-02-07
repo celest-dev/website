@@ -115,17 +115,13 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          // Remove this to remove the "edit this page" links.
           editUrl:
             "https://github.com/celest-dev/website/tree/main/",
           sidebarCollapsed: false,
-          // sidebarCollapsible: false
         },
         blog: {
           showReadingTime: false,
           blogTitle: "Celest Blog",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             "https://github.com/celest-dev/website/tree/main/",
         },
