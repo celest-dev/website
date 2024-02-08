@@ -7,11 +7,9 @@ const config: Config = {
   tagline: "A backend-as-a-service (BaaS) to build full-stack Flutter and Dart apps",
   favicon: "img/logo.png",
 
-  // Set the production url of your site here
   url: "https://celest.dev",
   baseUrl: "/",
 
-  // GitHub pages deployment config.
   organizationName: "celest-dev",
   projectName: "website",
   deploymentBranch: "gh-pages",
@@ -20,9 +18,6 @@ const config: Config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
