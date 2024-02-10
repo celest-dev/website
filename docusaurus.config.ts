@@ -220,7 +220,7 @@ const config: Config = {
       ].filter(Boolean) as any,
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} Teo, Inc.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Teo, Inc. (Celest)`,
     },
     prism: {
       theme: prismThemes.oneLight,
