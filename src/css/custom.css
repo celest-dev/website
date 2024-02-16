@@ -89,6 +89,13 @@ html {
   color: black;
 }
 
+.hero-media video {
+  width: 90%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 20px;
+}
+
 .hero-code {
   white-space: pre-wrap;
   overflow-wrap: anywhere;

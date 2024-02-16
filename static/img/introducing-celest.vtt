@@ -1,0 +1,69 @@
+WEBVTT
+
+00:00:00.080 --> 00:00:01.640
+Developers are using Flutter to build
+
+00:00:01.660 --> 00:00:05.040
+cross-platform applications to quickly
+reach users on any device,
+
+00:00:05.040 --> 00:00:08.680
+but when it comes to building the back
+end, their time is spent switching between
+
+00:00:08.710 --> 00:00:11.340
+different programing
+languages and toolchains.
+
+00:00:11.370 --> 00:00:14.080
+Introducing Celest. Celest is a service
+
+00:00:14.110 --> 00:00:17.620
+that turns every Flutter developer
+into a full-stack developer.
+
+00:00:17.640 --> 00:00:19.320
+To start using Celest in your Flutter
+
+00:00:19.350 --> 00:00:23.540
+project, just run `celest start`,
+add your project name, and voila!
+
+00:00:23.570 --> 00:00:26.120
+Your Celest backend is
+created and ready to go.
+
+00:00:26.120 --> 00:00:29.160
+In the Celest folder,
+you create the APIs your app needs as
+
+00:00:29.190 --> 00:00:31.960
+top level Dart functions,
+and when you hit save,
+
+00:00:31.990 --> 00:00:35.340
+the Celest CLI detects the change
+and hot reloads your backend.
+
+00:00:35.360 --> 00:00:38.880
+In your Flutter app, you use the generated
+client from Celest to connect to your
+
+00:00:38.910 --> 00:00:43.160
+backend, and when you are confident
+with your changes, just run `celest deploy`,
+
+00:00:43.180 --> 00:00:46.500
+and your backend is
+deployed and managed for you.
+
+00:00:46.530 --> 00:00:48.900
+With Celest, no more context switching.
+
+00:00:48.930 --> 00:00:52.540
+You write every part of your Flutter
+app in Dart, right in your IDE.
+
+00:00:52.570 --> 00:00:56.080
+Learn more about Celest
+by visiting our website celest.dev

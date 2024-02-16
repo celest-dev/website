@@ -14,6 +14,23 @@ import Calendar from "./calendar";
 
 import EmailForm from "./EmailForm";
 import Link from "@docusaurus/Link";
+import { recordEvent } from "@site/src/common/analytics";
+
+const onVideoError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
+  recordEvent("video.error", {
+    category: "Video playback error",
+    success: false,
+    errorMessage: e.toString(),
+  });
+};
+
+const onVolumeChange = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
+  if (!e.currentTarget.muted) {
+    recordEvent("video.unmuted", {
+      category: "Video unmuted",
+    });
+  }
+}
 
 const LandingPage = () => {
   return (
@@ -49,7 +66,12 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="hero-media">
-              <CodeBlock
+              <video controls autoPlay muted poster="/img/introducing-celest.jpg" onError={onVideoError} onVolumeChange={onVolumeChange}>
+                <source src="/img/introducing-celest.webm" type="video/webm" />
+                <source src="/img/introducing-celest.mp4" type="video/mp4" />
+                <track default kind="captions" srcLang="en" src="/img/introducing-celest.vtt" />
+                {/* Fallback for browsers that don't support the video tag */}
+                <CodeBlock
                 className="hero-code"
                 language="dart"
                 title="app/celest/apis/my_api.dart  ←  Your API"
@@ -73,6 +95,7 @@ Future<void> introduceMyself() async {
   print(res); // Hello, Celest!
 }`.trim()}
               </CodeBlock>
+              </video>
             </div>
           </div>
         </section>
