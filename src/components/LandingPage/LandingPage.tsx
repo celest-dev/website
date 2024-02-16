@@ -220,7 +220,7 @@ Future<void> introduceMyself() async {
               />
             </picture>
             <h3>Dillon Nys</h3>
-            <span>Founder, Engineering</span>
+            <span>Founder</span>
             <div className="team-member-social">
               <Link href="https://twitter.com/dillonthedev">
                 <picture>
@@ -243,47 +243,6 @@ Future<void> introduceMyself() async {
                   src="/img/linkedin-black.svg"
                   alt="Dillon Nys LinkedIn account"
                   title="Dillon Nys LinkedIn account"
-                />
-              </Link>
-            </div>
-          </div>
-          <div className="team-member">
-            <picture>
-              <source
-                srcSet="/img/abdallah.webp"
-                type="image/webp"
-                title="Abdallah Shaban - Founder, Product at Celest"
-              />
-              <img
-                src="/img/abdallah.png"
-                alt="Abdallah Shaban"
-                title="Abdallah Shaban - Founder, Product at Celest"
-              />
-            </picture>
-            <h3>Abdallah Shaban</h3>
-            <span>Founder, Product</span>
-            <div className="team-member-social">
-              <Link href="https://twitter.com/AbdallahSh07" target="_blank">
-                <picture>
-                  <source
-                    srcSet="/img/x.webp"
-                    type="image/webp"
-                    title="Abdallah Shaban Twitter/X account"
-                  />
-                  <img
-                    className="navbar-custom-image"
-                    src="/img/x.png"
-                    alt="Abdallah Shaban X/Twitter account"
-                    title="Abdallah Shaban Twitter/X account"
-                  />
-                </picture>
-              </Link>
-              <Link href="https://www.linkedin.com/in/abdallahshaban/">
-                <img
-                  className="navbar-custom-image"
-                  src="/img/linkedin-black.svg"
-                  alt="Abdallah Shaban LinkedIn account"
-                  title="Abdallah Shaban LinkedIn account"
                 />
               </Link>
             </div>
