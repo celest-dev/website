@@ -58,7 +58,7 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="hero-media">
-              <video controls poster="/img/introducing-celest.jpg" onError={onVideoError}>
+              <video controls playsInline poster="/img/introducing-celest.jpg" onError={onVideoError}>
                 <source src="/img/introducing-celest.webm" type="video/webm" />
                 <source src="/img/introducing-celest.mp4" type="video/mp4" />
                 <track default kind="captions" srcLang="en" src="/img/introducing-celest.vtt" />
