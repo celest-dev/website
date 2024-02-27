@@ -189,12 +189,6 @@ const config: Config = {
         },
         { to: "/blog", label: "Blog", position: "left" },
         {
-          docid: "about-us",
-          to: "/about-us",
-          position: "left",
-          label: "About Us",
-        },
-        {
           to: "https://github.com/celest-dev/celest",
           html: '<img src="/img/github.svg" class="navbar-custom-image" alt="GitHub Page" />',
           position: "right",
