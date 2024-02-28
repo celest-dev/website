@@ -8,10 +8,10 @@ You can create custom exception types in your backend to throw specific errors a
 
 ## Using custom exceptions
 
-Below is an example of how to define a custom exception. You can create exceptions inside your `celest/lib/exceptions.dart` file.
+Below is an example of how to define a custom exception. You can create exceptions inside your `celest/lib/exceptions/` folder.
 
 ```dart
-// celest/lib/exceptions.dart
+// celest/lib/exceptions/bad_name_exception.dart
 
 class BadNameException implements Exception {
   const BadNameException(this.message);
@@ -25,7 +25,7 @@ You can then throw these exceptions in your Celest Functions whenever needed as 
 ```dart
 // celest/functions/greeting.dart
 
-import 'package:celest_backend/exceptions.dart';
+import 'package:celest_backend/exceptions/bad_name_exception.dart';
 
 Future<String> sayHello(String name) async {
   // Perform custom validation
@@ -54,6 +54,10 @@ Future<String> getGreeting(String name) async {
   // highlight-end
 }
 ```
+
+## Writing custom serialization logic
+
+Just like [custom model types](/docs/functions/data-types.md#writing-custom-serialization-logic), custom exceptions can define their own serialization logic. This is useful when you have existing types you want to make use of which are not serializable by default.
 
 ## Next steps
 
