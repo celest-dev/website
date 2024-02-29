@@ -26,7 +26,7 @@ When a function fails with an exception or error, the HTTP response will carry a
 For example, let us assume you have a custom exception called `BadNameException` type defined in the example below.
 
 ```dart
-// celest/lib/exceptions.dart
+// celest/lib/exceptions/bad_name_exception.dart
 
 class BadNameException implements Exception {
   const BadNameException(this.message);

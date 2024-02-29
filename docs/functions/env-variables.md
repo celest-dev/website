@@ -29,12 +29,13 @@ Annotated parameters (like `greetingUrl`) will not appear in the code-generated 
 ```dart
 import 'package:http/http.dart' as http;
 
+// Make sure to import the `Env` class from the `resources.dart` file.
 import '../resources.dart';
 
 Future<String> sayHello(
   String name, {
   // highlight-next-line
-  @env.greetingUrl required Uri greetingUrl,
+  @Env.greetingUrl required Uri greetingUrl,
 }) async {
   // Call an external greeting service.
   final response = await http.post(

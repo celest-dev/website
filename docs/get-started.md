@@ -45,13 +45,15 @@ The CLI will also create a folder in your project called `celest`, which will in
 ```shell
 flutter_app/
 └── celest/
-    ├── functions/          # Celest Functions folder
-    |   └── greeting.dart   # Example API file
+    ├── functions/                        # Celest Functions folder
+    |   └── greeting.dart                 # Example API file
     ├── lib/
-    │   │── client.dart     # Generated client for your Flutter app
-    │   ├── models.dart     # Custom API models
-    │   └── exceptions.dart # Custom API exceptions
-    └── test/               # Tests for your backend
+    │   │── client.dart                   # Generated client for your Flutter app
+    │   ├── models/                       # Custom API models
+    |   |   └── person.dart
+    │   └── exceptions/                   # Custom API exceptions
+    |       └── bad_name_exception.dart
+    └── test/                             # Tests for your backend
 ```
 
 To get started building your serverless cloud function, navigate to the `<flutter_app>/celest/functions/` folder and create a file named `<api_name>.dart`. You can create as many APIs as you want in this directory. Think of each file as a way to organize and group multiple Celest Functions of similar functionality into a namespace.

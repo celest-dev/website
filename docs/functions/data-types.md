@@ -18,10 +18,10 @@ Celest does not support the following Dart types as parameter or return types. `
 
 # Custom data type example
 
-Imagine you're working on an e-commerce application with an `Order` class defined in your codebase. To have Celest use that custom class, you need to place it in the `<flutter_app>/celest/lib/models.dart` file.
+Imagine you're working on an e-commerce application with an `Order` class defined in your codebase. To have Celest use that custom class, you need to place it in the `<flutter_app>/celest/lib/models/` folder.
 
 ```dart
-// celest/lib/models.dart
+// celest/lib/models/order.dart
 
 class Order {
   const Order ({
@@ -56,7 +56,7 @@ Use this `Order` type in any Celest Function as either a parameter or return val
 // celest/functions/orders.dart
 
 // highlight-next-line
-import 'package:celest_backend/models.dart';
+import 'package:celest_backend/models/order.dart';
 
 Future<String> createOrder(
   // highlight-next-line
@@ -90,7 +90,7 @@ If you need custom handling for your serialization logic, add the `fromJson` and
 Here, the `Price.toJson` method is used to upper-case the `currency` value.
 
 ```dart
-// celest/lib/models.dart
+// celest/lib/models/order.dart
 
 class Price {
   // ...
@@ -125,6 +125,40 @@ The resulting JSON response for the `currency` will now be returned as upper cas
       "cents": 34
     }
   }
+}
+```
+
+### Overriding serialization for third-party types
+
+Sometimes, though, you cannot control the `fromJson`/`toJson` methods of a class, such as when using a third-party library. In these cases, you can use a custom override to "redefine" the type for serialization in Celest.
+
+For example, consider the case where the `Price` class from our `Order` type is imported from a third-party library, `package:price`. Since we do not own `package:price`, we cannot change the `fromJson` and
+`toJson` methods of the `Price` class.
+
+Instead of modifying the `Price` class, we can define a custom override for `Price` which will apply to all instances of the `Price` class when it's encountered during serialization.
+
+```dart
+import 'package:price/price.dart';
+
+@override
+extension type PriceOverride(Price price) {
+  factory PriceOverride.fromJson(Map<String, Object?> json) {
+    return PriceOverride(
+      Price(
+        currency: Currency.values.firstWhere(
+          (e) => e.toString().toUpperCase() == json['currency'],
+        ),
+        dollars: json['dollars'] as int,
+        cents: json['cents'] as int,
+      ),
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+        'currency': price.currency.toString().toUpperCase(),
+        'dollars': price.dollars,
+        'cents': price.cents,
+      };
 }
 ```
 
