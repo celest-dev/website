@@ -167,8 +167,6 @@ const DownloadPage = () => {
       }
     } else if (os === "Windows" && architecture === "Intel (x64)") {
       return "https://releases.celest.dev/windows_x64/latest/celest-latest-windows_x64.appx";
-    } else if (os === "Windows" && architecture === "ARM") {
-      return "https://releases.celest.dev/windows_arm64/latest/celest-latest-windows_arm64.appx";
     }
     return "#"; // Placeholder link
   };
@@ -215,13 +213,6 @@ const DownloadPage = () => {
             <FaWindows className="operating-system-download-image" />
             <h3 className="operating-system-card-title">Windows</h3>
             <p>
-              <a
-                href={getDownloadLink("Windows", "ARM")}
-                onClick={handleDownloadLinkEventTrigger(true, "ARM", "Windows")}
-              >
-                ARM
-              </a>{" "}
-              /{" "}
               <a
                 href={getDownloadLink("Windows", "Intel (x64)")}
                 onClick={handleDownloadLinkEventTrigger(
