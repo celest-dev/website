@@ -137,6 +137,14 @@ Future<void> introduceMyself() async {
             </p>
           </div>
           <div className="category-card">
+            <FaLock className="category-icon" />
+            <h3 className="category-title">Auth</h3>
+            <p className="category-description">
+              Authenticate your users with social sign-in, passwordless and
+              WebAuthn.
+            </p>
+          </div>
+          <div className="category-card">
             <FaDatabase className="category-icon" />
             <img
               src="/img/coming-soon.svg"
@@ -147,19 +155,6 @@ Future<void> introduceMyself() async {
             <p className="category-description">
               Define your data schema, relationships, and authorization rules in
               code.
-            </p>
-          </div>
-          <div className="category-card">
-            <FaLock className="category-icon" />
-            <img
-              src="/img/coming-soon.svg"
-              alt="Coming Soon Badge"
-              title="coming soon!"
-            />
-            <h3 className="category-title">Auth</h3>
-            <p className="category-description">
-              Authenticate your users with social sign-in, passwordless and
-              WebAuthn.
             </p>
           </div>
           <div className="category-card">
