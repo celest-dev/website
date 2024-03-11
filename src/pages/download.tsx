@@ -41,8 +41,8 @@ const DownloadPage = () => {
           ) {
             architecture = "Intel (x64)";
           } else if (
-            (result.architecture === "arm" && os != "Apple") ||
-            (result.architecture === "arm64" && os != "Apple")
+            (result.architecture === "arm" && os == "Linux") ||
+            (result.architecture === "arm64" && os == "Linux")
           ) {
             architecture = "ARM";
           } else if (
