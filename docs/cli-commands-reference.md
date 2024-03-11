@@ -10,6 +10,7 @@ The following is a list of all the available commands from the Celest CLI. You c
 | Command  | Description                                                   |
 | --------- | ------------------------------------------------------------- |
 | `celest start`| Creates a new Celest project. If a project exists, it runs the watch command for testing locally and code-generating the Celest client |
+| `celest deploy` | Deploys your Celest project to the cloud. |
 | `celest upgrade` | Upgrades the Celest CLI to the latest version. |
 | `celest uninstall`| Uninstall the Celest CLI and remove all associated data. |
 | `celest --help`| Show all available commands for the Celest CLI. |
