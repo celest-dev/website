@@ -43,4 +43,4 @@ A full example of a typical auth flow can be found in our [repo](https://github.
 
 ## Authorizing your functions
 
-Once a user is signed in, they can access functions marked `@authenticated`. To learn more about authorizing your functions, check out [Authorizing functions](/docs/auth/authorizing-functions.md).
+Once a user is signed in, they can access functions marked `@authenticated`. To learn more about authorizing your functions, check out [Authorizing functions](/docs/functions/authorizing-functions).
