@@ -31,8 +31,16 @@ const LandingPage = () => {
         <section className="hero">
           <div className="hero-inner">
             <div className="hero-content">
-              <div className="hero-new-release">
-                <a className="hero-new-release-link" href="/blog/local-iterations-release">🚀 Celest CLI available now <RiExternalLinkLine className="new-release-icon"/></a>
+              <div className="hero-cta">
+                <a
+                  href="https://www.ycombinator.com/launches/Kdu-celest-turning-every-flutter-developer-into-a-full-stack-developer"
+                  target="_blank"
+                >
+                  <img
+                    src="https://www.ycombinator.com/launches/Kdu-celest-turning-every-flutter-developer-into-a-full-stack-developer/upvote_embed.svg"
+                    alt="Launch YC: Celest 💙 turning every Flutter developer into a full-stack developer"
+                  />
+                </a>
               </div>
               <h1 className="header-title">
                 Build your backend,
@@ -43,50 +51,47 @@ const LandingPage = () => {
                 you build every piece of your application in Dart, all without
                 leaving your IDE.
               </p>
-              <div className="hero-cta">
-                <a
-                  href="https://www.ycombinator.com/companies/celest"
-                  target="_blank"
-                >
-                  <img
-                    src="/img/yc-badge.svg"
-                    alt="YC Logo"
-                    className="yc-image"
-                    title="Y Combinator"
-                  />
-                </a>
-              </div>
             </div>
             <div className="hero-media">
-              <video controls playsInline poster="/img/introducing-celest.jpg" onError={onVideoError}>
+              <video
+                controls
+                playsInline
+                poster="/img/introducing-celest.jpg"
+                onError={onVideoError}
+              >
                 <source src="/img/introducing-celest.webm" type="video/webm" />
                 <source src="/img/introducing-celest.mp4" type="video/mp4" />
-                <track default kind="captions" srcLang="en" src="/img/introducing-celest.vtt" />
+                <track
+                  default
+                  kind="captions"
+                  srcLang="en"
+                  src="/img/introducing-celest.vtt"
+                />
                 {/* Fallback for browsers that don't support the video tag */}
                 <CodeBlock
-                className="hero-code"
-                language="dart"
-                title="app/celest/apis/my_api.dart  ←  Your API"
-              >
-                {`
+                  className="hero-code"
+                  language="dart"
+                  title="app/celest/apis/my_api.dart  ←  Your API"
+                >
+                  {`
 String hello(String name) {
   return 'Hello, $name!';
 }`.trim()}
-              </CodeBlock>
-              <br />
-              <CodeBlock
-                className="hero-code"
-                language="dart"
-                title="app/lib/main.dart  ←  Your Flutter app"
-              >
-                {`
+                </CodeBlock>
+                <br />
+                <CodeBlock
+                  className="hero-code"
+                  language="dart"
+                  title="app/lib/main.dart  ←  Your Flutter app"
+                >
+                  {`
 import 'package:celest_backend/client.dart';
 
 Future<void> introduceMyself() async {
   final res = await celest.myApi.hello('Celest');
   print(res); // Hello, Celest!
 }`.trim()}
-              </CodeBlock>
+                </CodeBlock>
               </video>
             </div>
           </div>
