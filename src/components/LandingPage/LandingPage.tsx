@@ -31,17 +31,6 @@ const LandingPage = () => {
         <section className="hero">
           <div className="hero-inner">
             <div className="hero-content">
-              <div className="hero-cta">
-                <a
-                  href="https://www.ycombinator.com/launches/Kdu-celest-turning-every-flutter-developer-into-a-full-stack-developer"
-                  target="_blank"
-                >
-                  <img
-                    src="https://www.ycombinator.com/launches/Kdu-celest-turning-every-flutter-developer-into-a-full-stack-developer/upvote_embed.svg"
-                    alt="Launch YC: Celest 💙 turning every Flutter developer into a full-stack developer"
-                  />
-                </a>
-              </div>
               <h1 className="header-title">
                 Build your backend,
                 <br /> Flutter style.
@@ -51,6 +40,19 @@ const LandingPage = () => {
                 you build every piece of your application in Dart, all without
                 leaving your IDE.
               </p>
+              <div className="hero-cta">
+                <a
+                  href="https://www.ycombinator.com/companies/celest"
+                  target="_blank"
+                >
+                  <img
+                    src="/img/yc-badge.svg"
+                    alt="YC Logo"
+                    className="yc-image"
+                    title="Y Combinator"
+                  />
+                </a>
+              </div>
             </div>
             <div className="hero-media">
               <video

@@ -599,14 +599,6 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
   text-decoration: none; /* Ensure underline doesn't reappear on hover */
 }
 
-.hero-cta {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 0 0 1rem 0.5rem;
-}
-
 .new-release-icon{
   vertical-align: middle;
   transform: translateY(-0.1rem);
@@ -639,6 +631,10 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
 
   .header-subtitle {
     padding: 0 1rem;
+    text-align: center;
+  }
+
+  .hero-cta {
     text-align: center;
   }
 
