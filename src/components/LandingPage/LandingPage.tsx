@@ -13,10 +13,12 @@ import {
   FaBuilding,
   FaRocket,
   FaUserAstronaut,
+  FaInfo,
+  FaInfoCircle,
 } from "react-icons/fa";
 import { RiExternalLinkLine } from "react-icons/ri";
 import { FiCloudLightning } from "react-icons/fi";
-import { MdPolicy, MdOutlineComputer } from "react-icons/md";
+import { MdPolicy, MdOutlineComputer, MdClose } from "react-icons/md";
 import CodeBlock from "@theme/CodeBlock";
 import Calendar from "./calendar";
 
@@ -245,13 +247,13 @@ Future<void> introduceMyself() async {
               <p>No credit card required. Always free.</p>
             </div>
             <ul className="pricing-features">
-              <li className="pro">Up to 3 projects</li>
+              <li className="pro">Up to 2 projects</li>
               <li className="con">Cold starts</li>
               <li className="con">Limited resources</li>
             </ul>
             <div className="pricing-cta">
               <p className="pricing-price">Free</p>
-              <button>
+              <button className="pricing-cta-button">
                 <Link to="/docs/overview">Get started</Link>
               </button>
             </div>
@@ -267,13 +269,77 @@ Future<void> introduceMyself() async {
             </p>
             <ul className="pricing-features">
               <li className="pro">Unlimited projects</li>
-              <li className="pro">Minimal cold starts</li>
-              <li className="pro">Auto-scaling</li>
+              <li className="pro">Warm starts</li>
               <li className="pro">Flexible spending</li>
             </ul>
             <div className="pricing-cta">
-              <p className="pricing-price">Starting at $20/month</p>
-              <button>
+              <p className="pricing-price">$20 / month</p>
+              <button
+                className="pricing-price-subtext modal-button"
+                onClick={openModal}
+              >
+                <span>plus usage</span>
+                <FaInfoCircle className="info-icon" />
+              </button>
+              <dialog id="modal" className="modal">
+                <div className="modal-header">
+                  <h4>Celest pricing</h4>
+                  <button className="modal-button" onClick={closeModal}>
+                    <MdClose />
+                  </button>
+                </div>
+                <p>
+                  The Solo tier includes 3 premium projects and unlimited free
+                  projects. Free projects have limited resources and cold
+                  starts, but cost you nothing to run.
+                </p>
+                <p>
+                  Every premium project comes with an included amount of usage.
+                  If your project scales beyond these limits, you pay for any
+                  additional resources as you go.
+                </p>
+                <h5>Included usage (per free project)</h5>
+                <table>
+                  <tr>
+                    <th>Functions</th>
+                    <td>5,000 invocations</td>
+                  </tr>
+                  <tr>
+                    <th>Auth</th>
+                    <td>100 monthly active users (MAUs)</td>
+                  </tr>
+                </table>
+                <h5>Included usage (per premium project)</h5>
+                <table>
+                  <tr>
+                    <th>Functions</th>
+                    <td>50,000 invocations</td>
+                  </tr>
+                  <tr>
+                    <th>Auth</th>
+                    <td>1,000 monthly active users (MAUs)</td>
+                  </tr>
+                </table>
+                <h5>Additional usage</h5>
+                <table>
+                  <tr>
+                    <th rowSpan={2}>Projects</th>
+                    <td>$0 / free project</td>
+                  </tr>
+                  <tr>
+                    <td>$10 / premium project</td>
+                  </tr>
+                  <tr>
+                    <th>Functions</th>
+                    <td>$1 / 10,000 invocations</td>
+                  </tr>
+                  <tr>
+                    <th>Auth</th>
+                    <td>$0.01 / MAU</td>
+                  </tr>
+                </table>
+              </dialog>
+              <button className="pricing-cta-button">
                 <Link to="https://join.celest.dev/b/test_9AQeW6b97cOT4E09AA">
                   Sign up
                 </Link>
@@ -292,11 +358,12 @@ Future<void> introduceMyself() async {
             <ul className="pricing-features">
               <li className="pro">Multiple team members</li>
               <li className="pro">Role-based access controls</li>
+              <li className="pro">Auto-scaling</li>
               <li className="pro">Priority support</li>
             </ul>
             <div className="pricing-cta">
               <p className="pricing-price">Contact Us</p>
-              <button className="pricing-cta">
+              <button className="pricing-cta-button">
                 <Link to="/#calendar">Schedule a call</Link>
               </button>
             </div>
@@ -362,5 +429,15 @@ Future<void> introduceMyself() async {
     </div>
   );
 };
+
+function openModal() {
+  const modal = document.getElementById("modal") as HTMLDialogElement;
+  modal.showModal();
+}
+
+function closeModal() {
+  const modal = document.getElementById("modal") as HTMLDialogElement;
+  modal.close();
+}
 
 export default LandingPage;

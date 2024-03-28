@@ -519,16 +519,49 @@ span.token.comment {
 }
 
 .pricing-price {
+  margin: 0;
   font-size: 1.4rem;
   font-weight: 500;
 }
 
 .pricing-price-subtext {
+  display: block;
+  cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
 }
 
-.pricing button {
+dialog:modal {
+  text-align: start;
+  min-width: 30vw;
+  max-width: 30rem;
+  overflow-y: auto;
+  padding: 2rem;
+  border: 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.5rem 0.25rem hsl(0 0% 0% / 10%);
+}
+
+.modal-header {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.modal-button {
+  background: none;
+  border: none;
+  color: #6c757d;
+  cursor: pointer;
+}
+
+.pricing-price-subtext .info-icon {
+  margin-left: 3px;
+  max-height: 0.7rem;
+}
+
+.pricing-cta-button {
   font-family: var(--ifm-font-family-base);
   background-color: var(--gradient-blue);
   color: white;
@@ -542,15 +575,15 @@ span.token.comment {
   transition: background-color 0.3s;
 }
 
-.pricing button:hover {
+.pricing-cta-button:hover {
   background-color: #3d9ffe;
 }
 
-.pricing button:hover a {
+.pricing-cta-button:hover a {
   color: white;
 }
 
-.pricing button a {
+.pricing-cta-button a {
   text-decoration: none;
   color: #007bff;
 }
