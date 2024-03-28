@@ -1,5 +1,4 @@
-import Cal, { getCalApi } from "@calcom/embed-react";
-import { useEffect } from "react";
+import Cal from "@calcom/embed-react";
 
 export default function Calendar() {
   return (
@@ -7,7 +6,7 @@ export default function Calendar() {
       namespace="team"
       calLink="celest-dev/meet-website"
       style={{ width: "100%", height: "100%", overflow: "scroll" }}
-      config={{ layout: 'month_view'}}
+      config={{ layout: "month_view" }}
     />
   );
 }

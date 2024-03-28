@@ -266,8 +266,8 @@ Future<void> introduceMyself() async {
           </div>
         </div>
       </section>
-      <section className="calendar">
-        <h2 className="middle-header">Schedule a call</h2>
+      <section id="calendar" className="calendar">
+        <h2 className="middle-header">Book a demo</h2>
         <div className="calendar-div">
           <Calendar />
         </div>
