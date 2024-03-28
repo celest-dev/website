@@ -5,7 +5,15 @@ import {
   CodeBracketIcon,
 } from "@heroicons/react/24/outline";
 import { AiFillApi } from "react-icons/ai";
-import { FaLock, FaDatabase, FaImages, FaServer } from "react-icons/fa";
+import {
+  FaLock,
+  FaDatabase,
+  FaImages,
+  FaServer,
+  FaBuilding,
+  FaRocket,
+  FaUserAstronaut,
+} from "react-icons/fa";
 import { RiExternalLinkLine } from "react-icons/ri";
 import { FiCloudLightning } from "react-icons/fi";
 import { MdPolicy, MdOutlineComputer } from "react-icons/md";
@@ -194,7 +202,7 @@ Future<void> introduceMyself() async {
           </div>
         </div>
       </section>
-      <section className="celest-categories-client">
+      {/* <section className="celest-categories-client">
         <h2 className="middle-header categories-bottom-header-margin">
           Accelerate development of your Flutter app
         </h2>
@@ -220,6 +228,78 @@ Future<void> introduceMyself() async {
             <p className="category-description">
               Configure and track logs from your backend in your IDE.
             </p>
+          </div>
+        </div>
+      </section> */}
+      <section id="pricing" className="pricing celest-categories-client">
+        <h2 className="middle-header categories-bottom-header-margin">
+          Pricing
+        </h2>
+        <div className="categories">
+          <div className="pricing-tier">
+            <div className="pricing-card-header">
+              <FaRocket className="category-icon-client" />
+              <h3 className="category-title">Always Free</h3>
+            </div>
+            <div className="category-description">
+              <p>No credit card required. Always free.</p>
+            </div>
+            <ul className="pricing-features">
+              <li className="pro">Up to 3 projects</li>
+              <li className="con">Cold starts</li>
+              <li className="con">Limited resources</li>
+            </ul>
+            <div className="pricing-cta">
+              <p className="pricing-price">Free</p>
+              <button>
+                <Link to="/docs/overview">Get started</Link>
+              </button>
+            </div>
+          </div>
+
+          <div className="pricing-tier">
+            <div className="pricing-card-header">
+              <FaUserAstronaut className="category-icon-client" />
+              <h3 className="category-title">Solo</h3>
+            </div>
+            <p className="category-description">
+              Perfect for solo developers who need power.
+            </p>
+            <ul className="pricing-features">
+              <li className="pro">Unlimited projects</li>
+              <li className="pro">Minimal cold starts</li>
+              <li className="pro">Auto-scaling</li>
+              <li className="pro">Flexible spending</li>
+            </ul>
+            <div className="pricing-cta">
+              <p className="pricing-price">Starting at $20/month</p>
+              <button>
+                <Link to="https://join.celest.dev/b/test_9AQeW6b97cOT4E09AA">
+                  Sign up
+                </Link>
+              </button>
+            </div>
+          </div>
+
+          <div className="pricing-tier">
+            <div className="pricing-card-header">
+              <FaBuilding className="category-icon-client" />
+              <h3 className="category-title">Team</h3>
+            </div>
+            <p className="category-description">
+              Manage organizations and invite your team to collaborate.
+            </p>
+            <ul className="pricing-features">
+              <li className="pro">Multiple team members</li>
+              <li className="pro">Role-based access controls</li>
+              <li className="pro">Priority support</li>
+            </ul>
+            <div className="pricing-cta">
+              <p className="pricing-price">Contact Us</p>
+              <button className="pricing-cta">
+                <Link to="/#calendar">Schedule a call</Link>
+              </button>
+            </div>
           </div>
         </div>
       </section>

@@ -251,7 +251,6 @@ html {
 
 .feature-card {
   flex-basis: calc(33.333% - 4rem);
-  min-width: 250px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -448,13 +447,112 @@ span.token.comment {
 }
 
 .category-description {
-  max-width: 250px;
   margin: 0 auto;
   text-align: center;
 }
 
 .celest-categories-client {
   background-image: var(--ifm-background-color);
+}
+
+.pricing {
+  padding: 0 2rem;
+}
+
+.pricing .categories {
+  max-width: unset;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+.pricing-tier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 250px;
+  max-width: 450px;
+  /* Make it look like a Material Card */
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  margin: 1rem;
+  background-color: white;
+  transition: box-shadow 0.3s;
+}
+
+.pricing-tier > * {
+  flex: 1;
+}
+
+.pricing-tier .pricing-features {
+  flex: 2;
+}
+
+.pricing .category-title {
+  padding-bottom: 0;
+  margin-bottom: 1rem;
+}
+
+.pricing-features {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  padding: 1rem 0;
+  margin: 1rem;
+  align-self: stretch;
+  text-align: left;
+}
+
+.pricing-features li {
+  list-style: none;
+  list-style-position: inside;
+  padding: 0.3rem 0;
+}
+
+.pricing-features li.pro {
+  list-style-image: url("/img/white-heavy-check-mark.svg");
+}
+
+.pricing-features li.con {
+  list-style-image: url("/img/cross-mark.svg");
+}
+
+.pricing-price {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.pricing-price-subtext {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.pricing button {
+  font-family: var(--ifm-font-family-base);
+  background-color: var(--gradient-blue);
+  color: white;
+  padding: 10px 20px;
+  margin: 1rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pricing button:hover {
+  background-color: #3d9ffe;
+}
+
+.pricing button:hover a {
+  color: white;
+}
+
+.pricing button a {
+  text-decoration: none;
+  color: #007bff;
 }
 
 .team {
@@ -727,6 +825,14 @@ h6 code {
   .hero-new-release-link {
     padding-right: 1rem;
   }
+
+  .pricing .categories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pricing-tier:nth-of-type(3) {
+    grid-column: span 2;
+  }
 }
 
 @media (max-width: 430px) {
@@ -757,5 +863,15 @@ h6 code {
 
   .email-input {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pricing .categories {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-tier:nth-of-type(3) {
+    grid-column: unset;
   }
 }

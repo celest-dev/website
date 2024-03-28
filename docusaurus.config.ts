@@ -166,14 +166,15 @@ const config: Config = {
     navbar: {
       items: [
         { to: "/download", label: "Download", position: "left" },
+        { to: "/#pricing", label: "Pricing", position: "left" },
         {
-          position: "left",
+          position: "right",
           type: "doc",
           to: "docs/overview.md",
           docId: "overview",
           label: "Docs",
         },
-        { to: "/blog", label: "Blog", position: "left" },
+        { to: "/blog", label: "Blog", position: "right" },
         {
           to: "https://github.com/celest-dev/celest",
           html: '<img src="/img/github.svg" class="navbar-custom-image" width="27" height="27" alt="GitHub Page" />',
