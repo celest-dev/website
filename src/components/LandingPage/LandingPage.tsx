@@ -60,7 +60,6 @@ const LandingPage = () => {
               <video
                 controls
                 playsInline
-                poster="/img/introducing-celest.webp"
                 width="550"
                 height="310"
                 onError={onVideoError}
