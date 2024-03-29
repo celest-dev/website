@@ -50,6 +50,8 @@ const LandingPage = () => {
                     alt="YC Logo"
                     className="yc-image"
                     title="Y Combinator"
+                    width={186}
+                    height={34}
                   />
                 </a>
               </div>
@@ -231,11 +233,15 @@ Future<void> introduceMyself() async {
                 srcSet="/img/dillon.webp"
                 type="image/webp"
                 title="Dillon Nys - Founder, Engineering at Celest"
+                width={200}
+                height={200}
               />
               <img
                 src="/img/dillon.png"
                 alt="Dillon Nys"
                 title="Dillon Nys - Founder, Engineering at Celest"
+                width={200}
+                height={200}
               />
             </picture>
             <h3>Dillon Nys</h3>
