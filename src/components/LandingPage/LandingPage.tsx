@@ -247,7 +247,7 @@ Future<void> introduceMyself() async {
               <p>No credit card required. Always free.</p>
             </div>
             <ul className="pricing-features">
-              <li className="pro">Up to 2 projects</li>
+              <li className="pro">2 free projects</li>
               <li className="con">Cold starts</li>
               <li className="con">Limited resources</li>
             </ul>
@@ -264,13 +264,14 @@ Future<void> introduceMyself() async {
               <FaUserAstronaut className="category-icon-client" />
               <h3 className="category-title">Solo</h3>
             </div>
-            <p className="category-description">
-              Perfect for solo developers who need power.
-            </p>
+            <div className="category-description">
+              <p>Perfect for solo developers who need power.</p>
+            </div>
             <ul className="pricing-features">
-              <li className="pro">Unlimited projects</li>
-              <li className="pro">Warm starts</li>
-              <li className="pro">Flexible spending</li>
+              <li className="pro">3 premium projects</li>
+              <li className="pro">Unlimited free projects</li>
+              <li className="pro">50,000 function invocations</li>
+              <li className="pro">1,000 monthly active users</li>
             </ul>
             <div className="pricing-cta">
               <p className="pricing-price">$20 / month</p>
@@ -352,9 +353,9 @@ Future<void> introduceMyself() async {
               <FaBuilding className="category-icon-client" />
               <h3 className="category-title">Team</h3>
             </div>
-            <p className="category-description">
-              Manage organizations and invite your team to collaborate.
-            </p>
+            <div className="category-description">
+              <p>Manage organizations and invite your team to collaborate.</p>
+            </div>
             <ul className="pricing-features">
               <li className="pro">Multiple team members</li>
               <li className="pro">Role-based access controls</li>

@@ -470,6 +470,7 @@ span.token.comment {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
   min-width: 250px;
   max-width: 450px;
@@ -483,11 +484,19 @@ span.token.comment {
 }
 
 .pricing-tier > * {
-  flex: 1;
+  flex: 0;
+}
+
+.pricing-tier p {
+  margin: 0;
 }
 
 .pricing-tier .pricing-features {
-  flex: 2;
+  flex: 1;
+}
+
+.pricing .category-description {
+  padding: 0 0.25rem;
 }
 
 .pricing .category-title {
