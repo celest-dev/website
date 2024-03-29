@@ -82,22 +82,8 @@ const config: Config = {
       tagName: "link",
       attributes: {
         rel: "preconnect",
-        href: "https://fonts.googleapis.com",
-      },
-    },
-    {
-      tagName: "link",
-      attributes: {
-        rel: "preconnect",
         href: "https://fonts.gstatic.com",
         crossorigin: "anonymous",
-      },
-    },
-    {
-      tagName: "link",
-      attributes: {
-        href: "https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400&family=Poppins:wght@300&display=swap",
-        rel: "stylesheet",
       },
     },
   ],
