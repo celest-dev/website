@@ -58,7 +58,7 @@ const LandingPage = () => {
               <video
                 controls
                 playsInline
-                poster="/img/introducing-celest.jpg"
+                poster="/img/introducing-celest.webp"
                 onError={onVideoError}
               >
                 <source src="/img/introducing-celest.webm" type="video/webm" />
