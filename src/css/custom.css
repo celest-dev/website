@@ -4,6 +4,65 @@
  * work well for content-centric websites.
  */
 
+/*
+  Create Nunito Sans and Poppins font faces to avoid FOIT
+  (Flash of Invisible Text) when loading the fonts.
+
+  Generated from: https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400&family=Poppins:wght@300&display=swap
+*/
+/* latin-ext */
+@font-face {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: local("Nunito Sans"), local("NunitoSans-Regular"),
+    url(https://fonts.gstatic.com/s/nunitosans/v15/pe0TMImSLYBIv1o4X1M8ce2xCx3yop4tQpF_MeTm0lfUVwoNnq4CLz0_upHZPYsZ51Q42ptCprt7R-tCKQ.woff2)
+      format("woff2");
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
+    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: local("Nunito Sans"), local("NunitoSans-Regular"),
+    url(https://fonts.gstatic.com/s/nunitosans/v15/pe0TMImSLYBIv1o4X1M8ce2xCx3yop4tQpF_MeTm0lfUVwoNnq4CLz0_upHZPYsZ51Q42ptCprt1R-s.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local("Poppins"),
+    url(https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLDz8Z1JlFc-K.woff2)
+      format("woff2");
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF,
+    U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local("Poppins"),
+    url(https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLDz8Z1xlFQ.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-code-font-size: 0.77rem;
@@ -52,7 +111,7 @@ html {
 }
 
 .navbar__title {
-  font-family: 'Gilroy', sans-serif;
+  font-family: "Gilroy", sans-serif;
   font-weight: bold;
   font-size: 2rem; /* Adjust font size as needed */
   color: var(--title-color);
@@ -112,12 +171,13 @@ html {
 }
 
 /* Prevents the first column in a table from wrapping inside the docs site */
-.markdown table td:first-child, .markdown table th:first-child {
+.markdown table td:first-child,
+.markdown table th:first-child {
   white-space: nowrap;
 }
 
 /* Adjusts the margin on the calendar section on the homepage */
-.calendar{
+.calendar {
   margin-top: 1rem;
 }
 
@@ -258,8 +318,6 @@ pre code {
   outline: none;
 }
 
-
-
 .submit-button {
   cursor: pointer;
   background: var(--title-color);
@@ -289,7 +347,7 @@ pre code {
 /* adjusts the color of comments in code snippets to make it more accessible */
 span.token.comment {
   /* CSS properties */
-  color: rgb(113, 111, 111) !important;  /* Override color */
+  color: rgb(113, 111, 111) !important; /* Override color */
   /* Add more properties as needed */
 }
 
@@ -482,26 +540,30 @@ span.token.comment {
   margin: 0 auto;
 }
 
-.download-page-subtitle{
+.download-page-subtitle {
   font-size: 1.2rem;
   padding-bottom: 1rem;
   text-align: center;
 }
 
 /* increase size of code words/blocks in headers for docs */
-h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
   font-size: 1.2rem;
 }
 
 /* center headers in the download page */
-.center-download-page-headers{
+.center-download-page-headers {
   text-align: center;
   font-size: 1.5rem;
 }
 
-
 /* provide styling for the detected OS installer card in the download page */
-.detected-operating-system-card{
+.detected-operating-system-card {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -509,10 +571,9 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
 }
 
 /* add spacing for the detected OS installer section in the download page */
-.detected-operating-system-section{
+.detected-operating-system-section {
   padding: 1rem 0rem 4rem;
 }
-
 
 .download-button {
   display: inline-flex;
@@ -534,20 +595,20 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
 
 .download-button:hover {
   background-color: #333; /* Darker on hover */
-  color:white;
+  color: white;
 }
 
 /* adds styling for detected image for operating system in the download page */
-.detected-system-download-image{
+.detected-system-download-image {
   width: 70px;
-  height: auto; 
+  height: auto;
   margin: 0 auto; /*This centers the icon in its container */
 }
 
 /* adds styling for the detected name and architecture in the download page */
-.detected-operating-system-name-top{
-  display:block;
-  color:white;
+.detected-operating-system-name-top {
+  display: block;
+  color: white;
   margin-top: 0.3rem;
   margin-bottom: 0;
   margin-left: 0.5rem;
@@ -555,9 +616,9 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
   text-align: left;
 }
 
-.detected-operating-system-name-bottom{
-  display:block;
-  color:white;
+.detected-operating-system-name-bottom {
+  display: block;
+  color: white;
   margin-top: -0.5rem;
   margin-bottom: 0;
   margin-left: 0.5rem;
@@ -565,7 +626,7 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
   text-align: left;
 }
 
-.calendar-div{
+.calendar-div {
   margin-top: 2rem;
   text-align: center;
 }
@@ -589,7 +650,7 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
   text-decoration: none; /* Remove underline */
   border-radius: 20px; /* Rounded corners for the chip effect */
   transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2); /* Optional: adds a slight shadow for depth */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Optional: adds a slight shadow for depth */
   white-space: nowrap; /* Keeps the chip text in one line */
 }
 
@@ -599,7 +660,7 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
   text-decoration: none; /* Ensure underline doesn't reappear on hover */
 }
 
-.new-release-icon{
+.new-release-icon {
   vertical-align: middle;
   transform: translateY(-0.1rem);
 }
@@ -659,7 +720,7 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
     flex-basis: calc(50% - 4rem);
   }
 
-  .hero-new-release{
+  .hero-new-release {
     padding-right: 0;
   }
 
@@ -669,7 +730,6 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
 }
 
 @media (max-width: 430px) {
-
   /* decrease margin and padding for smaller screens for the download page */
   .download-page {
     margin: 1rem 1rem;
