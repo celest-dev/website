@@ -161,7 +161,7 @@ const config: Config = {
       {
         name: "twitter:description",
         content:
-          "A backend-as-a-service (BaaS) to build full-stack Flutter and Dart apps",
+          "A serverless backend for full-stack Flutter and Dart apps",
       },
       {
         name: "twitter:domain",
@@ -190,7 +190,7 @@ const config: Config = {
         { to: "/blog", label: "Blog", position: "left" },
         {
           to: "https://github.com/celest-dev/celest",
-          html: '<img src="/img/github.svg" class="navbar-custom-image" alt="GitHub Page" />',
+          html: '<img src="/img/github.svg" class="navbar-custom-image" width="27" height="27" alt="GitHub Page" />',
           position: "right",
           className: "custom-navbar-img",
         },
@@ -198,8 +198,8 @@ const config: Config = {
           to: "https://twitter.com/celest_dev",
           html: `
           <picture>
-            <source srcset="/img/x.webp" type="image/webp" />
-            <img class="navbar-custom-image" src="/img/x.png" alt="X/Twitter Page" />
+            <source srcset="/img/x.webp" type="image/webp" width="27" height="27" />
+            <img class="navbar-custom-image" src="/img/x.png" width="27" height="27" alt="X/Twitter Page" />
           </picture>
           `,
           position: "right",
@@ -207,7 +207,7 @@ const config: Config = {
         },
         {
           to: "https://celest.dev/discord",
-          html: '<img src="/img/discord.png" class="navbar-custom-image discord-navbar-image" alt="Discord Server" />',
+          html: '<img src="/img/discord.png" class="navbar-custom-image discord-navbar-image" width="35" height="35" alt="Discord Server" />',
           position: "right",
           className: "custom-navbar-img",
         },
