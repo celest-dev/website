@@ -59,6 +59,8 @@ const LandingPage = () => {
                 controls
                 playsInline
                 poster="/img/introducing-celest.webp"
+                width="550"
+                height="310"
                 onError={onVideoError}
               >
                 <source src="/img/introducing-celest.webm" type="video/webm" />
