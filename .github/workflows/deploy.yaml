@@ -1,22 +1,19 @@
 name: website
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
     paths-ignore:
       - ".github/**"
 
-# These permissions are needed for deploying to GitHub Pages.
+# These permissions are needed for deploying to GCP.
 permissions:
   contents: read
-  pages: write
   id-token: write
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -36,12 +33,15 @@ jobs:
         run: pnpm install --frozen-lockfile --strict-peer-dependencies
       - name: Run build
         run: pnpm run build
-      - name: Setup Pages
-        uses: actions/configure-pages@f156874f8191504dae5b037505266ed5dda6c382 # 3.0.6
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@a753861a5debcf57bf8b404356158c8e1e33150c # 2.0.0
+      - name: GCP Auth
+        id: gcp-auth
+        uses: google-github-actions/auth@55bd3a7c6e2ae7cf1877fd1ccb9d54c0503c457c # 2.1.2
         with:
-          path: "./build"
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@de14547edc9944350dc0481aa5b7afb08e75f254 # 2.0.5
+          workload_identity_provider: ${{ secrets.GCP_BUILD_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_WEBSITE_SA }}
+      - name: Upload Website
+        uses: google-github-actions/upload-cloud-storage@22121cd842b0d185e042e28d969925b538c33d77 # 2.1.0
+        with:
+          path: build
+          destination: ${{ secrets.GCP_WEBSITE_BUCKET }}
+          parent: false # Upload to bucket root
