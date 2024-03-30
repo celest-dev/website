@@ -1,11 +1,8 @@
-name: deploy
+name: deploy_preview
 on:
-  workflow_dispatch:
-  push:
-    branches:
+  pull_request:
+    branches-ignore:
       - main
-    paths-ignore:
-      - ".github/**"
 
 # These permissions are needed for deploying to GCP.
 permissions:
@@ -14,9 +11,9 @@ permissions:
 
 jobs:
   deploy:
-    environment: 
-      name: production
-      url: https://celest.dev
+    environment:
+      name: preview
+      url: https://pr-${{ github.sha }}.preview.celest.dev
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -46,5 +43,5 @@ jobs:
         uses: google-github-actions/upload-cloud-storage@22121cd842b0d185e042e28d969925b538c33d77 # 2.1.0
         with:
           path: build
-          destination: ${{ secrets.GCP_WEBSITE_BUCKET }}
+          destination: ${{ secrets.GCP_WEBSITE_BUCKET }}/pr-${{ github.sha }}
           parent: false # Upload to bucket root
