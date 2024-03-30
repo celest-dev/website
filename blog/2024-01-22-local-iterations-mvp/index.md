@@ -15,7 +15,7 @@ Celest is a backend-as-a-service that enables Flutter developers to build their 
 Check out our video that walks you through the Celest experience!
 
 <div id="intro-video" className="video-row">
-    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Zm4v_8XFHh4?si=o-kvdfdtd7ScnQSs" title="Our first release! Iterate on your backend locally" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Zm4v_8XFHh4?si=o-kvdfdtd7ScnQSs" title="Our first release! Iterate on your backend locally" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 </div>
 
 ## Why use Celest?
