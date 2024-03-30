@@ -547,20 +547,24 @@ dialog:modal {
   min-width: 30vw;
   max-width: 30rem;
   overflow-y: auto;
-  padding: 2rem;
+  padding: 0;
   border: 0;
   border-radius: 0.5rem;
   box-shadow: 0 0 0.5rem 0.25rem hsl(0 0% 0% / 10%);
 }
 
-.modal-header {
+#pricing-modal-wrapper {
+  padding: 2rem;
+}
+
+.pricing-modal-header {
   display: flex;
   width: 100%;
   align-items: flex-start;
   justify-content: space-between;
 }
 
-.modal-button {
+.pricing-modal-button {
   background: none;
   border: none;
   color: #6c757d;
@@ -575,7 +579,7 @@ dialog:modal {
 .pricing-cta-button {
   font-family: var(--ifm-font-family-base);
   background-color: var(--gradient-blue);
-  color: white;
+  color: #027bff;
   padding: 10px 20px;
   margin: 1rem;
   text-decoration: none;
