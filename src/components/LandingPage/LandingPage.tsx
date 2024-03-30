@@ -252,6 +252,7 @@ Future<void> introduceMyself() async {
                 title="Dillon Nys - Founder, Engineering at Celest"
                 width={200}
                 height={200}
+                loading="lazy"
               />
             </picture>
             <h3>Dillon Nys</h3>
@@ -271,6 +272,7 @@ Future<void> introduceMyself() async {
                     src="/img/x.png"
                     width="27"
                     height="27"
+                    loading="lazy"
                     alt="Dillon Nys X/Twitter account"
                     title="Dillon Nys X/Twitter account"
                   />
@@ -282,6 +284,7 @@ Future<void> introduceMyself() async {
                   src="/img/linkedin-black.svg"
                   width="27"
                   height="27"
+                  loading="lazy"
                   alt="Dillon Nys LinkedIn account"
                   title="Dillon Nys LinkedIn account"
                 />
