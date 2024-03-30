@@ -248,6 +248,8 @@ Future<void> introduceMyself() async {
             </div>
             <ul className="pricing-features">
               <li className="pro">2 free projects</li>
+              <li className="pro">5,000 function invocations</li>
+              <li className="pro">1,000 monthly active users</li>
               <li className="con">Cold starts</li>
               <li className="con">Limited resources</li>
             </ul>
@@ -270,8 +272,8 @@ Future<void> introduceMyself() async {
             <ul className="pricing-features">
               <li className="pro">3 premium projects</li>
               <li className="pro">Unlimited free projects</li>
-              <li className="pro">50,000 function invocations</li>
-              <li className="pro">1,000 monthly active users</li>
+              <li className="pro">5,000 function invocations</li>
+              <li className="pro">100 monthly active users</li>
             </ul>
             <div className="pricing-cta">
               <p className="pricing-price">$20 / month</p>
