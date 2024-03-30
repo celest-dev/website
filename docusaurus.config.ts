@@ -165,15 +165,15 @@ const config: Config = {
     },
     navbar: {
       items: [
-        { to: "/download", label: "Download", position: "left" },
-        { to: "/#pricing", label: "Pricing", position: "left" },
         {
-          position: "right",
+          position: "left",
           type: "doc",
           to: "docs/overview.md",
           docId: "overview",
           label: "Docs",
         },
+        { to: "/download", label: "Download", position: "left" },
+        { to: "#pricing", label: "Pricing", position: "left" },
         { to: "/blog", label: "Blog", position: "right" },
         {
           to: "https://github.com/celest-dev/celest",
