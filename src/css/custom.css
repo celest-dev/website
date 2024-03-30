@@ -299,6 +299,11 @@ pre code {
   flex-direction: column;
 }
 
+.hero iframe {
+  border: 0;
+  border-radius: 20px;
+}
+
 /* The CSS classes for the copy button for the curl command */
 .submit-form {
   display: flex;
@@ -378,6 +383,7 @@ span.token.comment {
 }
 
 #intro-video iframe {
+  border: 0;
   border-radius: 20px;
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  } from "react";
 import {
   CloudIcon,
   ForwardIcon,
@@ -8,20 +8,11 @@ import { AiFillApi } from "react-icons/ai";
 import { FaLock, FaDatabase, FaImages, FaServer } from "react-icons/fa";
 import { FiCloudLightning } from "react-icons/fi";
 import { MdPolicy, MdOutlineComputer } from "react-icons/md";
-import CodeBlock from "@theme/CodeBlock";
 
 import EmailForm from "./EmailForm";
 import Link from "@docusaurus/Link";
-import { recordEvent } from "@site/src/common/analytics";
 import { useFloatingCalendar } from "./calendar";
-
-const onVideoError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
-  recordEvent("video.error", {
-    category: "Video playback error",
-    success: false,
-    errorMessage: e.toString(),
-  });
-};
+import { IntroducingCelest } from "./IntroducingCelest";
 
 const LandingPage = () => {
   useFloatingCalendar();
@@ -55,60 +46,7 @@ const LandingPage = () => {
                 </a>
               </div>
             </div>
-            <div className="hero-media">
-              <video
-                controls
-                playsInline
-                poster="/img/introducing-celest.webp"
-                width={550}
-                height={310}
-                onError={onVideoError}
-              >
-                <source
-                  src="/img/introducing-celest.webm"
-                  width={550}
-                  height={310}
-                  type="video/webm"
-                />
-                <source
-                  src="/img/introducing-celest.mp4"
-                  width={550}
-                  height={310}
-                  type="video/mp4"
-                />
-                <track
-                  default
-                  kind="captions"
-                  srcLang="en"
-                  src="/img/introducing-celest.vtt"
-                />
-                {/* Fallback for browsers that don't support the video tag */}
-                <CodeBlock
-                  className="hero-code"
-                  language="dart"
-                  title="app/celest/apis/my_api.dart  ←  Your API"
-                >
-                  {`
-String hello(String name) {
-  return 'Hello, $name!';
-}`.trim()}
-                </CodeBlock>
-                <br />
-                <CodeBlock
-                  className="hero-code"
-                  language="dart"
-                  title="app/lib/main.dart  ←  Your Flutter app"
-                >
-                  {`
-import 'package:celest_backend/client.dart';
-
-Future<void> introduceMyself() async {
-  final res = await celest.myApi.hello('Celest');
-  print(res); // Hello, Celest!
-}`.trim()}
-                </CodeBlock>
-              </video>
-            </div>
+            <IntroducingCelest />
           </div>
         </section>
         <section className="hero-get-started">
