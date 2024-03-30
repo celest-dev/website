@@ -6,15 +6,14 @@ import {
 } from "@heroicons/react/24/outline";
 import { AiFillApi } from "react-icons/ai";
 import { FaLock, FaDatabase, FaImages, FaServer } from "react-icons/fa";
-import { RiExternalLinkLine } from "react-icons/ri";
 import { FiCloudLightning } from "react-icons/fi";
 import { MdPolicy, MdOutlineComputer } from "react-icons/md";
 import CodeBlock from "@theme/CodeBlock";
-import Calendar from "./calendar";
 
 import EmailForm from "./EmailForm";
 import Link from "@docusaurus/Link";
 import { recordEvent } from "@site/src/common/analytics";
+import { useFloatingCalendar } from "./calendar";
 
 const onVideoError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
   recordEvent("video.error", {
@@ -25,6 +24,7 @@ const onVideoError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
 };
 
 const LandingPage = () => {
+  useFloatingCalendar();
   return (
     <div className="landing-page">
       <header className="header">
@@ -288,12 +288,6 @@ Future<void> introduceMyself() async {
               </Link>
             </div>
           </div>
-        </div>
-      </section>
-      <section id="calendar" className="calendar">
-        <h2 className="middle-header">Book a demo</h2>
-        <div className="calendar-div">
-          <Calendar />
         </div>
       </section>
     </div>
