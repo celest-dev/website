@@ -26,17 +26,10 @@ const config: Config = {
   headTags: [
     // Sentry
     {
-      tagName: "link",
-      attributes: {
-        rel: "preconnect",
-        href: "https://js.sentry-cdn.com",
-      },
-    },
-    {
       tagName: "script",
       attributes: {
-        src: "https://js.sentry-cdn.com/5e1c9ebbaa5b3f636fc63ba5003412d2.min.js",
-        crossorigin: "anonymous",
+        // To update, download: https://js.sentry-cdn.com/5e1c9ebbaa5b3f636fc63ba5003412d2.min.js
+        src: "/js/sentry.min.js",
       },
     },
     {
