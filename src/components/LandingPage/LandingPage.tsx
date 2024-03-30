@@ -51,7 +51,6 @@ const LandingPage = () => {
                     className="yc-image"
                     title="Y Combinator"
                     width={186}
-                    height={34}
                   />
                 </a>
               </div>
