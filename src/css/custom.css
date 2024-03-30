@@ -90,10 +90,12 @@ h6 {
 }
 
 @font-face {
-  font-family: Gilroy;
-  src: url("/Gilroy-Bold.otf") format("opentype");
+  font-family: "Gilroy";
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
+  src: local("Gilroy-Bold"), local("Gilroy"),
+    url("/Gilroy-Bold.otf") format("opentype");
 }
 
 body,

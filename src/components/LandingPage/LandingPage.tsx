@@ -60,12 +60,23 @@ const LandingPage = () => {
               <video
                 controls
                 playsInline
-                width="550"
-                height="310"
+                poster="/img/introducing-celest.webp"
+                width={550}
+                height={310}
                 onError={onVideoError}
               >
-                <source src="/img/introducing-celest.webm" type="video/webm" />
-                <source src="/img/introducing-celest.mp4" type="video/mp4" />
+                <source
+                  src="/img/introducing-celest.webm"
+                  width={550}
+                  height={310}
+                  type="video/webm"
+                />
+                <source
+                  src="/img/introducing-celest.mp4"
+                  width={550}
+                  height={310}
+                  type="video/mp4"
+                />
                 <track
                   default
                   kind="captions"
@@ -251,11 +262,15 @@ Future<void> introduceMyself() async {
                   <source
                     srcSet="/img/x.webp"
                     type="image/webp"
+                    width="27"
+                    height="27"
                     title="Dillon Nys twitter account"
                   />
                   <img
                     className="navbar-custom-image"
                     src="/img/x.png"
+                    width="27"
+                    height="27"
                     alt="Dillon Nys X/Twitter account"
                     title="Dillon Nys X/Twitter account"
                   />
@@ -265,6 +280,8 @@ Future<void> introduceMyself() async {
                 <img
                   className="navbar-custom-image"
                   src="/img/linkedin-black.svg"
+                  width="27"
+                  height="27"
                   alt="Dillon Nys LinkedIn account"
                   title="Dillon Nys LinkedIn account"
                 />
