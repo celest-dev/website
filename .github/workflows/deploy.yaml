@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - ".github/**"
 
 # These permissions are needed for deploying to GCP.
 permissions:
@@ -48,3 +46,4 @@ jobs:
           path: build
           destination: ${{ secrets.GCP_WEBSITE_BUCKET }}
           parent: false # Upload to bucket root
+          process_gcloudignore: false

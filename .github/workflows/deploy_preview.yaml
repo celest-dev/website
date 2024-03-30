@@ -1,8 +1,6 @@
 name: deploy_preview
 on:
   pull_request:
-    branches-ignore:
-      - main
 
 # These permissions are needed for deploying to GCP.
 permissions:
@@ -13,7 +11,7 @@ jobs:
   deploy:
     environment:
       name: preview
-      url: https://pr-${{ github.sha }}.preview.celest.dev
+      url: https://pr-${{ github.event.pull_request.number }}.preview.celest.dev
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -39,9 +37,29 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.GCP_BUILD_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_WEBSITE_SA }}
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/compute,https://www.googleapis.com/auth/ndev.clouddns.readwrite
       - name: Upload Website
         uses: google-github-actions/upload-cloud-storage@22121cd842b0d185e042e28d969925b538c33d77 # 2.1.0
         with:
           path: build
-          destination: ${{ secrets.GCP_WEBSITE_BUCKET }}/pr-${{ github.sha }}
-          parent: false # Upload to bucket root
+          destination: ${{ secrets.GCP_WEBSITE_BUCKET }}/pr-${{ github.event.pull_request.number }}
+          parent: false # Upload to PR folder
+          process_gcloudignore: false
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3 # 1.6.2
+      - name: Pub Get
+        run: dart pub get
+        working-directory: tool
+      - name: Create Preview URL
+        run: dart create_preview_url.dart
+        working-directory: tool
+        env:
+          GCP_ACCESS_TOKEN: ${{ steps.gcp-auth.outputs.access_token }}
+          GCP_WEBSITE_ENVIRONMENT: pr-${{ github.event.pull_request.number }}
+          GCP_WEBSITE_PROJECT: ${{ secrets.GCP_WEBSITE_PROJECT }}
+          GCP_WEBSITE_URL_MAP: ${{ secrets.GCP_WEBSITE_URL_MAP }}
+          GCP_WEBSITE_BACKEND_SERVICE: ${{ secrets.GCP_WEBSITE_BACKEND_SERVICE }}
+          GCP_WEBSITE_IP: ${{ secrets.GCP_WEBSITE_IP }}
+          GCP_DNS_PROJECT: ${{ secrets.GCP_DNS_PROJECT }}
+          GCP_DNS_ZONE: ${{ secrets.GCP_DNS_ZONE }}
