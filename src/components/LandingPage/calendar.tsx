@@ -1,12 +1,22 @@
-import Cal from "@calcom/embed-react";
+import { useEffect } from "react";
+import { getCalApi } from "@calcom/embed-react";
 
-export default function Calendar() {
-  return (
-    <Cal
-      namespace="team"
-      calLink="celest-dev/meet-website"
-      style={{ width: "100%", height: "100%", overflow: "scroll" }}
-      config={{ layout: "month_view" }}
-    />
-  );
+export function useFloatingCalendar() {
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi();
+      cal("floatingButton", {
+        calLink: "celest-dev/meet-website",
+        buttonText: "Book a demo",
+        config: {
+          layout: "month_view",
+        }
+      });
+      cal("ui", {
+        styles: {
+          branding: { brandColor: "#000000" }
+        }
+      });
+    })();
+  }, []);
 }

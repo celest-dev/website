@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   CloudIcon,
   ForwardIcon,
@@ -9,22 +9,18 @@ import {
   FaLock,
   FaDatabase,
   FaImages,
-  FaServer,
   FaBuilding,
   FaRocket,
   FaUserAstronaut,
-  FaInfo,
   FaInfoCircle,
 } from "react-icons/fa";
-import { RiExternalLinkLine } from "react-icons/ri";
-import { FiCloudLightning } from "react-icons/fi";
-import { MdPolicy, MdOutlineComputer, MdClose } from "react-icons/md";
+import { MdPolicy, MdClose } from "react-icons/md";
 import CodeBlock from "@theme/CodeBlock";
-import Calendar from "./calendar";
 
 import EmailForm from "./EmailForm";
 import Link from "@docusaurus/Link";
 import { recordEvent } from "@site/src/common/analytics";
+import { useFloatingCalendar } from "./calendar";
 
 const onVideoError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
   recordEvent("video.error", {
@@ -35,6 +31,7 @@ const onVideoError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
 };
 
 const LandingPage = () => {
+  useFloatingCalendar();
   return (
     <div className="landing-page">
       <header className="header">
@@ -61,7 +58,6 @@ const LandingPage = () => {
                     className="yc-image"
                     title="Y Combinator"
                     width={186}
-                    height={34}
                   />
                 </a>
               </div>
@@ -70,12 +66,23 @@ const LandingPage = () => {
               <video
                 controls
                 playsInline
-                width="550"
-                height="310"
+                poster="/img/introducing-celest.webp"
+                width={550}
+                height={310}
                 onError={onVideoError}
               >
-                <source src="/img/introducing-celest.webm" type="video/webm" />
-                <source src="/img/introducing-celest.mp4" type="video/mp4" />
+                <source
+                  src="/img/introducing-celest.webm"
+                  width={550}
+                  height={310}
+                  type="video/webm"
+                />
+                <source
+                  src="/img/introducing-celest.mp4"
+                  width={550}
+                  height={310}
+                  type="video/mp4"
+                />
                 <track
                   default
                   kind="captions"
@@ -391,6 +398,7 @@ Future<void> introduceMyself() async {
                 title="Dillon Nys - Founder, Engineering at Celest"
                 width={200}
                 height={200}
+                loading="lazy"
               />
             </picture>
             <h3>Dillon Nys</h3>
@@ -401,11 +409,16 @@ Future<void> introduceMyself() async {
                   <source
                     srcSet="/img/x.webp"
                     type="image/webp"
+                    width="27"
+                    height="27"
                     title="Dillon Nys twitter account"
                   />
                   <img
                     className="navbar-custom-image"
                     src="/img/x.png"
+                    width="27"
+                    height="27"
+                    loading="lazy"
                     alt="Dillon Nys X/Twitter account"
                     title="Dillon Nys X/Twitter account"
                   />
@@ -415,18 +428,15 @@ Future<void> introduceMyself() async {
                 <img
                   className="navbar-custom-image"
                   src="/img/linkedin-black.svg"
+                  width="27"
+                  height="27"
+                  loading="lazy"
                   alt="Dillon Nys LinkedIn account"
                   title="Dillon Nys LinkedIn account"
                 />
               </Link>
             </div>
           </div>
-        </div>
-      </section>
-      <section id="calendar" className="calendar">
-        <h2 className="middle-header">Book a demo</h2>
-        <div className="calendar-div">
-          <Calendar />
         </div>
       </section>
     </div>
