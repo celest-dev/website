@@ -12,7 +12,7 @@ import { MdPolicy, MdOutlineComputer } from "react-icons/md";
 import EmailForm from "./EmailForm";
 import Link from "@docusaurus/Link";
 import { useFloatingCalendar } from "./calendar";
-import { IntroducingCelest } from "./IntroducingCelest";
+import { CloudFunctionsDemo } from "./CloudFunctionsDemo";
 
 const LandingPage = () => {
   useFloatingCalendar();
@@ -46,7 +46,7 @@ const LandingPage = () => {
                 </a>
               </div>
             </div>
-            <IntroducingCelest />
+            <CloudFunctionsDemo />
           </div>
         </section>
         <section className="hero-get-started">
