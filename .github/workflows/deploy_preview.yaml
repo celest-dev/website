@@ -1,0 +1,65 @@
+name: deploy_preview
+on:
+  pull_request:
+
+# These permissions are needed for deploying to GCP.
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    environment:
+      name: preview
+      url: https://pr-${{ github.event.pull_request.number }}.preview.celest.dev
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # 4.1.1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@d2613e087f2e0aa841925861c5a5f7395d552177 # master
+        with:
+          version: 8
+      - name: Install Node.js
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # 4.0.0
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      - name: Install packages
+        run: pnpm install --frozen-lockfile --strict-peer-dependencies
+      - name: Run build
+        run: pnpm run build
+      - name: GCP Auth
+        id: gcp-auth
+        uses: google-github-actions/auth@55bd3a7c6e2ae7cf1877fd1ccb9d54c0503c457c # 2.1.2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_BUILD_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_WEBSITE_SA }}
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/compute,https://www.googleapis.com/auth/ndev.clouddns.readwrite
+      - name: Upload Website
+        uses: google-github-actions/upload-cloud-storage@22121cd842b0d185e042e28d969925b538c33d77 # 2.1.0
+        with:
+          path: build
+          destination: ${{ secrets.GCP_WEBSITE_BUCKET }}/pr-${{ github.event.pull_request.number }}
+          parent: false # Upload to PR folder
+          process_gcloudignore: false
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@fedb1266e91cf51be2fdb382869461a434b920a3 # 1.6.2
+      - name: Pub Get
+        run: dart pub get
+        working-directory: tool
+      - name: Create Preview URL
+        run: dart create_preview_url.dart
+        working-directory: tool
+        env:
+          GCP_ACCESS_TOKEN: ${{ steps.gcp-auth.outputs.access_token }}
+          GCP_WEBSITE_ENVIRONMENT: pr-${{ github.event.pull_request.number }}
+          GCP_WEBSITE_PROJECT: ${{ secrets.GCP_WEBSITE_PROJECT }}
+          GCP_WEBSITE_URL_MAP: ${{ secrets.GCP_WEBSITE_URL_MAP }}
+          GCP_WEBSITE_BACKEND_SERVICE: ${{ secrets.GCP_WEBSITE_BACKEND_SERVICE }}
+          GCP_WEBSITE_IP: ${{ secrets.GCP_WEBSITE_IP }}
+          GCP_DNS_PROJECT: ${{ secrets.GCP_DNS_PROJECT }}
+          GCP_DNS_ZONE: ${{ secrets.GCP_DNS_ZONE }}

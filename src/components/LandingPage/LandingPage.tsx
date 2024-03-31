@@ -1,31 +1,18 @@
-import React from "react";
+import React, {  } from "react";
 import {
   CloudIcon,
   ForwardIcon,
   CodeBracketIcon,
 } from "@heroicons/react/24/outline";
 import { AiFillApi } from "react-icons/ai";
-import {
-  FaLock,
-  FaDatabase,
-  FaImages,
-} from "react-icons/fa";
+import { FaLock, FaDatabase, FaImages } from "react-icons/fa";
 import { MdPolicy } from "react-icons/md";
-import CodeBlock from "@theme/CodeBlock";
 
 import EmailForm from "./EmailForm";
 import Link from "@docusaurus/Link";
-import { recordEvent } from "@site/src/common/analytics";
 import { useFloatingCalendar } from "./calendar";
+import { CloudFunctionsDemo } from "./CloudFunctionsDemo";
 import { PricingTable } from "./PricingTable";
-
-const onVideoError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
-  recordEvent("video.error", {
-    category: "Video playback error",
-    success: false,
-    errorMessage: e.toString(),
-  });
-};
 
 const LandingPage = () => {
   useFloatingCalendar();
@@ -37,82 +24,15 @@ const LandingPage = () => {
             <div className="hero-content">
               <h1 className="header-title">
                 Build your backend,
-                <br /> Flutter style.
+                <br /> Flutter-style.
               </h1>
               <p className="header-subtitle">
                 From your Flutter app to your backend in the cloud, Celest helps
                 you build every piece of your application in Dart, all without
                 leaving your IDE.
               </p>
-              <div className="hero-cta">
-                <a
-                  href="https://www.ycombinator.com/companies/celest"
-                  target="_blank"
-                >
-                  <img
-                    src="/img/yc-badge.svg"
-                    alt="YC Logo"
-                    className="yc-image"
-                    title="Y Combinator"
-                    width={186}
-                  />
-                </a>
-              </div>
             </div>
-            <div className="hero-media">
-              <video
-                controls
-                playsInline
-                poster="/img/introducing-celest.webp"
-                width={550}
-                height={310}
-                onError={onVideoError}
-              >
-                <source
-                  src="/img/introducing-celest.webm"
-                  width={550}
-                  height={310}
-                  type="video/webm"
-                />
-                <source
-                  src="/img/introducing-celest.mp4"
-                  width={550}
-                  height={310}
-                  type="video/mp4"
-                />
-                <track
-                  default
-                  kind="captions"
-                  srcLang="en"
-                  src="/img/introducing-celest.vtt"
-                />
-                {/* Fallback for browsers that don't support the video tag */}
-                <CodeBlock
-                  className="hero-code"
-                  language="dart"
-                  title="app/celest/apis/my_api.dart  ←  Your API"
-                >
-                  {`
-String hello(String name) {
-  return 'Hello, $name!';
-}`.trim()}
-                </CodeBlock>
-                <br />
-                <CodeBlock
-                  className="hero-code"
-                  language="dart"
-                  title="app/lib/main.dart  ←  Your Flutter app"
-                >
-                  {`
-import 'package:celest_backend/client.dart';
-
-Future<void> introduceMyself() async {
-  final res = await celest.myApi.hello('Celest');
-  print(res); // Hello, Celest!
-}`.trim()}
-                </CodeBlock>
-              </video>
-            </div>
+            <CloudFunctionsDemo />
           </div>
         </section>
         <section className="hero-get-started">

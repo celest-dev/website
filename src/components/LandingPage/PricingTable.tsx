@@ -1,8 +1,17 @@
 import Link from "@docusaurus/Link";
-import { FaBuilding, FaInfoCircle, FaRocket, FaUserAstronaut } from "react-icons/fa";
+import {
+  FaBuilding,
+  FaInfoCircle,
+  FaRocket,
+  FaUserAstronaut,
+} from "react-icons/fa";
 import { openPricingModal, PricingModal } from "./PricingModal";
+import useBrokenLinks from "@docusaurus/useBrokenLinks";
 
 export function PricingTable() {
+  // Needed for docusaurus anchor detection for some reason
+  // https://github.com/facebook/docusaurus/issues/9721#issuecomment-1882898840
+  useBrokenLinks().collectAnchor("pricing");
   return (
     <section id="pricing" className="pricing celest-categories-client">
       <h2 className="middle-header categories-bottom-header-margin">Pricing</h2>
@@ -17,17 +26,18 @@ export function PricingTable() {
             <p>No credit card required. Always free.</p>
           </div>
           <ul className="pricing-features">
-            <li className="pro">2 free projects</li>
             <li className="pro">5,000 function invocations</li>
-            <li className="pro">1,000 monthly active users</li>
+            <li className="pro">100 monthly active users</li>
             <li className="con">Cold starts</li>
             <li className="con">Limited resources</li>
           </ul>
           <div className="pricing-cta">
-            <p className="pricing-price">Free</p>
-            <button className="pricing-cta-button">
-              <Link to="/docs/overview">Get started</Link>
-            </button>
+            <div className="pricing-price">
+              <p>Free</p>
+            </div>
+            <p className="pricing-action">
+              To get started, run <code>celest deploy</code>
+            </p>
           </div>
         </div>
 
@@ -44,23 +54,23 @@ export function PricingTable() {
             <li className="pro">3 premium projects</li>
             <li className="pro">Unlimited free projects</li>
             <li className="pro">5,000 function invocations</li>
-            <li className="pro">100 monthly active users</li>
+            <li className="pro">1,000 monthly active users</li>
           </ul>
           <div className="pricing-cta">
-            <p className="pricing-price">$20 / month</p>
-            <button
-              className="pricing-price-subtext pricing-modal-button"
-              onClick={openPricingModal}
-            >
-              <span>plus usage</span>
-              <FaInfoCircle className="info-icon" />
-            </button>
+            <div className="pricing-price">
+              <p>$20 / month</p>
+              <button
+                className="pricing-price-subtext pricing-modal-button"
+                onClick={openPricingModal}
+              >
+                <span>plus usage</span>
+                <FaInfoCircle className="info-icon" />
+              </button>
+            </div>
             <PricingModal />
-            <button className="pricing-cta-button">
-              <Link to="https://join.celest.dev/b/test_9AQeW6b97cOT4E09AA">
-                Sign up
-              </Link>
-            </button>
+            <p className="pricing-action">
+              To sign up, run <code>celest subscribe</code>
+            </p>
           </div>
         </div>
 
@@ -80,11 +90,13 @@ export function PricingTable() {
             <li className="pro">Priority support</li>
           </ul>
           <div className="pricing-cta">
-            <p className="pricing-price">Contact Us</p>
+            <div className="pricing-price">
+              <p>Contact Us</p>
+            </div>
             <button
               data-cal-link="celest-dev/meet-website"
               data-cal-config='{"layout":"month_view"}'
-              className="pricing-cta-button"
+              className="pricing-cta-button pricing-action"
             >
               Schedule a call
             </button>

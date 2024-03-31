@@ -1,6 +1,6 @@
-name: website
+name: build
 on:
-  pull_request:
+  # Not needed for anything currently
 
 jobs:
   build:

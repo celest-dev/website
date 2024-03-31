@@ -298,6 +298,11 @@ pre code {
   flex-direction: column;
 }
 
+.hero iframe {
+  border: 0;
+  border-radius: 20px;
+}
+
 /* The CSS classes for the copy button for the curl command */
 .submit-form {
   display: flex;
@@ -377,6 +382,7 @@ span.token.comment {
 }
 
 #intro-video iframe {
+  border: 0;
   border-radius: 20px;
 }
 
@@ -498,7 +504,9 @@ span.token.comment {
 }
 
 .pricing .category-description {
-  padding: 0 0.25rem;
+  text-wrap: pretty;
+  margin: 0 0.25rem;
+  max-width: 250px;
 }
 
 .pricing .category-title {
@@ -533,13 +541,15 @@ span.token.comment {
   margin: 0;
   font-size: 1.4rem;
   font-weight: 500;
+  text-align: center;
 }
 
 .pricing-price-subtext {
   display: block;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 500;
+  margin: 0 auto;
 }
 
 dialog:modal {
@@ -576,12 +586,27 @@ dialog:modal {
   max-height: 0.7rem;
 }
 
+.pricing-cta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pricing-price {
+  margin-bottom: 0.8rem;
+}
+
+.pricing-action {
+  margin: 0 0.8rem 0.8rem 0.8rem !important;
+}
+
 .pricing-cta-button {
   font-family: var(--ifm-font-family-base);
   background-color: var(--gradient-blue);
   color: #027bff;
   padding: 10px 20px;
-  margin: 1rem;
   text-decoration: none;
   border: none;
   border-radius: 16px;

@@ -157,6 +157,7 @@ const config: Config = {
       respectPrefersColorScheme: false,
     },
     navbar: {
+      hideOnScroll: true,
       items: [
         {
           position: "left",
@@ -166,7 +167,7 @@ const config: Config = {
           label: "Docs",
         },
         { to: "/download", label: "Download", position: "left" },
-        { to: "#pricing", label: "Pricing", position: "left" },
+        { to: "/#pricing", label: "Pricing", position: "left", activeBasePath: 'never' },
         { to: "/blog", label: "Blog", position: "right" },
         {
           to: "https://github.com/celest-dev/celest",
@@ -191,7 +192,7 @@ const config: Config = {
           position: "right",
           className: "custom-navbar-img",
         },
-      ].filter(Boolean) as any,
+      ],
     },
     footer: {
       copyright: `Copyright © ${new Date().getFullYear()} Teo, Inc. (Celest)`,
