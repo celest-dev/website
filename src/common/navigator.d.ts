@@ -2,7 +2,12 @@
 
 // WICG Spec: https://wicg.github.io/ua-client-hints
 
-declare interface Navigator extends NavigatorUA {}
+type AutoplayMediaType = 'mediaelement' | 'audiocontext';
+type AutoplayPolicy = 'allowed' | 'allowed-muted' | 'disallowed';
+
+declare interface Navigator extends NavigatorUA {
+    getAutoplayPolicy: (type: AutoplayMediaType) => AutoplayPolicy;
+}
 declare interface WorkerNavigator extends NavigatorUA {}
 
 // https://wicg.github.io/ua-client-hints/#navigatorua

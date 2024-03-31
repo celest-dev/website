@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.250
+Let's create a Celest Function!
+
+00:00:02.280 --> 00:00:05.050
+Start by running `celest start`
+from your Flutter app.
+
+00:00:05.080 --> 00:00:07.490
+Then choose a name for your project.
+
+00:00:07.520 --> 00:00:11.810
+And in just a few seconds, you've got
+a Celest backend generated for you.
+
+00:00:11.840 --> 00:00:13.210
+To add a new cloud function,
+
+00:00:13.240 --> 00:00:16.850
+navigate to the "functions"
+folder and choose an API file.
+
+00:00:16.880 --> 00:00:20.730
+Give your function a name and write it
+like you would any other Dart function.
+
+00:00:20.763 --> 00:00:23.914
+Next, import the generated
+Flutter client and call `celest.init()`
+
+00:00:23.947 --> 00:00:26.957
+at the start of your app.
+
+00:00:30.040 --> 00:00:31.610
+The client is strongly typed
+
+00:00:31.640 --> 00:00:35.320
+and matches the names of your
+cloud functions in your backend.
+
+00:00:35.320 --> 00:00:36.640
+And Celest handles the serialization for you,
+
+00:00:36.670 --> 00:00:39.610
+so you can just focus
+on writing your logic.
+
+00:00:39.640 --> 00:00:42.410
+That's right!
+No more JSON serializable.
+
+00:00:42.440 --> 00:00:44.240
+Start for free at celest.dev
+
