@@ -33,7 +33,7 @@ export function PricingTable() {
           </ul>
           <div className="pricing-cta">
             <div className="pricing-price">
-              <p>Free</p>
+              <span>Free</span>
             </div>
             <p className="pricing-action">
               To get started, run <code>celest deploy</code>
@@ -58,7 +58,7 @@ export function PricingTable() {
           </ul>
           <div className="pricing-cta">
             <div className="pricing-price">
-              <p>$20 / month</p>
+              <span>$20 / month</span>
               <button
                 className="pricing-price-subtext pricing-modal-button"
                 onClick={openPricingModal}
@@ -91,7 +91,7 @@ export function PricingTable() {
           </ul>
           <div className="pricing-cta">
             <div className="pricing-price">
-              <p>Contact Us</p>
+              <span>Contact Us</span>
             </div>
             <button
               data-cal-link="celest-dev/meet-website"

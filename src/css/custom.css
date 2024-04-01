@@ -469,7 +469,7 @@ span.token.comment {
 }
 
 .pricing .categories {
-  max-width: unset;
+  max-width: 1500px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
@@ -494,10 +494,6 @@ span.token.comment {
 
 .pricing-tier > * {
   flex: 0;
-}
-
-.pricing-tier p {
-  margin: 0;
 }
 
 .pricing-tier .pricing-features {

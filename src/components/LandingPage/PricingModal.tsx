@@ -24,12 +24,7 @@ export function PricingModal() {
   return (
     <dialog id="pricing-modal" className="modal">
       <div id="pricing-modal-wrapper">
-        <div className="pricing-modal-header">
-          <h4>Celest pricing</h4>
-          <button className="pricing-modal-button" onClick={closePricingModal}>
-            <MdClose />
-          </button>
-        </div>
+        <h4>Celest pricing</h4>
         <p>
           The Solo tier includes 3 premium projects and unlimited free projects.
           Free projects have limited resources and cold starts, but cost you
