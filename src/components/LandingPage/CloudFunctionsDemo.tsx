@@ -24,6 +24,7 @@ export function CloudFunctionsDemo() {
     const video = document.getElementById(
       "cloud-functions-demo"
     ) as HTMLVideoElement;
+    video.autoplay = shouldAutoplay;
     video.addEventListener(
       "click",
       () => {
@@ -78,8 +79,7 @@ export function CloudFunctionsDemo() {
         width={550}
         height={310}
         onError={onVideoError}
-        // Play it as a GIF until the user interacts with it.
-        autoPlay={shouldAutoplay}
+        autoPlay={false}
         controls={false}
         playsInline
         disablePictureInPicture
