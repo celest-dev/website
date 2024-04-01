@@ -1,14 +1,8 @@
 import { useEffect } from "react";
-import { MdClose } from "react-icons/md";
 
 export function openPricingModal() {
   const modal = document.getElementById("pricing-modal") as HTMLDialogElement;
   modal.showModal();
-}
-
-function closePricingModal() {
-  const modal = document.getElementById("pricing-modal") as HTMLDialogElement;
-  modal.close();
 }
 
 export function PricingModal() {

@@ -53,7 +53,7 @@ export function PricingTable() {
           <ul className="pricing-features">
             <li className="pro">3 premium projects</li>
             <li className="pro">Unlimited free projects</li>
-            <li className="pro">5,000 function invocations</li>
+            <li className="pro">50,000 function invocations</li>
             <li className="pro">1,000 monthly active users</li>
           </ul>
           <div className="pricing-cta">

@@ -166,7 +166,6 @@ const config: Config = {
           docId: "overview",
           label: "Docs",
         },
-        { to: "/download", label: "Download", position: "left" },
         { to: "/#pricing", label: "Pricing", position: "left", activeBasePath: 'never' },
         { to: "/blog", label: "Blog", position: "right" },
         {
