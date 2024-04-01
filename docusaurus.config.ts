@@ -165,7 +165,6 @@ const config: Config = {
           docId: "overview",
           label: "Docs",
         },
-        { to: "/blog", label: "Blog", position: "left" },
         {
           to: "https://github.com/celest-dev/celest",
           html: '<img src="/img/github.svg" class="navbar-custom-image" width="27" height="27" alt="GitHub Page" />',
@@ -189,7 +188,7 @@ const config: Config = {
           position: "right",
           className: "custom-navbar-img",
         },
-      ].filter(Boolean) as any,
+      ],
     },
     footer: {
       copyright: `Copyright © ${new Date().getFullYear()} Teo, Inc. (Celest)`,
