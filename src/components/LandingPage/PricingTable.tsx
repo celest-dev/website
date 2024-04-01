@@ -26,17 +26,23 @@ export function PricingTable() {
             <p>No credit card required. Always free.</p>
           </div>
           <ul className="pricing-features">
-            <li className="pro">5,000 function invocations</li>
-            <li className="pro">100 monthly active users</li>
+            <li className="pro">
+              5,000 function invocations
+              <span className="per-project"> / project</span>
+            </li>
+            <li className="pro">
+              100 monthly active users
+              <span className="per-project"> / project</span>
+            </li>
+            <li className="pro">3 free projects</li>
             <li className="con">Cold starts</li>
-            <li className="con">Limited resources</li>
           </ul>
           <div className="pricing-cta">
             <div className="pricing-price">
               <span>Free</span>
             </div>
             <p className="pricing-action">
-              To get started, run <code>celest deploy</code>
+              To get started, run: <code>celest deploy</code>
             </p>
           </div>
         </div>
@@ -51,10 +57,16 @@ export function PricingTable() {
             <p>Perfect for solo developers who need power.</p>
           </div>
           <ul className="pricing-features">
+            <li className="pro">
+              50,000 function invocations
+              <span className="per-project"> / project</span>
+            </li>
+            <li className="pro">
+              1,000 monthly active users
+              <span className="per-project"> / project</span>
+            </li>
             <li className="pro">3 premium projects</li>
             <li className="pro">Unlimited free projects</li>
-            <li className="pro">50,000 function invocations</li>
-            <li className="pro">1,000 monthly active users</li>
           </ul>
           <div className="pricing-cta">
             <div className="pricing-price">
@@ -69,7 +81,7 @@ export function PricingTable() {
             </div>
             <PricingModal />
             <p className="pricing-action">
-              To sign up, run <code>celest subscribe</code>
+              To sign up, run: <code>celest subscribe</code>
             </p>
           </div>
         </div>

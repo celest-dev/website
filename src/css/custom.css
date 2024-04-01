@@ -560,6 +560,15 @@ dialog:modal {
   box-shadow: 0 0 0.5rem 0.25rem hsl(0 0% 0% / 10%);
 }
 
+.per-project {
+  font-size: 80%;
+  color: #6c757d;
+}
+
+.pricing code {
+  font-weight: 600;
+}
+
 #pricing-modal-wrapper {
   padding: 2rem;
 }
