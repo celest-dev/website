@@ -157,6 +157,7 @@ const config: Config = {
       respectPrefersColorScheme: false,
     },
     navbar: {
+      hideOnScroll: true,
       items: [
         {
           position: "left",
@@ -165,6 +166,7 @@ const config: Config = {
           docId: "overview",
           label: "Docs",
         },
+        { to: "/#pricing", label: "Pricing", position: "left", activeBasePath: 'never' },
         {
           to: "https://github.com/celest-dev/celest",
           html: '<img src="/img/github.svg" class="navbar-custom-image" width="27" height="27" alt="GitHub Page" />',

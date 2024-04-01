@@ -13,9 +13,8 @@ export function useFloatingCalendar() {
         }
       });
       cal("ui", {
-        styles: {
-          branding: { brandColor: "#000000" }
-        }
+        theme: "dark",
+        layout: "month_view",
       });
     })();
   }, []);

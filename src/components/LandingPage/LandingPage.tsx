@@ -5,13 +5,13 @@ import {
   CodeBracketIcon,
 } from "@heroicons/react/24/outline";
 import { AiFillApi } from "react-icons/ai";
-import { FaLock, FaDatabase, FaImages, FaServer } from "react-icons/fa";
-import { FiCloudLightning } from "react-icons/fi";
-import { MdPolicy, MdOutlineComputer } from "react-icons/md";
+import { FaLock, FaDatabase, FaImages } from "react-icons/fa";
+import { MdPolicy } from "react-icons/md";
 
 import Link from "@docusaurus/Link";
 import { useFloatingCalendar } from "./calendar";
 import { CloudFunctionsDemo } from "./CloudFunctionsDemo";
+import { PricingTable } from "./PricingTable";
 import { DownloadButton, DownloadCard } from "./Download";
 import useBrokenLinks from "@docusaurus/useBrokenLinks";
 
@@ -28,7 +28,7 @@ const LandingPage = () => {
             <div className="hero-content">
               <h1 className="header-title">
                 Build your backend,
-                <br /> Flutter style.
+                <br /> Flutter-style.
               </h1>
               <p className="header-subtitle">
                 From your Flutter app to your backend in the cloud, Celest helps
@@ -132,7 +132,7 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-      <section className="celest-categories-client">
+      {/* <section className="celest-categories-client">
         <h2 className="middle-header categories-bottom-header-margin">
           Accelerate development of your Flutter app
         </h2>
@@ -160,7 +160,8 @@ const LandingPage = () => {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
+      <PricingTable />
       <section className="team">
         <h2 className="team-header">Meet the Celest team</h2>
         <div className="team-info">
