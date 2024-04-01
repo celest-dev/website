@@ -7,11 +7,6 @@ permissions:
   contents: read
   id-token: write
 
-# Prevent PRs from trying to modify GCP resources concurrently
-concurrency:
-  group: ${{ github.repository }}-${{ github.workflow }}
-  cancel-in-progress: false
-
 jobs:
   deploy:
     environment:
