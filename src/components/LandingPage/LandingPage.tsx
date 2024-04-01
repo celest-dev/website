@@ -1,4 +1,4 @@
-import React, {  } from "react";
+import React from "react";
 import {
   CloudIcon,
   ForwardIcon,
@@ -9,13 +9,17 @@ import { FaLock, FaDatabase, FaImages, FaServer } from "react-icons/fa";
 import { FiCloudLightning } from "react-icons/fi";
 import { MdPolicy, MdOutlineComputer } from "react-icons/md";
 
-import EmailForm from "./EmailForm";
 import Link from "@docusaurus/Link";
 import { useFloatingCalendar } from "./calendar";
 import { CloudFunctionsDemo } from "./CloudFunctionsDemo";
+import { DownloadButton, DownloadCard } from "./Download";
+import useBrokenLinks from "@docusaurus/useBrokenLinks";
 
 const LandingPage = () => {
   useFloatingCalendar();
+  // Needed for docusaurus anchor detection for some reason
+  // https://github.com/facebook/docusaurus/issues/9721#issuecomment-1882898840
+  useBrokenLinks().collectAnchor("download");
   return (
     <div className="landing-page">
       <header className="header">
@@ -32,28 +36,14 @@ const LandingPage = () => {
                 leaving your IDE.
               </p>
               <div className="hero-cta">
-                <a
-                  href="https://www.ycombinator.com/companies/celest"
-                  target="_blank"
-                >
-                  <img
-                    src="/img/yc-badge.svg"
-                    alt="YC Logo"
-                    className="yc-image"
-                    title="Y Combinator"
-                    width={186}
-                  />
-                </a>
+                <DownloadButton />
               </div>
             </div>
             <CloudFunctionsDemo />
           </div>
         </section>
-        <section className="hero-get-started">
-          <div>
-            <h2 className="get-started-header">Want early access?</h2>
-            <EmailForm />
-          </div>
+        <section id="download" className="hero-get-started">
+          <DownloadCard />
         </section>
       </header>
       <h2 className="middle-header">Activate the builder in you</h2>

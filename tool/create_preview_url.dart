@@ -118,6 +118,29 @@ Future<void> main() async {
   final dnsApi = dns.DnsApi(client);
   await dnsApi.createDnsRecords();
 
+  // Invalidate the cache
+  final invalidationPath = '/$environmentName/*';
+  print('Invalidating cache for path: $invalidationPath');
+  final invalidationOp = await compute.urlMaps.invalidateCache(
+    CacheInvalidationRule(
+      host: fqdn,
+      path: invalidationPath,
+    ),
+    projectId,
+    urlMapName,
+  );
+  final result = await compute.globalOperations.wait(
+    projectId,
+    invalidationOp.name!,
+  );
+  if (result.error case final error?) {
+    final errorMessage =
+        error.errors?.map((e) => '${e.message} (${e.code})').join('; ') ??
+            'Unknown error';
+    throw Exception('Failed to invalidate cache for $fqdn: $errorMessage');
+  }
+  print('Successfully invalidated cache for $fqdn');
+
   // Wait for changes to propagate
   try {
     final stopwatch = Stopwatch()..start();
@@ -129,7 +152,10 @@ Future<void> main() async {
         '[Attempt $attempt] Checking route status (elapsed ${stopwatch.elapsed})',
       );
       try {
-        final resp = await client.get(Uri.parse('https://$fqdn'));
+        final resp = await client.send(
+          http.Request('HEAD', Uri.parse('https://$fqdn'))
+            ..followRedirects = false,
+        );
         if (resp.statusCode == 200) {
           print('Preview is live at https://$fqdn');
           return;

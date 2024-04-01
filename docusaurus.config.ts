@@ -158,11 +158,10 @@ const config: Config = {
     },
     navbar: {
       items: [
-        { to: "/download", label: "Download", position: "left" },
         {
           position: "left",
           type: "doc",
-          to: "docs/overview.md",
+          to: "/docs/overview.md",
           docId: "overview",
           label: "Docs",
         },
