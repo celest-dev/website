@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaLinux, FaWindows, FaApple } from "react-icons/fa";
 import { recordEvent } from "../../common/analytics";
 import { IconType } from "react-icons";
@@ -12,7 +12,7 @@ type DownloadState = {
 type OperatingSystem = "Windows" | "Apple" | "Linux" | "Unknown";
 type Architecture = "Intel" | "ARM" | "Unknown";
 
-export function DownloadButton() {
+export function useDetectSystem() {
   const [detectedSystem, setDetectedSystem] = useState<DownloadState>({
     os: "Unknown",
     architecture: "Unknown",
@@ -20,16 +20,16 @@ export function DownloadButton() {
 
   useEffect(() => {
     // Detect operating system
-    const userAgent = window.navigator.userAgent;
-    let os: OperatingSystem;
-    if (userAgent.includes("Win")) {
+    let os: OperatingSystem = "Unknown";
+    const userAgent = (
+      navigator.userAgentData?.platform ?? navigator.platform
+    ).toLowerCase();
+    if (userAgent.includes("win")) {
       os = "Windows";
-    } else if (userAgent.includes("Mac")) {
+    } else if (userAgent.includes("mac")) {
       os = "Apple";
-    } else if (userAgent.includes("Linux") && !userAgent.includes("Android")) {
+    } else if (userAgent.includes("linux") && !userAgent.includes("android")) {
       os = "Linux";
-    } else {
-      os = "Unknown";
     }
 
     // Detect architecture
@@ -66,7 +66,12 @@ export function DownloadButton() {
       });
   }, []);
 
-  return <OSCard {...detectedSystem} />;
+  return detectedSystem;
+}
+
+export function DownloadButton() {
+  const system = useDetectSystem();
+  return <OSCard {...system} />;
 }
 
 // Component for detected OS Card
@@ -113,70 +118,66 @@ function OSCard(props: DownloadState) {
 export function DownloadCard() {
   return (
     <div className="download">
-        <h3 className="center-download-page-headers">All Downloads</h3>
-        <div className="operating-system-download-section">
-          <div className="operating-system-card">
-            <FaWindows className="operating-system-download-image" />
-            <h3 className="operating-system-card-title">Windows</h3>
-            <p>
-              <a
-                href={getDownloadLink("Windows", "Intel")}
-                onClick={handleDownloadLinkEventTrigger(
-                  true,
-                  "Intel",
-                  "Windows"
-                )}
-              >
-                Intel (x64)
-              </a>
-            </p>
-          </div>
-          <div className="operating-system-card">
-            <FaApple className="operating-system-download-image" />
-            <h3 className="operating-system-card-title">Apple</h3>
-            <p>
-              <a
-                href={getDownloadLink("Apple", "ARM")}
-                onClick={handleDownloadLinkEventTrigger(true, "ARM", "Apple")}
-              >
-                Apple Silicon (ARM)
-              </a>
-              <span> / </span>
-              <a
-                href={getDownloadLink("Apple", "Intel")}
-                onClick={handleDownloadLinkEventTrigger(true, "Intel", "Apple")}
-              >
-                Intel (x64)
-              </a>
-            </p>
-          </div>
-          <div className="operating-system-card">
-            <FaLinux className="operating-system-download-image" />
-            <h3 className="operating-system-card-title">Linux</h3>
-            <p className="no-bottom-margin">
-              {" "}
-              deb: &nbsp;
-              <a
-                href={getDownloadLink("Linux", "ARM")}
-                onClick={handleDownloadLinkEventTrigger(true, "ARM", "Linux")}
-              >
-                ARM
-              </a>
-              <span> / </span>
-              <a
-                href={getDownloadLink("Linux", "Intel")}
-                onClick={handleDownloadLinkEventTrigger(true, "Intel", "Linux")}
-              >
-                Intel (x64)
-              </a>
-            </p>
-          </div>
+      <h2 className="center-download-page-headers">All Downloads</h2>
+      <div className="operating-system-download-section">
+        <div className="operating-system-card">
+          <FaWindows className="operating-system-download-image" />
+          <h3 className="operating-system-card-title">Windows</h3>
+          <p>
+            <a
+              href={getDownloadLink("Windows", "Intel")}
+              onClick={handleDownloadLinkEventTrigger(true, "Intel", "Windows")}
+            >
+              Intel (x64)
+            </a>
+          </p>
         </div>
-        <p>
-          After installing the Celest CLI, visit our{" "}
-          <a href="/docs/get-started">documentation</a> to start building your
-          backend!
-        </p>
+        <div className="operating-system-card">
+          <FaApple className="operating-system-download-image" />
+          <h3 className="operating-system-card-title">Apple</h3>
+          <p>
+            <a
+              href={getDownloadLink("Apple", "ARM")}
+              onClick={handleDownloadLinkEventTrigger(true, "ARM", "Apple")}
+            >
+              Apple Silicon (ARM)
+            </a>
+            <span> / </span>
+            <a
+              href={getDownloadLink("Apple", "Intel")}
+              onClick={handleDownloadLinkEventTrigger(true, "Intel", "Apple")}
+            >
+              Intel (x64)
+            </a>
+          </p>
+        </div>
+        <div className="operating-system-card">
+          <FaLinux className="operating-system-download-image" />
+          <h3 className="operating-system-card-title">Linux</h3>
+          <p className="no-bottom-margin">
+            {" "}
+            deb: &nbsp;
+            <a
+              href={getDownloadLink("Linux", "ARM")}
+              onClick={handleDownloadLinkEventTrigger(true, "ARM", "Linux")}
+            >
+              ARM
+            </a>
+            <span> / </span>
+            <a
+              href={getDownloadLink("Linux", "Intel")}
+              onClick={handleDownloadLinkEventTrigger(true, "Intel", "Linux")}
+            >
+              Intel (x64)
+            </a>
+          </p>
+        </div>
+      </div>
+      <p>
+        After installing the Celest CLI, visit our{" "}
+        <a href="/docs/get-started">documentation</a> to start building your
+        backend!
+      </p>
     </div>
   );
 }

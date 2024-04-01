@@ -119,12 +119,11 @@ Future<void> main() async {
   await dnsApi.createDnsRecords();
 
   // Invalidate the cache
-  final invalidationPath = '/$environmentName/*';
-  print('Invalidating cache for path: $invalidationPath');
+  print('Invalidating cache for $fqdn/*');
   final invalidationOp = await compute.urlMaps.invalidateCache(
     CacheInvalidationRule(
       host: fqdn,
-      path: invalidationPath,
+      path: '/*',
     ),
     projectId,
     urlMapName,
