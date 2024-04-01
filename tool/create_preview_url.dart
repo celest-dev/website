@@ -152,7 +152,10 @@ Future<void> main() async {
         '[Attempt $attempt] Checking route status (elapsed ${stopwatch.elapsed})',
       );
       try {
-        final resp = await client.get(Uri.parse('https://$fqdn'));
+        final resp = await client.send(
+          http.Request('HEAD', Uri.parse('https://$fqdn'))
+            ..followRedirects = false,
+        );
         if (resp.statusCode == 200) {
           print('Preview is live at https://$fqdn');
           return;

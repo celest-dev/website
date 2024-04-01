@@ -162,7 +162,7 @@ const config: Config = {
         {
           position: "left",
           type: "doc",
-          to: "docs/overview.md",
+          to: "/docs/overview.md",
           docId: "overview",
           label: "Docs",
         },

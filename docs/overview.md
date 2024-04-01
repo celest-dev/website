@@ -12,7 +12,7 @@ Celest is a backend-as-a-service for Flutter developers that enables you to buil
 
 ## How do I use Celest?
 
-You primarily interact with Celest using the [Celest CLI](/download). 
+You primarily interact with Celest using the [Celest CLI](/#download). 
 
 Once you download and install the CLI, run `celest start` from your Flutter project to create your `celest` folder. This will contain all of your backend logic. You can then use the Celest CLI to build your project locally and leverage the code-generated client in your Flutter app to connect to your backend. When you feel confident with your changes, use the CLI to deploy your backend to the cloud.
 
