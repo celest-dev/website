@@ -74,6 +74,7 @@
   --feature-icon-color: #34a3fe;
   --ifm-footer-background-color: var(--gradient-blue);
   --ifm-background-color: #fbfcff !important;
+  --ifm-link-color: #2656a5;
 }
 
 h1,
@@ -263,7 +264,7 @@ pre code {
 
 .hero {
   display: block;
-  padding-bottom: 2.5rem;
+  padding-bottom: 2rem;
 }
 
 .header {
@@ -510,6 +511,10 @@ span.token.comment {
   margin: 0 1rem;
 }
 
+.download a {
+  text-decoration: underline;
+}
+
 .download-page {
   margin: 2rem 10rem;
 }
@@ -684,6 +689,10 @@ h6 code {
 @media (max-width: 1000px) {
   .header {
     height: initial;
+  }
+
+  #download {
+    display: none;
   }
 
   .submit-form {
