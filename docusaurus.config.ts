@@ -167,7 +167,6 @@ const config: Config = {
           label: "Docs",
         },
         { to: "/#pricing", label: "Pricing", position: "left", activeBasePath: 'never' },
-        { to: "/blog", label: "Blog", position: "right" },
         {
           to: "https://github.com/celest-dev/celest",
           html: '<img src="/img/github.svg" class="navbar-custom-image" width="27" height="27" alt="GitHub Page" />',
