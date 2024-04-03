@@ -16,11 +16,11 @@ export function PricingTable() {
     <section id="pricing" className="pricing celest-categories-client">
       <h2 className="middle-header categories-bottom-header-margin">Pricing</h2>
       <div className="categories">
-        {/* Always Free */}
+        {/* Community */}
         <div className="pricing-tier">
           <div className="pricing-card-header">
             <FaRocket className="category-icon-client" />
-            <h3 className="category-title">Always Free</h3>
+            <h3 className="category-title">Community</h3>
           </div>
           <div className="category-description">
             <p>No credit card required. Always free.</p>
@@ -47,11 +47,11 @@ export function PricingTable() {
           </div>
         </div>
 
-        {/* Solo */}
+        {/* Pro */}
         <div className="pricing-tier">
           <div className="pricing-card-header">
             <FaUserAstronaut className="category-icon-client" />
-            <h3 className="category-title">Solo</h3>
+            <h3 className="category-title">Pro</h3>
           </div>
           <div className="category-description">
             <p>Perfect for solo developers who need power.</p>
@@ -86,11 +86,11 @@ export function PricingTable() {
           </div>
         </div>
 
-        {/* Team */}
+        {/* Teams */}
         <div className="pricing-tier">
           <div className="pricing-card-header">
             <FaBuilding className="category-icon-client" />
-            <h3 className="category-title">Team</h3>
+            <h3 className="category-title">Teams</h3>
           </div>
           <div className="category-description">
             <p>Manage organizations and invite your team to collaborate.</p>
