@@ -34,11 +34,11 @@ export function PricingModal() {
           <tbody>
             <tr>
               <th>Functions</th>
-              <td>5,000 invocations</td>
+              <td>50,000 invocations</td>
             </tr>
             <tr>
               <th>Auth</th>
-              <td>100 monthly active users (MAUs)</td>
+              <td>1,000 monthly active users (MAUs)</td>
             </tr>
           </tbody>
         </table>
@@ -47,11 +47,11 @@ export function PricingModal() {
           <tbody>
             <tr>
               <th>Functions</th>
-              <td>50,000 invocations</td>
+              <td>500,000 invocations</td>
             </tr>
             <tr>
               <th>Auth</th>
-              <td>1,000 monthly active users (MAUs)</td>
+              <td>10,000 monthly active users (MAUs)</td>
             </tr>
           </tbody>
         </table>

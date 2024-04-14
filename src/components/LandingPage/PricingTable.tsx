@@ -1,4 +1,3 @@
-import Link from "@docusaurus/Link";
 import {
   FaBuilding,
   FaInfoCircle,
@@ -27,12 +26,12 @@ export function PricingTable() {
           </div>
           <ul className="pricing-features">
             <li className="pro">
-              5,000 function invocations
-              <span className="per-project"> / project</span>
+              50,000 function invocations
+              <span className="per-project"> / project / mo.</span>
             </li>
             <li className="pro">
-              100 monthly active users
-              <span className="per-project"> / project</span>
+              1,000 monthly active users
+              <span className="per-project"> / project / mo.</span>
             </li>
             <li className="pro">3 free projects</li>
             <li className="con">Cold starts</li>
@@ -58,12 +57,12 @@ export function PricingTable() {
           </div>
           <ul className="pricing-features">
             <li className="pro">
-              50,000 function invocations
-              <span className="per-project"> / project</span>
+              500,000 function invocations
+              <span className="per-project"> / project / mo.</span>
             </li>
             <li className="pro">
-              1,000 monthly active users
-              <span className="per-project"> / project</span>
+              5,000 monthly active users
+              <span className="per-project"> / project / mo.</span>
             </li>
             <li className="pro">3 premium projects</li>
             <li className="pro">Unlimited free projects</li>
