@@ -61,7 +61,7 @@ export function PricingTable() {
               <span className="per-project"> / project / mo.</span>
             </li>
             <li className="pro">
-              5,000 monthly active users
+              10,000 monthly active users
               <span className="per-project"> / project / mo.</span>
             </li>
             <li className="pro">3 premium projects</li>
