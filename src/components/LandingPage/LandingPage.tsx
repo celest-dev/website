@@ -12,8 +12,9 @@ import Link from "@docusaurus/Link";
 import { useFloatingCalendar } from "./calendar";
 import { CloudFunctionsDemo } from "./CloudFunctionsDemo";
 import { PricingTable } from "./PricingTable";
-import { DownloadButton, DownloadCard } from "./Download";
+import { DownloadCard } from "./Download";
 import useBrokenLinks from "@docusaurus/useBrokenLinks";
+import EmailForm from "./EmailForm";
 
 const LandingPage = () => {
   useFloatingCalendar();
@@ -36,7 +37,8 @@ const LandingPage = () => {
                 leaving your IDE.
               </p>
               <div className="hero-cta">
-                <DownloadButton />
+                <h2 className="get-started-header">Want to stay up-to-date?</h2>
+                <EmailForm />
               </div>
             </div>
             <CloudFunctionsDemo />
