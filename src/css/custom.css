@@ -88,6 +88,7 @@ h6 {
 
 .get-started-header {
   color: white;
+  text-align: center;
 }
 
 @font-face {
@@ -897,6 +898,8 @@ h6 code {
 
   .hero-cta {
     text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
   }
 
   .header-title {

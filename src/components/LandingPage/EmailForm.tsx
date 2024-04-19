@@ -14,16 +14,16 @@ const formStyles = {
   formFont: "Nunito Sans",
   formFontColor: "#000000",
   formFontSizePx: 14,
-  buttonText: "Join Waitlist",
+  buttonText: "Get Updates",
   buttonFont: "Nunito Sans",
   buttonFontColor: "#ffffff",
   buttonColor: "#042853",
   buttonFontSizePx: 14,
-  successMessage: "Thanks! We'll be in touch!",
+  successMessage: "Thanks! We'll keep you updated!",
   successFont: "Nunito Sans",
   successFontColor: "#ffffff",
   successFontSizePx: 14,
-  userGroup: "Waitlist",
+  userGroup: "Newsletter",
 };
 const domain = "app.loops.so";
 
