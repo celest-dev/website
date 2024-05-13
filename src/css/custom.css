@@ -268,7 +268,7 @@ pre code {
 }
 
 .header {
-  height: min(calc(100vh - var(--ifm-navbar-height)), 900px);
+  min-height: min(calc(100vh - var(--ifm-navbar-height)), 900px);
 }
 
 .hero-inner {
