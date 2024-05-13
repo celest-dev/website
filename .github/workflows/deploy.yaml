@@ -16,7 +16,7 @@ jobs:
       name: production
       url: https://celest.dev
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - name: Git Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # 4.1.1
