@@ -1,23 +1,27 @@
-# Nextra Docs Template 
+# Website
 
-This is a template for creating documentation with [Nextra](https://nextra.site).
+The code for [celest.dev](https://celest.dev), home of Celest, the Flutter cloud platform.
 
-[**Live Demo →**](https://nextra-docs-template.vercel.app)
+## Development
 
-[![](.github/screenshot.png)](https://nextra-docs-template.vercel.app)
+This website is built using [Nextra](https://nextra.site/) and deployed to Vercel. To contribute, you will need to install [pnpm](https://pnpm.io/).
 
-## Quick Start
+### Setup
 
-Click the button to clone this repository and deploy it on Vercel:
+Start by cloning the repository and installing its dependencies.
 
-[![](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false)
+```console
+$ git clone https://github.com/celest-dev/website
+$ cd website
+$ pnpm install
+```
 
-## Local Development
+### Local Development
 
-First, run `pnpm i` to install the dependencies.
+To start a local development server, run `pnpm dev`. Most changes will be reflected live without having to restart the server.
 
-Then, run `pnpm dev` to start the development server and visit localhost:3000.
+### Build
 
-## License
+To build the website for production, run `pnpm build`. This command generates static content into the `build` directory.
 
-This project is licensed under the MIT License.
+To view the production build locally, run `pnpm start`.
