@@ -17,7 +17,9 @@ const config: DocsThemeConfig = {
     return { titleTemplate: "%s | Celest" };
   },
   head() {
-    const { asPath } = useRouter();
+    const router = useRouter();
+    const { asPath } = router;
+
     const url = `https://docs.celest.dev${asPath}`;
 
     const { frontMatter, title: defaultTitle } = useConfig();
@@ -33,7 +35,24 @@ const config: DocsThemeConfig = {
 
     return (
       <>
-        <link rel="icon" type="image/png" href="/img/logo.png" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <title>{fullTitle}</title>
         <meta property="og:url" content={url} />
         <meta property="og:title" content={fullTitle} />
@@ -49,6 +68,15 @@ const config: DocsThemeConfig = {
       </>
     );
   },
+  banner: {
+    key: '0.4-release',
+    text: (
+      <>
+      Celest 0.4 is out with support for server-side Flutter! 🚀 <a href="/blog/fluttering-in-the-sky">Read more →</a>
+      </>
+    ),
+    dismissible: false,
+  },
   search: {
     placeholder: "Search the docs...",
   },
@@ -56,7 +84,7 @@ const config: DocsThemeConfig = {
     text: `Copyright © ${new Date().getFullYear()} Teo, Inc. (Celest)`,
   },
   sidebar: {
-    defaultMenuCollapseLevel: 2,
+    defaultMenuCollapseLevel: 1,
   },
 };
 

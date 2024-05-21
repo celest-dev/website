@@ -1,32 +1,32 @@
-import { withSentryConfig } from "@sentry/nextjs";
 // @ts-check
-
+import { withSentryConfig } from "@sentry/nextjs";
 import nextra from "nextra";
 
-const withNextra = nextra({
+/** @type {import('nextra/types').NextraConfig} */
+const nextraConfig = {
   theme: "nextra-theme-docs",
   themeConfig: "./theme.config.tsx",
   staticImage: true,
   flexsearch: {
-    codeblock: false,
+    codeblocks: false,
   },
-});
+};
 
 /**
  * @type {import('next').NextConfig}
  */
 export default withSentryConfig(
-  withNextra({
+  nextra(nextraConfig)({
     redirects: () => [
       {
-        source: "/docs/functions",
-        destination: "/docs/functions/introduction",
-        statusCode: 302,
+        source: "/docs/functions/introduction",
+        destination: "/docs/functions",
+        statusCode: 301,
       },
       {
-        source: "/docs/auth",
-        destination: "/docs/auth/introduction",
-        statusCode: 302,
+        source: "/docs/auth/introduction",
+        destination: "/docs/auth",
+        statusCode: 301,
       },
       {
         source: "/blog/local-iterations-mvp",
@@ -52,7 +52,7 @@ export default withSentryConfig(
         source: "/about-us",
         destination: "/",
         statusCode: 302,
-      }
+      },
     ],
   }),
   {
@@ -71,9 +71,6 @@ export default withSentryConfig(
     // Upload a larger set of source maps for prettier stack traces (increases build time)
     widenClientFileUpload: true,
 
-    // Transpiles SDK to be compatible with IE11 (increases bundle size)
-    transpileClientSDK: true,
-
     // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
     // This can increase your server load as well as your hosting bill.
     // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
@@ -91,5 +88,7 @@ export default withSentryConfig(
     // https://docs.sentry.io/product/crons/
     // https://vercel.com/docs/cron-jobs
     automaticVercelMonitors: true,
+
+    telemetry: false,
   }
 );

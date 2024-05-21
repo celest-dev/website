@@ -1,0 +1,205 @@
+---
+title: How we want to backend
+description: How we reason about Celest's design and our wants for the future of backend development.
+date: May 28, 2024
+order: 1
+---
+
+import { Callout } from 'nextra/components';
+import { Bleed } from 'nextra-theme-docs';
+import Image from 'next/image';
+
+import Authors, { Author } from '@components/Authors'
+import annotateAllTheThings from '@/public/img/annotate-all-the-things.jpeg';
+
+# How we want to backend
+
+<Authors />
+
+Today, we're excited to release version 0.4 of Celest, including support for HTTP customization, improved ergonomics, and a preview of running
+Flutter and UI code in the sky! We've published a separate [blog](/blog/fluttering-in-the-sky) post to discuss all the
+new features. In this post, we want to dive into more of the design of Celest and the principles that guide it.
+
+<Image className="m-auto pt-8 pb-4 w-7/12" alt="Annotate all the things" src={annotateAllTheThings} />
+
+As you build with Celest, you'll notice that it requires a slightly different way of thinking about your backend. 
+This article walks through how we arrived at the design of Celest and what we're trying to achieve.
+
+The first thing you'll notice is Celest's liberal usage of Dart [annotations](https://dart.dev/language/metadata). 
+Annotations are used in Celest to convey almost all the metadata and semantics of your backend.
+
+```dart
+@cloud
+@authenticated
+Future<String> sayHello({
+  @principal required User user,
+}) async {
+  return 'Hello, ${user.displayName}';
+}
+```
+
+At first glance, this syntax can seem cumbersome and you may wonder why this design decision was made.
+
+Our goals for Celest are two-fold:
+1. To have you write the least amount of boilerplate code possible, letting us do the heavy lifting; and
+2. To let you convey the semantics of your backend precisely and unambiguously.
+
+Annotations allow us to achieve both these goals, _if_ we do it right.
+
+> And if we ever don't, please let us know! API design and naming can be especially tricky to get right, 
+> and we're by no means perfect.
+
+## Declarative backends
+
+The first thing annotations do is enable you to think about your backend declaratively. Instead of telling 
+Celest how to do something, you tell Celest what you want to do and let it figure out the best way possible.
+
+For example, instead of writing code to set up an HTTP server, you annotate your logic with `@cloud`.
+
+```dart
+@cloud
+Future<String> sayHello() async {
+  return 'Hello, world!';
+}
+```
+
+Instead of writing code to handle authentication via middleware or a proxy, you label your protected logic 
+with `@authenticated`.
+
+```dart
+@cloud
+@authenticated
+Future<String> sayHello() async {
+  return 'Hello, valued customer!';
+}
+```
+
+Celest has built-in opinions on how to handle each of these cases which optimize the performance and security of your backend.
+In the cases where you know better than us, we expose additional annotations to override our defaults (e.g. with 
+[HTTP customizations](/docs/functions/http/customization)) while stll minimizing the boilerplate.
+
+Either way, Celest allows you to convey the _intent_ of how some code should work without worrying about 
+exactly _how_ it is done unless you want to.
+
+### Sane defaults
+
+Being so opinionated means that if we have the wrong opinions, you'll end up writing customizations for everything you're building,
+completely defeating our sole mission. To avoid this, we've tried to make our default behavior _sane_.
+
+Sane default behavior means that the "magic" Celest does is what you probably would have done anyway. It's what your intuition would suggest is
+happening. And it has baked in the current best practices around design and security.
+
+Let's take `@authenticated` as an example. When you see a function labeled as such, you would expect that only users who have passed through a login
+flow, and have a valid login session, can access it. You would intuit this information is being conveyed via some HTTP header like `Authorization`. And
+best practices would suggest that any function _not_ labeled as `@authenticated` be deny-by-default.
+
+All of this is true for `@authenticated` and these are the ways we try to reason about every annotation.
+
+## Infrastructure from code
+
+When it comes time to deploy that backend, the current trend is to write your infrastructure as code (the IaC paradigm) in order to have declarative,
+reproducible, and auditable deployments. To do this, you would typically introduce a new codebase to store your infrastructure which lives alongside your backend. 
+
+For example, you may have a backend written in Node.js and scaffold out your infrastructure in Terraform.
+
+<Bleed>
+<div className="flex flex-row flex-wrap items-center justify-center">
+<div className="px-2">
+```js filename="index.js"
+export function handler(event, context) {
+  console.log("Got event:", event);
+};
+```
+</div>
+<div className="px-2">
+```hcl filename="main.tf"
+resource "aws_lambda_function" "example" {
+  function_name = "example"
+  handler = "index.handler"
+  runtime = "nodejs14.x"
+  role = aws_iam_role.example.arn
+}
+```
+</div>
+</div>
+<p className="mt-2 text-sm text-gray-400 text-center">An example Node.js Lambda function and the Terraform to deploy it.</p>
+</Bleed>
+
+Much like Celest, this allows you to _declare_ the components of your infrastructure instead of imperatively creating, updating, and deleting
+them by hand. And for a while, it works great!
+
+The split of backend and infrastructure logic creates fragmentation in your codebase, though. As your project scales, some hairy issues start to emerge:
+
+- Features must be written and coordinated twice: once in the backend and again for the corresponding infrastructure.
+- The infrastructure code can become out-of-date with the backend code, leading to bugs and security vulnerabilities.
+- Understanding the infrastructure that controls a piece of backend code requires jumping between two, possibly distinct, codebases.
+
+At Celest, we've experienced all these problems and more. And through that pain, we've come to believe that the best way to write infrastructure is to 
+write it _alongside_ the code it manages. Ideally, everything relevant to a piece of backend code should live right next to it
+in the same file, function, and language.
+
+> This paradigm has been coined infrastructure-**from**-code (IfC), as opposed to the 
+> infrastructure-as-code pattern described previously.
+
+```dart
+@cloud
+@authenticated
+Future<String> sayHello() async {
+  return 'Hello, valued customer!';
+}
+```
+
+Adopting this paradigm, you need only look at the function itself to understand both its logic and its infrastructure. 
+No other files, languages, or teams are required. 
+
+On the surface, it may seem that this leads to more friction when trying to understand any piece of backend code. But because there still exists 
+a clean separation of your backend and infrastructure (i.e. runtime vs. static code), you can safely ignore one or the other to process each part in isolation.
+
+And whenever you need to update a part of your backend, you can do so in a single place.
+
+We think that's powerful!
+
+## Blurring the lines even more
+
+But why stop there? What if you could not only keep your backend and infrastructure code together but also your client code?
+
+Currently, in Celest, everything must be done in a separate `celest` folder which lives outside your client app. Your backend types and logic are all
+separate from your client code and, because they live in a separate Dart package, you must follow Dart package conventions to share them with your frontend. 
+
+For example, Celest requires that all your shared code live in the `lib` folder of your Celest project. But this, too, can create friction when you're
+working on a piece of frontend code and realize you need to update the backend.
+
+Imagine you're working on this Dart application and decide you want the `sayHello` function to run only in the backend.
+
+```dart
+Future<String> sayHello() async {
+  return 'Hello, world!';
+}
+
+void main() async {
+  print(await sayHello());
+}
+```
+
+You would have to move the function to your Celest project, import the generated client into your frontend project, and update your frontend to call the Celest client. 
+Hopefully, it all goes as planned.
+
+What if, instead, you could just do this?
+
+```dart {1}
+@cloud
+Future<String> sayHello() async {
+  return 'Hello, world!';
+}
+
+void main() async {
+  print(await sayHello());
+}
+```
+
+That's how we want to backend. Over the next few months, you'll see more work to blur these lines with IDE plugins, better Dart analyzer support, and macros 👀. To learn
+more about the features available today with Celest 0.4, check out the launch [post](/blog/fluttering-in-the-sky). 
+
+We'd love to hear your thoughts on this vision for backend development. Reach out to us on [GitHub](https://github.com/celest-dev/celest), [X](https://x.com/celest_dev), and [Discord](/discord)!
+
+Dart on! 🚀

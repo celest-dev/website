@@ -11,23 +11,23 @@ import { CloudFunctionsDemo } from '@components/CloudFunctionsDemo'
 
 ## What is Celest?
 
-Celest is a backend-as-a-service for Flutter developers that enables you to build your backend entirely in Dart. Build the use cases you need without any additional tooling or context switching to different programming languages. Since you are writing your backend in Dart, Celest enables you to share logic and code between your Flutter app and your backend.
+Celest is a backend-as-a-service for Flutter developers that enables you to build your backend entirely in Dart. Build the use cases you need without any additional tooling or context switching to different programming languages. Celest lets you write your backend in Dart, enabling you to share logic between your Flutter app and your backend.
 
 <IntroducingCelest />
 
 ## How do I use Celest?
 
-You primarily interact with Celest using the [Celest CLI](/#download). 
+You primarily interact with Celest using the [Celest CLI](/docs/download). 
 
-Once you download and install the CLI, run `celest start` from your Flutter project to create your `celest` folder. This will contain all of your backend logic. You can then use the Celest CLI to build your project locally and leverage the code-generated client in your Flutter app to connect to your backend. When you feel confident with your changes, use the CLI to deploy your backend to the cloud.
+Once you download and install the CLI, run `celest start` from your Flutter project to create the `celest` folder. This folder contains all of your backend logic. The CLI will watch for changes in this folder and hot-reload your backend as you work. A client library is automatically generated for you in your Flutter app. When you feel confident with your changes, use the CLI to [deploy](/docs/deploy) your backend to the cloud.
 
-Celest offers a set of use cases via "Cloud Widgets," constructs that encapsulate groups of functionality. Using these widgets you can declaratively define your backend features such as Authentication, Data, and Storage.
+Celest offers a set of "Cloud Widgets"&mdash;constructs that encapsulate functionality on the backend. Using these widgets you can declaratively define your backend features such as serverless functions and authentication.
 
 <CloudFunctionsDemo />
 
 ## What can I build with Celest?
 
-At a high level, the following "Cloud Widgets" are available for you when building with Celest.
+The following Cloud Widgets are available to build your backend:
 
 <Callout type="info">
     **Note:** We will be rolling out new features and functionality over the coming months. If there's a use case you'd like to see which isn't listed here, please let us know by [creating an issue](https://github.com/celest-dev/celest/issues/new/choose) 
@@ -44,4 +44,4 @@ At a high level, the following "Cloud Widgets" are available for you when buildi
 
 ## Next steps
 
-Follow the next guide to learn more about how to [set up the Celest CLI](/docs/get-started.md) and get started building your backend in Dart.
+Follow the next guide to [set up the CLI](/docs/get-started.md) and get started building your backend in Dart.
