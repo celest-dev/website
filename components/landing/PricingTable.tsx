@@ -80,14 +80,14 @@ function PricingTier({
               )}
               {feature.description}
               {feature.pupm && (
-                <span
+                <div
                   className={clsx(
-                    "text-[0.6rem] text-gray-400 ml-1",
+                    "m-0 ml-5 text-[0.6rem] text-gray-400",
                     price === "Custom" && "invisible"
                   )}
                 >
-                  / project / month
-                </span>
+                  per project per month
+                </div>
               )}
             </li>
           ))}
