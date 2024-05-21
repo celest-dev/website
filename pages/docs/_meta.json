@@ -1,0 +1,23 @@
+{
+  "index": "Overview",
+  "download": "Download",
+  "get-started": "Get Started",
+  "deploy": "Deploy",
+  "--widgets": {
+    "title": "Cloud Widgets",
+    "type": "separator"
+  },
+  "functions": "Functions",
+  "auth": "Auth",
+  "--reference": {
+    "title": "Reference",
+    "type": "separator"
+  },
+  "cli-commands-reference": "CLI commands",
+  "contact": {
+    "title": "Contact ↗",
+    "type": "page",
+    "href": "https://x.com/Celest_Dev",
+    "newWindow": true
+  }
+}

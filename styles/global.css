@@ -1,0 +1,25 @@
+:root {
+  --gradient-blue: linear-gradient(100deg, #027dfd 26.96%, #92ebfe 109.1%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+}
+
+body,
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Hide the word wrap and copy buttons which are overlaid on pre blocks for small screens */
+@media screen and (max-width: 768px) {
+  pre + div > button {
+    display: none;
+  }
+}

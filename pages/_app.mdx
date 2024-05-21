@@ -1,0 +1,26 @@
+import { PostHogProvider } from "posthog-js/react";
+import Intercom from '@intercom/messenger-js-sdk';
+import { useEffect } from 'react';
+
+import '../styles.css';
+import '../styles/global.css';
+import "nextra-theme-docs/style.css";
+
+export default function App({ Component, pageProps }) {
+  Intercom({
+    app_id: 'gxzf8bwj',
+  });
+
+  return (
+      <PostHogProvider
+        apiKey={process.env.NEXT_PUBLIC_POSTHOG_KEY}
+        options={{
+          api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+        }}
+      >
+        <main>
+          <Component {...pageProps} />
+        </main>
+      </PostHogProvider>
+  );
+}

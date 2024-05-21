@@ -1,0 +1,62 @@
+---
+title: Defining custom exceptions
+description: Learn how to define custom exceptions types in your Celest Functions.
+---
+
+# Defining custom exceptions
+
+You can create custom exception types in your backend to throw specific errors and react to them accordingly in your Flutter app.
+
+## Using custom exceptions
+
+Below is an example of how to define a custom exception. You can create exceptions inside your `celest/lib/exceptions/` folder.
+
+```dart
+// celest/lib/exceptions/bad_name_exception.dart
+
+class BadNameException implements Exception {
+  const BadNameException(this.message);
+
+  final String message;
+}
+```
+
+You can then throw these exceptions in your Celest Functions whenever needed as shown below.
+
+```dart {8}
+// celest/functions/greeting.dart
+
+import 'package:celest_backend/exceptions/bad_name_exception.dart';
+
+Future<String> sayHello(String name) async {
+  // Perform custom validation
+  if (name.isEmpty) {
+    throw const BadNameException('Name cannot be empty');
+ }
+  return 'Hello, $name';
+}
+```
+
+In your Flutter app, the same `BadNameException` type will be thrown by the generated client if an error occurs.
+
+```dart {7-10}
+import 'package:celest_backend/client.dart';
+
+Future<String> getGreeting(String name) async {
+  try {
+    return await celest.functions.greeting.sayHello(name);
+  // Catch the exception type defined in your backend
+  } on BadNameException catch (e) {
+    print('Uh oh! Could not greet $name: $e');
+    rethrow;
+  }
+}
+```
+
+## Writing custom serialization logic
+
+Just like [custom model types](/docs/functions/data-types.md#writing-custom-serialization-logic), custom exceptions can define their own serialization logic. This is useful when you have existing types you want to make use of which are not serializable by default.
+
+## Next steps
+
+You have now learned how to create and throw custom exceptions in your Celest Functions. We have additional guides to teach you about [managing environment variables](/docs/functions/env-variables.md) and [creating tests for your functions](/docs/functions/testing.md).

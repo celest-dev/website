@@ -1,0 +1,12 @@
+{
+    "introduction": "Understanding Celest Functions",
+    "creating-functions": "Creating a function",
+    "logging": "Logging and debugging",
+    "data-types": "Defining custom data types",
+    "exceptions": "Defining custom exceptions",
+    "env-variables": "Managing environment variables",
+    "authorizing-functions": "Authorizing your functions",
+    "testing": "Testing your functions",
+    "packages": "Installing Dart packages",
+    "http": "HTTP"
+}
