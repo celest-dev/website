@@ -71,9 +71,6 @@ importers:
       react-icons:
         specifier: ^5.2.1
         version: 5.2.1(react@18.2.0)
-      react-live-chat-loader:
-        specifier: ^2.9.1
-        version: 2.9.1(react@18.2.0)
       sharp:
         specifier: ^0.33.4
         version: 0.33.4
@@ -2876,11 +2873,6 @@ packages:
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
-
-  react-live-chat-loader@2.9.1:
-    resolution: {integrity: sha512-SSP7t+qpk9mu/uPkbU7K53XH6v66Do4y+gwORkBvJw4SHktewQ2IKubDvuiMti/2SRfZBi0Q5gcGRNIICOwvzg==}
-    peerDependencies:
-      react: ^16.14.0 || ^17.0.0 || ^18.0.0
 
   react-remove-scroll-bar@2.3.6:
     resolution: {integrity: sha512-DtSYaao4mBmX+HDo5YWYdBWQwYIQQshUV/dVxFxK+KM26Wjwp1gZ6rv6OC3oujI6Bfu6Xyg3TwK533AQutsn/g==}
@@ -6709,10 +6701,6 @@ snapshots:
       react: 18.2.0
 
   react-is@16.13.1: {}
-
-  react-live-chat-loader@2.9.1(react@18.2.0):
-    dependencies:
-      react: 18.2.0
 
   react-remove-scroll-bar@2.3.6(@types/react@18.2.79)(react@18.2.0):
     dependencies:
