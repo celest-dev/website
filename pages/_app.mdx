@@ -1,28 +1,6 @@
-import { PostHogProvider } from "posthog-js/react";
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import Intercom from '@intercom/messenger-js-sdk';
-import { useEffect } from 'react';
+import App from '@components/_app';
 
 import '../styles.css';
-import '../styles/global.css';
 import "nextra-theme-docs/style.css";
 
-export default function App({ Component, pageProps }) {
-  Intercom({
-    app_id: 'gxzf8bwj',
-  });
-
-  return (
-      <PostHogProvider
-        apiKey={process.env.NEXT_PUBLIC_POSTHOG_KEY}
-        options={{
-          api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-        }}
-      >
-        <main>
-          <Component {...pageProps} />
-          <SpeedInsights />
-        </main>
-      </PostHogProvider>
-  );
-}
+export default App;

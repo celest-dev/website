@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("styles/fonts.css");
+@import url('./styles/global.css');
 
 @layer base {
   :root {
