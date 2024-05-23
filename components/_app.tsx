@@ -3,6 +3,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { useEffect } from "react";
 import localFont from "next/font/local";
 import { loadIntercom } from "./Intercom";
+import { useRouter } from "next/router";
 
 const poppins = localFont({
   preload: true,
@@ -12,9 +13,12 @@ const poppins = localFont({
 });
 
 export default function App({ Component, pageProps }) {
-  useEffect(() => {
-    loadIntercom();
-  }, []);
+  const { asPath } = useRouter();
+  if (asPath === '/contact') {
+    useEffect(() => {
+      loadIntercom();
+    }, []);
+  }
 
   return (
     <PostHogProvider
