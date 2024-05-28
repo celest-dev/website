@@ -2,16 +2,26 @@
   "index": "Overview",
   "download": "Download",
   "get-started": "Get Started",
-  "deploy": "Deploy",
   "--widgets": {
     "title": "Cloud Widgets",
     "type": "separator"
   },
   "functions": "Functions",
   "auth": "Auth",
+  "--hosting": {
+    "title": "Hosting",
+    "type": "separator"
+  },
+  "cloud": "Celest Cloud",
+  "self-hosting": "Self-Hosting",
   "--reference": {
     "title": "Reference",
     "type": "separator"
+  },
+  "api-reference": {
+    "title": "API Reference",
+    "href": "https://pub.dev/documentation/celest/latest/",
+    "newWindow": true
   },
   "cli-commands-reference": "CLI commands",
   "contact": {

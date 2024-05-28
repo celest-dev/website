@@ -1,0 +1,282 @@
+---
+title: Fluttering in the sky
+description: We're excited to announce the release of Celest 0.4 and how it lays the foundation for Dart and Flutter in the cloud.
+date: May 28, 2024
+order: 2
+---
+
+import Image from 'next/image';
+import { FaRocket } from 'react-icons/fa';
+import { Callout } from 'nextra-theme-docs';
+
+import Authors from '@components/Authors';
+import banner from '@/public/img/fluttering-in-the-sky.webp';
+
+# Fluttering in the sky
+
+<Authors />
+
+<Image className="w-3/4 py-4 m-auto" alt="A bird racing in the sky" src={banner} />
+
+Today, we're excited to release version 0.4 of Celest, including support for HTTP customization, improved ergonomics, and a preview of running
+Flutter and UI code in the sky!
+This release scaffolds the foundation for our vision of Dart and Flutter in the cloud, providing extensibility and interop over the larger
+cloud landscape.
+
+Along with this post, we've published a deep dive into how we designed the Celest framework and how we leverage the Dart language to
+achieve that. You can read it [here](/blog/How we want to backend).
+
+<Callout type="info" emoji={<FaRocket className="my-auto h-full mr-1" />}>
+When you're ready, just run `celest upgrade` to get started! Or head over to the [download](/docs/download) page if this is your first
+time trying Celest.
+</Callout>
+
+## HTTP customization
+
+Celest 0.4 introduces a host of new annotations for defining the shape and behavior of your HTTP API. These let you customize everything
+from the method and success status code, to how the API responds when a certain error occurs, and mapping parameters to HTTP headers and 
+query values.
+
+<div className="md:columns-2 my-4">
+<div>
+```dart
+@cloud
+@http(method: HttpMethod.get)
+Future<void> greeting({
+  @httpQuery('name') required String name,
+}) async {
+    return 'Hello, $name';
+}
+```
+</div>
+<div className="flex flex-col">
+<div>
+```http
+GET /greet?name=Celest
+Accept: application/json
+```
+</div>
+<div>
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "response": "Hello, Celest"
+}
+```
+</div>
+</div>
+</div>
+
+These annotations do not change the generated client interface, so no changes are needed to adopt them in your Flutter app.
+
+Check out the new [HTTP Customization](/docs/functions/http/customization) docs for more details.
+
+## Refined ergonomics
+
+The new release introduces a few breaking changes to improve the ergonomics of the framework. You do not need to worry about migrating your
+code, though. The first time you run `celest start` after upgrading, the CLI will automatically migrate your project to these new changes.
+
+Below is an overview of the changes and why we think they'll improve your development experience.
+
+### `@cloud` annotation
+
+Before this release, all public functions in the `functions` directory were deployed to the cloud. This made it difficult to share logic
+between files and implicitly deploy functions you didn't intend to.
+
+Starting in the new release, only functions marked with `@cloud` will be deployed to the cloud. This is to ensure that only the
+functions you intend to deploy are deployed, and to allow you to more easily share logic between files in your project.
+
+<div className="md:columns-2 my-4">
+<div>
+<div className="font-bold text-center">Before</div>
+```dart
+// Not deployed to the cloud
+String _getGreeting(String name) {
+  return 'Hello, $name';
+}
+
+// Deployed to the cloud
+Future<String> sayHello(String name) async {
+  return _getGreeting(name);
+}
+```
+</div>
+<div>
+<div className="font-bold text-center">After</div>
+```dart
+// Not deployed to the cloud
+String getGreeting(String name) {
+  return 'Hello, $name';
+}
+
+// Deployed to the cloud
+@cloud
+Future<String> sayHello(String name) async {
+  return getGreeting(name);
+}
+```
+</div>
+</div>
+
+### Injecting user information
+
+Before this release, functions marked `@authenticated` or `@public` could access the calling `User` information by tagging a parameter with
+`@Context.user`.
+
+In the new release, we've replaced the `@Context.user` annotation with `@principal`. This annotation will be reused in future updates
+to allow accessing information about non-`User` callers, such as service accounts and third-party entities.
+
+<div className="md:columns-2 my-4">
+<div>
+<div className="font-bold text-center">Before</div>
+```dart {2}
+Future<String> sayHello({
+  @Context.user required User user,
+}) async {
+  return 'Hello, ${user.displayName}';
+}
+```
+</div>
+<div>
+<div className="font-bold text-center">After</div>
+```dart {2}
+Future<String> sayHello({
+  @principal required User user,
+}) async {
+  return 'Hello, ${user.displayName}';
+}
+```
+</div>
+</div>
+
+### Accessing environment variables
+
+Before this release, you could access environment variables using the generated `@Env` type.
+
+In this release, we've renamed `@Env` to `@env`. Going forward, all annotations will be lowercase to reduce the visual
+clutter associated with annotations and allow you to better distinguish the concrete interface of your APIs from its metadata.
+
+<div className="md:columns-2 my-4">
+<div>
+<div className="font-bold text-center">Before</div>
+```dart {3}
+Future<String> sayHello({
+  required String name,
+  @Env.apiKey required String apiKey,
+}) async {
+  // Call an external API with `apiKey`
+}
+```
+</div>
+<div>
+<div className="font-bold text-center">After</div>
+```dart {3}
+Future<String> sayHello({
+  required String name,
+  @env.apiKey required String apiKey,
+}) async {
+  // Call an external API with `apiKey`
+}
+```
+</div>
+</div>
+
+## Flutter in the sky
+
+Last but not least, we're excited to announce a preview of running Flutter and UI code in the cloud! 
+
+<Callout>
+This feature is currently **experimental** and may change in future releases. We're excited to see what you build with it and would love
+to hear your feedback!
+</Callout>
+
+For the longest time, Dart backends have been limited by one major constraint: they can't use Flutter or any package that depends on it.
+If you've ever seen the following trying to compile a Dart backend, you know what we're talking about:
+
+```dart filename="main.dart"
+import 'package:flutter/material.dart';
+
+void main() {
+  const favoriteColor = Colors.green;
+  print('My favorite color is $favoriteColor');
+}
+```
+
+```bash
+$ dart main.dart
+
+../../flutter/packages/flutter/lib/src/material/animated_icons.dart:9:8: Error: Dart library 'dart:ui' is not available on this platform.
+import 'dart:ui' as ui show Canvas, Paint, Path, lerpDouble;
+       ^
+Context: The unavailable library 'dart:ui' is imported through these packages:
+
+    dart_ui_test.dart => package:flutter => dart:ui
+    ...
+
+Detailed import paths for (some of) the these imports:
+
+    dart_ui_test.dart => package:flutter/material.dart => package:flutter/src/material/about.dart => package:flutter/foundation.dart => package:flutter/src/foundation/assertions.dart => package:flutter/src/foundation/diagnostics.dart => dart:ui
+    ...
+```
+
+This is a major pain because so many of the amazing packages in the Dart ecosystem depend on Flutter or `dart:ui`. And if you
+simply need a data type or utility from these packages (or if any one of your transitive dependencies does) you're out of luck.
+
+It turns out that solving this problem requires the same amount of work as bringing all of Flutter to the cloud. So we did that.
+
+
+<div className="md:columns-2 my-4">
+<div>
+```dart
+import 'package:flutter/material.dart';
+
+import 'package:celest/celest.dart';
+import 'package:celest/http.dart';
+
+@cloud
+@http(method: HttpMethod.get)
+Future<Color> myFavoriteColor() async {
+  return Colors.green;
+}
+```
+</div>
+<div className="flex flex-col">
+<div>
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "response": {
+    "value": 4283215696
+  }
+}
+```
+</div>
+</div>
+</div>
+
+With Celest 0.4, all of Flutter is available to your Dart backend, and you can use it just like you would in a Flutter app.
+Under the hood, we use the same technology that powers `flutter test` so this is a good mental model for how it can be used:
+automating screenshots, running integration tests, or even rendering `Image` widgets!
+
+At the moment, this technology is still experimental and we're working on improving the ergonomics and performance of the feature.
+We hope you'll give it a try, find cool use cases, and let us know how we can improve it!
+
+## What's next?
+
+This release sets the foundation for our vision of Dart and Flutter in the cloud. The HTTP customization and refined ergonomics
+will be extended to support webhooks, scheduled tasks, and event streaming in future releases.
+
+And our work with Flutter in the cloud is just beginning. Our goal is to bring full server-side rendering capabilities to Flutter,
+including the ability to send dynamic widgets to the client
+
+Lastly, we're working to expand the Auth category to include social sign-in and passwordless support; and to share our solution for 
+building offline-first applications the Flutter way.
+
+Over the next few months, you'll see more work on all of these fronts along with continued improvements to the core framework. We're
+excited to see what you build with Celest 0.4. Let us know your thoughts on [GitHub](https://github.com/celest-dev/celest), [X](https://x.com/celest_dev), and [Discord](/discord)!
+
+Flutter is the future! 🚀

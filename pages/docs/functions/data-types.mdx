@@ -21,9 +21,7 @@ Celest does not support the following Dart types as parameter or return types. `
 
 Imagine you're working on an e-commerce application with an `Order` class defined in your codebase. To have Celest use that custom class, you need to place it in the `<flutter_app>/celest/lib/models/` folder.
 
-```dart
-// celest/lib/models/order.dart
-
+```dart filename="celest/lib/models/order.dart"
 class Order {
   const Order ({
     required this.id,
@@ -53,11 +51,10 @@ class Price {
 
 Use this `Order` type in any Celest Function as either a parameter or return value, without adding serialization logic.
 
-```dart {3,6}
-// celest/functions/orders.dart
-
+```dart {1,5} filename="celest/functions/orders.dart"
 import 'package:celest_backend/models/order.dart';
 
+@cloud
 Future<String> createOrder(
   Order customerOrder,
 ) async {
@@ -88,9 +85,7 @@ If you need custom handling for your serialization logic, add the `fromJson` and
 
 Here, the `Price.toJson` method is used to upper-case the `currency` value.
 
-```dart {10-14}
-// celest/lib/models/order.dart
-
+```dart {8-12} filename="celest/lib/models/order.dart"
 class Price {
   // ...
 
@@ -123,20 +118,39 @@ The resulting JSON response for the `currency` will now be returned as upper cas
 }
 ```
 
-### Overriding serialization for third-party types
+### Customize serialization of third-party types [#custom-overrides]
 
-Sometimes, though, you cannot control the `fromJson`/`toJson` methods of a class, such as when using a third-party library. In these cases, you can use a custom override to "redefine" the type for serialization in Celest.
+Sometimes, though, you cannot control the `fromJson`/`toJson` methods of a class, such as when using a third-party library. 
+In these cases, you can create a `@customOverride` which "redefines" the type for serialization in Celest.
 
-For example, consider the case where the `Price` class from our `Order` type is imported from a third-party library, `package:price`. Since we do not own `package:price`, we cannot change the `fromJson` and
-`toJson` methods of the `Price` class.
+For example, consider the case where the `Price` class from our `Order` type is imported from a third-party library, `package:price`. 
+Since we do not own `package:price`, we cannot change the `fromJson` and `toJson` methods of the `Price` class.
 
-Instead of modifying the `Price` class, we can define a custom override for `Price` which will apply to all instances of the `Price` class when it's encountered during serialization.
+Instead of modifying the `Price` class, we can define a custom override for `Price` which will be used in place of the original
+`Price` class when it's encountered in Celest.
 
-```dart
+<Callout>
+Custom overrides are defined as [extension types](https://dart.dev/language/extension-types) which wrap and implement the original type. 
+You can use these to override any part of the original interface to suit its use in your backend, though customizing serialization is the 
+most common use case.
+
+You must always **implement** the original type in your extension type and mark it with `@customOverride`. By convention, these types are
+defined in either `lib/models/_overrides.dart` or `lib/exceptions/_overrides.dart` and are not used directly in your backend. They serve as
+global marker types which Celest will use internally.
+</Callout>
+
+```dart {10-11} filename="celest/lib/models/_overrides.dart"
+import 'package:celest/celest.dart';
 import 'package:price/price.dart';
 
-@override
-extension type PriceOverride(Price price) {
+// We create an extension type which wraps over the third-party type and
+// is marked as a custom override of it.
+//
+// Since the extension type implements the original type, it will behave
+// identically to the original except for the serialization logic we
+// define in the `fromJson` and `toJson` methods.
+@customOverride
+extension type PriceOverride(Price price) implements Price {
   factory PriceOverride.fromJson(Map<String, Object?> json) {
     return PriceOverride(
       Price(

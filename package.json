@@ -40,6 +40,7 @@
     "react-dom": "~18.2.0",
     "react-icons": "^5.2.1",
     "sharp": "^0.33.4",
+    "shiki": "^0.14.3",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
   },

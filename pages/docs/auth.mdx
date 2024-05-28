@@ -1,18 +1,24 @@
 ---
-title: Adding authentication
+title: Celest Auth
 description: Learn how to add authentication to your Celest project.
 ---
+
+import { Callout } from 'nextra-theme-docs'
 
 # Celest Auth
 
 Celest currently supports email-based authentication via one-time passcodes. This is a simple and secure way to authenticate users in your app without needing to worry about passwords.
 
-> We are working on adding social sign-in and passkeys in future releases.
+<Callout>
+We are working on adding social sign-in and passkeys in future releases. If you have a specific use case you'd like to see, please let us know by creating an [issue](https://github.com/celest-dev/celest/issues/new/choose).
+</Callout>
 
-Adding Auth to your Celest project takes 5 lines of code. Create a new file in `celest/auth/auth.dart` and add the following code:
+Adding Auth to your Celest project takes 5 lines of code. In your `project.dart` file, add the following code:
 
-```dart
+```dart copy filename="celest/project.dart"
 import 'package:celest/celest.dart';
+
+const project = /* .. */;
 
 const auth = Auth(
   providers: [
@@ -25,7 +31,8 @@ That's it! When you run `celest start`, Celest will automatically generate an Au
 
 ## Signing In
 
-To sign in a user, you can use the `authenticate` method on the `celest.auth` object. It's called `authenticate` because there is no longer a distinction between signing in or signing up! If the user doesn't exist, they will just be created.
+To sign in a user, you can use the `authenticate` method on the `celest.auth` object. It's called `authenticate` because there is no longer a distinction between signing in or signing up! 
+If the user doesn't exist, they will be created.
 
 ```dart
 final flow = await celest.auth.email.authenticate(

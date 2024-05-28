@@ -1,0 +1,233 @@
+---
+title: HTTP Customization
+description: Learn how to control and customize the HTTP API generated for your Celest Functions.
+---
+
+import { Callout } from 'nextra-theme-docs'
+
+# HTTP Customization
+
+In cases where Celest's standard HTTP conventions do not align with your requirements, you can control the HTTP API generated for your Celest Functions using the HTTP annotations.
+
+<Callout type="info">
+Some HTTP elements are not currently configurable, such as the URL path. If you require this functionality, please let us know by creating an [issue](https://github.com/celest-dev/celest/issues/new/choose).
+</Callout>
+
+## Execution Controls
+
+The `@http` and `@httpError` annotations allow you to control the behavior of the HTTP endpoint, such as how the endpoint is exposed,
+and how it responds in both success and error cases.
+
+### `@http`
+
+To configure the method and default status code of your HTTP endpoint, use the `@http` annotation.
+
+```dart
+@cloud
+@http(
+  method: HttpMethod.put, 
+  statusCode: HttpStatus.created,
+)
+Future<String> greet(String name) async {
+  return 'Hello, $name';
+}
+```
+
+<div className="grid grid-cols-2 gap-4">
+<div>
+```http
+PUT /greet
+Content-Type: application/json
+
+{
+  "name": "Celest"
+}
+```
+</div>
+<div>
+```http
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "response": "Hello, Celest"
+}
+```
+</div>
+</div>
+
+### `@httpError`
+
+To control the status code returned from one or more thrown types, use the `@httpError` annotation.
+
+```dart
+@cloud
+@httpError(403, UnauthorizedException)
+@httpError(404, BadNameException, NotFoundException)
+Future<String> greet(String name) async {
+  if (name.isEmpty) {
+    throw BadNameException();
+  }
+  if (!name.startsWith('C')) {
+    throw NotFoundException();
+  }
+  if (name != 'Celest') {
+    throw UnauthorizedException();
+  }
+  return 'Hello, $name';
+}
+```
+
+<Callout type="info">
+Exception types are handled in order of specificity. Specifying a type that other types inherit from will only apply the status code 
+to subtypes which are not already covered by a more specific case.
+
+For example, the following will return a 404 status code for both the concrete `NotFoundException` type and `BadNameException` (since it
+is a subtype of `Exception`), but not `UnauthorizedException` which is covered by a more specific annotation.
+
+```dart
+@cloud
+@httpError(404, NotFoundException, Exception)
+@httpError(403, UnauthorizedException)
+Future<String> greet(String name) async {
+  if (name.isEmpty) {
+    throw BadNameException(); // 404
+  }
+  if (!name.startsWith('C')) {
+    throw NotFoundException(); // 404
+  }
+  if (name != 'Celest') {
+    throw UnauthorizedException(); // 403
+  }
+  return 'Hello, $name';
+}
+```
+</Callout>
+
+## Request Controls
+
+The `@httpHeader` and `@httpQuery` annotations allow you to map input parameters to HTTP headers and query parameters, respectively.
+Any parameters which are not targeted by these annotations are passed as the request body.
+
+<Callout>
+Some combinations are disallowed. For example, if the `@http` annotation specifies a `GET` method, then all input
+parameters **must** be mapped, or there must be no input parameters, such that the request body is empty.
+</Callout>
+
+### `@httpHeader`
+
+To map an input parameter to an HTTP header, use the `@httpHeader` annotation.
+
+<Callout type="info">
+Only parameters of type `String`, `int`, `double`, `bool`, `DateTime`, or a `List` of these types, can be targeted by `@httpHeader`.
+</Callout>
+
+```dart
+@cloud
+Future<String> greet({
+  @httpHeader('x-api-key') required String apiKey,
+  required String name,
+}) async {
+  return 'Hello, $name';
+}
+```
+
+In the generated client, these parameters are passed transparently as function arguments.
+
+```dart
+final result = await celest.functions.greet(apiKey: '123', name: 'Celest');
+```
+
+<div className="grid grid-cols-2 gap-4">
+<div>
+```http
+POST /greet
+Content-Type: application/json
+x-api-key: 123
+
+{
+  "name": "Celest"
+}
+```
+</div>
+<div>
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "response": "Hello, Celest"
+}
+```
+</div>
+</div>
+
+The following HTTP headers are reserved and cannot be targeted by `@httpHeader`:
+
+<div className="flex flex-row items-start justify-center mt-4">
+<div className="self-end">
+| Header Name | 
+| ----------- | 
+| `Connection` | 
+| `Content-Length` |
+| `Expect` |
+| `Host` |
+| `Max-Forwards` |
+| `Server` |
+| `TE` |
+</div>
+
+<div>
+| Header Name | 
+| ----------- | 
+| `Trailer` |
+| `Transfer-Encoding` |
+| `Upgrade` |
+| `User-Agent` |
+| `Via` |
+| `X-Forwarded-For` |
+</div>
+</div>
+
+### `@httpQuery`
+
+To map an input parameter to a query parameter, use the `@httpQuery` annotation.
+
+<Callout type="info">
+Only parameters of type `String`, `int`, `double`, `bool`, `DateTime`, or a `List` of these types, can be targeted by `@httpQuery`.
+</Callout>
+
+```dart
+@cloud
+@http(method: HttpMethod.get)
+Future<String> greet({
+  @httpQuery('name') required String name,
+}) async {
+  return 'Hello, $name';
+}
+```
+
+In the generated client, these parameters are passed transparently as function arguments.
+
+```dart
+final result = await celest.functions.greet(name: 'Celest');
+```
+
+<div className="grid grid-cols-2 gap-4">
+<div>
+```http
+GET /greet?name=Celest
+Accept: application/json
+```
+</div>
+<div>
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "response": "Hello, Celest"
+}
+```
+</div>
+</div>

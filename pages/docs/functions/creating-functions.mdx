@@ -7,39 +7,33 @@ import { Callout } from 'nextra/components'
 
 # Creating a function
 
-<Callout type="info">
-  Please complete [Setting up Celest](/docs/get-started.md) prior to reading this guide.
-</Callout>
+Create serverless functions with Celest to connect and aggregate information from different parts of your backend, and build custom business logic that runs completely in the cloud. 
+You define your functions as regular Dart functions and Celest takes care of deploying and managing the backend for you.
 
-Create serverless functions with Celest to connect and aggregate information from different parts of your backend, and build custom business logic that runs completely in the cloud. You define your functions as regular Dart functions and Celest takes care of deploying and managing the backend for you.
+## Building Celest Functions
 
-## Building Celest Functions  
-
-To get started building your first serverless cloud function, navigate to the `<flutter_app>/celest/functions/` folder and create a file named `<api_name>.dart`. You can create as many APIs as you want in this directory. Think of each file as a way to organize and group multiple Celest Functions of similar functionality into a namespace.
+To start building your serverless cloud function, navigate to the `my_celest_app/celest/functions/` folder and create a file named `<api_name>.dart`. You can create as many APIs as you want in this directory. 
+Each file groups and organizes multiple Celest Functions of similar functionality into a namespace.
 
 Celest Functions are defined as top-level functions as shown below.
 
+<Callout type="info">
+Only functions annotated with `@cloud` are exposed as cloud functions. This prevents accidental deployment of functions and allows you to have shared logic and helper functions that are not exposed as cloud functions.
+</Callout>
+
 ```dart
+@cloud
 Future<String> sayHello(String name) async {
   return 'Hello, $name';
 }
 
+@cloud
 Future<String> sayGoodbye(String name) async {
   return 'Goodbye, $name';
 }
 ```
 
-That's all you need to define your API! Go to your console and run the following command.
-
-```shell
-celest start
-```
-
-A local environment will spin up for you and watch for changes to your Celest Functions. A client is also generated for your which you can import in your Flutter app to automatically connect to your Celest Functions.
-
-## Connecting to your Celest Functions
-
-The following is an example of how you would use the Celest client in your `main.dart` file to call a Celest Function and show the response from the backend.
+That's all you need to define your API! Now, you can connect your Flutter app to your cloud functions by using the Celest client as shown in the following example. Replace the contents of the `main.dart` file in your Flutter app to the following code-snippet.
 
 ```dart {3,7,24}
 import 'package:flutter/material.dart';
@@ -47,8 +41,8 @@ import 'package:flutter/material.dart';
 import 'package:celest_backend/client.dart';
 
 void main() {
-  // Initializes Celest in your Flutter app
-  celest.init();
+  // Initialize Celest at the start of your app
+  celest.init(environment: CelestEnvironment.local);
   runApp(const MyApp());
 }
 

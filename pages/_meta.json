@@ -12,6 +12,14 @@
         "title": "Docs",
         "type": "page"
     },
+    "pricing": {
+        "title": "Pricing",
+        "type": "page",
+        "href": "/pricing",
+        "theme": {
+            "typesetting": "article"
+        }
+    },
     "blog": {
         "title": "Blog",
         "type": "page",
@@ -24,6 +32,11 @@
     "contact": {
         "title": "Contact",
         "type": "page"
+    },
+    "discord": {
+        "title": "Discord",
+        "type": "page",
+        "display": "hidden"
     },
     "404": {
         "title": "404",
