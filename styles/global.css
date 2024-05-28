@@ -1,5 +1,6 @@
 :root {
   --gradient-blue: linear-gradient(100deg, #027dfd 26.96%, #92ebfe 109.1%);
+  --nextra-banner-height: 4rem;
 }
 
 h1,
@@ -22,4 +23,9 @@ html {
   pre + div > button {
     display: none;
   }
+}
+
+.banner {
+  text-wrap: wrap; /* Safari fallback */
+  text-wrap: pretty;
 }
