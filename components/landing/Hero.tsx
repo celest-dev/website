@@ -12,13 +12,10 @@ export default function Hero() {
     >
       <YCLogo className="mt-4" />
       <h1 className="text-4xl tracking-tighter font-extrabold md:text-5xl mt-8 mb-8">
-        Build your backend,
-        <br /> Flutter-style
+        The Vercel of Flutter
       </h1>
       <p className="text-lg md:text-xl mb-8">
-        From your Flutter app to your backend in the cloud, Celest helps you
-        build every piece of your application in Dart, all without leaving your
-        IDE.
+        Build, deploy, and scale your app's backend. All in Dart. All without leaving your IDE.
       </p>
       <Link href="/docs/get-started">
         <Button
