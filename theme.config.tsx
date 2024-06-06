@@ -20,7 +20,7 @@ const config: DocsThemeConfig = {
     const router = useRouter();
     const { asPath } = router;
 
-    const url = `https://docs.celest.dev${asPath}`;
+    const url = `https://www.celest.dev${asPath}`;
 
     const { frontMatter, title: defaultTitle } = useConfig();
     const title = frontMatter.title ?? defaultTitle;
@@ -28,7 +28,7 @@ const config: DocsThemeConfig = {
 
     const description = frontMatter.description || "The Flutter cloud platform";
 
-    let ogImage = "https://celest.dev/api/og";
+    let ogImage = "https://www.celest.dev/api/og";
     if (asPath !== "/") {
       ogImage += `?title=${encodeURIComponent(title)}`;
     }

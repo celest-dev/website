@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://celest.dev/sitemap.xml
+Sitemap: https://www.celest.dev/sitemap.xml
