@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/celest-dev/website/issues"
   },
-  "homepage": "https://celest.dev",
+  "homepage": "https://www.celest.dev",
   "dependencies": {
     "@calcom/embed-react": "^1.5.0",
     "@heroicons/react": "^2.1.3",
