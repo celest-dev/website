@@ -53,6 +53,12 @@ export default withSentryConfig(
         destination: "/",
         statusCode: 302,
       },
+      {
+        // Found in the wild... Googlebot was trying to access this URL
+        source: '/See',
+        destination: '/',
+        statusCode: 301,
+      },
     ],
   }),
   {
