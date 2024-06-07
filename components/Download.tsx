@@ -228,7 +228,7 @@ export function Download(props?: React.ComponentProps<"section">) {
         <DownloadCard
           key={"Linux"}
           os="Linux"
-          architectures={["Intel"]}
+          architectures={["Intel", "ARM"]}
           detected={detected}
         />
       </div>
