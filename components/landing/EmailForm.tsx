@@ -4,6 +4,7 @@ import { usePostHog } from "posthog-js/react";
 
 import { identifyUser, recordEvent } from "../../src/analytics";
 import { Button } from "../ui/button";
+import { cn } from "@/src/utils";
 
 const INIT = "INIT";
 const SUBMITTING = "SUBMITTING";
@@ -28,9 +29,9 @@ const formStyles = {
 };
 const domain = "app.loops.so";
 
-export default function SignUpForm() {
+export default function SignUpForm({ className }: React.ComponentProps<"div">) {
   return (
-    <div className="flex flex-col items-center justify-center text-center">
+    <div className={cn("flex flex-col items-center justify-center text-center", className)}>
       <SignUpFormReact />
     </div>
   );

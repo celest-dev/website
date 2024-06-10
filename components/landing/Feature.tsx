@@ -54,7 +54,7 @@ export function FeatureSet({
   const features = Array.from(children as Iterable<React.ReactNode>);
   return (
     <>
-      <div className="sm:hidden block mt-8">
+      <div className="sm:hidden block">
         {features.map((feature, index) => (
           <div key={index}>
             {feature}
@@ -64,7 +64,7 @@ export function FeatureSet({
       </div>
       <Carousel
         {...props}
-        className="sm:block hidden"
+        className="sm:block hidden -mt-6"
         setApi={setApi}
         plugins={[
           Autoplay({

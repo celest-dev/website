@@ -9,14 +9,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import Hero from '@components/landing/Hero'
-import EmailForm from '@components/landing/EmailForm'
+import Newsletter from '@components/landing/Newsletter'
 import { Download } from '@components/Download'
 import { Feature, FeatureSet } from '@components/landing/Feature'
 
 <Hero />
 
 <Bleed>
-<FeatureSet className="mt-8">
+<FeatureSet>
   <Feature 
     title="Write your backend logic in Dart"
     description={<>Annotate any Dart function with <code>@cloud</code> to turn it into a serverless function.</>}
@@ -68,7 +68,12 @@ Future<void> main() async {
 ```
   </Feature>
 </FeatureSet>
+
+<hr className="my-8" />
+
+<Newsletter className="px-12" />
 </Bleed>
+
 
 ## How it works
 
@@ -137,9 +142,3 @@ When you're ready to productionize, run `celest deploy` to deploy your backend t
 <Image className='m-auto py-8' src="/img/celest-deploy.png" alt="Celest Deploy" width={600} height={600 / 1490 * 838} />
 
 </Steps>
-
-## Stay up-to-date
-
-Want to get the latest updates on Celest? Join our newsletter to get notified about new releases, features, and more.
-
-<EmailForm />
