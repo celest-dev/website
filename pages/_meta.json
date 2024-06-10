@@ -12,14 +12,6 @@
         "title": "Docs",
         "type": "page"
     },
-    "pricing": {
-        "title": "Pricing",
-        "type": "page",
-        "href": "/pricing",
-        "theme": {
-            "typesetting": "article"
-        }
-    },
     "blog": {
         "title": "Blog",
         "type": "page",

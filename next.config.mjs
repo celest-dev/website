@@ -59,6 +59,16 @@ export default withSentryConfig(
         destination: '/',
         statusCode: 301,
       },
+      {
+        source: '/pricing',
+        destination: '/docs/cloud',
+        statusCode: 302,
+      },
+      {
+        source: '/docs/cloud/pricing',
+        destination: '/docs/cloud',
+        statusCode: 302,
+      }
     ],
   }),
   {

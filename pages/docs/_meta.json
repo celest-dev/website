@@ -13,7 +13,6 @@
     "type": "separator"
   },
   "cloud": "Celest Cloud",
-  "self-hosting": "Self-Hosting",
   "--reference": {
     "title": "Reference",
     "type": "separator"
