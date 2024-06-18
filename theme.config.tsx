@@ -2,6 +2,7 @@ import React from "react";
 import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 import { useRouter } from "next/router";
 import Logo from "@components/Logo";
+import Footer from "./components/Footer";
 
 const config: DocsThemeConfig = {
   logo: <Logo />,
@@ -81,7 +82,7 @@ const config: DocsThemeConfig = {
     placeholder: "Search the docs...",
   },
   footer: {
-    text: `Copyright © ${new Date().getFullYear()} Teo, Inc. (Celest)`,
+    text: Footer,
   },
   sidebar: {
     defaultMenuCollapseLevel: 1,
