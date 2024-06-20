@@ -17,17 +17,26 @@ const nextraConfig = {
  */
 export default withSentryConfig(
   nextra(nextraConfig)({
-    headers: async () => ([
+    headers: async () => [
       {
-        source: '/.well-known/com.apple.remotemanagement',
+        source: "/.well-known/com.apple.remotemanagement",
         headers: [
           {
-            key: 'Content-Type',
-            value: 'application/json',
-          }
-        ]
-      }
-    ]),
+            key: "Content-Type",
+            value: "application/json",
+          },
+        ],
+      },
+    ],
+    rewrites: async () => ({
+      beforeFiles: [
+        {
+          source: "/.well-known/com.apple.remotemanagement",
+          destination:
+            "https://www.celest.dev/.well-known/com.apple.remotemanagement",
+        },
+      ],
+    }),
     redirects: () => [
       {
         source: "/docs/functions/introduction",
@@ -66,20 +75,20 @@ export default withSentryConfig(
       },
       {
         // Found in the wild... Googlebot was trying to access this URL
-        source: '/See',
-        destination: '/',
+        source: "/See",
+        destination: "/",
         statusCode: 301,
       },
       {
-        source: '/pricing',
-        destination: '/docs/cloud',
+        source: "/pricing",
+        destination: "/docs/cloud",
         statusCode: 302,
       },
       {
-        source: '/docs/cloud/pricing',
-        destination: '/docs/cloud',
+        source: "/docs/cloud/pricing",
+        destination: "/docs/cloud",
         statusCode: 302,
-      }
+      },
     ],
   }),
   {
