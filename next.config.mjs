@@ -17,6 +17,17 @@ const nextraConfig = {
  */
 export default withSentryConfig(
   nextra(nextraConfig)({
+    headers: async () => ([
+      {
+        source: '/.well-known/com.apple.remotemanagement',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/json',
+          }
+        ]
+      }
+    ]),
     redirects: () => [
       {
         source: "/docs/functions/introduction",

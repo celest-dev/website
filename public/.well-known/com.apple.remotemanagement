@@ -1,0 +1,8 @@
+{
+    "Servers": [
+        {
+            "BaseURL": "https://ios-mdm.google.com/userenrollment/enroll",
+            "Version": "mdm-byod"
+        }
+    ]
+}
