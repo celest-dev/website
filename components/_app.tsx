@@ -24,12 +24,16 @@ export default function App({ Component, pageProps }) {
   }
 
   return (
+
+
     <PostHogProvider
       apiKey={process.env.NEXT_PUBLIC_POSTHOG_KEY}
       options={{
         api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
       }}
     >
+          <PersistentLayout starsRef={mainRef}>
+
       {isContactPage && (
         <>
           <link
@@ -54,16 +58,36 @@ export default function App({ Component, pageProps }) {
           />
         </>
       )}
-      <Stars mainRef={mainRef} />
+           {/* <Stars mainRef={mainRef}/> */}
       <main ref={mainRef} className={`${poppins.variable}`}>
-        
+   
+
        
         <Component {...pageProps} />
         <SpeedInsights />
+        
       </main>
+      </PersistentLayout>
+
+ 
     </PostHogProvider>
+  
   );
 }
+
+
+const PersistentLayout = ({ children, starsRef }) => {
+  return (
+    <div>
+      <Stars mainRef={starsRef} />
+      {children}
+    </div>
+  );
+};
+
+
+
+
 
 import React, { useRef, useState } from 'react';
 import { gsap } from 'gsap';
@@ -100,8 +124,8 @@ export function Stars({ mainRef }) {
   useEffect(() => {
     if (starPositions.length === 0) {
       const initialPositions = [...Array(50)].map(() => ({
-        top: Math.random() * 100, // Store top in percentage of page height
-        left: Math.random() * 100, // Store left in percentage of viewport width
+        top: Math.random() * mainRef.current.offsetHeight, // Store top in percentage of page height
+        left: Math.random() * mainRef.current.offsetWidth, // Store left in percentage of viewport width
       }));
       setStarPositions(initialPositions); // Store initial positions in state
     }
@@ -197,8 +221,8 @@ export function Stars({ mainRef }) {
               className="star"
               style={{
                 position: 'absolute',
-                top: `${position.top}%`, // Use the percentage stored in starPositions
-                left: `${position.left}%`,
+                top: `${position.top}px`, // Use the percentage stored in starPositions
+                left: `${position.left}px`,
                 width: `${size}px`,
                 height: `${size}px`,
                 background: 'linear-gradient(45deg, #ffffff, #ffffff)', // Gradient for star
