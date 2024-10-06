@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }) {
         api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
       }}
     >
-          <PersistentLayout starsRef={mainRef}>
+          {/* <PersistentLayout starsRef={mainRef}> */}
 
       {isContactPage && (
         <>
@@ -61,13 +61,16 @@ export default function App({ Component, pageProps }) {
            {/* <Stars mainRef={mainRef}/> */}
       <main ref={mainRef} className={`${poppins.variable}`}>
    
-
+      {/* <NormalComponent/> */}
+      <div>
+      <FineGrained/>
+      </div>
        
         <Component {...pageProps} />
         <SpeedInsights />
         
       </main>
-      </PersistentLayout>
+      {/* </PersistentLayout> */}
 
  
     </PostHogProvider>
@@ -75,164 +78,216 @@ export default function App({ Component, pageProps }) {
   );
 }
 
+import { observable } from "@legendapp/state"
+import { useObservable, Memo, reactive } from "@legendapp/state/react"
+import { useRef } from "react"
+import { useInterval } from "usehooks-ts"
+import { motion } from "framer-motion"
 
-const PersistentLayout = ({ children, starsRef }) => {
-  return (
-    <div>
-      <Stars mainRef={starsRef} />
-      {children}
-    </div>
-  );
-};
+// Making the motion.div reactive to changes from @legendapp/state
+const MotionDiv = reactive(motion.div);
 
+function FineGrained() {
+  const style$ = useObservable({
+    scale: 1,
+    boxShadowSize: 10,
+    boxShadowOpacity: 0.5
+  });
 
-
-
-
-import React, { useRef, useState } from 'react';
-import { gsap } from 'gsap';
-
-export function Stars({ mainRef }) {
-  const starRef = useRef(null);
-  const [pageHeight, setPageHeight] = useState(1000);
-  const [starPositions, setStarPositions] = useState([]); // To store initial positions
-  const router = useRouter();
-
-  const updatePageHeight = () => {
-    if (mainRef.current) {
-      const newHeight = mainRef.current.offsetHeight; // Use the height of <main>
-      setPageHeight(newHeight);
-    }
-  };
-
-  useEffect(() => {
-    // Set initial height and update it on window resize
-    updatePageHeight();
-
-    const handleRouteChange = () => {
-      setTimeout(updatePageHeight, 100); // Small delay to ensure the new content is rendered
-    };
-
-    router.events.on('routeChangeComplete', handleRouteChange);
-
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.events, mainRef]);
-
-  // Generate initial star positions once on mount
-  useEffect(() => {
-    if (starPositions.length === 0) {
-      const initialPositions = [...Array(50)].map(() => ({
-        top: Math.random() * mainRef.current.offsetHeight, // Store top in percentage of page height
-        left: Math.random() * mainRef.current.offsetWidth, // Store left in percentage of viewport width
-      }));
-      setStarPositions(initialPositions); // Store initial positions in state
-    }
-  }, [starPositions]);
-
-  useEffect(() => {
-    let stars = gsap.utils.toArray(".star");
-
-    // Store velocity for each star, including a minimum velocity for each star
-    const velocities = stars.map(() => ({
-      vx: (Math.random() - 0.5) * 50, // Initial speed on x-axis
-      vy: (Math.random() - 0.5) * 50, // Initial speed on y-axis
-      minVx: Math.random() * 1 + 10, // Random minimum x velocity
-      minVy: Math.random() * 1 + 10, // Random minimum y velocity
+  useInterval(() => {
+    style$.set(v => ({
+      scale: v.scale === 1 ? 100 : 1,
+      boxShadowSize: v.boxShadowSize === 10 ? 20 : 10,
+      boxShadowOpacity: v.boxShadowOpacity === 0.5 ? 0.8 : 0.5
     }));
+  }, 1500);
 
-    // Animate stars with friction and boundary collision
-    stars.forEach((star, i) => {
-      const starEl = star;
-      const velocity = velocities[i];
-
-      gsap.fromTo(
-        star,
-        { scale: 1, opacity: 1, boxShadow: '0px 0px 10px 2px rgba(255, 255, 255, 0.5)' },
-        {
-          scale: 1.5,
-          opacity: 1,
-          boxShadow: '0px 0px 20px 4px rgba(255, 255, 255, 0.8)',
-          duration: 1.5,
-          ease: "linear",
-          repeat: -1,
-          repeatDelay: 0,
-          delay: i * 0.2,
-          yoyo: true,
-        }
-      );
-
-      // Animate each star
-      gsap.ticker.add(() => {
-        // Update position based on velocity
-        let rect = starEl.getBoundingClientRect();
-
-        // Apply friction (gradually reduce velocity)
-        velocity.vx *= 0.999;
-        velocity.vy *= 0.999;
-
-        // Ensure the velocity never drops below the random minimum velocity
-        if (Math.abs(velocity.vx) < velocity.minVx) {
-          velocity.vx = Math.sign(velocity.vx) * velocity.minVx;
-        }
-        if (Math.abs(velocity.vy) < velocity.minVy) {
-          velocity.vy = Math.sign(velocity.vy) * velocity.minVy;
-        }
-
-        // Update the star's position
-        gsap.set(starEl, {
-          x: `+=${velocity.vx * 0.016}`, // Multiply by delta time (approx 16ms per frame)
-          y: `+=${velocity.vy * 0.016}`,
-        });
-
-        // Check for boundary collision (screen edges)
-        if (rect.left + velocity.vx < 0 || rect.right + velocity.vx > window.innerWidth) {
-          velocity.vx *= -1; // Reverse x velocity if hitting the left or right edge
-        }
-        if (rect.top + velocity.vy < 0 || rect.bottom + velocity.vy > pageHeight) {
-          velocity.vy *= -1; // Reverse y velocity if hitting the top or bottom edge
-        }
-      });
-    });
-  }, [starPositions]); // Only run when star positions are set
+  // Tracking render count
+  const renderCount = useRef(0);
+  renderCount.current++;
 
   return (
     <div>
-      <div
-        ref={starRef}
+      <h5>Fine-grained</h5>
+      <div>Renders: {renderCount.current}</div>
+      <MotionDiv
+        className="star"
         style={{
-          position: 'absolute', // Ensure it's positioned relative to the content
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: `${pageHeight}px`, // Dynamically set the height based on full page height
-          zIndex: -1,
-          background: 'linear-gradient(to bottom, #1e3a8a, #000000)',
-          overflow: 'hidden',
-          filter: 'blur(2px)',
+          position: 'absolute',
+          background: 'linear-gradient(45deg, #ffffff, #ffffff)',
+          borderRadius: '50%'
         }}
-      >
-        {starPositions.map((position, i) => {
-          const size = Math.random() * 15 + 3;
-          return (
-            <div
-              key={i}
-              className="star"
-              style={{
-                position: 'absolute',
-                top: `${position.top}px`, // Use the percentage stored in starPositions
-                left: `${position.left}px`,
-                width: `${size}px`,
-                height: `${size}px`,
-                background: 'linear-gradient(45deg, #ffffff, #ffffff)', // Gradient for star
-                borderRadius: '50%',
-                boxShadow: '0px 0px 10px 2px rgba(255, 255, 255, 0.5)',
-              }}
-            ></div>
-          );
+        $animate={() => ({
+          width: `${style$.get().scale}px`,
+          height: `${style$.get().scale}px`,
+          boxShadow: `0px 0px ${style$.get().boxShadowSize}px ${style$.get().boxShadowSize / 5}px rgba(255, 255, 255, ${style$.get().boxShadowOpacity})`,
+          transition: { duration: 1.5, ease: "linear" }
         })}
-      </div>
+      />
+      <div>Scale: <Memo>{() => style$.get().scale}</Memo></div>
+      <div>Box Shadow Size: <Memo>{() => style$.get().boxShadowSize}</Memo></div>
     </div>
   );
 }
+
+
+// const PersistentLayout = ({ children, starsRef }) => {
+//   return (
+//     <div>
+//       {/* <Stars mainRef={starsRef} /> */}
+//       {children}
+//     </div>
+//   );
+// };
+
+
+
+
+
+// import React, { useRef, useState } from 'react';
+// import { gsap } from 'gsap';
+
+// export function Stars({ mainRef }) {
+//   const starRef = useRef(null);
+//   const [pageHeight, setPageHeight] = useState(1000);
+//   const [starPositions, setStarPositions] = useState([]); // To store initial positions
+//   const router = useRouter();
+
+//   const updatePageHeight = () => {
+//     if (mainRef.current) {
+//       const newHeight = mainRef.current.offsetHeight; // Use the height of <main>
+//       setPageHeight(newHeight);
+//     }
+//   };
+
+//   useEffect(() => {
+//     // Set initial height and update it on window resize
+//     updatePageHeight();
+
+//     const handleRouteChange = () => {
+//       setTimeout(updatePageHeight, 100); // Small delay to ensure the new content is rendered
+//     };
+
+//     router.events.on('routeChangeComplete', handleRouteChange);
+
+//     return () => {
+//       router.events.off('routeChangeComplete', handleRouteChange);
+//     };
+//   }, [router.events, mainRef]);
+
+//   // Generate initial star positions once on mount
+//   useEffect(() => {
+//     if (starPositions.length === 0) {
+//       const initialPositions = [...Array(50)].map(() => ({
+//         top: Math.random() * mainRef.current.offsetHeight, // Store top in percentage of page height
+//         left: Math.random() * mainRef.current.offsetWidth, // Store left in percentage of viewport width
+//       }));
+//       setStarPositions(initialPositions); // Store initial positions in state
+//     }
+//   }, [starPositions]);
+
+//   useEffect(() => {
+//     let stars = gsap.utils.toArray(".star");
+
+//     // Store velocity for each star, including a minimum velocity for each star
+//     const velocities = stars.map(() => ({
+//       vx: (Math.random() - 0.5) * 50, // Initial speed on x-axis
+//       vy: (Math.random() - 0.5) * 50, // Initial speed on y-axis
+//       minVx: Math.random() * 1 + 10, // Random minimum x velocity
+//       minVy: Math.random() * 1 + 10, // Random minimum y velocity
+//     }));
+
+//     // Animate stars with friction and boundary collision
+//     stars.forEach((star, i) => {
+//       const starEl = star;
+//       const velocity = velocities[i];
+
+//       gsap.fromTo(
+//         star,
+//         { scale: 1, opacity: 1, boxShadow: '0px 0px 10px 2px rgba(255, 255, 255, 0.5)' },
+//         {
+//           scale: 1.5,
+//           opacity: 1,
+//           boxShadow: '0px 0px 20px 4px rgba(255, 255, 255, 0.8)',
+//           duration: 1.5,
+//           ease: "linear",
+//           repeat: -1,
+//           repeatDelay: 0,
+//           delay: i * 0.2,
+//           yoyo: true,
+//         }
+//       );
+
+//       // Animate each star
+//       gsap.ticker.add(() => {
+//         // Update position based on velocity
+//         let rect = starEl.getBoundingClientRect();
+
+//         // Apply friction (gradually reduce velocity)
+//         velocity.vx *= 0.999;
+//         velocity.vy *= 0.999;
+
+//         // Ensure the velocity never drops below the random minimum velocity
+//         if (Math.abs(velocity.vx) < velocity.minVx) {
+//           velocity.vx = Math.sign(velocity.vx) * velocity.minVx;
+//         }
+//         if (Math.abs(velocity.vy) < velocity.minVy) {
+//           velocity.vy = Math.sign(velocity.vy) * velocity.minVy;
+//         }
+
+//         // Update the star's position
+//         gsap.set(starEl, {
+//           x: `+=${velocity.vx * 0.016}`, // Multiply by delta time (approx 16ms per frame)
+//           y: `+=${velocity.vy * 0.016}`,
+//         });
+
+//         // Check for boundary collision (screen edges)
+//         if (rect.left + velocity.vx < 0 || rect.right + velocity.vx > window.innerWidth) {
+//           velocity.vx *= -1; // Reverse x velocity if hitting the left or right edge
+//         }
+//         if (rect.top + velocity.vy < 0 || rect.bottom + velocity.vy > pageHeight) {
+//           velocity.vy *= -1; // Reverse y velocity if hitting the top or bottom edge
+//         }
+//       });
+//     });
+//   }, [starPositions]); // Only run when star positions are set
+
+//   return (
+//     <div>
+//       <div
+//         ref={starRef}
+//         style={{
+//           position: 'absolute', // Ensure it's positioned relative to the content
+//           top: 0,
+//           left: 0,
+//           width: '100%',
+//           height: `${pageHeight}px`, // Dynamically set the height based on full page height
+//           zIndex: -1,
+//           background: 'linear-gradient(to bottom, #1e3a8a, #000000)',
+//           overflow: 'hidden',
+//           filter: 'blur(2px)',
+//         }}
+//       >
+//         {starPositions.map((position, i) => {
+//           const size = Math.random() * 15 + 3;
+//           return (
+//             <div
+//               key={i}
+//               className="star"
+//               style={{
+//                 position: 'absolute',
+//                 top: `${position.top}px`, // Use the percentage stored in starPositions
+//                 left: `${position.left}px`,
+//                 width: `${size}px`,
+//                 height: `${size}px`,
+//                 background: 'linear-gradient(45deg, #ffffff, #ffffff)', // Gradient for star
+//                 borderRadius: '50%',
+//                 boxShadow: '0px 0px 10px 2px rgba(255, 255, 255, 0.5)',
+//               }}
+//             ></div>
+//           );
+//         })}
+//       </div>
+//     </div>
+//   );
+// }
