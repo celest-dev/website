@@ -58,8 +58,8 @@ import {
 } from "@chakra-ui/react"
 
 const FeatureCard = ({ icon, title, description }) => (
-  <Box         bg={useColorModeValue("rgba(31, 41, 55, 0.6)", "rgba(17, 17, 17, 0.6)")} // Semi-transparent background
-  backdropFilter="blur(10px)" // Apply the blur effect
+  <Box         bg={useColorModeValue("rgba(31, 41, 55, 0.4)", "rgba(17, 17, 17, 0.1)")} // Semi-transparent background
+  backdropFilter="blur(5px)" // Apply the blur effect
   p={6} borderRadius="lg" height="100%">
     <VStack align="start" spacing={4}>
       <Icon as={icon} boxSize={12} color="green.300" />

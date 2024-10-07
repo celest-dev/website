@@ -65,7 +65,7 @@ export default function App({ Component, pageProps }) {
       )}
            {/* <Stars mainRef={mainRef}/> */}
 
-           <div style={{          background: 'linear-gradient(to bottom, #1e3a8a, #000000)'}}>
+           <div style={{    overflow:"hidden",      background: 'linear-gradient(to bottom, #1e3a8a, #000000)'}}>
 
       <main ref={mainRef} className={`${poppins.variable}`}>
    
@@ -74,9 +74,7 @@ export default function App({ Component, pageProps }) {
       <FineGrained containerRef={mainRef} />
     
 
-      <HStack >
-
-      </HStack>
+    
       
           <Component {...pageProps} />
         
@@ -114,6 +112,15 @@ const MotionDiv = reactive(motion.div);
 function FineGrained({ containerRef }) {
   const [containerSize, setContainerSize] = useState({ width: 800, height: 500});
   const stars$ = useObservable([]);
+  useEffect(() => {
+    // Disable scroll
+    document.body.style.overflow = 'hidden';
+    
+    // Re-enable scroll when the component is unmounted
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
 
     // Set container size when the component mounts or the container changes size
     useEffect(() => {
@@ -140,7 +147,7 @@ function FineGrained({ containerRef }) {
 
       // Initialize stars after window size is available
       stars$.set(
-        [...Array(50)].map(() => {
+        [...Array(75)].map(() => {
           const randomSize = Math.random() * 10 + 1; // Random size between 10px and 60px
           const randomBoxShadowBlur = Math.random() * 10 + 5; // Random blur radius between 5px and 15px
           const randomBoxShadowSpread = Math.random() * 4 + 2; // Random spread radius between 2px and 6px
@@ -171,9 +178,6 @@ function FineGrained({ containerRef }) {
       );
     }
   }, []);
-
-  const renderCount = useRef(0);
-  renderCount.current++;
 
   useInterval(() => {
     stars$.forEach((star$, index) => {
@@ -233,10 +237,6 @@ function FineGrained({ containerRef }) {
         };
       });
     });
-  }, 50); // 60fps
-
-  // Check for boundary collision and reverse velocity
-  useEffect(() => {
     const checkBoundaries = () => {
       stars$.forEach(star$ => {
         star$.set(v => {
@@ -248,36 +248,39 @@ function FineGrained({ containerRef }) {
         });
       });
     };
-    const intervalId = setInterval(checkBoundaries, 16);
-    return () => clearInterval(intervalId);
-  }, [stars$, containerSize]);
+    checkBoundaries()
+  }, 100); // 20 updates per second
 
   return (
-    <div>
-
+    <div style={{ overflow: 'hidden', width: '100%', height: '100%' }}>
       {stars$.map((star$, index) => (
         <MotionDiv
+
           key={index}
           className="star"
           style={{
+            
+            overflow: "hidden",
             position: 'absolute',
             background: 'linear-gradient(45deg, #ffffff, #ffffff)',
             borderRadius: '50%',
-            // width: `${star$.get().scale}px`,
-            // height: `${star$.get().scale}px`
-            left: `${star$.get().x}px`,
-            top: `${star$.get().y}px`,
-          }}
-          $animate={() => ({
             width: `${star$.get().scale}px`,
             height: `${star$.get().scale}px`,
-            left: `${star$.get().x}px`,
-            top: `${star$.get().y}px`,
-            // transform: `translate(${star$.get().x}px, ${star$.get().y}px) scale(${star$.get().scale / 100})`,
+            // left: `${star$.get().x}px`,
+            // top: `${star$.get().y}px`,
+            transform: `translate(${star$.get().x}px, ${star$.get().y}px) `,
+
+          }}
+          $animate={() => ({
+            // width: `${star$.get().scale}px`,
+            // height: `${star$.get().scale}px`,
+            // left: `${star$.get().x}px`,
+            // top: `${star$.get().y}px`,
+            transform: `translate(${star$.get().x}px, ${star$.get().y}px) scale(${star$.get().scale / 20})`,
 
             // Change all properties of the box shadow dynamically
             boxShadow: `0px 0px ${star$.get().boxShadowBlur}px ${star$.get().boxShadowSpread}px rgba(255, 255, 255, ${star$.get().boxShadowOpacity})`,
-            transition: { duration: 10, ease: "linear" }
+            transition: { duration: 0.1, ease: "linear" }
           })}
         />
       ))}
