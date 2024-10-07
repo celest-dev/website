@@ -10,15 +10,52 @@ import Image from 'next/image'
 
 import Hero from '@components/landing/Hero'
 import Newsletter from '@components/landing/Newsletter'
+
+import CodeBlock from '@components/landing/codeblock'
+
 import { Download } from '@components/Download'
 import { Feature, FeatureSet } from '@components/landing/Feature'
+
+
+
 
 <div style={{ position: 'relative', zIndex: 1 }}>
 
   <Hero />
 
   <Bleed>
-  <FeatureSet>
+
+
+  <CodeBlock code={`
+  @cloud
+Future<String> sayHello(String name) async {
+  return 'Hello, $name!';
+}`}/>
+
+
+
+
+
+{/* 
+<div className="bg-[#1E1E1E] text-[#D4D4D4] p-4 rounded-lg shadow-lg font-mono text-sm overflow-x-auto">
+      <pre className="whitespace-pre-wrap">
+        <span className="text-[#569CD6]">import</span> React <span className="text-[#569CD6]">from</span> <span className="text-[#CE9178]">'react'</span>;
+        <span className="text-[#569CD6]">import</span> ReactDOM <span className="text-[#569CD6]">from</span> <span className="text-[#CE9178]">'react-dom'</span>;
+
+        <span className="text-[#569CD6]">function</span> <span className="text-[#DCDCAA]">App</span>() {"{"}
+          <span className="text-[#569CD6]">return</span> (
+            <span className="text-[#808080]">&lt;</span><span className="text-[#4EC9B0]">div</span><span className="text-[#808080]">&gt;</span>
+              <span className="text-[#808080]">&lt;</span><span className="text-[#4EC9B0]">h1</span><span className="text-[#808080]">&gt;</span>Hello, World!<span className="text-[#808080]">&lt;/</span><span className="text-[#4EC9B0]">h1</span><span className="text-[#808080]">&gt;</span>
+            <span className="text-[#808080]">&lt;/</span><span className="text-[#4EC9B0]">div</span><span className="text-[#808080]">&gt;</span>
+          );
+        {"}"}
+
+        ReactDOM.<span className="text-[#DCDCAA]">render</span>(<span className="text-[#808080]">&lt;</span><span className="text-[#4EC9B0]">App</span> <span className="text-[#808080]">/&gt;</span>, document.<span className="text-[#DCDCAA]">getElementById</span>(<span className="text-[#CE9178]">'root'</span>));
+      </pre>
+    </div> */}
+
+
+  {/* <FeatureSet>
     <Feature 
       title="Write your backend logic in Dart"
       description={<>Annotate any Dart function with <code>@cloud</code> to turn it into a serverless function.</>}
@@ -69,15 +106,15 @@ import { Feature, FeatureSet } from '@components/landing/Feature'
   }
   ```
     </Feature>
-  </FeatureSet>
+  </FeatureSet> */}
 
   <hr className="my-8" />
 
 
-  <Newsletter className="px-12" />
+  
 
   </Bleed>
-
+{/* 
 
   ## How it works
 
@@ -145,5 +182,5 @@ import { Feature, FeatureSet } from '@components/landing/Feature'
 
   <Image className='m-auto py-8' src="/img/celest-deploy.png" alt="Celest Deploy" width={600} height={600 / 1490 * 838} />
 
-  </Steps>
+  </Steps> */}
 </div>

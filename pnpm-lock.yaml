@@ -71,6 +71,9 @@ importers:
       posthog-js:
         specifier: ^1.131.4
         version: 1.131.4
+      prismjs:
+        specifier: ^1.29.0
+        version: 1.29.0
       react:
         specifier: ~18.2.0
         version: 18.2.0
@@ -2877,6 +2880,10 @@ packages:
 
   preact@10.22.0:
     resolution: {integrity: sha512-RRurnSjJPj4rp5K6XoP45Ui33ncb7e4H7WiOHVpjbkvqvA3U+N8Z6Qbo0AE6leGYBV66n8EhEaFixvIu3SkxFw==}
+
+  prismjs@1.29.0:
+    resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
+    engines: {node: '>=6'}
 
   progress@2.0.3:
     resolution: {integrity: sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==}
@@ -6742,6 +6749,8 @@ snapshots:
       preact: 10.22.0
 
   preact@10.22.0: {}
+
+  prismjs@1.29.0: {}
 
   progress@2.0.3: {}
 

@@ -63,7 +63,7 @@ export default function App({ Component, pageProps }) {
    
       {/* <NormalComponent/> */}
       <div>
-      <FineGrained/>
+      {/* <FineGrained/> */}
       </div>
        
         <Component {...pageProps} />
@@ -78,57 +78,175 @@ export default function App({ Component, pageProps }) {
   );
 }
 
-import { observable } from "@legendapp/state"
-import { useObservable, Memo, reactive } from "@legendapp/state/react"
-import { useRef } from "react"
-import { useInterval } from "usehooks-ts"
-import { motion } from "framer-motion"
+
+
+import { observable } from "@legendapp/state";
+import { useObservable, Memo, reactive } from "@legendapp/state/react";
+import { useRef, useState } from "react";
+import { useInterval } from "usehooks-ts";
+import { motion } from "framer-motion";
 
 // Making the motion.div reactive to changes from @legendapp/state
 const MotionDiv = reactive(motion.div);
 
 function FineGrained() {
-  const style$ = useObservable({
-    scale: 1,
-    boxShadowSize: 10,
-    boxShadowOpacity: 0.5
-  });
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  const stars$ = useObservable([]);
 
-  useInterval(() => {
-    style$.set(v => ({
-      scale: v.scale === 1 ? 100 : 1,
-      boxShadowSize: v.boxShadowSize === 10 ? 20 : 10,
-      boxShadowOpacity: v.boxShadowOpacity === 0.5 ? 0.8 : 0.5
-    }));
-  }, 1500);
+  // Set window size when the component mounts
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
 
-  // Tracking render count
+      // Initialize stars after window size is available
+      stars$.set(
+        [...Array(50)].map(() => {
+          const randomSize = Math.random() * 50 + 10; // Random size between 10px and 60px
+          const randomBoxShadowBlur = Math.random() * 10 + 5; // Random blur radius between 5px and 15px
+          const randomBoxShadowSpread = Math.random() * 4 + 2; // Random spread radius between 2px and 6px
+          const randomBoxShadowOpacity = Math.random() * 0.5 + 0.3; // Random opacity between 0.3 and 0.8
+
+          return {
+            scale: randomSize,
+            maxScale: randomSize * 2, // Max scale for yoyo effect
+            minScale: randomSize / 2, // Min scale for yoyo effect
+            boxShadowBlur: randomBoxShadowBlur,
+            maxBoxShadowBlur: randomBoxShadowBlur * 2,
+            minBoxShadowBlur: randomBoxShadowBlur / 2,
+            boxShadowSpread: randomBoxShadowSpread,
+            maxBoxShadowSpread: randomBoxShadowSpread * 2,
+            minBoxShadowSpread: randomBoxShadowSpread / 2,
+            boxShadowOpacity: randomBoxShadowOpacity,
+            maxBoxShadowOpacity: 0.8,
+            minBoxShadowOpacity: 0.3,
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            vx: (Math.random() - 0.5) * 100, // Random initial velocity between -50 and 50
+            vy: (Math.random() - 0.5) * 100, // Random initial velocity between -50 and 50
+            minVx: Math.random() * 20 + 20, // Minimum speed for x-axis
+            minVy: Math.random() * 20 + 20, // Minimum speed for y-axis
+            yoyoDirection: Math.random() > 0.5 ? 1 : -1, // Random initial yoyo direction
+          };
+        })
+      );
+    }
+  }, []);
+
   const renderCount = useRef(0);
   renderCount.current++;
 
+  useInterval(() => {
+    stars$.forEach((star$, index) => {
+      star$.set(v => {
+        let { yoyoDirection } = v;
+
+        // Yoyo effect for scale
+        let newScale = v.scale + yoyoDirection * 0.5;
+        if (newScale > v.maxScale) {
+          newScale = v.maxScale;
+          yoyoDirection = -1; // Reverse direction when hitting max
+        } else if (newScale < v.minScale) {
+          newScale = v.minScale;
+          yoyoDirection = 1; // Reverse direction when hitting min
+        }
+
+        // Yoyo effect for boxShadowBlur
+        let newBoxShadowBlur = v.boxShadowBlur + yoyoDirection * 0.2;
+        if (newBoxShadowBlur > v.maxBoxShadowBlur) {
+          newBoxShadowBlur = v.maxBoxShadowBlur;
+        } else if (newBoxShadowBlur < v.minBoxShadowBlur) {
+          newBoxShadowBlur = v.minBoxShadowBlur;
+        }
+
+        // Yoyo effect for boxShadowSpread
+        let newBoxShadowSpread = v.boxShadowSpread + yoyoDirection * 0.1;
+        if (newBoxShadowSpread > v.maxBoxShadowSpread) {
+          newBoxShadowSpread = v.maxBoxShadowSpread;
+        } else if (newBoxShadowSpread < v.minBoxShadowSpread) {
+          newBoxShadowSpread = v.minBoxShadowSpread;
+        }
+
+        // Yoyo effect for boxShadowOpacity
+        let newBoxShadowOpacity = v.boxShadowOpacity + yoyoDirection * 0.01;
+        if (newBoxShadowOpacity > v.maxBoxShadowOpacity) {
+          newBoxShadowOpacity = v.maxBoxShadowOpacity;
+        } else if (newBoxShadowOpacity < v.minBoxShadowOpacity) {
+          newBoxShadowOpacity = v.minBoxShadowOpacity;
+        }
+
+        return {
+          ...v,
+          // Update the position based on velocity
+          x: v.x + v.vx * 0.016, // Adjust position based on velocity and delta time
+          y: v.y + v.vy * 0.016,
+          vx: Math.abs(v.vx) < v.minVx ? Math.sign(v.vx) * v.minVx : v.vx * 0.999, // Ensure minimum speed on x-axis
+          vy: Math.abs(v.vy) < v.minVy ? Math.sign(v.vy) * v.minVy : v.vy * 0.999, // Ensure minimum speed on y-axis
+
+          // Apply the yoyo effect values
+          scale: newScale,
+          boxShadowBlur: newBoxShadowBlur,
+          boxShadowSpread: newBoxShadowSpread,
+          boxShadowOpacity: newBoxShadowOpacity,
+
+          // Update yoyo direction
+          yoyoDirection: yoyoDirection,
+        };
+      });
+    });
+  }, 100); // 60fps
+
+  // Check for boundary collision and reverse velocity
+  useEffect(() => {
+    const checkBoundaries = () => {
+      stars$.forEach(star$ => {
+        star$.set(v => {
+          let { x, y, vx, vy } = v;
+          const rect = { width: windowSize.width, height: windowSize.height };
+          if (x < 0 || x > rect.width) vx = -vx;
+          if (y < 0 || y > rect.height) vy = -vy;
+          return { ...v, vx, vy };
+        });
+      });
+    };
+    const intervalId = setInterval(checkBoundaries, 16);
+    return () => clearInterval(intervalId);
+  }, [stars$, windowSize]);
+
   return (
     <div>
-      <h5>Fine-grained</h5>
-      <div>Renders: {renderCount.current}</div>
-      <MotionDiv
-        className="star"
-        style={{
-          position: 'absolute',
-          background: 'linear-gradient(45deg, #ffffff, #ffffff)',
-          borderRadius: '50%'
-        }}
-        $animate={() => ({
-          width: `${style$.get().scale}px`,
-          height: `${style$.get().scale}px`,
-          boxShadow: `0px 0px ${style$.get().boxShadowSize}px ${style$.get().boxShadowSize / 5}px rgba(255, 255, 255, ${style$.get().boxShadowOpacity})`,
-          transition: { duration: 1.5, ease: "linear" }
-        })}
-      />
-      <div>Scale: <Memo>{() => style$.get().scale}</Memo></div>
-      <div>Box Shadow Size: <Memo>{() => style$.get().boxShadowSize}</Memo></div>
+
+      {stars$.map((star$, index) => (
+        <MotionDiv
+          key={index}
+          className="star"
+          style={{
+            position: 'absolute',
+            background: 'linear-gradient(45deg, #ffffff, #ffffff)',
+            borderRadius: '50%',
+            width: `${star$.get().scale}px`,
+            height: `${star$.get().scale}px`
+          }}
+          $animate={() => ({
+            width: `${star$.get().scale}px`,
+            height: `${star$.get().scale}px`,
+            left: `${star$.get().x}px`,
+            top: `${star$.get().y}px`,
+            // transform: `translate(${star$.get().x}px, ${star$.get().y}px) scale(${star$.get().scale / 100})`,
+
+            // Change all properties of the box shadow dynamically
+            boxShadow: `0px 0px ${star$.get().boxShadowBlur}px ${star$.get().boxShadowSpread}px rgba(255, 255, 255, ${star$.get().boxShadowOpacity})`,
+            transition: { duration: 1.5, ease: "linear" }
+          })}
+        />
+      ))}
     </div>
   );
 }
+
+
 
 
 // const PersistentLayout = ({ children, starsRef }) => {

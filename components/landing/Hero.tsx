@@ -10,7 +10,7 @@ export default function Hero() {
       id="hero"
       className="text-center flex flex-col items-center justify-center"
     >
-      <YCLogo className="mt-4" />
+      {/* <YCLogo className="mt-4" /> */}
       <h1 className="text-4xl tracking-tighter font-extrabold md:text-5xl mt-8 mb-8"  style={{ textShadow: '0px 0px 10px white' }}>
         Deploy your code to the stars
       </h1>
