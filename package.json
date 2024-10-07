@@ -42,6 +42,7 @@
     "nextra": "^2.13.4",
     "nextra-theme-docs": "^2.13.4",
     "posthog-js": "^1.131.4",
+    "prism-react-renderer": "^2.4.0",
     "prismjs": "^1.29.0",
     "react": "~18.2.0",
     "react-dom": "~18.2.0",
