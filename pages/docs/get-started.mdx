@@ -4,67 +4,75 @@ description: Learn how to set up and use Celest in your Flutter project.
 ---
 
 import { Cards, Card } from 'nextra/components';
-import { FunctionsIcon, AuthIcon } from '@components/icons';
+import { FunctionsIcon, AuthIcon, DataIcon } from '@components/icons';
 
 # Getting started
 
 This guide walks you through setting up Celest on your development machine, and how to create a new project.
 
+To get started with Celest, you'll need to configure your development environment so that you have Flutter and the Celest CLI installed on your machine.
 
-## Prerequisites
-To use Celest in your Flutter app, you need the following prerequisites:
+1. Install [Flutter](https://docs.flutter.dev/get-started/install) from the official website
+2. [Download](https://celest.dev/download) and install the Celest CLI
 
-1. Install [Flutter](https://docs.flutter.dev/get-started/install)
-2. Create a new Flutter project (or navigate to an existing one)
-3. [Download](/docs/download) and install the Celest CLI
+## Creating a project
 
-That's it! You are now ready to start building your backend - all in Dart!
+Once you have the CLI installed, you can create a new project by running the following command:
 
-## Starting a new Celest project
-
-Start by first creating a new Flutter project. If you have an existing Flutter project, you can use that instead. To start a new Flutter project, go to your console and run the following command.
-
-```shell
-$ flutter create my_celest_app
+```bash
+$ celest init
 ```
 
-Then, navigate to your new Flutter app.
+You can run this command from within your Flutter project which will create a new `celest/` directory for your project. Or you can run
+this in another directory to have a standalone Celest project.
 
-```shell
-$ cd my_celest_app
-```
+Once you have a project, run `celest start` to start a local development environment.
 
-Once you are in your Flutter app directory, run the following command to initialize your Celest project.
-
-```shell    
+```bash
 $ celest start
+✓ Celest is running on http://localhost:7777
 ```
 
-Once the project is generated, Celest will continue to run in the terminal. A local development environment is spun up as the CLI watches for changes made to your backend, hot-reloading your changes and code-generating
-a client library automatically.
+This command will start a local server which will run in the background as you write your backend logic. As you make changes to the files in the `celest/` directory, 
+the server will hot-reload those changes so you can see them live.
 
-Your backend lives in the generated `celest` folder. Every `celest` folder follows this structure, which helps to keep your backend organized.
+To interact with the running environment, Celest will generate a Dart client which you can use in any Dart or Flutter project. This client 
+is generated in the `client/` directory of your `celest/` folder. As you make changes in the local environment, this client will be updated to reflect those changes.
 
-```shell
-my_celest_app/
-└── celest/
-    ├── functions/                        # Celest Functions folder
-    |   └── greeting.dart                 # Example API file
-    ├── lib/
-    │   │── client.dart                   # Generated client for your Flutter app
-    │   ├── models/                       # Custom API models
-    |   |   └── person.dart
-    │   └── exceptions/                   # Custom API exceptions
-    |       └── bad_name_exception.dart
-    └── test/                             # Tests for your backend
+### Example
+
+Here is an example of a simple Celest function:
+
+```dart
+import 'package:celest/celest.dart';
+
+@cloud
+Future<String> sayHello(String name) async {
+  print('Saying hello to $name');
+  return 'Hello, $name';
+}
+```
+
+This function can be called from a Dart project like so:
+
+```dart
+import 'package:my_project_client/my_project_client.dart';
+
+Future<void> main() async {
+  celest.init(environment: CelestEnvironment.local);
+  final response = await celest.functions.sayHello('World');
+  print(response); // Hello, World
+}
 ```
 
 ## Next steps
 
-Ready to start building? Choose which Cloud Widget you want to start with:
+Ready to start building? Choose which part of your backend you want to work on first:
 
-<Cards>
-  <Card icon={<FunctionsIcon />} title="Functions" href="/docs/functions/introduction" />
-  <Card icon={<AuthIcon />} title="Auth" href="/docs/auth/introduction" />
+<div className="my-8">
+<Cards displayName="Features">
+  <Card icon={<FunctionsIcon />} title="Functions" href="/docs/functions" />
+  <Card icon={<AuthIcon />} title="Auth" href="/docs/auth" />
+  <Card icon={<DataIcon />} title="Data" href="/docs/data" />
 </Cards>
-
+</div>

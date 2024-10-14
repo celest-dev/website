@@ -1,0 +1,60 @@
+---
+title: Using the Flutter client
+description: Learn how to use the generated Flutter client to authenticate users in your app.
+---
+
+## Signing In
+
+To sign in a user, you can use the `authenticate` method on the `celest.auth` object. It's called `authenticate` because there is no longer a distinction between signing in or signing up! 
+If the user doesn't exist, they will be created.
+
+```dart
+final flow = await celest.auth.email.authenticate(
+  email: 'dillon@celest.dev',
+);
+
+// Prompt user for OTP code sent to the email
+
+final user = await flow.verify(otpCode: '123456');
+print('User signed in: ${user.id}');
+```
+
+A full example of a typical auth flow can be found in our [repo](https://github.com/celest-dev/celest/tree/main/packages/celest_auth/example).
+
+## Listening for changes
+
+Celest provides a `Stream` interface to get notified when the state of the user changes. You should use this to update the UI when the user signs in or out and perform any other necessary actions.
+
+```dart
+/// Shows the current user's information if they are signed in, automatically updating
+/// when the user signs in or out.
+class CurrentUser extends StatelessWidget {
+  const CurrentUser({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: celest.auth.authStateChanges,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        }
+        final state = snapshot.data!;
+        return switch (state) {
+          Authenticated(:final user) => Text(
+              'Currently signed in: id=${user.userId}, '
+              'email=${user.primaryEmail?.email}',
+            ),
+          _ => const Text('Currently signed out'),
+        };
+      },
+    );
+  }
+}
+```
+
+## Authorizing your functions
+
+Once a user is signed in, they can access functions marked `@authenticated`. To learn more about authorizing your functions, check out [Authorizing functions](/docs/functions/authorizing-functions).

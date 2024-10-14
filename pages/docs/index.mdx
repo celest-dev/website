@@ -6,6 +6,8 @@ description: Learn more about Celest and how it helps you build the backend for 
 import { Callout } from 'nextra/components'
 import { IntroducingCelest } from '@components/IntroducingCelest'
 import { CloudFunctionsDemo } from '@components/CloudFunctionsDemo'
+import { Cards, Card } from 'nextra/components'
+import { FunctionsIcon, AuthIcon, DataIcon, PoliciesIcon, StorageIcon, WebsiteIcon } from '@components/icons'
 
 # Overview
 
@@ -14,6 +16,42 @@ import { CloudFunctionsDemo } from '@components/CloudFunctionsDemo'
 Celest is a backend-as-a-service for Flutter developers that enables you to build your backend entirely in Dart. Build the use cases you need without any additional tooling or context switching to different programming languages. Celest lets you write your backend in Dart, enabling you to share logic between your Flutter app and your backend.
 
 <IntroducingCelest />
+
+## What can I build with Celest?
+
+Celest offers the following building blocks for your backend:
+
+<div className="my-8">
+<Cards displayName="Features">
+  <div className="flex flex-col">
+    <Card icon={<FunctionsIcon />} title="Functions" href="/docs/functions/introduction" />
+    <p className="text-sm text-gray-200 font-medium my-6 px-2 text-center">Build functions that run in the cloud with your custom business logic.</p>
+  </div>
+  <div className="flex flex-col">
+    <Card icon={<AuthIcon />} title="Auth" href="/docs/auth" />
+    <p className="text-sm text-gray-200 font-medium my-6 px-2 text-center">Authenticate your users with social sign-in, passwordless and WebAuthn.</p>
+  </div>
+  <div className="flex flex-col">
+    <Card icon={<DataIcon />} title="Data" href="/docs/data" />
+    <p className="text-sm text-gray-200 font-medium my-6 px-2 text-center">Define your SQL types and relationships in Dart code.</p>
+  </div>
+  <div className="flex flex-col">
+    <Card icon={<PoliciesIcon />} title="Policies (coming soon)" href="#" />
+    <p className="text-sm text-gray-200 font-medium my-6 px-2 text-center">Author fine-grained access controls for all your backend components.</p>
+  </div>
+  <div className="flex flex-col">
+    <Card icon={<StorageIcon />} title="Storage (coming soon)" href="#" />
+    <p className="text-sm text-gray-200 font-medium my-6 px-2 text-center">Serve content globally with edge caching built-in.</p>
+  </div>
+  <div className="flex flex-col">
+    <Card icon={<WebsiteIcon />} title="Web (coming soon)" href="#" />
+    <p className="text-sm text-gray-200 font-medium my-6 px-2 text-center">Integated hosting for Dart and Flutter web apps.</p>
+  </div>
+</Cards>
+</div>
+
+_Something we're missing that you'd like to see?_ Let us know by [creating an issue](https://github.com/celest-dev/celest/issues/new/choose) 
+in our GitHub repo or chatting with us on [Discord](/discord).
 
 ## How do I use Celest?
 
@@ -24,23 +62,6 @@ Once you download and install the CLI, run `celest start` from your Flutter proj
 Celest offers a set of "Cloud Widgets"&mdash;constructs that encapsulate functionality on the backend. Using these widgets you can declaratively define your backend features such as serverless functions and authentication.
 
 <CloudFunctionsDemo />
-
-## What can I build with Celest?
-
-The following Cloud Widgets are available to build your backend:
-
-<Callout type="info">
-    **Note:** We will be rolling out new features and functionality over the coming months. If there's a use case you'd like to see which isn't listed here, please let us know by [creating an issue](https://github.com/celest-dev/celest/issues/new/choose) 
-    in our GitHub repo or chatting with us on [Discord](/discord).
-</Callout>
-
-| Features  | Description                                                   |
-| --------- | ------------------------------------------------------------- |
-| [Functions](functions/introduction.md) | Build functions that run in the cloud with your custom business logic. |
-| [Auth](auth/introduction.md) | Authenticate your users with social sign-in, passwordless and WebAuthn. |
-| Data (coming soon) | Define your data schema, relationships, and authorization rules in code. |
-| Policies (coming soon) | Author fine-grained access controls for all your backend components. |
-| Content (coming soon) | Serve content globally with edge caching built-in. |
 
 ## Next steps
 

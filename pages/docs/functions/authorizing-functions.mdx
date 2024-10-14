@@ -10,13 +10,15 @@ By default, Celest Functions are deny-by-default, meaning only you as the author
 To change the access level, you can use one of the following annotations:
 
 - `@public` &mdash; Grants access to anyone on the Internet, making your function publicly accessible.
-- `@authenticated` &mdash; Grants access to only authenticated users. (Requires [Celest Auth](/docs/auth))
+- `@authenticated` &mdash; Grants access to only authenticated users. (Requires an [auth provider](/docs/auth))
 
-## Authenticated functions
+When using Celest Auth, you have the ability to restrict access to your functions to only authenticated users. That is, those users
+who have signed up and are logged in.
 
-When using Celest Auth, you have the ability to restrict access to your functions to only authenticated users. This is done by adding the `@authenticated` annotation to your function.
+This is done by adding the `@authenticated` annotation to your function. When someone calls this function, either via the Celest client
+or directly via HTTP, Celest will check if the user is authenticated before allowing the function to run.
 
-```dart {4} filename="celest/functions/greeting.dart"
+```dart {4} filename="celest/lib/src/functions/greeting.dart"
 import 'package:celest/celest.dart';
 
 @cloud
@@ -26,11 +28,27 @@ Future<String> sayHello() async {
 }
 ```
 
-### Accessing user information
+### Public functions
 
-To get the calling user's information, you can use the `@principal` annotation in your function.
+If you want to make a function public, you can use the `@public` annotation. This will all authorization middleware from the function
+and allow anyone on the Internet to call it.
 
-```dart {6} filename="celest/functions/greeting.dart"
+```dart {4} filename="celest/lib/src/functions/greeting.dart"
+import 'package:celest/celest.dart';
+
+@cloud
+@public
+Future<String> sayHello() async {
+  return 'Hello, world!';
+}
+```
+
+## Accessing user information
+
+To get the calling user's information, you can use the `@principal` annotation in your function and Celest will inject the caller's 
+information automatically for each request.
+
+```dart {6} filename="celest/lib/src/functions/greeting.dart"
 import 'package:celest/celest.dart';
 
 @cloud
@@ -42,18 +60,11 @@ Future<String> sayHello({
 }
 ```
 
-In fact, you can do this for `@public` functions, too, since in that case there _may_ be a user that Celest knows about. 
-For these cases, the `User` parameter must be nullable to account for both scenarios.
+You can do this for `@public` functions as well since, in that case, there _may_ be a user that Celest knows about. 
+For `@public` functions, the injected `User` parameter must be nullable to account for both scenarios.
 
-```dart {5,14} filename="celest/functions/greeting.dart"
-@cloud
-@authenticated
-Future<String> sayHello({
-  // User can be required here since it's `@authenticated`
-  @principal required User user,
-}) async {
-  return 'Hello, ${user.displayName}!';
-}
+```dart {6-7} filename="celest/lib/src/functions/greeting.dart"
+import 'package:celest/celest.dart';
 
 @cloud
 @public

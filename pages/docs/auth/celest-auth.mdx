@@ -1,0 +1,26 @@
+---
+title: Celest Auth
+description: Learn how to use Celest's built-in Cloud Auth for authenticating users in your Celest project.
+---
+
+import { Callout } from 'nextra-theme-docs'
+
+# Celest Auth
+
+Adding Auth to your Celest project takes 5 lines of code. In your `project.dart` file, add the following code:
+
+```dart copy filename="celest/lib/src/project.dart"
+import 'package:celest/celest.dart';
+
+const project = Project(name: 'my-project');
+
+const auth = Auth(
+  providers: [
+    AuthProvider.email(),
+  ],
+);
+```
+
+That's it! When you run `celest start`, Celest will automatically integrate our open-source Auth backend 
+[Cloud Auth](https://github.com/celest-dev/celest/tree/main/services/celest_cloud_auth) and generate an Auth 
+client for you to use in your Flutter app.

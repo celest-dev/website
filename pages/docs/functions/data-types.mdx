@@ -1,26 +1,21 @@
 ---
-title: Defining custom data types
+title: Defining your data types
 description: Learn how to define data types which can be passed to and from your Celest Functions.
 ---
 
 import { Callout } from 'nextra/components'
 
-# Defining custom data types
+# Defining your data types
 
-With Celest Functions, you can use any of the core Dart types available such as `int`, `String`, and `DateTime`. You can also use your custom data types. Celest will handle the transfer and formatting of data from your Flutter app to your backend, also known as serialization, out-of-the-box in most cases. In situations requiring custom serialization, you can write your logic which will be used instead.
+With Celest Functions, you can use any of the core Dart types available such as `int`, `String`, and `DateTime`. 
+You can also use your own data types. Celest will automatically handle the transfer of data to and from your Flutter app 
+(a process known as serialization) so you don't need to think about it. 
 
-<Callout type="info">
-Celest does not support the following Dart types as parameter or return types, or as a field of a parameter or return type: 
-`Stream`, `Object`, `dynamic`
+> If you'd prefer to handle the serialization yourself, Celest will use your [custom logic](./customizing-serialization.mdx) instead.
 
-To represent raw JSON types, use the `JsonValue` type from `package:celest` instead of `Object?` or `dynamic`.
-</Callout>
+Imagine you're working on an e-commerce application with an `Order` class defined in your codebase.
 
-# Custom data type example
-
-Imagine you're working on an e-commerce application with an `Order` class defined in your codebase. To have Celest use that custom class, you need to place it in the `<flutter_app>/celest/lib/models/` folder.
-
-```dart filename="celest/lib/models/order.dart"
+```dart filename="celest/lib/src/models/order.dart"
 class Order {
   const Order ({
     required this.id,
@@ -48,9 +43,10 @@ class Price {
 }
 ```
 
-Use this `Order` type in any Celest Function as either a parameter or return value, without adding serialization logic.
+When you pass this `Order` type as a parameter to a cloud function or when you return it from a cloud function, 
+Celest will automatically serialize and deserialize it for you.
 
-```dart {1,5} filename="celest/functions/orders.dart"
+```dart {1,5} filename="celest/lib/src/functions/orders.dart"
 import 'package:celest_backend/models/order.dart';
 
 @cloud
@@ -61,7 +57,11 @@ Future<String> createOrder(
 }
 ```
 
-When communicating with your backend, Celest will serialize the `Order` class as a JSON map with the field names as keys. The resulting information transferred over to your backend will have the following shape.
+Celest does this by inspecting every function marked with `@cloud` to find the data types you've used and any types those types use
+and generates a schema for each of them. This schema is then used to serialize and deserialize the data to and from JSON.
+
+For example when passing an order to your backend, Celest will serialize the `Order` class as a JSON map with the field names as keys and
+the values marshalled to the appropriate JSON representation.
 
 ```json
 {
@@ -77,99 +77,11 @@ When communicating with your backend, Celest will serialize the `Order` class as
 }
 ```
 
-
-## Writing custom serialization logic
-
-If you need custom handling for your serialization logic, add the `fromJson` and `toJson` methods to your data type. Celest will use your custom `fromJson`/`toJson` implementations when transmitting the type to and from your backend.
-
-Here, the `Price.toJson` method is used to upper-case the `currency` value.
-
-```dart {8-12} filename="celest/lib/models/order.dart"
-class Price {
-  // ...
-
-  factory Price.fromJson(Map<String, dynamic> json) {
-    // ...
-  }
-
-  Map<String, dynamic> toJson() => {
-      'currency': currency.name.toUpperCase(),
-      'dollars': dollars,
-      'cents': cents,
-    };
-}
-```
-
-The resulting JSON response for the `currency` will now be returned as upper case.
-
- ```diff {6,7}
-{
-  "customerOrder": {
-    "id": 123,
-    "customerName": "Celest",
-    "price": {
-+    "currency": "USD",
--    "currency": "usd",
-      "dollars": 100,
-      "cents": 34
-    }
-  }
-}
-```
-
-### Customize serialization of third-party types [#custom-overrides]
-
-Sometimes, though, you cannot control the `fromJson`/`toJson` methods of a class, such as when using a third-party library. 
-In these cases, you can create a `@customOverride` which "redefines" the type for serialization in Celest.
-
-For example, consider the case where the `Price` class from our `Order` type is imported from a third-party library, `package:price`. 
-Since we do not own `package:price`, we cannot change the `fromJson` and `toJson` methods of the `Price` class.
-
-Instead of modifying the `Price` class, we can define a custom override for `Price` which will be used in place of the original
-`Price` class when it's encountered in Celest.
-
-<Callout>
-Custom overrides are defined as [extension types](https://dart.dev/language/extension-types) which wrap and implement the original type. 
-You can use these to override any part of the original interface to suit its use in your backend, though customizing serialization is the 
-most common use case.
-
-You must always **implement** the original type in your extension type and mark it with `@customOverride`. By convention, these types are
-defined in either `lib/models/_overrides.dart` or `lib/exceptions/_overrides.dart` and are not used directly in your backend. They serve as
-global marker types which Celest will use internally.
-</Callout>
-
-```dart {10-11} filename="celest/lib/models/_overrides.dart"
-import 'package:celest/celest.dart';
-import 'package:price/price.dart';
-
-// We create an extension type which wraps over the third-party type and
-// is marked as a custom override of it.
-//
-// Since the extension type implements the original type, it will behave
-// identically to the original except for the serialization logic we
-// define in the `fromJson` and `toJson` methods.
-@customOverride
-extension type PriceOverride(Price price) implements Price {
-  factory PriceOverride.fromJson(Map<String, Object?> json) {
-    return PriceOverride(
-      Price(
-        currency: Currency.values.firstWhere(
-          (e) => e.toString().toUpperCase() == json['currency'],
-        ),
-        dollars: json['dollars'] as int,
-        cents: json['cents'] as int,
-      ),
-    );
-  }
-
-  Map<String, Object?> toJson() => {
-        'currency': price.currency.toString().toUpperCase(),
-        'dollars': price.dollars,
-        'cents': price.cents,
-      };
-}
-```
+Similarly if your Flutter app receives an `Order` object from a Celest Function, Celest knows how to take this JSON and map it back into
+the same Dart type. The process happens so transparently that you'll feel like you're just passing Dart objects directly between two 
+local functions.
 
 ## Next steps
 
-You have now learned how Celest handles the serialization of requests/responses to your functions, and how to use your own custom types and serialization logic. Learn about more features of Celest Functions by following our guides for [defining custom exceptions](/docs/functions/exceptions.md) and [managing environment variables](/docs/functions/env-variables.md).
+Read on to see how you can seamlessly catch errors thrown from your backend in your Flutter app and how to configure the environment
+in which your backend runs.

@@ -1,0 +1,141 @@
+---
+title: Customizing serialization
+description: Learn how to customize serialization logic for your Celest Functions.
+---
+
+import { Callout } from 'nextra/components'
+
+# Customizing serialization
+
+If you need custom handling for your serialization logic, either to conform to an existing interface or to ensure parity with other parts
+of your application, define the `fromJson` and `toJson` methods to your data type. Celest will use these methods when provided instead of
+its default serialization logic.
+
+## Example
+
+Consider the `Price` type that we defined in [Defining your data types](./data-types.mdx).
+
+```dart
+enum Currency { usd, cad, ... }
+
+class Price {
+  const Price({
+    required this.currency,
+    required this.dollars,
+    required this.cents,
+  }): assert(cents < 100);
+
+  final Currency currency;
+  final int dollars;
+  final int cents;
+}
+```
+
+By default, Celest follows the conventions of `package:json_serializable` and will serialize the `Price` type as:
+
+```json
+{
+  "currency": "usd",
+  "dollars": 100,
+  "cents": 34
+}
+```
+
+If, however, you want to serialize the `currency` field as uppercase, you can define the `fromJson` and `toJson` methods 
+in the `Price` class.
+
+```dart {6-8,15} filename="celest/lib/src/models/price.dart"
+class Price {
+  // ...
+
+  factory Price.fromJson(Map<String, dynamic> json) {
+    return Price(
+      currency: Currency.values.firstWhere(
+        (e) => e.toString().toUpperCase() == json['currency'],
+      ),
+      dollars: json['dollars'] as int,
+      cents: json['cents'] as int,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+      'currency': currency.name.toUpperCase(),
+      'dollars': dollars,
+      'cents': cents,
+    };
+}
+```
+
+Then, anytime you use the `Price` type in a cloud function, Celest will use this logic for handling
+the serialization. And the resulting JSON response for the `currency` will be properly upper-cased.
+
+ ```diff {6,7}
+{
+  "customerOrder": {
+    "id": 123,
+    "customerName": "Celest",
+    "price": {
++    "currency": "USD",
+-    "currency": "usd",
+      "dollars": 100,
+      "cents": 34
+    }
+  }
+}
+```
+
+## Customize serialization of third-party types [#custom-overrides]
+
+Sometimes, though, you cannot control the `fromJson`/`toJson` methods of a class, such as when using a third-party library. 
+In these cases, you can create a `@customOverride` which "redefines" the type for serialization in Celest.
+
+For example, consider the case where the `Price` class from our `Order` type is imported from a third-party library, `package:price`. 
+Since we do not own `package:price`, we cannot change the `fromJson` and `toJson` methods of the `Price` class.
+
+Instead of modifying the `Price` class, we can define a custom override for `Price` which will be used in place of the original
+`Price` class when it's encountered in Celest.
+
+<Callout>
+Custom overrides are defined as [extension types](https://dart.dev/language/extension-types) which wrap and implement the original type. 
+You can use these to override any part of the original interface to suit its use in your backend, though customizing serialization is the 
+most common use case.
+
+You must always **implement** the original type in your extension type and mark it with `@customOverride`. By convention, these types are
+defined in either `lib/models/_overrides.dart` or `lib/exceptions/_overrides.dart` and are not used directly in your backend. They serve as
+global marker types which Celest will use internally.
+</Callout>
+
+```dart {10-11} filename="celest/lib/src/models/_overrides.dart"
+import 'package:celest/celest.dart';
+import 'package:price/price.dart';
+
+// We create an extension type which wraps over the third-party type and
+// is marked as a custom override of it.
+//
+// You do not need to use this type directly in your backend. Celest will
+// use it internally anytime it encounters the original type.
+@customOverride
+extension type PriceOverride(Price price) implements Price {
+  factory PriceOverride.fromJson(Map<String, Object?> json) {
+    return PriceOverride(
+      Price(
+        currency: Currency.values.firstWhere(
+          (e) => e.toString().toUpperCase() == json['currency'],
+        ),
+        dollars: json['dollars'] as int,
+        cents: json['cents'] as int,
+      ),
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+        'currency': price.currency.toString().toUpperCase(),
+        'dollars': price.dollars,
+        'cents': price.cents,
+      };
+}
+```
+
+## Next steps
+
+You have now learned how Celest handles the serialization of requests/responses to your functions, and how to use your own custom types and serialization logic. Learn about more features of Celest Functions by following our guides for [defining custom exceptions](/docs/functions/exceptions.md) and [managing environment variables](/docs/functions/env-variables.md).

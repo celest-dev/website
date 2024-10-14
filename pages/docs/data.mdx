@@ -1,0 +1,78 @@
+---
+title: Data
+description: Learn how to add a database to your Celest project.
+---
+
+# Data
+
+Celest offers built-in database support thanks to the powerful combination of the [Drift](https://pub.dev/packages/drift) library 
+and the [Turso](https://turso.tech/) platform.
+
+Drift is a Dart-native ORM that allows you to define your database schema in Dart code and generate the necessary
+SQL code to create and manage your database. Drift works best when it's backed by SQLite, and we think SQLite is a
+great choice of database for both frontend and backend environments alike. 
+
+The only problem is that SQLite cannot scale beyond a single server which is why it's often scoffed at by enterprise developers.
+That's where Turso comes in. Turso is the company behind [libSQL](https://github.com/tursodatabase/libsql), an open-source fork of SQLite which builds on top
+of the SQLite codebase to provide a distributed, scalable, and secure database solution.
+
+Celest is proud to be the first Dart platform to offer Turso support out of the box, allowing you to build scalable and secure
+applications no matter the size of your user base.
+
+## Getting Started
+
+To add a database to your Celest project, you need to define your database schema in Dart code. This is done using the Drift library.
+
+Here is an example database schema for a simple task management app:
+
+```dart filename="celest/lib/src/database/task_database.dart"
+import 'package:drift/drift.dart';
+
+part 'task_database.g.dart';
+
+class Tasks extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  TextColumn get title => text().withLength(min: 1, max: 100)();
+  BoolColumn get completed => boolean().withDefault(const Constant(false))();
+}
+
+@DriftDatabase(tables: [Tasks])
+class TaskDatabase extends _$TaskDatabase {
+  TaskDatabase(super.e);
+
+  @override
+  int get schemaVersion => 1;
+}
+```
+
+> For more guidance on writing Drift schemas, see the excellent documentation provided by the Drift author on their website: [Drift Documentation](https://drift.simonbinder.eu/docs/).
+
+Once you have a Drift schema, you're ready to add it to your Celest project. Navigate to your `project.dart` file and add the following code:
+
+```dart {6-8} filename="celest/lib/src/project.dart"
+import 'package:celest/celest.dart';
+import 'package:celest_backend/src/database/task_database.dart';
+
+const project = Project(name: 'tasks');
+
+const taskDatabase = Database(
+  schema: Schema.drift(TaskDatabase),
+);
+```
+
+That's it! When you run `celest start`, Celest will automatically handle the database setup for you. 
+You can now interact with your database using the generated `celest` global from your cloud functions.
+
+```dart filename="celest/lib/src/functions/tasks.dart"
+import 'package:celest/celest.dart';
+import 'package:celest_backend/src/database/task_database.dart';
+import 'package:celest_backend/src/generated/cloud.celest.dart';
+
+TaskDatabase get db => celest.data.taskDatabase;
+
+@cloud
+Future<List<Task>> listAllTasks() async {
+  print('Fetching tasks...');
+  return db.select(db.tasks).get();
+}
+```

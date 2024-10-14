@@ -4,7 +4,7 @@ import { cn } from "@/src/utils";
 
 export default function Newsletter({
   className,
-  header = "Celest Cloud is currently closed for sign ups",
+  header = "Celest Cloud is coming soon! 🚀",
 }: {
   header?: string;
 } & React.ComponentProps<"section">) {

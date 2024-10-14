@@ -2,21 +2,24 @@
   "index": "Overview",
   "download": "Download",
   "get-started": "Get Started",
-  "--widgets": {
-    "title": "Cloud Widgets",
+  "--celest": {
+    "title": "Celest",
     "type": "separator"
   },
   "functions": "Functions",
   "auth": "Auth",
+  "data": "Data",
   "--hosting": {
     "title": "Hosting",
     "type": "separator"
   },
   "cloud": "Celest Cloud",
+  "self-hosting": "Self-Hosting",
   "--reference": {
     "title": "Reference",
     "type": "separator"
   },
+  "folder-structure": "Folder Structure",
   "api-reference": {
     "title": "API Reference",
     "href": "https://pub.dev/documentation/celest/latest/",

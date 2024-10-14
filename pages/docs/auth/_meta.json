@@ -1,0 +1,10 @@
+{
+  "celest-auth": "Celest Auth",
+  "using-the-auth-client": "Using the Auth client",
+  "--external": {
+    "title": "External Providers",
+    "type": "separator"
+  },
+  "firebase-auth": "Firebase Auth",
+  "supabase-auth": "Supabase Auth"
+}

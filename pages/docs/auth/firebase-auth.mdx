@@ -1,0 +1,57 @@
+---
+title: Firebase Auth
+description: Learn how to use Firebase Auth for authenticating users in your Celest project.
+---
+
+import { Callout } from 'nextra-theme-docs'
+
+# Firebase Auth
+
+If you're migrating to Celest from another framework, chances are you already have a user base that you'd like to use.
+
+As of Celest V1, Firebase can be used as your auth provider in Celest. And doing so is just as easy as with Celest's built-in auth.
+
+## In your Celest project
+
+To use Firebase as your auth provider, add the following code to your `project.dart` file:
+
+```dart copy filename="celest/lib/src/project.dart"
+import 'package:celest/celest.dart';
+
+const project = Project(name: 'firebase');
+
+const auth = Auth(
+  providers: [
+    ExternalAuthProvider.firebase(),
+  ],
+);
+```
+
+Verifying users with Firebase requires knowing your Firebase project ID. When you run `celest start`, Celest will automatically search your environment for
+any available Firebase projects. If it can't figure out which project to use, you'll be prompted to enter it manually.
+
+Celest will securely store your Firebase project ID for future use so it doesn't need to prompt you again.
+
+## In your Flutter app
+
+In your Flutter app, Celest will listen for changes to Firebase's auth state and update the Celest state accordingly so that 
+calls to your Cloud Functions are authenticated appropriately.
+
+To do so, it needs access to your Firebase client, which you pass into the `celest.init` call in your `main` function.
+
+```dart copy filename="lib/main.dart"
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:my_project_client/my_project_client.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  celest.init(
+    externalAuth: ExternalAuth.firebase(FirebaseAuth.instance),
+  );
+  runApp(const MyApp());
+}
+```
+

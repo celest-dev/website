@@ -73,7 +73,7 @@ const config: DocsThemeConfig = {
     key: '0.4-release',
     text: (
       <div className="banner">
-      Celest 0.4 is out with support for server-side Flutter! 🚀 <a href="/blog/fluttering-in-the-sky">Read more →</a>
+      Celest 1.0 is officially released with database support! 🚀 <a href="/docs/data">Learn more →</a>
       </div>
     ),
     dismissible: false,
