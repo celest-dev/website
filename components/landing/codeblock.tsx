@@ -15,17 +15,18 @@ import {
 } from '@chakra-ui/react';
 
 const CodeBlock = ({ code, language = "dart" }) => (
-  <VStack padding={5}>
+  <VStack padding={5} w="550px">
     <Highlight
       prism={Prism} // Use the extended Prism instance
       theme={themes.nightOwl} // Use the Visual Studio Dark theme
       code={code} // Pass the code prop
       language={language} // Pass the language prop
+
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={{ ...style, padding: "16px", background: "#1e1e1e" }}>
+        <pre className={className} style={{ ...style, padding: "16px", background: "#1e1e1e", width: "100%" }}>
           {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line })} style={{ display: "flex" }}>
+            <div key={i} {...getLineProps({ line })} style={{ display: "flex", width: "100%" }}>
               <span
                 style={{
                   width: "30px", // Space for the line number
