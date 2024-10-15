@@ -1,17 +1,22 @@
 ---
-title: Defining custom exceptions
-description: Learn how to define custom exceptions types in your Celest Functions.
+title: Throwing exceptions
+description: Learn how Celest handles thrown exceptions on your backend and how to catch them in your Flutter app.
 ---
 
-# Defining custom exceptions
+import { Callout } from 'nextra/components'
 
-You can create custom exception types in your backend to throw specific errors and react to them accordingly in your Flutter app.
+# Throwing exceptions
 
-## Using custom exceptions
+Celest also knows how to handle exceptions thrown in your Celest Functions. When an exception is thrown, Celest will do three things:
 
-Below is an example of how to define a custom exception. You can create exceptions inside your `celest/lib/exceptions/` folder.
+- Catch the thrown exception serialize it using the same process outlined above
+- Map the exception to an appropriate HTTP response and status code
+- Deserialize the exception type in your Flutter app and rethrow the same Dart type with the original message
 
-```dart filename="celest/lib/exceptions/bad_name_exception.dart"
+Suppose you have some validation logic on your server which checks that a user's name is properly formatted. If the name is empty, 
+you want to throw an exception. You can define a Dart type in your Celest backend to represent this error.
+
+```dart filename="celest/lib/src/exceptions/bad_name_exception.dart"
 class BadNameException implements Exception {
   const BadNameException(this.message);
 
@@ -19,9 +24,9 @@ class BadNameException implements Exception {
 }
 ```
 
-You can then throw these exceptions in your Celest Functions whenever needed as shown below.
+When you encounter an empty name, you can throw this exception in your Celest Function.
 
-```dart {7} filename="celest/functions/greeting.dart"
+```dart {7} filename="celest/lib/src/functions/greeting.dart"
 import 'package:celest_backend/exceptions/bad_name_exception.dart';
 
 @cloud
@@ -34,7 +39,9 @@ Future<String> sayHello(String name) async {
 }
 ```
 
-In your Flutter app, the same `BadNameException` type will be thrown by the generated client if an error occurs.
+In your Flutter app, the same `BadNameException` type will be thrown by the generated client so
+you can catch it and handle it as you would any other exception. Any `message` you passed in the
+on the server will be available in the `message` field of the exception on the client. Magically!
 
 ```dart {8-11}
 import 'package:celest_backend/client.dart';
@@ -45,16 +52,58 @@ Future<String> getGreeting(String name) async {
     return await celest.functions.greeting.sayHello(name);
   // Catch the exception type defined in your backend
   } on BadNameException catch (e) {
-    print('Uh oh! Could not greet $name: $e');
+    print(e.message); // prints "Name cannot be empty"
     rethrow;
   }
 }
 ```
 
-## Writing custom serialization logic
+## HTTP mapping
 
-Just like [custom model types](/docs/functions/data-types.md#writing-custom-serialization-logic), custom exceptions can define their own serialization logic. This is useful when you have existing types you want to make use of which are not serializable by default.
+When an exception is thrown in your Celest Function, Celest will map the exception to an appropriate HTTP response code.
+For example, all `Exception` types will be mapped to a `400 Bad Request` status and all `Error` types will be mapped 
+to a `500 Internal Server Error` status by default.
+
+Celest also provides a number of built-in exception types for common HTTP status codes. For example, you can throw a `NotFoundException`
+to return a `404 Not Found` status code. And you can even include a custom message with it.
+
+```dart
+import 'package:celest/celest.dart';
+
+@cloud
+Future<String> sayHello(String name) async {
+  if (name.isEmpty) {
+    throw const NotFoundException('Name cannot be empty');
+  }
+  return 'Hello, $name';
+}
+```
+
+If an exception type you've defined needs to be mapped to a different status code, you can use the `@httpError` annotation to 
+specify the status code Celest should use for it. For example, maybe we want our `BadNameException` to return a `404 Not Found` status
+instead of the default `400`.
+
+```dart
+import 'package:celest/celest.dart';
+import 'package:celest/http.dart';
+
+class BadNameException implements Exception {
+  const BadNameException(this.message);
+
+  final String message;
+}
+
+@cloud
+@httpError(404, BadNameException)
+Future<String> sayHello(String name) async {
+  if (name.isEmpty) {
+    throw const BadNameException('Name cannot be empty');
+  }
+  return 'Hello, $name';
+}
+```
 
 ## Next steps
 
-You have now learned how to create and throw custom exceptions in your Celest Functions. We have additional guides to teach you about [managing environment variables](/docs/functions/env-variables.md) and [creating tests for your functions](/docs/functions/testing.md).
+You have now learned how to handle exceptions in your Celest Functions. Keep reading to learn about [configuring your environment](./env-variables.mdx)
+and [ensuring your backend is secure](./authorizing-functions.mdx).

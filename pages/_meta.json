@@ -30,6 +30,11 @@
         "type": "page",
         "display": "hidden"
     },
+    "compliance": {
+        "title": "Discord",
+        "type": "page",
+        "display": "hidden"
+    },
     "privacy": {
         "title": "Privacy Policy",
         "type": "page",

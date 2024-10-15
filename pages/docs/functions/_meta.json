@@ -1,11 +1,26 @@
 {
+    "--building": {
+      "title": "Building",
+      "type": "separator"
+    },
     "creating-functions": "Creating a function",
+    "data-types": "Defining your data types",
+    "exceptions": "Throwing exceptions",
+    "env-variables": "Configuring environment variables and secrets",
+    "authorizing-functions": "Authorizing callers",
+    "--iterating": {
+      "title": "Iterating",
+      "type": "separator"
+    },
     "logging": "Logging and debugging",
-    "data-types": "Defining custom data types",
-    "exceptions": "Defining custom exceptions",
-    "env-variables": "Managing environment variables",
-    "authorizing-functions": "Authorizing your functions",
     "testing": "Testing your functions",
-    "packages": "Installing Dart packages",
-    "http": "HTTP"
+    "packages": "Using packages",
+    "--advanced": {
+      "title": "Advanced",
+      "type": "separator"
+    },
+    "customizing-serialization": "Customizing serialization",
+    "http": {
+        "display": "hidden"
+    }
 }

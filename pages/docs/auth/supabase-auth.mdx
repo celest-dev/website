@@ -1,0 +1,58 @@
+---
+title: Supabase Auth
+description: Learn how to use Supabase Auth for authenticating users in your Celest project.
+---
+
+import { Callout } from 'nextra-theme-docs'
+
+# Supabase Auth
+
+If you're migrating to Celest from another framework, chances are you already have a user base that you'd like to use.
+
+As of Celest V1, Supabase can be used as your auth provider in Celest. And doing so is just as easy as with Celest's built-in auth.
+
+## In your Celest project
+
+To use Supabase as your auth provider, add the following code to your `project.dart` file:
+
+```dart copy filename="celest/lib/src/project.dart"
+import 'package:celest/celest.dart';
+
+const project = Project(name: 'supabase');
+
+const auth = Auth(
+  providers: [
+    ExternalAuthProvider.supabase(),
+  ],
+);
+```
+
+Verifying users with Supabase requires knowing your Supabase project's URL. When you run `celest start`, Celest will automatically search your environment for
+any available Supabase projects. If it can't figure out which project to use, you'll be prompted to enter it manually. 
+
+Celest will securely store your Supabase project URL for future use so it doesn't need to prompt you again.
+
+## In your Flutter app
+
+In your Flutter app, Celest will listen for changes to Supabase's auth state and update the Celest state accordingly so that 
+calls to your Cloud Functions are authenticated appropriately.
+
+To do so, it needs access to your Supabase client, which you pass into the `celest.init` call in your `main` function.
+
+```dart copy filename="lib/main.dart"
+import 'package:flutter/material.dart';
+import 'package:my_project_client/my_project_client.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final supabase = await Supabase.initialize(
+    url: 'YOUR_SUPABASE_URL',
+    anonKey: 'YOUR_SUPABASE_ANON_KEY',
+  );
+  celest.init(
+    externalAuth: ExternalAuth.supabase(supabase.client.auth),
+  );
+  runApp(const MyApp());
+}
+```

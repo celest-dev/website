@@ -1,52 +1,23 @@
 ---
-title: Celest Auth
+title: Auth
 description: Learn how to add authentication to your Celest project.
 ---
 
-import { Callout } from 'nextra-theme-docs'
+# Auth
 
-# Celest Auth
+Celest comes with built-in auth support via our [Cloud Auth](https://github.com/celest-dev/celest/tree/main/services/celest_cloud_auth) package: an open-source, Dart-native service for
+authenticating and authorizing users in any Dart backend.
 
-Celest currently supports email-based authentication via one-time passcodes. This is a simple and secure way to authenticate users in your app without needing to worry about passwords.
+<div className="flex flex-row justify-around items-center">
+    <img src="https://github.com/cedar-policy/.github/raw/main/profile/logo.svg" alt="Cedar Logo" className="h-full m-2 p-8 w-1/2" />
+    <img src="https://www.sqlite.org/images/sqlite370_banner.gif" alt="SQLite Logo" className="h-full m-2 p-8 w-1/2" />
+</div>
 
-<Callout>
-We are working on adding social sign-in and passkeys in future releases. If you have a specific use case you'd like to see, please let us know by creating an [issue](https://github.com/celest-dev/celest/issues/new/choose).
-</Callout>
+Cloud Auth is built on top of the [Cedar](https://www.cedarpolicy.com/en) policy engine and [SQLite](https://www.sqlite.org/) to both manage user accounts 
+and enforce consistent access controls in a single Dart package. The Celest CLI will automatically integrate Cloud Auth into your project when 
+using Celest Auth, but the service is exposed as a Shelf router and middleware which can be used in any Dart project.
 
-Adding Auth to your Celest project takes 5 lines of code. In your `project.dart` file, add the following code:
+To get started with Cloud Auth, continue to the next page to see how to add it to your Celest project 🚀
 
-```dart copy filename="celest/project.dart"
-import 'package:celest/celest.dart';
-
-const project = /* .. */;
-
-const auth = Auth(
-  providers: [
-    AuthProvider.email(),
-  ],
-);
-```
-
-That's it! When you run `celest start`, Celest will automatically generate an Auth client for you to use in your Flutter app.
-
-## Signing In
-
-To sign in a user, you can use the `authenticate` method on the `celest.auth` object. It's called `authenticate` because there is no longer a distinction between signing in or signing up! 
-If the user doesn't exist, they will be created.
-
-```dart
-final flow = await celest.auth.email.authenticate(
-  email: 'dillon@celest.dev',
-);
-
-// Prompt user for OTP code sent to the email
-
-final user = await flow.verify(otpCode: '123456');
-print('User signed in: ${user.id}');
-```
-
-A full example of a typical auth flow can be found in our [repo](https://github.com/celest-dev/celest/tree/main/packages/celest_auth/example).
-
-## Authorizing your functions
-
-Once a user is signed in, they can access functions marked `@authenticated`. To learn more about authorizing your functions, check out [Authorizing functions](/docs/functions/authorizing-functions).
+> Celest Auth also suppors integrating [Supabase](./auth/supabase-auth.mdx) and [Firebase](./auth/firebase-auth.mdx) for cases where you 
+> already have an existing user base.

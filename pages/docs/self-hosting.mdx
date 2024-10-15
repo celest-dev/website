@@ -1,12 +1,15 @@
 ---
-title: Self-hosting
+title: Self-Hosting
+description: Learn how to self-host your Celest project anywhere a Docker container runs.
 ---
 
 import { Callout } from 'nextra/components'
 
-# Self-hosting
+# Self-Hosting
 
-<Callout>
-Self-hosting Celest projects is currently **not supported**. If you would like to host your own Celest 
-project, please let us know your use case by filling out an [issue](https://github.com/celest-dev/celest/issues/new/choose).
-</Callout>
+As of Celest V1, all Celest projects can be self-hosted on any server that can run a Docker container. This means you can deploy your Celest project 
+to any cloud provider, on-premises server, or even your own computer.
+
+Self-hosting support is provided via the `celest build` command which will bundle all of the dependencies of your Celest project into a 
+lightweight Docker container. The container will be pre-configured with all the necessary environment variables and settings to run your 
+Celest project.

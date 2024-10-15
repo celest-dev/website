@@ -11,7 +11,7 @@ Celest enables you to use logging to capture helpful information about your func
 
 Here is an example of using print statements to log the input of `name` in a Celest Function.
 
-```dart {3,8} filename="celest/functions/greeting.dart"
+```dart {3,9} filename="celest/lib/src/functions/greeting.dart"
 @cloud
 Future<String> sayHello(String name) async {
   print('Saying hello to $name');
@@ -31,8 +31,8 @@ When you call the function, these logs will be streamed locally and shown in the
 $ celest start
 ✓ Celest is running on http://localhost:7777
 
-[sayHello] Saying hello to Celest
-[sayGoodbye] Saying goodbye to Celest
+[greeting/sayHello] Saying hello to Celest
+[greeting/sayGoodbye] Saying goodbye to Celest
 ```
 
 ## Next steps

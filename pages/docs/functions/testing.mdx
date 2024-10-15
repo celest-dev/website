@@ -13,14 +13,13 @@ Within your `celest/test` folder, create a new Dart file and write the unit test
 
 ```dart
 import 'package:celest/celest.dart';
+import 'package:celest_backend/src//functions/greeting.dart';
 import 'package:test/test.dart';
-
-import '../functions/greeting.dart';
 
 void main() {
   test('sayHello', () async {
     final result = await sayHello(
-      'Celest',
+      name: 'Celest',
       greetingUrl: Uri.parse('http://localhost:8000'),
     );
     expect(result, 'Hello, Celest');
@@ -28,7 +27,7 @@ void main() {
 }
 ```
 
-Run your tests by navigating to your `<flutter_app>/celest/test` folder in your console, and then running the following command:
+Run your tests by navigating to your `celest/` folder in your console, and then running the following command:
 
 ```shell
 dart test
@@ -38,4 +37,5 @@ Your terminal will let you know if all your tests pass, or if there are any fail
 
 ## Next steps
 
-You have now learned how to write tests for your Celest Functions. We have additional guides to help learn more about [installing 3rd party Dart packages](/docs/functions/packages.md) in your Celest backend, and how to connect to your Celest Functions [using HTTP calls](/docs/functions/http-requests.md).
+You have now learned how to write tests for your Celest Functions. Keep reading to learn how to start 
+[adding other packages](./packages.mdx) in your Celest backend.
