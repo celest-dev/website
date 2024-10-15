@@ -1,46 +1,33 @@
-import Link from "next/link";
 import { HStack, Spacer } from "@chakra-ui/react";
+import Link from "next/link";
 
 import {
   Button,
-  Text,
-  VStack,
   Container,
-  Grid
+  Grid,
+  Text,
+  VStack
 } from '@chakra-ui/react';
 import CodeBlock from "@components/landing/codeblock";
 import { usePostHog } from "posthog-js/react";
 
-import { FeatureShowcase } from "./FeatureShowcase";
-import { PricingCards } from "./PricingCards";
-import { Testimonials } from "./Testimonials";
-import { WideInfo } from "./wideinfo";
-import { FirebaseInfograph } from "./FirebaseInfograph";
-
-
-import React from 'react'
 import {
   Box,
   Flex,
   Heading,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
   useColorModeValue,
-} from '@chakra-ui/react'
-import { Line } from 'react-chartjs-2'
+} from '@chakra-ui/react';
 import {
-  Chart as ChartJS,
   CategoryScale,
+  Chart as ChartJS,
+  Legend,
   LinearScale,
-  PointElement,
   LineElement,
+  PointElement,
   Title,
   Tooltip,
-  Legend,
-} from 'chart.js'
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
 
 ChartJS.register(
   CategoryScale,
@@ -52,33 +39,15 @@ ChartJS.register(
   Legend
 )
 
-import { DeveloperExperienceSection } from "./DeveloperExperience";
-const codeBlock1 = `@cloud
-Future<String> sayHello(String name) async {
-  return 'Hello, $name!';
-}`
-
-const codeBlock2 = `@cloud
-Future<String> sayHello(String name) async {
-  return 'Hello, $name!';
-}`
-
-
 export default function Hero() {
   const posthog = usePostHog();
   return (
     <VStack zIndex={1} maxWidth="1080px" spacing={10} paddingTop={20} justifyContent="center" alignItems="center" alignContent="center" alignSelf="center" margin="0 auto">
-{/* 
-        <h1  style={{ textShadow: '0px 0px 10px white', fontSize: '2xl', fontWeight: 'bold', textAlign: 'center', justifyContent: 'center', alignItems: 'center', alignContent: 'center', alignSelf: 'center'}}>
-          Push your code to the stars
-        </h1> */}
+      <Heading as="h1" size="3xl" justifyContent={"center"}  textAlign={"center"} mb={4} style={{ textShadow: '0px 0px 10px white'}}>
+        Push your code to the stars
+      </Heading>
 
-<Heading as="h1" size="3xl" mb={4} style={{ textShadow: '0px 0px 10px white'}}>
-Push your code to the stars
-
-        </Heading>
-
-      <SwitchCodeBlocks/>
+      <SwitchCodeBlocks />
       <Button
         className="px-6"
         onClick={() => {
@@ -89,17 +58,45 @@ Push your code to the stars
         Get Started
       </Button>
       <Spacer></Spacer>
-      {/* Square 1 */}
-      <DartInfoPage/>
-      <Square1Sub/>
-      {/* <FeatureShowcase/> */}
-      <Square2/>  
-      <Square2Sub/>
 
-      {/* <Testimonials></Testimonials> */}
-      <Square3/>  
-      <Square3Sub/>
+      {/* Grid layout to stack content while ensuring equal space */}
+      <Grid templateColumns={['1fr', '1fr', '1fr']} gap={6} w="100%">
+        {/* First pair: DartInfoPage and Square1Sub */}
+        <Box minH="600px">
+          <VStack spacing={6} h="100%">
+            <Box flex={1}>
+              <DartInfoPage />
+            </Box>
+            <Box flex={1}>
+              <Square1Sub />
+            </Box>
+          </VStack>
+        </Box>
 
+        {/* Second pair: Square2 and Square2Sub */}
+        <Box minH="600px">
+          <VStack spacing={6} h="100%">
+            <Box flex={1}>
+              <Square2 />
+            </Box>
+            <Box flex={1}>
+              <Square2Sub />
+            </Box>
+          </VStack>
+        </Box>
+
+        {/* Third pair: Square3 and Square3Sub */}
+        <Box minH="600px">
+          <VStack spacing={6} h="100%">
+            <Box flex={1}>
+              <Square3 />
+            </Box>
+            <Box flex={1}>
+              <Square3Sub />
+            </Box>
+          </VStack>
+        </Box>
+      </Grid>
     </VStack>
   );
 }
@@ -286,8 +283,8 @@ Future<String> sayHello({required Person person}) async {
   };
 
   return (
-    <Box w="100%" f={1}>
-      <Flex mt={4} mb={4} justifyContent="space-between" alignItems="center">
+    <Box w="100%">
+      <Flex  mt={4} mb={4} justifyContent="space-between" alignItems="center">
         <Button
           onClick={() => setSelectedBlock(1)}
           flex={1}
@@ -331,7 +328,7 @@ Future<String> sayHello({required Person person}) async {
         </Button>
       </Flex>
 
-      <Box bg="gray.800" p={6} borderRadius="lg" boxShadow="lg" borderColor="gray.700" borderWidth="1px">
+      <Box bg="gray.800" h={500} p={6} borderRadius="lg" boxShadow="lg" borderColor="gray.700" borderWidth="1px" justifyContent={"center"} alignItems={"center"} >
         <CodeBlock code={renderCodeBlock()} />
       </Box>
     </Box>
@@ -425,33 +422,8 @@ export function Square2() {
 
 
 export function Square3() {
-  const bgColor = useColorModeValue('gray.900', 'gray.800')
   const textColor = useColorModeValue('white', 'gray.100')
 
-  const adoptionData = {
-    labels: ['2020', '2021', '2022', '2024'],
-    datasets: [
-      {
-        label: 'Deployed Apps using Dart',
-        data: [1, 125, 375, 550, 750, 875],
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1,
-      },
-    ],
-  }
-
-  const chartOptions = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top' as const,
-      },
-      title: {
-        display: true,
-        text: 'Dart Growth',
-      },
-    },
-  }
 
   const [activeCode, setActiveCode] = useState("frontend");
 
@@ -486,11 +458,13 @@ export function Square3() {
     </Link>
   </Box>
   <Box flex={1}>
+  <Box flex={1}>  
     {activeCode === "frontend" ? (
       <CodeBlock code={frontendCode} />
     ) : (
       <CodeBlock code={backendCode} />
     )}
+    </Box>
     <HStack w="100%" justifyContent="center">
       <Button
         colorScheme={activeCode === "frontend" ? "teal" : "gray"}
@@ -512,135 +486,98 @@ export function Square3() {
 }
 
 
-
-import { useEffect } from "react";
-import { observable } from "@legendapp/state";
-import { observer } from "@legendapp/state/react";
-
-// Create an observable object to track the glow effect
-const glowState$ = observable({ hasGlow: false });
-
-// Frontend and Backend code
-const HotreloadCode1 = `
-BoxShadow(blurRadius: 10)
-`;
-
-const HotreloadCode2 = `
-BoxShadow(blurRadius: 0)
-`;
-
-// Component that swaps between frontend and backend code blocks
-// export const Square3 = observer(function Square3() {
-//     // Manage the active code block state (frontend/backend)
-//     const [activeCode, setActiveCode] = useState("HotreloadCode1");
-
-//     // glow is automatically tracked for changes
-//     const hasGlow = glowState$.hasGlow.get();
-
-//     // Function to simulate hot-reload by toggling the glow effect
-//     const toggleGlow = () => {
-//         glowState$.hasGlow.set((prev) => !prev);
-//     };
-
-//     // Auto change the glow effect every few seconds to simulate hot-reload
-//     useEffect(() => {
-//         const interval = setInterval(toggleGlow, 2000); // Toggle every 2 seconds
-//         return () => clearInterval(interval); // Cleanup interval on unmount
-//     }, []);
-
-//     // Conditional boxShadow for glow effect
-//     const boxShadowStyle = hasGlow
-//         ? "0px 0px 20px white" // Glow effect
-//         : "none"; // No glow
-
-//     // Function to handle switching code blocks
-//     const handleCodeSwitch = (codeType) => {
-//         setActiveCode(codeType);
-//     };
-
-//     return (
-//         <Box
-//             // bg="gray.900"
-//              bg="rgba(255, 255, 255, 0.1)"
-//             w={1000}
-//             borderRadius="20px"
-//             color="white"
-//             py={10}
-//             px={8}
-//             // Apply the boxShadow dynamically based on the glow state
-//             boxShadow={boxShadowStyle}
-//             transition="box-shadow 0.3s ease-in-out"
-//         >
-//             <HStack maxW="container.xl" mx="auto" spacing={10} align="center">
-//                 {/* Left side: Code Block */}
-//                 <Box
-//                     bg="gray.800"
-//                     p={6}
-//                     borderRadius="lg"
-//                     boxShadow="lg"
-//                     borderColor="gray.700"
-//                     borderWidth="1px"
-//                 >
-      
-
-//                     <Box p={4} bg="gray.700" color="white" borderRadius="md">
-//                         <Text fontSize="md" fontFamily="monospace">
-//                             {/* Conditionally render the selected code block */}
-              
-//                             {glowState$.hasGlow.get() === true ? <CodeBlock code={HotreloadCode1} /> : <CodeBlock code={HotreloadCode2} />}
-
-
-//                             {/* {activeCode === "HotreloadCode1" ? frontendCode : backendCode} */}
-//                         </Text>
-//                     </Box>
-//                 </Box>
-
-//                 <Spacer />
-
-//                 {/* Right side: Text content */}
-//                 <VStack align="start" spacing={6} maxW="sm">
-//                     <Heading fontSize="4xl">Simplicity</Heading>
-//                     <Text fontSize="lg">
-//                       Celest makes it easy to focus on what's important.
-//                     </Text>
-//                     <Text fontSize="md" opacity={0.7}>
-//                         With hot reload, you can see your changes instantly.
-//                     </Text>
-//                 </VStack>
-//             </HStack>
-//         </Box>
-//     );
-// });
-
-
 export function DartInfoPage() {
   const bgColor = useColorModeValue('gray.900', 'gray.800')
   const textColor = useColorModeValue('white', 'gray.100')
 
   const adoptionData = {
-    labels: ['2020', '2021', '2022', '2024'],
+    labels: ['2020',  ' ',  ' ', '2021',  ' ',   ' ',  '2022',  ' ',   ' ',  '2024'],
     datasets: [
       {
         label: 'Deployed Apps using Dart',
-        data: [1, 125, 375, 550, 750, 875],
+        data: [1, 125, 375, 550, 750, 875, 700, 1000, 1550, 2000],
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1,
       },
     ],
   }
 
+  const maxDataValue = Math.max(...adoptionData.datasets[0].data); // Get the highest point of the data
+
   const chartOptions = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top' as const,
+        display: false, // Remove the legend
       },
       title: {
         display: true,
-        text: 'Dart Growth',
+        text: 'Apps using Dart',
+        color: 'white', // Set title text color to white
+      },
+      afterDraw: function(chart) {
+        const ctx = chart.ctx;
+        const datasetMeta = chart.getDatasetMeta(0); // Access the first dataset (the line)
+  
+        // Draw a thicker, semi-transparent line for the glow effect
+        ctx.save(); // Save the current drawing state
+  
+        ctx.lineWidth = 10; // Thicker line width for the glow
+        ctx.strokeStyle = 'rgba(75, 192, 192, 0.4)'; // Semi-transparent glow color
+        ctx.beginPath();
+        datasetMeta.data.forEach((point, i) => {
+          const { x, y } = point;
+          if (i === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
+          }
+        });
+        ctx.stroke();
+        ctx.restore(); // Restore the previous drawing state
+  
+        // Draw the original line on top
+        ctx.save(); // Save the current drawing state
+        ctx.lineWidth = datasetMeta.dataset.options.borderWidth; // Original line width
+        ctx.strokeStyle = datasetMeta.dataset.options.borderColor; // Original line color
+        ctx.beginPath();
+        datasetMeta.data.forEach((point, i) => {
+          const { x, y } = point;
+          if (i === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
+          }
+        });
+        ctx.stroke();
+        ctx.restore(); // Restore the previous drawing state without shadow
       },
     },
-  }
+    scales: {
+      x: {
+        ticks: {
+          color: 'white', // Change x-axis labels to white
+        },
+        grid: {
+          display: false, // Remove x-axis grid
+        },
+      },
+      y: {
+        ticks: {
+          color: 'white', // Change y-axis labels to white
+        },
+        grid: {
+          display: false, // Remove y-axis grid
+        },
+        min: 0, // Ensure the y-axis starts at 0
+        max: maxDataValue, // Set the max to the highest point in the dataset
+      },
+    },
+  };
+  
+  
+  
+  
 
   return (
     <Flex direction={['column', 'column', 'row']} borderRadius="20px" // Added border-radius for smooth edges
@@ -666,19 +603,7 @@ export function DartInfoPage() {
         </Link>
       </Box>
       <Box flex={1}>
-        {/* <Tabs isFitted variant="enclosed"> */}
-          {/* <TabList mb="1em">
-            <Tab>Adoption</Tab>
-            <Tab>Search Trends</Tab>
-          </TabList> */}
-          {/* <TabPanels> */}
-            {/* <TabPanel> */}
-              <Line width="50%" height="50%" options={chartOptions} data={adoptionData} />
-            {/* </TabPanel> */}
-     
-
-          {/* </TabPanels> */}
-        {/* </Tabs> */}
+        <Line width="50%" height="50%"  options={chartOptions} data={adoptionData} />
       </Box>
     </Flex>
   )

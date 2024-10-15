@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 
 const CodeBlock = ({ code, language = "dart" }) => (
-  <VStack padding={5} w="100%">
+  <VStack padding={5} w="100%" h={"100%"}>
     <Highlight
       prism={Prism} // Use the extended Prism instance
       theme={themes.nightOwl} // Use the Visual Studio Dark theme
@@ -24,7 +24,7 @@ const CodeBlock = ({ code, language = "dart" }) => (
 
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={{ ...style, padding: "16px", background: "#1e1e1e", width: "100%" }}>
+        <pre className={className} style={{ ...style, padding: "16px", background: "#1e1e1e", width: "100%", height: "100%" }}>
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ line })} style={{ display: "flex", width: "100%" }}>
               <span
