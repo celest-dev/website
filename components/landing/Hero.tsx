@@ -39,8 +39,28 @@ ChartJS.register(
   Legend
 )
 
+import { useEffect } from "react";
+
+
 export default function Hero() {
   const posthog = usePostHog();
+
+  const [boxHeight, setBoxHeight] = useState(440);
+
+  // Function to check and set height based on screen resolution
+  const updateBoxHeight = () => {
+    const height = window.innerHeight;
+    const width = window.innerWidth;
+    setBoxHeight(height > width ? 880 : 440);
+  };
+
+  // Update box height on window resize
+  useEffect(() => {
+    updateBoxHeight();
+    window.addEventListener("resize", updateBoxHeight);
+    return () => window.removeEventListener("resize", updateBoxHeight);
+  }, []);
+
   return (
     <VStack zIndex={1} maxWidth="1080px" spacing={10} paddingTop={20} justifyContent="center" alignItems="center" alignContent="center" alignSelf="center" margin="0 auto">
       <Heading as="h1" size="3xl" justifyContent={"center"}  textAlign={"center"} mb={4} style={{ textShadow: '0px 0px 10px white'}}>
@@ -59,44 +79,15 @@ export default function Hero() {
       </Button>
       <Spacer></Spacer>
 
-      {/* Grid layout to stack content while ensuring equal space */}
-      <Grid templateColumns={['1fr', '1fr', '1fr']} gap={6} w="100%">
-        {/* First pair: DartInfoPage and Square1Sub */}
-        <Box minH="600px">
-          <VStack spacing={6} h="100%">
-            <Box flex={1}>
-              <DartInfoPage />
-            </Box>
-            <Box flex={1}>
-              <Square1Sub />
-            </Box>
-          </VStack>
-        </Box>
+      <DartInfoPage boxHeight={boxHeight} />
 
-        {/* Second pair: Square2 and Square2Sub */}
-        <Box minH="600px">
-          <VStack spacing={6} h="100%">
-            <Box flex={1}>
-              <Square2 />
-            </Box>
-            <Box flex={1}>
-              <Square2Sub />
-            </Box>
-          </VStack>
-        </Box>
+      <Square1Sub />
+      <Square2 boxHeight={boxHeight} />
+      <Square2Sub />
+      <Square3 boxHeight={boxHeight} />
 
-        {/* Third pair: Square3 and Square3Sub */}
-        <Box minH="600px">
-          <VStack spacing={6} h="100%">
-            <Box flex={1}>
-              <Square3 />
-            </Box>
-            <Box flex={1}>
-              <Square3Sub />
-            </Box>
-          </VStack>
-        </Box>
-      </Grid>
+      <Square3Sub />
+
     </VStack>
   );
 }
@@ -366,7 +357,7 @@ const backendCode = `
 
 
 
-export function Square2() {
+export function Square2({ boxHeight }) {
   const bgColor = useColorModeValue('gray.900', 'gray.800')
   const textColor = useColorModeValue('white', 'gray.100')
 
@@ -378,6 +369,7 @@ export function Square2() {
 
   return (
     <Flex
+      h={boxHeight}
       direction={['column-reverse', 'column-reverse', 'row']}
       borderRadius="20px"
       bg="rgba(255, 255, 255, 0.1)"
@@ -400,20 +392,9 @@ export function Square2() {
           Simplicity
         </Heading>
         <Text fontSize="lg" mb={4}>
-          With Celest, developers can seamlessly transition between
-          building beautiful user interfaces with Flutter and creating robust
-          backend services. This unified approach significantly
-          increases productivity and reduces the learning curve, allowing your
-          team to deliver end-to-end solutions more efficiently than ever before.
+        Simplicity is the core of Celest. It allows developers to focus on creating beautiful user interfaces and efficient backends without the hassle of switching between tools. Celest's integrated approach streamlines workflows, reducing complexity and enhancing productivity.
         </Text>
-        <Link
-          href="https://dillonnys.com/posts/why-im-betting-on-dart/"
-          color="teal.500"
-          fontWeight="bold"
-          isExternal
-        >
-          Learn more about why Dart is the future
-        </Link>
+        
       </Box>
     </Flex>
   )
@@ -421,7 +402,7 @@ export function Square2() {
 
 
 
-export function Square3() {
+export function Square3({ boxHeight }) {
   const textColor = useColorModeValue('white', 'gray.100')
 
 
@@ -432,7 +413,7 @@ export function Square3() {
   };
 
   return (
-    <Flex direction={['column', 'column', 'row']} borderRadius="20px" // Added border-radius for smooth edges
+    <Flex h={boxHeight} direction={['column', 'column', 'row']} borderRadius="20px" // Added border-radius for smooth edges
     bg="rgba(255, 255, 255, 0.1)" p={8} color={textColor} style={{ backdropFilter: 'blur(10px)' }}>
 
   {/* <Spacer /> */}
@@ -442,20 +423,16 @@ export function Square3() {
       Developer Productivity
     </Heading>
     <Text fontSize="lg" mb={4}>
-      With Celest, developers can seamlessly transition between
-      building beautiful user interfaces with Flutter and creating robust
-      backend services. This unified approach significantly
-      increases productivity and reduces the learning curve, allowing your
-      team to deliver end-to-end solutions more efficiently than ever before.
+    Celest empowers developers to boost their productivity by unifying frontend and backend development. Its seamless transition between building interfaces and backend services enables developers to create full-stack solutions efficiently, minimizing context switching and maximizing impact.
     </Text>
-    <Link
+    {/* <Link
       href="https://dillonnys.com/posts/why-im-betting-on-dart/"
       color="teal.500"
       fontWeight="bold"
       isExternal
     >
       Learn more about why Dart is the future
-    </Link>
+    </Link> */}
   </Box>
   <Box flex={1}>
   <Box flex={1}>  
@@ -486,7 +463,7 @@ export function Square3() {
 }
 
 
-export function DartInfoPage() {
+export function DartInfoPage({ boxHeight }) {
   const bgColor = useColorModeValue('gray.900', 'gray.800')
   const textColor = useColorModeValue('white', 'gray.100')
 
@@ -580,18 +557,15 @@ export function DartInfoPage() {
   
 
   return (
-    <Flex direction={['column', 'column', 'row']} borderRadius="20px" // Added border-radius for smooth edges
+    <Flex  h={boxHeight} direction={['column', 'column', 'row']} borderRadius="20px" // Added border-radius for smooth edges
     bg="rgba(255, 255, 255, 0.1)" p={8} color={textColor} style={{ backdropFilter: 'blur(10px)' }}>
       <Box flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>  
         <Heading as="h1" size="2xl" mb={4}  style={{ textShadow: '0px 0px 10px white' }}>
           Dart will take over the world
         </Heading>
         <Text fontSize="lg" mb={4}>
-          Dart is poised to become the dominant programming language due to its versatility,
-          performance, and strong backing from Google. It offers a unique combination of features
-          that make it ideal for both web and mobile development, especially when paired with the
-          Flutter framework. Dart's sound type system, hot reload capability, and efficient
-          garbage collection make it a joy to work with for developers of all skill levels.
+        Dart is revolutionizing both web and mobile development by providing a powerful, unified language with incredible flexibility. Its combination of speed, efficiency, and ease of use is rapidly making it the top choice for developers. Dart is set to dominate the future of development by streamlining both client and server codebases.
+
         </Text>
         <Link
           href="https://dillonnys.com/posts/why-im-betting-on-dart/"
