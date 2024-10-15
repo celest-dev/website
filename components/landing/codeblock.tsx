@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 
 const CodeBlock = ({ code, language = "dart" }) => (
-  <VStack padding={5} w="550px">
+  <VStack padding={5} w="100%">
     <Highlight
       prism={Prism} // Use the extended Prism instance
       theme={themes.nightOwl} // Use the Visual Studio Dark theme

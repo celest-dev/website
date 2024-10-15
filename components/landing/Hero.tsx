@@ -4,7 +4,9 @@ import { HStack, Spacer } from "@chakra-ui/react";
 import {
   Button,
   Text,
-  VStack
+  VStack,
+  Container,
+  Grid
 } from '@chakra-ui/react';
 import CodeBlock from "@components/landing/codeblock";
 import { usePostHog } from "posthog-js/react";
@@ -65,133 +67,275 @@ Future<String> sayHello(String name) async {
 export default function Hero() {
   const posthog = usePostHog();
   return (
-    <VStack spacing={10}>
-
-      <section
-        id="hero"
-        className="text-center flex flex-col items-center justify-center"
-      >
-        {/* <YCLogo className="mt-4" /> */}
-        <h1 className="text-4xl tracking-tighter font-extrabold md:text-5xl mt-8 mb-8" style={{ textShadow: '0px 0px 10px white' }}>
-          Push your code to the stars
-        </h1>
-        <p className="text-lg md:text-xl mb-8">
-
-        </p>
-        {/* <Link href="/docs/get-started"> */}
-
-        {/* </Link> */}
-
+    <VStack zIndex={1} maxWidth="1080px" spacing={10} paddingTop={20} justifyContent="center" alignItems="center" alignContent="center" alignSelf="center" margin="0 auto">
 {/* 
-        <CodeBlock code={codeBlock1} />
-        <CodeBlock code={codeBlock2} /> */}
+        <h1  style={{ textShadow: '0px 0px 10px white', fontSize: '2xl', fontWeight: 'bold', textAlign: 'center', justifyContent: 'center', alignItems: 'center', alignContent: 'center', alignSelf: 'center'}}>
+          Push your code to the stars
+        </h1> */}
 
+<Heading as="h1" size="3xl" mb={4} style={{ textShadow: '0px 0px 10px white'}}>
+Push your code to the stars
+
+        </Heading>
+
+      <SwitchCodeBlocks/>
       <Button
-
-      className="px-6"
-      onClick={() => posthog.capture("cta_clicked", { location: "hero" })}
-      href="http://localhost:3000/docs/download"
+        className="px-6"
+        onClick={() => {
+          posthog.capture("cta_clicked", { location: "hero" });
+          window.location.href = "http://localhost:3000/docs/download";
+        }}
       >
-      Get Started
+        Get Started
       </Button>
-
-      </section>
-
-
-
+      <Spacer></Spacer>
       {/* Square 1 */}
-      <DartInfoPage></DartInfoPage>
-      
+      <DartInfoPage/>
+      <Square1Sub/>
+      {/* <FeatureShowcase/> */}
+      <Square2/>  
+      <Square2Sub/>
 
-      {/* Square 2 */}
-      <Square3/>
-      <Square2/>
-      {/* <DeveloperProductivity></DeveloperProductivity> */}
+      {/* <Testimonials></Testimonials> */}
+      <Square3/>  
+      <Square3Sub/>
 
-      {/* Square 3 */}
-
-  
-
-      {/* <PricingCards></PricingCards>
-      <Testimonials />
-      <DeveloperExperienceSection />
-      <WideInfo />
-      <FirebaseInfograph /> */}
     </VStack>
   );
 }
 
+export const Square1Sub = () => {
+  return (
+    <Container maxW="container.xl" py={10}>
+      <Grid templateColumns={['1fr', '1fr', 'repeat(3, 1fr)']} gap={6}>
+        <TestimonialCard
+          title="Dart Cloud Functions"
+          one="Write your backend like you write your Flutter App"
+          two="No more context Switching"
+          three="Reuse the same code across your whole stack"
+        />
 
-import {  Container,  Grid,  Icon, } from "@chakra-ui/react";
-import { FaBolt, FaCog, FaDatabase, FaFire, FaLock, FaRocket, FaStream } from "react-icons/fa";
+        <TestimonialCard
+          title="Flutter on the Server"
+          one="Deploy your Flutter apps directly on the server for full-stack development"
+          two="Unify client and server logic with a single codebase"
+          three="Experience high performance and seamless integration across platforms"
+        />
 
-const FeatureCard1 = ({ icon, title, description }) => (
-    <Box bg={useColorModeValue("rgba(31, 41, 55, 0.4)", "rgba(17, 17, 17, 0.1)")} // Semi-transparent background
-        backdropFilter="blur(5px)" // Apply the blur effect
-        p={6} borderRadius="lg" height="100%">
-        <VStack align="start" spacing={4}>
-            <Icon as={icon} boxSize={12} color="green.300" />
-            <Heading size="lg">{title}</Heading>
-            <Text>{description}</Text>
-        </VStack>
+        <TestimonialCard
+          title="Server-Side Widgets"
+          one="Build dynamic, reusable widgets for server-side rendering"
+          two="Leverage Flutter's widget system to enhance backend functionality"
+          three="Simplify server-side logic with modular components"
+        />
+      </Grid>
+    </Container>
+  );
+};
+
+export const Square2Sub = () => {
+  return (
+    <Container maxW="container.xl" py={10}>
+      <Grid templateColumns={['1fr', '1fr', 'repeat(3, 1fr)']} gap={6}>
+        <TestimonialCard
+          title="Hot Reload"
+          one="Instantly update your backend code without restarts"
+          two="Seamlessly iterate on backend logic in real-time"
+          three="Boost productivity with continuous code reloading"
+        />
+
+        <TestimonialCard
+          title="Auto-Serialization"
+          one="Automatically convert data structures for smooth communication"
+          two="Eliminate manual data handling with built-in serialization"
+          three="Ensure data integrity across client and server with minimal effort"
+        />
+
+        <TestimonialCard
+          title="Client Generation"
+          one="Automatically generate clients for seamless API integration"
+          two="Reduce client-side development time with auto-generated code"
+          three="Simplify communication between server and client"
+        />
+      </Grid>
+    </Container>
+  );
+};
+
+export const Square3Sub = () => {
+  return (
+    <Container maxW="container.xl" py={10}>
+      <Grid templateColumns={['1fr', '1fr', 'repeat(4, 1fr)']} gap={6}>
+        <TestimonialCard
+          title="HIPAA/SOC2 Compliant"
+          one="Ensure compliance with industry standards for data protection"
+          two="Safeguard sensitive data with built-in security features"
+          three="Simplify compliance with ready-to-use security solutions"
+        />
+
+        <TestimonialCard
+          title="Faster Time-To-Market"
+          one="Accelerate development cycles with efficient workflows"
+          two="Reduce time spent on backend logic with reusable components"
+          three="Launch your product faster with pre-built solutions"
+        />
+
+        <TestimonialCard
+          title="Performance"
+          one="Maximize backend performance for scalable applications"
+          two="Optimize resource usage and server response times"
+          three="Deliver seamless user experiences with high-performance code"
+        />
+
+        <TestimonialCard
+          title="Fully Leverage Your Talent"
+          one="Enable your team to focus on innovation, not infrastructure"
+          two="Reduce repetitive tasks with automated workflows"
+          three="Maximize efficiency by utilizing your team's full potential"
+        />
+      </Grid>
+    </Container>
+  );
+};
+
+
+
+const TestimonialCard = ({ title, one, two, three }) => {
+  return (
+      <Box
+          // w="300px"
+          // h="300px"
+          bg="rgba(255, 255, 255, 0.1)"
+          // borderRadius="md"
+          borderRadius="20px"
+          p={6}
+          color="white"
+          textAlign="center"
+          boxShadow="lg"
+          _hover={{ bg: "rgba(255, 255, 255, 0.15)" }}
+          transition="background-color 0.3s"
+      >
+          <VStack spacing={4}>
+              <Text fontSize="large" fontWeight="bold" style={{ textShadow: '0px 0px 10px white'}}>{title}</Text>
+              <Text fontSize="small" >{one}</Text>
+              <Text fontSize="small" >{two}</Text>
+              <Text fontSize="small" >{three}</Text>          
+            </VStack>
+      </Box>
+  );
+};
+
+import { Database, Fingerprint, Layers } from 'lucide-react'; // Lucide icons
+
+export function SwitchCodeBlocks() {
+  const [selectedBlock, setSelectedBlock] = useState(1); // Default to block 1
+
+  const codeBlock1 = `import 'package:celest/celest.dart';
+import 'package:celest_backend/src/database/task_database.dart';
+
+const project = Project(
+  name: 'tasks',
+);
+
+const tasksDatabase = Database(
+  schema: Schema.drift(TaskDatabase),
+);
+`;
+
+  const codeBlock2 = `import 'package:celest/celest.dart';
+
+const project = Project(
+  name: 'celest_auth_example',
+);
+
+const auth = Auth(
+  providers: [
+    AuthProvider.email(),
+    AuthProvider.sms(),
+  ],
+);
+`;
+
+  const codeBlock3 = `import 'package:celest/celest.dart';
+import 'package:celest_backend/exceptions/bad_name_exception.dart';
+import 'package:celest_backend/models/person.dart';
+
+/// Says hello to a [person].
+@cloud
+Future<String> sayHello({required Person person}) async {
+  if (person.name.isEmpty) {
+    throw BadNameException('Name cannot be empty');
+  }
+
+  print('Saying hello to  ');
+
+  return 'Hello,  !';
+}`;
+
+  const renderCodeBlock = () => {
+    switch (selectedBlock) {
+      case 1:
+        return codeBlock1;
+      case 2:
+        return codeBlock2;
+      case 3:
+        return codeBlock3;
+      default:
+        return codeBlock1;
+    }
+  };
+
+  return (
+    <Box w="100%" f={1}>
+      <Flex mt={4} mb={4} justifyContent="space-between" alignItems="center">
+        <Button
+          onClick={() => setSelectedBlock(1)}
+          flex={1}
+          borderRadius="md"
+          p={6}
+          bg={selectedBlock === 1 ? 'gray.700' : 'gray.800'}
+          color="white"
+          mr={2}
+        >
+          <Box as="span" mr={2}>
+            <Layers size={24} /> {/* Lucide icon for Functions */}
+          </Box>
+          Functions
+        </Button>
+        <Button
+          onClick={() => setSelectedBlock(2)}
+          flex={1}
+          borderRadius="md"
+          p={6}
+          bg={selectedBlock === 2 ? 'gray.700' : 'gray.800'}
+          color="white"
+          mr={2}
+        >
+          <Box as="span" mr={2}>
+            <Fingerprint size={24} /> {/* Lucide icon for Auth */}
+          </Box>
+          Auth
+        </Button>
+        <Button
+          onClick={() => setSelectedBlock(3)}
+          flex={1}
+          borderRadius="md"
+          p={6}
+          bg={selectedBlock === 3 ? 'gray.700' : 'gray.800'}
+          color="white"
+        >
+          <Box as="span" mr={2}>
+            <Database size={24} /> {/* Lucide icon for Data */}
+          </Box>
+          Data
+        </Button>
+      </Flex>
+
+      <Box bg="gray.800" p={6} borderRadius="lg" boxShadow="lg" borderColor="gray.700" borderWidth="1px">
+        <CodeBlock code={renderCodeBlock()} />
+      </Box>
     </Box>
-);
-const SmallFeature1 = ({ icon, title, description }) => (
-    <Flex align="center">
-        <Icon as={icon} boxSize={8} color="green.300" mr={4} />
-        <VStack align="start" spacing={1}>
-            <Heading size="sm">{title}</Heading>
-            <Text fontSize="sm">{description}</Text>
-        </VStack>
-    </Flex>
-
-);
-
-export function FeatureShowcase1() {
-    return (
-        <Container maxW="container.xl" py={16}>
-            <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={8} mb={16}>
-                <FeatureCard1
-                    icon={FaFire}
-                    title="Dart Cloud Functions"
-                    description="---" />
-                <FeatureCard1
-                    icon={FaDatabase}
-                    title="Flutter On the Server"
-                    description="---" />
-                <FeatureCard1
-                    icon={FaStream}
-                    title="Server Side Widgets"
-                    description="---" />
-              </Grid>
-            {/* <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }} gap={8}>
-                <SmallFeature1
-                    icon={FaBolt}
-                    title="Hot Reloading"
-                    description="Make code changes and see them live in milliseconds while maintaining the current state." />
-                <SmallFeature1
-                    icon={FaCog}
-                    title="Logs and Metrics"
-                    description="Gain insights into your application’s performance with integrated logging and metrics." />
-                <SmallFeature1
-                    icon={FaLock}
-                    title="HIPAA Compliant"
-                    description="Ensure your application meets HIPAA security standards with built-in compliance." />
-                <SmallFeature1
-                    icon={FaRocket}
-                    title="Easy to Get Started"
-                    description="Start quickly with a streamlined setup process that takes you from zero to deployment." />
-                <SmallFeature1
-                    icon={FaRocket}
-                    title="Easy to Get Started"
-                    description="Start quickly with a streamlined setup process that takes you from zero to deployment." />
-                <SmallFeature1
-                    icon={FaRocket}
-                    title="Easy to Get Started"
-                    description="Start quickly with a streamlined setup process that takes you from zero to deployment." />
-            </Grid> */}
-        </Container>
-    );
+  );
 }
 
 
@@ -200,20 +344,15 @@ export function FeatureShowcase1() {
 import { useState } from "react";
 
 const frontendCode = `
-// Frontend.dart
-import { createClient } from "@libsql/client";
+// frontendCode.dart
 
-export const turso = createClient({
-  url: process.env.TURSO_DATABASE_URL,
-  authToken: process.env.TURSO_AUTH_TOKEN,
-});
-
-await turso.execute("SELECT * FROM users");
-
-await turso.execute({
-  sql: "SELECT * FROM users WHERE id = ?",
-  args: [1],
-});
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 `;
 
 const backendCode = `
@@ -224,79 +363,156 @@ const backendCode = `
  
  
  
-
- 
-
- 
- 
  
  
 `;
 
-export const Square2 = () => {
-    const [activeCode, setActiveCode] = useState("frontend");
 
-    const handleCodeSwitch = (codeType) => {
-        setActiveCode(codeType);
-    };
 
-    return (
-        <Box  bg="rgba(255, 255, 255, 0.1)" w={1000} color="white" py={10} px={8}>
-            <HStack maxW="container.xl" mx="auto" spacing={10} align="center">
-                {/* Left side: Text and buttons */}
-                <VStack align="start" spacing={6} maxW="sm">
-                    <Heading fontSize="4xl">Developer Productivity</Heading>
-                    <Text fontSize="lg">
-                        Turn your frontend developers into full stack developers.
-                    </Text>
-                    <Text fontSize="md" opacity={0.7}>
-                    With Celest, developers can seamlessly transition between 
-                    building beautiful user interfaces with Flutter and creating robust 
-                    backend services. This unified approach significantly 
-                    increases productivity and reduces the learning curve, allowing your 
-                    team to deliver end-to-end solutions more efficiently than ever before.
-                    </Text>
-                </VStack>
+export function Square2() {
+  const bgColor = useColorModeValue('gray.900', 'gray.800')
+  const textColor = useColorModeValue('white', 'gray.100')
 
-                <Spacer />
+  const [activeCode, setActiveCode] = useState("frontend");
 
-                {/* Right side: Code Block and Buttons */}
-                <Box
-                    bg="gray.800"
-                    p={6}
-                    borderRadius="lg"
-                    boxShadow="lg"
-                    borderColor="gray.700"
-                    borderWidth="1px"
-                >
-                    <HStack mb={4} spacing={4} w="100%" justifyContent="center">
-                        <Button
-                            colorScheme={activeCode === "frontend" ? "teal" : "gray"}
-                            onClick={() => handleCodeSwitch("frontend")}
-                        >
-                            Frontend
-                        </Button>
-                        <Button
-                            colorScheme={activeCode === "backend" ? "teal" : "gray"}
-                            onClick={() => handleCodeSwitch("backend")}
-                        >
-                            Backend
-                        </Button>
-                    </HStack>
+  const handleCodeSwitch = (codeType) => {
+    setActiveCode(codeType);
+  };
 
-                    <HStack w="100%">
-                        {/* Conditionally render the selected code block */}
-                        {activeCode === "frontend" ? (
-                            <CodeBlock code={frontendCode} />
-                        ) : (
-                            <CodeBlock code={backendCode} />
-                        )}
-                    </HStack>
-                </Box>
-            </HStack>
-        </Box>
-    );
-};
+  return (
+    <Flex
+      direction={['column-reverse', 'column-reverse', 'row']}
+      borderRadius="20px"
+      bg="rgba(255, 255, 255, 0.1)"
+      p={10}
+      color={textColor}
+      style={{ backdropFilter: 'blur(10px)' }}
+    >
+      <Box flex={1} p={9}>
+        <video
+          width="100%"
+          autoplay
+          loop
+          muted
+          src="/hot-reload.mov"
+          type="video/mp4"
+        />
+      </Box>
+      <Box flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>
+        <Heading as="h1" size="2xl" mb={4} style={{ textShadow: '0px 0px 10px white'}}>
+          Simplicity
+        </Heading>
+        <Text fontSize="lg" mb={4}>
+          With Celest, developers can seamlessly transition between
+          building beautiful user interfaces with Flutter and creating robust
+          backend services. This unified approach significantly
+          increases productivity and reduces the learning curve, allowing your
+          team to deliver end-to-end solutions more efficiently than ever before.
+        </Text>
+        <Link
+          href="https://dillonnys.com/posts/why-im-betting-on-dart/"
+          color="teal.500"
+          fontWeight="bold"
+          isExternal
+        >
+          Learn more about why Dart is the future
+        </Link>
+      </Box>
+    </Flex>
+  )
+}
+
+
+
+export function Square3() {
+  const bgColor = useColorModeValue('gray.900', 'gray.800')
+  const textColor = useColorModeValue('white', 'gray.100')
+
+  const adoptionData = {
+    labels: ['2020', '2021', '2022', '2024'],
+    datasets: [
+      {
+        label: 'Deployed Apps using Dart',
+        data: [1, 125, 375, 550, 750, 875],
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1,
+      },
+    ],
+  }
+
+  const chartOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top' as const,
+      },
+      title: {
+        display: true,
+        text: 'Dart Growth',
+      },
+    },
+  }
+
+  const [activeCode, setActiveCode] = useState("frontend");
+
+  const handleCodeSwitch = (codeType) => {
+      setActiveCode(codeType);
+  };
+
+  return (
+    <Flex direction={['column', 'column', 'row']} borderRadius="20px" // Added border-radius for smooth edges
+    bg="rgba(255, 255, 255, 0.1)" p={8} color={textColor} style={{ backdropFilter: 'blur(10px)' }}>
+
+  {/* <Spacer /> */}
+
+  <Box  flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>
+    <Heading as="h1" size="2xl" mb={4}  style={{ textShadow: '0px 0px 10px white'}}>
+      Developer Productivity
+    </Heading>
+    <Text fontSize="lg" mb={4}>
+      With Celest, developers can seamlessly transition between
+      building beautiful user interfaces with Flutter and creating robust
+      backend services. This unified approach significantly
+      increases productivity and reduces the learning curve, allowing your
+      team to deliver end-to-end solutions more efficiently than ever before.
+    </Text>
+    <Link
+      href="https://dillonnys.com/posts/why-im-betting-on-dart/"
+      color="teal.500"
+      fontWeight="bold"
+      isExternal
+    >
+      Learn more about why Dart is the future
+    </Link>
+  </Box>
+  <Box flex={1}>
+    {activeCode === "frontend" ? (
+      <CodeBlock code={frontendCode} />
+    ) : (
+      <CodeBlock code={backendCode} />
+    )}
+    <HStack w="100%" justifyContent="center">
+      <Button
+        colorScheme={activeCode === "frontend" ? "teal" : "gray"}
+        onClick={() => handleCodeSwitch("frontend")}
+      >
+        Frontend
+      </Button>
+      <Button
+        colorScheme={activeCode === "backend" ? "teal" : "gray"}
+        onClick={() => handleCodeSwitch("backend")}
+      >
+        Backend
+      </Button>
+    </HStack>
+  </Box>
+
+</Flex>
+  )
+}
+
+
+
 import { useEffect } from "react";
 import { observable } from "@legendapp/state";
 import { observer } from "@legendapp/state/react";
@@ -314,86 +530,87 @@ BoxShadow(blurRadius: 0)
 `;
 
 // Component that swaps between frontend and backend code blocks
-export const Square3 = observer(function Square3() {
-    // Manage the active code block state (frontend/backend)
-    const [activeCode, setActiveCode] = useState("HotreloadCode1");
+// export const Square3 = observer(function Square3() {
+//     // Manage the active code block state (frontend/backend)
+//     const [activeCode, setActiveCode] = useState("HotreloadCode1");
 
-    // glow is automatically tracked for changes
-    const hasGlow = glowState$.hasGlow.get();
+//     // glow is automatically tracked for changes
+//     const hasGlow = glowState$.hasGlow.get();
 
-    // Function to simulate hot-reload by toggling the glow effect
-    const toggleGlow = () => {
-        glowState$.hasGlow.set((prev) => !prev);
-    };
+//     // Function to simulate hot-reload by toggling the glow effect
+//     const toggleGlow = () => {
+//         glowState$.hasGlow.set((prev) => !prev);
+//     };
 
-    // Auto change the glow effect every few seconds to simulate hot-reload
-    useEffect(() => {
-        const interval = setInterval(toggleGlow, 2000); // Toggle every 2 seconds
-        return () => clearInterval(interval); // Cleanup interval on unmount
-    }, []);
+//     // Auto change the glow effect every few seconds to simulate hot-reload
+//     useEffect(() => {
+//         const interval = setInterval(toggleGlow, 2000); // Toggle every 2 seconds
+//         return () => clearInterval(interval); // Cleanup interval on unmount
+//     }, []);
 
-    // Conditional boxShadow for glow effect
-    const boxShadowStyle = hasGlow
-        ? "0px 0px 20px white" // Glow effect
-        : "none"; // No glow
+//     // Conditional boxShadow for glow effect
+//     const boxShadowStyle = hasGlow
+//         ? "0px 0px 20px white" // Glow effect
+//         : "none"; // No glow
 
-    // Function to handle switching code blocks
-    const handleCodeSwitch = (codeType) => {
-        setActiveCode(codeType);
-    };
+//     // Function to handle switching code blocks
+//     const handleCodeSwitch = (codeType) => {
+//         setActiveCode(codeType);
+//     };
 
-    return (
-        <Box
-            // bg="gray.900"
-             bg="rgba(255, 255, 255, 0.1)"
-            w={1000}
-            color="white"
-            py={10}
-            px={8}
-            // Apply the boxShadow dynamically based on the glow state
-            boxShadow={boxShadowStyle}
-            transition="box-shadow 0.3s ease-in-out"
-        >
-            <HStack maxW="container.xl" mx="auto" spacing={10} align="center">
-                {/* Left side: Code Block */}
-                <Box
-                    bg="gray.800"
-                    p={6}
-                    borderRadius="lg"
-                    boxShadow="lg"
-                    borderColor="gray.700"
-                    borderWidth="1px"
-                >
+//     return (
+//         <Box
+//             // bg="gray.900"
+//              bg="rgba(255, 255, 255, 0.1)"
+//             w={1000}
+//             borderRadius="20px"
+//             color="white"
+//             py={10}
+//             px={8}
+//             // Apply the boxShadow dynamically based on the glow state
+//             boxShadow={boxShadowStyle}
+//             transition="box-shadow 0.3s ease-in-out"
+//         >
+//             <HStack maxW="container.xl" mx="auto" spacing={10} align="center">
+//                 {/* Left side: Code Block */}
+//                 <Box
+//                     bg="gray.800"
+//                     p={6}
+//                     borderRadius="lg"
+//                     boxShadow="lg"
+//                     borderColor="gray.700"
+//                     borderWidth="1px"
+//                 >
       
 
-                    <Box p={4} bg="gray.700" color="white" borderRadius="md">
-                        <Text fontSize="md" fontFamily="monospace">
-                            {/* Conditionally render the selected code block */}
+//                     <Box p={4} bg="gray.700" color="white" borderRadius="md">
+//                         <Text fontSize="md" fontFamily="monospace">
+//                             {/* Conditionally render the selected code block */}
               
-                            {glowState$.hasGlow.get() === true ? <CodeBlock code={HotreloadCode1} /> : <CodeBlock code={HotreloadCode2} />}
+//                             {glowState$.hasGlow.get() === true ? <CodeBlock code={HotreloadCode1} /> : <CodeBlock code={HotreloadCode2} />}
 
 
-                            {/* {activeCode === "HotreloadCode1" ? frontendCode : backendCode} */}
-                        </Text>
-                    </Box>
-                </Box>
+//                             {/* {activeCode === "HotreloadCode1" ? frontendCode : backendCode} */}
+//                         </Text>
+//                     </Box>
+//                 </Box>
 
-                <Spacer />
+//                 <Spacer />
 
-                {/* Right side: Text content */}
-                <VStack align="start" spacing={6} maxW="sm">
-                    <Heading fontSize="4xl">Simplicity</Heading>
-                    <Text fontSize="lg">
-                      Celest makes it easy to focus on what's important.
-                    </Text>
-                    <Text fontSize="md" opacity={0.7}>
-                        With hot reload, you can see your changes instantly.
-                    </Text>
-                </VStack>
-            </HStack>
-        </Box>
-    );
-});
+//                 {/* Right side: Text content */}
+//                 <VStack align="start" spacing={6} maxW="sm">
+//                     <Heading fontSize="4xl">Simplicity</Heading>
+//                     <Text fontSize="lg">
+//                       Celest makes it easy to focus on what's important.
+//                     </Text>
+//                     <Text fontSize="md" opacity={0.7}>
+//                         With hot reload, you can see your changes instantly.
+//                     </Text>
+//                 </VStack>
+//             </HStack>
+//         </Box>
+//     );
+// });
 
 
 export function DartInfoPage() {
@@ -401,24 +618,12 @@ export function DartInfoPage() {
   const textColor = useColorModeValue('white', 'gray.100')
 
   const adoptionData = {
-    labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+    labels: ['2020', '2021', '2022', '2024'],
     datasets: [
       {
-        label: 'Dart Adoption',
-        data: [20, 25, 35, 50, 70, 85],
+        label: 'Deployed Apps using Dart',
+        data: [1, 125, 375, 550, 750, 875],
         borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1,
-      },
-    ],
-  }
-
-  const searchTrendsData = {
-    labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
-    datasets: [
-      {
-        label: 'Dart Search Trends',
-        data: [30, 40, 55, 65, 80, 95],
-        borderColor: 'rgb(255, 99, 132)',
         tension: 0.1,
       },
     ],
@@ -438,9 +643,10 @@ export function DartInfoPage() {
   }
 
   return (
-    <Flex direction={['column', 'column', 'row']} br="100"  bg="rgba(255, 255, 255, 0.1)" p={8} color={textColor}>
-      <Box  flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>
-        <Heading as="h1" size="2xl" mb={4}>
+    <Flex direction={['column', 'column', 'row']} borderRadius="20px" // Added border-radius for smooth edges
+    bg="rgba(255, 255, 255, 0.1)" p={8} color={textColor} style={{ backdropFilter: 'blur(10px)' }}>
+      <Box flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>  
+        <Heading as="h1" size="2xl" mb={4}  style={{ textShadow: '0px 0px 10px white' }}>
           Dart will take over the world
         </Heading>
         <Text fontSize="lg" mb={4}>
@@ -460,78 +666,22 @@ export function DartInfoPage() {
         </Link>
       </Box>
       <Box flex={1}>
-        <Tabs isFitted variant="enclosed">
-          <TabList mb="1em">
+        {/* <Tabs isFitted variant="enclosed"> */}
+          {/* <TabList mb="1em">
             <Tab>Adoption</Tab>
             <Tab>Search Trends</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <Line options={chartOptions} data={adoptionData} />
-            </TabPanel>
-            <TabPanel>
-              <Line options={chartOptions} data={searchTrendsData} />
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
+          </TabList> */}
+          {/* <TabPanels> */}
+            {/* <TabPanel> */}
+              <Line width="50%" height="50%" options={chartOptions} data={adoptionData} />
+            {/* </TabPanel> */}
+     
+
+          {/* </TabPanels> */}
+        {/* </Tabs> */}
       </Box>
     </Flex>
   )
 }
 
-export function DeveloperProductivity() {
-  const bgColor = useColorModeValue('gray.900', 'gray.800')
-  const textColor = useColorModeValue('white', 'gray.100')
 
-  return (
-    <Flex direction={['column', 'column', 'row']} bg={bgColor} minHeight="100vh" p={8} color={textColor}>
-      <Box flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>
-        <Heading as="h1" size="2xl" mb={4}>
-          Developer Productivity
-        </Heading>
-        <Text fontSize="lg" mb={4}>
-          Your frontend Dart developers will now become full-stack developers. 
-          With Dart's versatility, developers can seamlessly transition between 
-          building beautiful user interfaces with Flutter and creating robust 
-          backend services. This unified language approach significantly 
-          increases productivity and reduces the learning curve, allowing your 
-          team to deliver end-to-end solutions more efficiently than ever before.
-        </Text>
-      </Box>
-      <Box flex={1}>
-        <Tabs isFitted variant="enclosed">
-          <TabList mb="1em">
-            <Tab>Frontend</Tab>
-            <Tab>Backend</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <Box
-                bg="gray.800"
-                p={6}
-                borderRadius="lg"
-                boxShadow="lg"
-                borderColor="gray.700"
-                borderWidth="1px"
-              >
-                <CodeBlock code={codeBlock1} />
-              </Box>
-            </TabPanel>
-            <TabPanel>
-              <Box
-                bg="gray.800"
-                p={6}
-                borderRadius="lg"
-                boxShadow="lg"
-                borderColor="gray.700"
-                borderWidth="1px"
-              >
-                <CodeBlock code={codeBlock2} />
-              </Box>
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-      </Box>
-    </Flex>
-  )
-}
