@@ -7,7 +7,9 @@ export default function Footer() {
       <div className="grow" />
       <Link href="/privacy">Privacy Policy</Link>
       <span className="mx-2">&bull;</span>
-      <Link href="/tos">Terms of Service</Link>
+      <Link href="/terms">Terms of Service</Link>
+      <span className="mx-2">&bull;</span>
+      <Link href="https://app.getdelve.com/celest">Compliance</Link>
     </>
   );
 }

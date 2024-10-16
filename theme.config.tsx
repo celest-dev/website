@@ -8,7 +8,7 @@ const config: DocsThemeConfig = {
   logo: <Logo />,
   logoLink: "/",
   project: {
-    link: "https://github.com/celest-dev/website",
+    link: "https://github.com/celest-dev/celest",
   },
   chat: {
     link: "https://discord.gg/KtMAfSDXGQ",

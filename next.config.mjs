@@ -68,6 +68,12 @@ export default withSentryConfig(
         source: '/docs/cloud/pricing',
         destination: '/docs/cloud',
         statusCode: 302,
+      },
+      {
+        source: '/tos',
+        // The is the more common URL
+        destination: '/terms',
+        statusCode: 301,
       }
     ],
   }),
