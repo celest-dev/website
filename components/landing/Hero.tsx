@@ -195,6 +195,7 @@ const TestimonialCard = ({ title, one, two, three }) => {
           // h="300px"
           bg="rgba(255, 255, 255, 0.1)"
           // borderRadius="md"
+          style={{ backdropFilter: 'blur(10px)' }}
           borderRadius="20px"
           p={6}
           color="white"
@@ -218,7 +219,8 @@ import { Database, Fingerprint, Layers } from 'lucide-react'; // Lucide icons
 export function SwitchCodeBlocks() {
   const [selectedBlock, setSelectedBlock] = useState(1); // Default to block 1
 
-  const codeBlock1 = `import 'package:celest/celest.dart';
+  const codeBlock1 = `// Functions Example
+import 'package:celest/celest.dart';
 import 'package:celest_backend/src/database/task_database.dart';
 
 const project = Project(
@@ -230,7 +232,8 @@ const tasksDatabase = Database(
 );
 `;
 
-  const codeBlock2 = `import 'package:celest/celest.dart';
+  const codeBlock2 = `// Auth Example
+import 'package:celest/celest.dart';
 
 const project = Project(
   name: 'celest_auth_example',
@@ -244,7 +247,8 @@ const auth = Auth(
 );
 `;
 
-  const codeBlock3 = `import 'package:celest/celest.dart';
+  const codeBlock3 = `// Data Example
+import 'package:celest/celest.dart';
 import 'package:celest_backend/exceptions/bad_name_exception.dart';
 import 'package:celest_backend/models/person.dart';
 
@@ -319,7 +323,7 @@ Future<String> sayHello({required Person person}) async {
         </Button>
       </Flex>
 
-      <Box bg="gray.800" h={500} p={6} borderRadius="lg" boxShadow="lg" borderColor="gray.700" borderWidth="1px" justifyContent={"center"} alignItems={"center"} >
+      <Box bg="rgba(255, 255, 255, 0.1)" h={500} p={6} borderRadius="20px" justifyContent={"center"} alignItems={"center"}  style={{ backdropFilter: 'blur(10px)' }} >
         <CodeBlock code={renderCodeBlock()} />
       </Box>
     </Box>
@@ -569,16 +573,16 @@ export function DartInfoPage({ boxHeight }) {
         </Text>
         <Link
           href="https://dillonnys.com/posts/why-im-betting-on-dart/"
-          color="teal.500"
-          fontWeight="bold"
-          isExternal
+          
         >
-          Learn more about why Dart is the future
+          <Text           color="blue.200"
+          >Learn more about why Dart is the future</Text>
         </Link>
       </Box>
-      <Box flex={1}>
-        <Line width="50%" height="50%"  options={chartOptions} data={adoptionData} />
+      <Box flex={1} display="flex" justifyContent="center" alignItems="center">
+        <Line width={"100%"} height={"100%"} options={chartOptions} data={adoptionData} />
       </Box>
+
     </Flex>
   )
 }
