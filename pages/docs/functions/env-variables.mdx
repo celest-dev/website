@@ -60,21 +60,19 @@ The value of `MY_ENV` will be `local-value` when you run `celest start`, and `pr
 
 ## Using environment variables with Celest Functions
 
-To provide a function access to an environment variable when it runs, pass it as a parameter and annotate with the variable definition. 
-In the following code snippet, the `MY_ENV` value is injected into the `sayHello` function by Celest at runtime.
+To get the value of an environment variable in a Celest Function, you can use the generated `celest` global. Just like in your Flutter app,
+Celest will generated some helper methods to access important parts of your project.
 
-```dart {9,11} filename="celest/lib/src/functions/greeting.dart"
-import 'package:http/http.dart' as http;
+In this case, we can use `celest.variables.myEnv` to access the value of the `MY_ENV` environment variable.
 
-// We import `myEnv` from our `project.dart` file
-import '../project.dart';
+```dart {6} filename="celest/lib/src/functions/greeting.dart"
+// Import the generated `celest` global
+import 'package:celest_backend/src/generated/cloud.celest.dart';
 
 @cloud
-Future<String> sayHello(
-  String name, {
-  @myEnv required String myEnvValue,
-}) async {
-  return 'Hello, $name! My environment variable is $myEnvValue';
+Future<String> sayHello(String name) async {
+  print('My environment variable is ${celest.variables.myEnv}');
+  return 'Hello, $name!';
 }
 ```
 
@@ -97,22 +95,17 @@ const myEnv = env('MY_ENV');
 const mySecret = secret('MY_SECRET');
 ```
 
-Then, you can use the secret in your Celest Functions in the same way as environment variables.
+Then, you can use the `celest.secrets` helper in your functions in the same way as environment variables.
 
-```dart {10,13} filename="celest/lib/src/functions/greeting.dart"
-import 'package:http/http.dart' as http;
-
-// We import `myEnv` and `mySecret` from our `project.dart` file
-import '../project.dart';
+```dart {7} filename="celest/lib/src/functions/greeting.dart"
+// Import the generated `celest` global
+import 'package:celest_backend/src/generated/cloud.celest.dart';
 
 @cloud
-Future<String> sayHello(
-  String name, {
-  @myEnv required String myEnvValue,
-  @mySecret required String mySecretValue,
-}) async {
-  return 'Hello, $name! My environment variable is $myEnvValue '
-      'and my secret is $mySecretValue';
+Future<String> sayHello(String name) async {
+  print('My environment variable is ${celest.variables.myEnv}');
+  print('My secret is ${celest.secrets.mySecret}');
+  return 'Hello, $name!';
 }
 ```
 
