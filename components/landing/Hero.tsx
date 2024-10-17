@@ -163,9 +163,13 @@ import { Server, Code, Shield, Rocket, Gauge, Users } from 'lucide-react'; // Im
 
 export const Square1Sub = () => {
   return (
-    <Container maxW="container.xl"  py={10}>
-      <Grid templateColumns={['1fr', '1fr', 'repeat(4, 1fr)']} >
-        <TestimonialCard
+    <Container maxW="container.xl" w={"100%"}       alignContent={"center"} justifyContent={"center"} alignSelf={"center"} 
+>
+<Grid
+  templateColumns={['1fr', '1fr', 'repeat(4, 1fr)']}
+  justifyItems="center"
+  alignItems="center"
+>        <TestimonialCard
           title="Dart Cloud Functions"
           one="Write your backend like you write your Flutter App"
           icon={Code}  // Pass the icon
@@ -196,9 +200,12 @@ export const Square1Sub = () => {
 
 export const Square2Sub = () => {
   return (
-    <Container maxW="container.xl" py={10}>
-      <Grid templateColumns={['1fr', '1fr', 'repeat(3, 1fr)']} gap={6}>
-        <TestimonialCard
+    <Container maxW="container.xl" >
+<Grid
+  templateColumns={['1fr', '1fr', 'repeat(3, 1fr)']}
+  justifyItems="center"
+  alignItems="center"
+>        <TestimonialCard
           title="Hot Reload"
           one="Instantly update your backend code without restarts"
           icon={Rocket}
@@ -222,9 +229,12 @@ export const Square2Sub = () => {
 
 export const Square3Sub = () => {
   return (
-    <Container maxW="container.xl" py={10}>
-      <Grid templateColumns={['1fr', '1fr', 'repeat(3, 1fr)']} gap={6}>
-        <TestimonialCard
+    <Container maxW="container.xl" >
+<Grid
+  templateColumns={['1fr', '1fr', 'repeat(3, 1fr)']}
+  justifyItems="center"
+  alignItems="center"
+>        <TestimonialCard
           title="HIPAA/SOC2 Compliant"
           one="Ensure compliance with industry standards for data protection"
           two="Safeguard sensitive data with built-in security features"
@@ -279,8 +289,10 @@ const TestimonialCard = ({ title, one, icon }) => {
       boxShadow="lg"
       _hover={{ bg: "rgba(255, 255, 255, 0.15)" }}
       transition="background-color 0.3s"
+      alignContent={"center"} justifyContent={"center"} alignSelf={"center"} 
+
     >
-      <VStack spacing={4}  alignContent={"center"} justifyContent={"center"} alignSelf={"center"} h="100%">
+      <VStack spacing={4} alignContent={"center"} justifyContent={"center"} alignSelf={"center"} h="100%">
         {icon && <Box as={icon} boxSize={12} />} {/* Add the icon here */}
         <Text fontSize="x-large" fontWeight="bold">{title}</Text>
       </VStack>
