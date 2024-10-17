@@ -79,7 +79,7 @@ export default function Hero() {
   return (
     <VStack zIndex={1} maxWidth="1080px" spacing={10} paddingTop={20} justifyContent="center" alignItems="center" alignContent="center" alignSelf="center" margin="0 auto">
  
-        <Heading as="h1" fontSize={"100px"} w={"90%"} justifyContent={"center"} textAlign={"center"} mb={4}>
+        <Heading as="h1" fontSize={"9vh"} w={"90%"} justifyContent={"center"} textAlign={"center"} mb={4}>
           Flutter. Backend.{"\ "}
           <Text as="span" >
             Done. ✅
@@ -88,9 +88,11 @@ export default function Hero() {
 
 
 
-      <Text as="h1" fontSize={"30px"}  fontFamily={berkeleyMonoRegular.style.fontFamily} w={"120%"} letterSpacing={"-0.05em"} justifyContent={"center"} textAlign={"center"} mb={4}  >
-      Write your backend like your Flutter app &mdash; deploy it like magic 🚀
+      <Text as="h1"  fontSize={"2vh"}  fontFamily={berkeleyMonoRegular.style.fontFamily} w={"100%"} letterSpacing={"-0.05em"} justifyContent={"center"} textAlign={"center"}   >
+      Write your backend like a Flutter app &mdash; deploy it like magic 🚀
       </Text>
+
+
       <HStack spacing={10} w="70%">
 
       <Button
@@ -102,15 +104,16 @@ export default function Hero() {
         }}
         fontFamily={berkeleyMonoRegular.style.fontFamily}
         bg={""}
-        fontSize={"35px"}
+        fontSize={"2vh"}
+        
 
         borderWidth={"2px"} // Set borderWidth instead of 'border'
         borderColor={"#ffffff"} // Border color
         color={"#ffffff"} // Text color
-        p={12}
+        p={"3vh"}
         borderRadius={"40px"} // Rounded corners
       >
-        Learn More
+        Get Started
       </Button>
 
       <Button
@@ -121,12 +124,14 @@ export default function Hero() {
           window.location.href = "http://localhost:3000/docs/download";
         }}
         fontFamily={berkeleyMonoRegular.style.fontFamily}
-        fontSize={"35px"}
+        // fontSize={"35px"}
+        fontSize={"2vh"}
         bg={""}
         borderWidth={"2px"} // Set borderWidth instead of 'border'
         borderColor={"#027DFD"} // Border color
         color={"#027DFD"} // Text color
-        p={12}
+        // p={12}
+        p={"3vh"}
         borderRadius={"40px"} // Rounded corners
       >
         Docs
@@ -136,10 +141,6 @@ export default function Hero() {
 
 
   <Spacer></Spacer>
-  
-  <Spacer></Spacer>
-  <Spacer></Spacer>
-  <Spacer></Spacer>  <Spacer></Spacer>  <Spacer></Spacer>  <Spacer></Spacer>  <Spacer></Spacer>  <Spacer></Spacer>  <Spacer></Spacer>
 
         
       <SwitchCodeBlocks />
@@ -158,6 +159,7 @@ export default function Hero() {
     </VStack>
   );
 }
+import { Server, Code, Shield, Rocket, Gauge, Users } from 'lucide-react'; // Import icons
 
 export const Square1Sub = () => {
   return (
@@ -166,27 +168,24 @@ export const Square1Sub = () => {
         <TestimonialCard
           title="Dart Cloud Functions"
           one="Write your backend like you write your Flutter App"
-          two="No more context Switching"
-          three="Reuse the same code across your whole stack"
+          icon={Code}  // Pass the icon
         />
-
         <TestimonialCard
           title="Flutter on the Server"
           one="Deploy your Flutter apps directly on the server for full-stack development"
-          two="Unify client and server logic with a single codebase"
-          three="Experience high performance and seamless integration across platforms"
+          icon={Server}
         />
-
         <TestimonialCard
           title="Server-Side Widgets"
-          one="build and power your frontend with server-rendered Flutter widgets."
-          two=" "
-          three=" "
+          one="Build and power your frontend with server-rendered Flutter widgets."
+          icon={Gauge}
         />
       </Grid>
     </Container>
   );
 };
+
+// Similarly, add icons to the other sections like Square2Sub, Square3Sub
 
 export const Square2Sub = () => {
   return (
@@ -195,27 +194,24 @@ export const Square2Sub = () => {
         <TestimonialCard
           title="Hot Reload"
           one="Instantly update your backend code without restarts"
-          two="Seamlessly iterate on backend logic in real-time"
-          three="Boost productivity with continuous code reloading"
+          icon={Rocket}
         />
-
         <TestimonialCard
           title="Auto-Serialization"
           one="Automatically convert data structures for smooth communication"
-          two="Eliminate manual data handling with built-in serialization"
-          three="Ensure data integrity across client and server with minimal effort"
+          icon={Code}
         />
-
         <TestimonialCard
           title="Client Generation"
           one="Automatically generate clients for seamless API integration"
-          two="Reduce client-side development time with auto-generated code"
-          three="Simplify communication between server and client"
+          icon={Users}
         />
       </Grid>
     </Container>
   );
 };
+
+
 
 export const Square3Sub = () => {
   return (
@@ -226,6 +222,7 @@ export const Square3Sub = () => {
           one="Ensure compliance with industry standards for data protection"
           two="Safeguard sensitive data with built-in security features"
           three="Simplify compliance with ready-to-use security solutions"
+          icon={Shield} // Add icon here
         />
 
         <TestimonialCard
@@ -233,6 +230,7 @@ export const Square3Sub = () => {
           one="Accelerate development cycles with efficient workflows"
           two="Reduce time spent on backend logic with reusable components"
           three="Launch your product faster with pre-built solutions"
+          icon={Rocket} // Add icon here
         />
 
         <TestimonialCard
@@ -240,6 +238,7 @@ export const Square3Sub = () => {
           one="Maximize backend performance for scalable applications"
           two="Optimize resource usage and server response times"
           three="Deliver seamless user experiences with high-performance code"
+          icon={Gauge} // Add icon here
         />
 
         <TestimonialCard
@@ -247,6 +246,7 @@ export const Square3Sub = () => {
           one="Enable your team to focus on innovation, not infrastructure"
           two="Reduce repetitive tasks with automated workflows"
           three="Maximize efficiency by utilizing your team's full potential"
+          icon={Users} // Add icon here
         />
       </Grid>
     </Container>
@@ -255,31 +255,31 @@ export const Square3Sub = () => {
 
 
 
-const TestimonialCard = ({ title, one, two, three }) => {
+
+import { Icon1, Icon2, Icon3 } from 'lucide-react'; // Replace with actual icons
+
+const TestimonialCard = ({ title, one, icon }) => {
   return (
-      <Box
-          // w="300px"
-          // h="300px"
-          bg="rgba(255, 255, 255, 0.1)"
-          // borderRadius="md"
-          style={{ backdropFilter: 'blur(10px)' }}
-          borderRadius="20px"
-          p={6}
-          color="white"
-          textAlign="center"
-          boxShadow="lg"
-          _hover={{ bg: "rgba(255, 255, 255, 0.15)" }}
-          transition="background-color 0.3s"
-      >
-          <VStack spacing={4}>
-              <Text fontSize="large" fontWeight="bold" >{title}</Text>
-              <Text fontSize="small" >{one}</Text>
-              <Text fontSize="small" >{two}</Text>
-              <Text fontSize="small" >{three}</Text>          
-            </VStack>
-      </Box>
+    <Box
+      bg="rgba(255, 255, 255, 0.1)"
+      style={{ backdropFilter: 'blur(10px)' }}
+      borderRadius="20px"
+      p={6}
+      color="white"
+      textAlign="center"
+      boxShadow="lg"
+      _hover={{ bg: "rgba(255, 255, 255, 0.15)" }}
+      transition="background-color 0.3s"
+    >
+      <VStack spacing={4}>
+        {icon && <Box as={icon} boxSize={8} />} {/* Add the icon here */}
+        <Text fontSize="large" fontWeight="bold">{title}</Text>
+        {/* <Text fontSize="small">{one}</Text> */}
+      </VStack>
+    </Box>
   );
 };
+
 
 import { Database, Fingerprint, Layers } from 'lucide-react'; // Lucide icons
 import { motion, px } from 'framer-motion';
@@ -340,7 +340,7 @@ Future<String> sayHello({required Person person}) async {
   return (
     <Box w="100%">
       <Box
-        bg="rgba(255, 255, 255, 0.1)"
+        // bg="rgba(255, 255, 255, 0.1)"
         borderRadius="20px"
         justifyContent={"center"}
         alignItems={"center"}
@@ -418,26 +418,16 @@ Future<String> sayHello({required Person person}) async {
 
 import { useState } from "react";
 
-const frontendCode = `
-// frontendCode.dart
+const frontendCode = `// Frontend.dart
 
- 
- 
- 
- 
- 
+
  
  
 `;
 
-const backendCode = `
-// Backend.dart
+const backendCode = `// Backend.dart
 
- 
- 
- 
- 
- 
+
  
  
 `;
@@ -460,26 +450,22 @@ export function Square2({ boxHeight }) {
       direction={['column-reverse', 'column-reverse', 'row']}
       borderRadius="20px"
       bg="rgba(255, 255, 255, 0.1)"
-      p={10}
+      p={8} 
       color={textColor}
       style={{ backdropFilter: 'blur(10px)' }}
     >
       <Box flex={1} p={9}>
-        <video
-          width="100%"
-          autoplay
-          loop
-          muted
-          src="/hot-reload.mov"
-          type="video/mp4"
-        />
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Evs1f0zHpzk" title="Dart Cloud Functions with Celest" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </Box>
       <Box flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>
-        <Heading as="h1" size="2xl" mb={4} >
-          Simplicity
+
+
+
+    <Heading as="h1" color={"#92ebfe"} fontSize={"50px"}  mb={4}  >
+    Simplicity
         </Heading>
-        <Text fontSize="lg" mb={4}>
-        Simplicity is the core of Celest. It allows developers to focus on creating beautiful user interfaces and efficient backends without the hassle of switching between tools. Celest's integrated approach streamlines workflows, reducing complexity and enhancing productivity.
+        <Text fontSize={"25px"} mb={4}   fontFamily={berkeleyMonoRegular.style.fontFamily}>
+        Simplicity is the core of Celest. It allows developers to focus on creating beautiful user interfaces and efficient backends without the hassle of switching between tools.
         </Text>
         
       </Box>
@@ -490,116 +476,160 @@ export function Square2({ boxHeight }) {
 
 
 export function Square3({ boxHeight }) {
-  const textColor = useColorModeValue('white', 'gray.100')
-
+  const textColor = useColorModeValue('white', 'gray.100');
 
   const [activeCode, setActiveCode] = useState("frontend");
 
   const handleCodeSwitch = (codeType) => {
-      setActiveCode(codeType);
+    setActiveCode(codeType);
   };
 
   return (
-    <Flex h={boxHeight} direction={['column', 'column', 'row']} borderRadius="20px" // Added border-radius for smooth edges
-    bg="rgba(255, 255, 255, 0.1)" p={8} color={textColor} style={{ backdropFilter: 'blur(10px)' }}>
-
-  {/* <Spacer /> */}
-
-  <Box  flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>
-    <Heading as="h1" size="2xl" mb={4}  >
-      Developer Productivity
-    </Heading>
-    <Text fontSize="lg" mb={4}>
-    Celest empowers developers to boost their productivity by unifying frontend and backend development. Its seamless transition between building interfaces and backend services enables developers to create full-stack solutions efficiently, minimizing context switching and maximizing impact.
-    </Text>
-    {/* <Link
-      href="https://dillonnys.com/posts/why-im-betting-on-dart/"
-      color="teal.500"
-      fontWeight="bold"
-      isExternal
+    <Flex
+      h={boxHeight}
+      direction={['column', 'column', 'row']}
+      borderRadius="20px" // Added border-radius for smooth edges
+      bg="rgba(255, 255, 255, 0.1)"
+      p={8} 
+      color={textColor}
+      style={{ backdropFilter: 'blur(10px)' }}
     >
-      Learn more about why Dart is the future
-    </Link> */}
-  </Box>
-  <Box flex={1}>
-  <Box flex={1}>  
-    {activeCode === "frontend" ? (
-      <CodeBlock code={frontendCode} />
-    ) : (
-      <CodeBlock code={backendCode} />
-    )}
-    </Box>
-    <HStack w="100%" justifyContent="center">
-      <Button
-        colorScheme={activeCode === "frontend" ? "teal" : "gray"}
-        onClick={() => handleCodeSwitch("frontend")}
-      >
-        Frontend
-      </Button>
-      <Button
-        colorScheme={activeCode === "backend" ? "teal" : "gray"}
-        onClick={() => handleCodeSwitch("backend")}
-      >
-        Backend
-      </Button>
-    </HStack>
-  </Box>
+      <Box flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>
+        <Heading as="h1" color={"#92ebfe"} fontSize={"50px"} mb={4}>
+          Developer Productivity
+        </Heading>
+        <Text
+          fontSize={"25px"}
+          mb={4}
+          fontFamily={berkeleyMonoRegular.style.fontFamily}
+        >
+          Celest empowers developers to boost their productivity by unifying frontend and backend development.
+        </Text>
+      </Box>
 
-</Flex>
-  )
+      <Box
+        flex={1}
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        height="100%"
+      >
+        <Box flexShrink={0} overflow={"hidden"} width="100%">
+          {activeCode === "frontend" ? (
+            <CodeBlock code={frontendCode} />
+          ) : (
+            <CodeBlock code={backendCode} />
+          )}
+        </Box>
+        <HStack
+  p={4}
+  flexGrow={1}
+  justifyContent="center"
+  alignItems="center"
+  alignSelf="center"
+>
+  <Button
+    onClick={() => handleCodeSwitch("frontend")}
+    flex={1}
+    borderRadius="md"
+    p={8}
+    fontSize={"25px"}
+    bg={activeCode === "frontend" ? 'gray.700' : 'gray.800'}
+    color="white"
+    mx={4}
+    fontFamily={berkeleyMonoRegular.style.fontFamily}
+    _hover={{
+      bg: activeCode === "frontend" ? 'gray.600' : 'gray.700',
+      boxShadow: '0px 0px 8px rgba(255, 255, 255, 0.2)' // Less bright glow
+    }}
+  >
+    Frontend
+  </Button>
+  <Button
+    onClick={() => handleCodeSwitch("backend")}
+    flex={1}
+    borderRadius="md"
+    p={8}
+    fontSize={"25px"}
+    bg={activeCode === "backend" ? 'gray.700' : 'gray.800'}
+    color="white"
+    mx={4}
+    fontFamily={berkeleyMonoRegular.style.fontFamily}
+    _hover={{
+      bg: activeCode === "backend" ? 'gray.600' : 'gray.700',
+      boxShadow: '0px 0px 8px rgba(255, 255, 255, 0.2)' // Less bright glow
+    }}
+  >
+    Backend
+  </Button>
+</HStack>
+
+      </Box>
+    </Flex>
+  );
 }
 
 
 export function DartInfoPage({ boxHeight }) {
-  const bgColor = useColorModeValue('gray.900', 'gray.800')
-  const textColor = useColorModeValue('white', 'gray.100')
+  const bgColor = useColorModeValue('gray.900', 'gray.800');
+  const textColor = useColorModeValue('white', 'gray.100');
 
+  // Update the adoption data for Flutter and React Native
   const adoptionData = {
-    labels: ['2020',  ' ',  ' ', '2021',  ' ',   ' ',  '2022',  ' ',   ' ',  '2024'],
+    labels: [
+      '2004-01', '2004-02', '2004-03', '2004-04', '2004-05', '2004-06', '2004-07', '2004-08', '2004-09', '2004-10',
+      '2023-09', '2023-10', '2024-01', '2024-02', '2024-03', '2024-04', '2024-05', '2024-06', '2024-07', '2024-08',
+    ],
     datasets: [
       {
-        label: 'Deployed Apps using Dart',
-        data: [1, 125, 375, 550, 750, 875, 700, 1000, 1550, 2000],
+        label: 'Flutter (United States)',
+        data: [18, 18, 15, 20, 17, 21, 17, 17, 22, 21, 86, 81, 90, 96, 91, 93, 94, 96, 84, 86],
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1,
       },
+      {
+        label: 'React Native (United States)',
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 35, 36, 39, 38, 38, 35, 31, 34, 31],
+        borderColor: 'rgb(255, 99, 132)', // Different color for React Native
+        tension: 0.1,
+      },
     ],
-  }
+  };
 
-  const maxDataValue = Math.max(...adoptionData.datasets[0].data); // Get the highest point of the data
+  const maxDataValue = Math.max(...adoptionData.datasets.flatMap(dataset => dataset.data)); // Get the highest point of all datasets
 
   const chartOptions = {
     responsive: true,
     plugins: {
       legend: {
-        display: false, // Remove the legend
+        display: true, // Show the legend for both Flutter and React Native
       },
       title: {
         display: true,
-        text: 'Apps using Dart',
-        color: 'white', // Set title text color to white
+        text: 'Flutter vs React Native (United States)',
+        color: 'white',
         font: {
-          family: berkeleyMonoRegular.style.fontFamily, // Apply the custom font to the title
-          size: 18, // Adjust the font size if needed
+          family: berkeleyMonoRegular.style.fontFamily,
+          size: 18,
         },
       },
       tooltip: {
         titleFont: {
-          family: berkeleyMonoRegular.style.fontFamily, // Apply the custom font to tooltips
+          family: berkeleyMonoRegular.style.fontFamily,
         },
         bodyFont: {
-          family: berkeleyMonoRegular.style.fontFamily, // Apply the custom font to the tooltip body
+          family: berkeleyMonoRegular.style.fontFamily,
         },
       },
       afterDraw: function(chart) {
         const ctx = chart.ctx;
-        const datasetMeta = chart.getDatasetMeta(0); // Access the first dataset (the line)
-  
-        // Draw a thicker, semi-transparent line for the glow effect
-        ctx.save(); // Save the current drawing state
-  
-        ctx.lineWidth = 10; // Thicker line width for the glow
-        ctx.strokeStyle = 'rgba(75, 192, 192, 0.4)'; // Semi-transparent glow color
+        const datasetMeta = chart.getDatasetMeta(0); // Access the first dataset (Flutter)
+
+        // Draw a thicker, semi-transparent line for the glow effect (Flutter)
+        ctx.save();
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = 'rgba(75, 192, 192, 0.4)';
         ctx.beginPath();
         datasetMeta.data.forEach((point, i) => {
           const { x, y } = point;
@@ -610,12 +640,12 @@ export function DartInfoPage({ boxHeight }) {
           }
         });
         ctx.stroke();
-        ctx.restore(); // Restore the previous drawing state
-  
-        // Draw the original line on top
-        ctx.save(); // Save the current drawing state
-        ctx.lineWidth = datasetMeta.dataset.options.borderWidth; // Original line width
-        ctx.strokeStyle = datasetMeta.dataset.options.borderColor; // Original line color
+        ctx.restore();
+
+        // Draw the original Flutter line on top
+        ctx.save();
+        ctx.lineWidth = datasetMeta.dataset.options.borderWidth;
+        ctx.strokeStyle = datasetMeta.dataset.options.borderColor;
         ctx.beginPath();
         datasetMeta.data.forEach((point, i) => {
           const { x, y } = point;
@@ -626,68 +656,59 @@ export function DartInfoPage({ boxHeight }) {
           }
         });
         ctx.stroke();
-        ctx.restore(); // Restore the previous drawing state without shadow
+        ctx.restore();
       },
     },
     scales: {
       x: {
         ticks: {
-          color: 'white', // Change x-axis labels to white
+          color: 'white',
           font: {
-            family: berkeleyMonoRegular.style.fontFamily, // Apply the custom font to x-axis labels
-            size: 14, // Adjust size as needed
+            family: berkeleyMonoRegular.style.fontFamily,
+            size: 14,
           },
         },
         grid: {
-          display: false, // Remove x-axis grid
+          display: false,
         },
       },
       y: {
         ticks: {
-          color: 'white', // Change y-axis labels to white
+          color: 'white',
           font: {
-            family: berkeleyMonoRegular.style.fontFamily, // Apply the custom font to y-axis labels
-            size: 14, // Adjust size as needed
+            family: berkeleyMonoRegular.style.fontFamily,
+            size: 14,
           },
         },
         grid: {
-          display: false, // Remove y-axis grid
+          display: false,
         },
-        min: 0, // Ensure the y-axis starts at 0
-        max: maxDataValue, // Set the max to the highest point in the dataset
+        min: 0,
+        max: maxDataValue, // Set max to the highest data value
       },
     },
   };
-  
-  
-  
-  
 
   return (
-    <Flex padding={6} h={boxHeight} direction={['column', 'column', 'row']} borderRadius="20px" // Added border-radius for smooth edges
-    bg="rgba(255, 255, 255, 0.1)" p={8} color={textColor} style={{ backdropFilter: 'blur(10px)' }}>
-      <Box flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>  
-        <Heading as="h1" color={"#92ebfe"} fontSize={"50px"}  mb={4}  >
-          Flutter is changing the game.
+    <Flex h={boxHeight} direction={['column', 'column', 'row']} borderRadius="20px" 
+    bg="rgba(255, 255, 255, 0.1)" 
+    p={8} color={textColor} style={{ backdropFilter: 'blur(10px)' }}>
+      <Box flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>
+        <Heading as="h1" color={"#92ebfe"} fontSize={"50px"} mb={4}>
+          Flutter vs React Native in the United States
         </Heading>
-        <Text fontSize={"25px"} mb={4}   fontFamily={berkeleyMonoRegular.style.fontFamily}>
-        Dart is revolutionizing both web and mobile development by providing a powerful, unified language with incredible flexibility. 
-
+        <Text fontSize={"25px"} mb={4} fontFamily={berkeleyMonoRegular.style.fontFamily}>
+          Dart, powering Flutter, continues to grow in popularity, especially in the mobile development world.
         </Text>
-        <Link
-          href="https://dillonnys.com/posts/why-im-betting-on-dart/"
-          
-        >
-          <Button marginLeft={"auto"}  justifyContent={"right"}   bg={""}    color="#40C4FF"
-          >Learn more</Button>
+        <Link href="https://dillonnys.com/posts/why-im-betting-on-dart/">
+          <Button marginLeft={"auto"} justifyContent={"right"} bg={""} color="#40C4FF">
+            Learn more
+          </Button>
         </Link>
       </Box>
       <Box flex={1} display="flex" justifyContent="center" alignItems="center">
         <Line width={"100%"} height={"100%"} options={chartOptions} data={adoptionData} />
       </Box>
-
     </Flex>
-  )
+  );
 }
-
-

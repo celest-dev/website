@@ -73,7 +73,7 @@ const config: DocsThemeConfig = {
     key: '0.4-release',
     text: (
       <div className="banner">
-      Celest 0.4 is out with support for server-side Flutter! 🚀 <a href="/blog/fluttering-in-the-sky">Read more →</a>
+        Celest 0.4 is out with support for server-side Flutter! 🚀 <a href="/blog/fluttering-in-the-sky">Read more →</a>
       </div>
     ),
     dismissible: false,
@@ -86,6 +86,36 @@ const config: DocsThemeConfig = {
   },
   sidebar: {
     defaultMenuCollapseLevel: 1,
+  },
+
+  // Disable theme switcher
+  theme: undefined, // This will hide the light/dark mode switcher
+
+  // Add the container with the backdrop and background styles
+  components: {
+    wrapper: ({ children }) => {
+      const router = useRouter();
+      
+      // Conditionally apply the background to all pages except the home page
+      if (router.pathname === "/") {
+        return <>{children}</>; // No background for the home page
+      }
+
+      return (
+        <div
+          style={{
+            backdropFilter: 'blur(10px)', // Adds blur effect to the background
+            backgroundColor: 'rgba(255, 255, 255, 0.1)', // Translucent background
+            padding: '20px',
+            borderRadius: '10px',
+            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', // Optional shadow for effect
+            minHeight: '100vh', // Ensures the background covers the entire viewport height
+          }}
+        >
+          {children}
+        </div>
+      );
+    },
   },
 };
 
