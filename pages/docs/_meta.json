@@ -1,7 +1,7 @@
 {
-  "index": "Overview",
+  "index": "What is Celest?",
+  "get-started": "Getting Started",
   "download": "Download",
-  "get-started": "Get Started",
   "--celest": {
     "title": "Celest",
     "type": "separator"

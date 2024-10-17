@@ -1,6 +1,6 @@
 ---
-title: Writing a cloud function
-description: Learn how to write your first Celest cloud function.
+title: Creating a function
+description: Learn how to create your first Celest cloud function.
 ---
 
 import { Callout } from 'nextra/components'
@@ -11,9 +11,9 @@ Create serverless functions with Celest to connect different parts of your backe
 You define cloud functions as regular Dart functions and Celest will automatically configure the HTTP endpoints, manage the serialization
 of Dart types to and from JSON and, when you're ready, deploy your functions to the cloud.
 
-## Building Celest Functions
+## Writing Celest Functions
 
-To start building your serverless cloud function, navigate to the `my_celest_app/celest/lib/src/functions/` folder and create a file named `<api_name>.dart`. You can create as many APIs as you want in this directory. 
+To write your first serverless cloud function, navigate to the `my_celest_app/celest/lib/src/functions/` folder and create a file named `<api_name>.dart`. You can create as many APIs as you want in this directory. 
 Each file groups and organizes multiple Celest Functions of similar functionality into a namespace.
 
 Celest Functions are defined as top-level functions as shown below.
