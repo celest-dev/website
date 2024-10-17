@@ -1,0 +1,101 @@
+---
+title: "Celest + Turso: Building Backends at the Speed of SQLite"
+description: How Celest is using Turso to radically change backend development for Flutter developers.
+date: October 21, 2024
+---
+
+import Authors from '@components/Authors';
+
+# Celest 💙 Turso
+# Building Backends at the Speed of SQLite 🚀
+
+<Authors />
+
+Hey Flutter devs! At Celest, our mission is to empower you to build incredible backends using the language you already know and love: Dart 🎯
+
+With Celest V1, we're introducing a brand new member of the Celest family to solve one of the biggest challenges in backend development: data management.
+Celest Data, our new serverless database offering, lets you define your data models with Dart and then magically persist them everywhere - from your 
+local environment to the cloud.
+
+At the heart of this magic lies a powerful combination: SQLite for local development, and Turso for everywhere else.
+
+### The Beauty of Local Development with SQLite
+
+When you're building a Flutter app, speed and iteration are key. That's why you chose Flutter, and that's why we chose SQLite as the foundation for Celest Data.
+It's blazing fast, embeds directly within your project, and requires zero setup. Just point Celest at your data models, and the rest is taken care of.
+
+This means:
+
+* **Instantaneous feedback:** No more database passwords or DSN strings. No need to check if Docker is running. Your data is right there, right now.
+* **Lightweight and portable:** SQLite's small footprint and embedded nature means spinning up an ephemeral environment or running checks in CI is a breeze.
+* **Simplified debugging:** Inspect your database directly with familiar SQLite tools. Your data is always at your fingertips.
+
+### Scaling to the Cloud with Turso
+
+But what happens when you're ready to deploy? This is where Turso comes in. Celest seamlessly transitions your local SQLite database to a distributed Turso database in the cloud. 
+
+You get all the benefits of SQLite, plus:
+
+* **Automatic synchronization:**  Turso handles all the complexities of data synchronization and conflict resolution across multiple regions.
+* **Horizontal scalability:** Turso's distributed architecture scales effortlessly to handle even the most demanding workloads.
+* **Global availability:** Deploy your backend closer to your users, reducing latency and improving performance.
+
+### The Power of Locality: Auth, Users, and Data Together
+
+One of the most exciting aspects of this architecture is the ability to co-locate your authorization logic, user data, and application data within a single Turso database.
+
+This offers significant advantages, including:
+
+* **Reduced latency:** No more round trips to separate auth servers or user databases. Everything runs right next to your application code.
+* **Simplified data relationships:** Easily manage relationships between users, permissions, and data within a single, consistent schema.
+* **Enhanced security:**  Keep sensitive data closer to your application logic, reducing the attack surface.
+
+### The Future of Flutter Backends
+
+Our vision for the future of Celest Data can be best summarized with the following code:
+
+```dart
+@grant(to: [owner], actions: all)
+@grant(to: [authenticated], actions: [read, list])
+abstract class Todo extends Model {
+  @override
+  int get id => auto();
+
+  @override
+  User get owner;
+
+  String get title;
+
+  bool get completed => false;
+}
+
+@cloud
+@http.post(path: '/todos')
+Future<Todo> create({
+  required String title,
+  @principal required User user,
+}) async {
+  return celest.data.database.createTodo(
+    Todo(title: title, owner: user),
+  );
+}
+```
+
+Even if you're not familiar with Dart or Celest, you can hopefully understand what this code is trying to do. With this, we're defining a data model for a `Todo` item,
+setting up the access controls inline, and defining a cloud function to create a new `Todo`.
+
+In the future, with Celest this is all you'll need to write to make it work. The rest happens automatically. And thanks to the power of SQLite and Turso, the request will
+be processed with the same speed and efficiency whether you're running it locally or in the cloud.
+
+We believe this combination of SQLite for local development and Turso for cloud deployments represents a paradigm shift in how Flutter backends are built. 
+It's faster, more efficient, and more developer-friendly than traditional approaches.
+
+## Get Started with Celest Data
+
+Today you can start building with Celest Data for free and experience the future of Flutter backend development for yourself. We've updated our [documentation](/docs/data) to
+help you get started, and we're excited to see what you build with it.
+
+Follow us on [X](https://x.com/Celest_Dev) and come join our [Discord](/discord) to chat with the community and stay up-to-date with our journey!
+
+**Flutter is the future** 🚀
+
