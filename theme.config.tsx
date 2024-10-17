@@ -73,7 +73,7 @@ const config: DocsThemeConfig = {
     key: '0.4-release',
     text: (
       <div className="banner">
-      Celest 1.0 is officially released with database support! 🚀 <a href="/docs/data">Learn more →</a>
+      Celest 1.0 is officially released with a new Cloud and database! 🚀 <a href="/docs/cloud">Learn more →</a>
       </div>
     ),
     dismissible: false,

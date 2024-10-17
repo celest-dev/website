@@ -4,6 +4,38 @@ description: Learn how to deploy your Celest project to the cloud.
 ---
 
 import Link from 'next/link'
-import Newsletter from '@components/landing/Newsletter'
+import Image from 'next/image'
+import WelcomeBanner from '@components/WelcomeBanner'
 
-<Newsletter />
+import pricingImage from '@/public/img/pricing.webp'
+import deployGif from '@/public/img/deploy.gif'
+
+<div className='m-6'>
+    <WelcomeBanner />
+</div>
+
+# Celest Cloud
+
+Celest Cloud is our hosting platform that allows you to deploy Celest projects to a managed cloud environment
+with a single command. 
+
+When you deploy your project to Celest Cloud, your backend run inside Google's Kubernetes Engine, which provides 
+a secure and performant environment for your backend to grow. Celest handles the scaling, monitoring, and maintenance
+of your backend so you can focus on building your app.
+
+## Pricing
+
+Celest Cloud has a free tier with all the features of our paid plans. As you grow, we have solutions available to
+ensure HIPAA compliance, data residency, and more. You can see all of our pricing options on our [pricing page](https://dash.celest.dev/pricing).
+
+<Image className="w-full p-8 m-auto" alt="Celest Cloud Pricing" src={pricingImage} />
+
+## Deploying a project
+
+If you haven't already, start by [installing](/docs/download) the Celest CLI so that you can follow along.
+
+To deploy to the cloud, navigate to your project folder and run `celest deploy`. The CLI will
+build your project, upload it to the cloud, and start running it in a secure environment. At the end, your 
+client will be updated with the new backend URL and you can immediately start using your new backend.
+
+<Image className="w-3/4 my-8 m-auto" alt="Deploy a project using the celest deploy command" src={deployGif} />
