@@ -77,7 +77,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <VStack zIndex={1} maxWidth="1080px" spacing={10} paddingTop={20} justifyContent="center" alignItems="center" alignContent="center" alignSelf="center" margin="0 auto">
+    <VStack zIndex={1} maxWidth="1200px" spacing={10} paddingTop={20} justifyContent="center" alignItems="center" alignContent="center" alignSelf="center" margin="0 auto">
  
         <Heading as="h1" fontSize={"9vh"} w={"90%"} justifyContent={"center"} textAlign={"center"} mb={4}>
           Flutter. Backend.{"\ "}
@@ -163,8 +163,8 @@ import { Server, Code, Shield, Rocket, Gauge, Users } from 'lucide-react'; // Im
 
 export const Square1Sub = () => {
   return (
-    <Container maxW="container.xl" py={10}>
-      <Grid templateColumns={['1fr', '1fr', 'repeat(3, 1fr)']} gap={6}>
+    <Container maxW="container.xl"  py={10}>
+      <Grid templateColumns={['1fr', '1fr', 'repeat(4, 1fr)']} >
         <TestimonialCard
           title="Dart Cloud Functions"
           one="Write your backend like you write your Flutter App"
@@ -179,6 +179,13 @@ export const Square1Sub = () => {
           title="Server-Side Widgets"
           one="Build and power your frontend with server-rendered Flutter widgets."
           icon={Gauge}
+        />
+                <TestimonialCard
+          title="Performance"
+          one="Maximize backend performance for scalable applications"
+          two="Optimize resource usage and server response times"
+          three="Deliver seamless user experiences with high-performance code"
+          icon={Gauge} // Add icon here
         />
       </Grid>
     </Container>
@@ -216,7 +223,7 @@ export const Square2Sub = () => {
 export const Square3Sub = () => {
   return (
     <Container maxW="container.xl" py={10}>
-      <Grid templateColumns={['1fr', '1fr', 'repeat(4, 1fr)']} gap={6}>
+      <Grid templateColumns={['1fr', '1fr', 'repeat(3, 1fr)']} gap={6}>
         <TestimonialCard
           title="HIPAA/SOC2 Compliant"
           one="Ensure compliance with industry standards for data protection"
@@ -241,13 +248,13 @@ export const Square3Sub = () => {
           icon={Gauge} // Add icon here
         />
 
-        <TestimonialCard
+        {/* <TestimonialCard
           title="Fully Leverage Your Talent"
           one="Enable your team to focus on innovation, not infrastructure"
           two="Reduce repetitive tasks with automated workflows"
           three="Maximize efficiency by utilizing your team's full potential"
           icon={Users} // Add icon here
-        />
+        /> */}
       </Grid>
     </Container>
   );
@@ -261,6 +268,8 @@ import { Icon1, Icon2, Icon3 } from 'lucide-react'; // Replace with actual icons
 const TestimonialCard = ({ title, one, icon }) => {
   return (
     <Box
+      h="225px"
+      w="225px"
       bg="rgba(255, 255, 255, 0.1)"
       style={{ backdropFilter: 'blur(10px)' }}
       borderRadius="20px"
@@ -271,10 +280,9 @@ const TestimonialCard = ({ title, one, icon }) => {
       _hover={{ bg: "rgba(255, 255, 255, 0.15)" }}
       transition="background-color 0.3s"
     >
-      <VStack spacing={4}>
-        {icon && <Box as={icon} boxSize={8} />} {/* Add the icon here */}
-        <Text fontSize="large" fontWeight="bold">{title}</Text>
-        {/* <Text fontSize="small">{one}</Text> */}
+      <VStack spacing={4}  alignContent={"center"} justifyContent={"center"} alignSelf={"center"} h="100%">
+        {icon && <Box as={icon} boxSize={12} />} {/* Add the icon here */}
+        <Text fontSize="x-large" fontWeight="bold">{title}</Text>
       </VStack>
     </Box>
   );
@@ -449,30 +457,39 @@ export function Square2({ boxHeight }) {
       h={boxHeight}
       direction={['column-reverse', 'column-reverse', 'row']}
       borderRadius="20px"
-      bg="rgba(255, 255, 255, 0.1)"
-      p={8} 
+      // bg="rgba(255, 255, 255, 0.1)"
+      // p={8} 
+      
       color={textColor}
       style={{ backdropFilter: 'blur(10px)' }}
     >
-      <Box flex={1} p={9}>
+      <Box   w={"60%"}  borderRadius={20} overflow={"hidden"} >
       <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Evs1f0zHpzk" title="Dart Cloud Functions with Celest" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </Box>
-      <Box flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>
 
-
-
-    <Heading as="h1" color={"#92ebfe"} fontSize={"50px"}  mb={4}  >
+      {/* <Spacer></Spacer> */}
+      <Box
+  paddingLeft={12}
+  alignItems="flex-start"
+  justifyContent="center"
+  w="40%"
+  mr={[0, 0, 8]}
+  mb={[8, 8, 0]}
+  display="flex" // Add flexbox
+  flexDirection="column" // Align content vertically
+  // textAlign="center" // Optional: If you want to center text as well
+>
+  <Heading as="h1" color="#92ebfe" fontSize="40px" mb={4}>
     Simplicity
-        </Heading>
-        <Text fontSize={"25px"} mb={4}   fontFamily={berkeleyMonoRegular.style.fontFamily}>
-        Simplicity is the core of Celest. It allows developers to focus on creating beautiful user interfaces and efficient backends without the hassle of switching between tools.
-        </Text>
-        
-      </Box>
+  </Heading>
+  <Text fontSize="25px" mb={4} fontFamily={berkeleyMonoRegular.style.fontFamily}>
+    Celest streamlines development, enabling the creation of beautiful UIs and efficient backends without the need to switch between tools.
+  </Text>
+</Box>
+
     </Flex>
   )
 }
-
 
 
 export function Square3({ boxHeight }) {
@@ -489,10 +506,8 @@ export function Square3({ boxHeight }) {
       h={boxHeight}
       direction={['column', 'column', 'row']}
       borderRadius="20px" // Added border-radius for smooth edges
-      bg="rgba(255, 255, 255, 0.1)"
-      p={8} 
       color={textColor}
-      style={{ backdropFilter: 'blur(10px)' }}
+      style={{ backdropFilter: 'blur(10px)' }} // Removed background and padding
     >
       <Box flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>
         <Heading as="h1" color={"#92ebfe"} fontSize={"50px"} mb={4}>
@@ -523,87 +538,77 @@ export function Square3({ boxHeight }) {
           )}
         </Box>
         <HStack
-  p={4}
-  flexGrow={1}
-  justifyContent="center"
-  alignItems="center"
-  alignSelf="center"
->
-  <Button
-    onClick={() => handleCodeSwitch("frontend")}
-    flex={1}
-    borderRadius="md"
-    p={8}
-    fontSize={"25px"}
-    bg={activeCode === "frontend" ? 'gray.700' : 'gray.800'}
-    color="white"
-    mx={4}
-    fontFamily={berkeleyMonoRegular.style.fontFamily}
-    _hover={{
-      bg: activeCode === "frontend" ? 'gray.600' : 'gray.700',
-      boxShadow: '0px 0px 8px rgba(255, 255, 255, 0.2)' // Less bright glow
-    }}
-  >
-    Frontend
-  </Button>
-  <Button
-    onClick={() => handleCodeSwitch("backend")}
-    flex={1}
-    borderRadius="md"
-    p={8}
-    fontSize={"25px"}
-    bg={activeCode === "backend" ? 'gray.700' : 'gray.800'}
-    color="white"
-    mx={4}
-    fontFamily={berkeleyMonoRegular.style.fontFamily}
-    _hover={{
-      bg: activeCode === "backend" ? 'gray.600' : 'gray.700',
-      boxShadow: '0px 0px 8px rgba(255, 255, 255, 0.2)' // Less bright glow
-    }}
-  >
-    Backend
-  </Button>
-</HStack>
+          flexGrow={1}
+          justifyContent="center"
+          alignItems="center"
+          alignSelf="center"
+        >
+          <Button
+            onClick={() => handleCodeSwitch("frontend")}
+            flex={1}
+            borderRadius="md"
+            p={8}
+            fontSize={"25px"}
+            bg={activeCode === "frontend" ? 'gray.700' : 'gray.800'}
+            color="white"
+            mx={4}
+            fontFamily={berkeleyMonoRegular.style.fontFamily}
+            _hover={{
+              bg: activeCode === "frontend" ? 'gray.600' : 'gray.700',
+              boxShadow: '0px 0px 8px rgba(255, 255, 255, 0.2)' // Less bright glow
+            }}
+          >
+            Frontend
+          </Button>
+          <Button
+            onClick={() => handleCodeSwitch("backend")}
+            flex={1}
+            borderRadius="md"
+            p={8}
+            fontSize={"25px"}
+            bg={activeCode === "backend" ? 'gray.700' : 'gray.800'}
+            color="white"
+            mx={4}
+            fontFamily={berkeleyMonoRegular.style.fontFamily}
+            _hover={{
+              bg: activeCode === "backend" ? 'gray.600' : 'gray.700',
+              boxShadow: '0px 0px 8px rgba(255, 255, 255, 0.2)' // Less bright glow
+            }}
+          >
+            Backend
+          </Button>
+        </HStack>
 
       </Box>
     </Flex>
   );
 }
 
-
 export function DartInfoPage({ boxHeight }) {
   const bgColor = useColorModeValue('gray.900', 'gray.800');
   const textColor = useColorModeValue('white', 'gray.100');
 
-  // Update the adoption data for Flutter and React Native
   const adoptionData = {
-    labels: [
-      '2004-01', '2004-02', '2004-03', '2004-04', '2004-05', '2004-06', '2004-07', '2004-08', '2004-09', '2004-10',
-      '2023-09', '2023-10', '2024-01', '2024-02', '2024-03', '2024-04', '2024-05', '2024-06', '2024-07', '2024-08',
+    labels: [ '2018-01', '2018-02', '2018-03', '2018-04', '2018-05', '2018-06', '2018-07', '2018-08', '2018-09', '2018-10', '2018-11', '2018-12', '2019-01', '2019-02', '2019-03', '2019-04', '2019-05', '2019-06', '2019-07', '2019-08', '2019-09', '2019-10', '2019-11', '2019-12', '2020-01', '2020-02', '2020-03', '2020-04', '2020-05', '2020-06', '2020-07', '2020-08', '2020-09', '2020-10', '2020-11', '2020-12', '2021-01', '2021-02', '2021-03', '2021-04', '2021-05', '2021-06', '2021-07', '2021-08', '2021-09', '2021-10', '2021-11', '2021-12', '2022-01', '2022-02', '2022-03', '2022-04', '2022-05', '2022-06', '2022-07', '2022-08', '2022-09', '2022-10', '2022-11', '2022-12', '2023-01', '2023-02', '2023-03', '2023-04', '2023-05', '2023-06', '2023-07', '2023-08', '2023-09', '2023-10', '2023-11', '2023-12', '2024-01', '2024-02', '2024-03', '2024-04', '2024-05', '2024-06', '2024-07', '2024-08', '2024-09', '2024-10'
     ],
     datasets: [
       {
-        label: 'Flutter (United States)',
-        data: [18, 18, 15, 20, 17, 21, 17, 17, 22, 21, 86, 81, 90, 96, 91, 93, 94, 96, 84, 86],
+        // label: 'Flutter',
+        data: [18, 18, 15, 20, 17, 21, 17, 17, 22, 21, 18, 18, 17, 20, 20, 20, 16, 19, 16, 19, 17, 20, 20, 17, 19, 19, 19, 20, 19, 19, 18, 18, 18, 19, 18, 16, 18, 20, 19, 20, 20, 19, 18, 18, 18, 21, 18, 18, 19, 20, 20, 21, 20, 20, 19, 19, 20, 22, 19, 18, 20, 20, 23, 42, 24, 24, 23, 22, 22, 22, 22, 21, 22, 23, 24, 24, 22, 23, 22, 24, 24, 23, 22, 21, 24, 26, 26, 27, 27, 27, 26, 24, 24, 26, 23, 24, 26, 29, 28, 33, 28, 28, 29, 28, 27, 26, 25, 26, 34, 32, 30, 31, 31, 29, 28, 29, 28, 31, 29, 32, 31, 33, 33, 33, 32, 34, 34, 29, 30, 29, 28, 30, 30, 32, 32, 34, 32, 33, 31, 31, 29, 31, 31, 29, 30, 33, 36, 37, 35, 37, 31, 31, 31, 28, 28, 27, 35, 35, 37, 40, 40, 37, 39, 35, 33, 34, 33, 32, 38, 43, 47, 49, 49, 48, 50, 46, 46, 45, 49, 50, 53, 58, 57, 58, 59, 61, 65, 59, 57, 60, 55, 56, 64, 67, 62, 68, 69, 75, 73, 68, 66, 58, 51, 55, 61, 62, 65, 64, 64, 67, 64, 62, 64, 61, 59, 56, 74, 91, 96, 93, 94, 88, 87, 87, 85, 80, 91, 91, 91, 100, 99, 97, 94, 94, 91, 89, 86, 81, 77, 77, 90, 96, 91, 93, 93, 96, 84, 86, 82, 100],
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1,
       },
-      {
-        label: 'React Native (United States)',
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 35, 36, 39, 38, 38, 35, 31, 34, 31],
-        borderColor: 'rgb(255, 99, 132)', // Different color for React Native
-        tension: 0.1,
-      },
+
     ],
   };
 
-  const maxDataValue = Math.max(...adoptionData.datasets.flatMap(dataset => dataset.data)); // Get the highest point of all datasets
+  const maxDataValue = Math.max(...adoptionData.datasets.flatMap(dataset => dataset.data));
 
   const chartOptions = {
     responsive: true,
     plugins: {
       legend: {
-        display: true, // Show the legend for both Flutter and React Native
+        display: true,
       },
       title: {
         display: true,
@@ -624,9 +629,8 @@ export function DartInfoPage({ boxHeight }) {
       },
       afterDraw: function(chart) {
         const ctx = chart.ctx;
-        const datasetMeta = chart.getDatasetMeta(0); // Access the first dataset (Flutter)
+        const datasetMeta = chart.getDatasetMeta(0);
 
-        // Draw a thicker, semi-transparent line for the glow effect (Flutter)
         ctx.save();
         ctx.lineWidth = 10;
         ctx.strokeStyle = 'rgba(75, 192, 192, 0.4)';
@@ -642,7 +646,6 @@ export function DartInfoPage({ boxHeight }) {
         ctx.stroke();
         ctx.restore();
 
-        // Draw the original Flutter line on top
         ctx.save();
         ctx.lineWidth = datasetMeta.dataset.options.borderWidth;
         ctx.strokeStyle = datasetMeta.dataset.options.borderColor;
@@ -684,24 +687,23 @@ export function DartInfoPage({ boxHeight }) {
           display: false,
         },
         min: 0,
-        max: maxDataValue, // Set max to the highest data value
+        max: maxDataValue,
       },
     },
   };
 
   return (
-    <Flex h={boxHeight} direction={['column', 'column', 'row']} borderRadius="20px" 
-    bg="rgba(255, 255, 255, 0.1)" 
-    p={8} color={textColor} style={{ backdropFilter: 'blur(10px)' }}>
+    <Flex h={boxHeight} direction={['column', 'column', 'row']} borderRadius="20px"
+    color={textColor} style={{ backdropFilter: 'blur(10px)' }}> {/* Removed background and padding */}
       <Box flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>
         <Heading as="h1" color={"#92ebfe"} fontSize={"50px"} mb={4}>
-          Flutter vs React Native in the United States
+        Flutter is changing the game.
         </Heading>
         <Text fontSize={"25px"} mb={4} fontFamily={berkeleyMonoRegular.style.fontFamily}>
           Dart, powering Flutter, continues to grow in popularity, especially in the mobile development world.
         </Text>
         <Link href="https://dillonnys.com/posts/why-im-betting-on-dart/">
-          <Button marginLeft={"auto"} justifyContent={"right"} bg={""} color="#40C4FF">
+          <Button marginLeft={"auto"} justifyContent={"right"} color="#40C4FF">
             Learn more
           </Button>
         </Link>
