@@ -28,6 +28,7 @@ import {
   Tooltip,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import localFont from "next/font/local";
 
 ChartJS.register(
   CategoryScale,
@@ -40,6 +41,20 @@ ChartJS.register(
 )
 
 import { useEffect } from "react";
+
+export const berkeleyMonoRegular = localFont({
+  preload: true,
+  src: "../../public/fonts/BerkeleyMono-Regular.ttf",
+  display: "swap",
+  variable: "--font-berkeley-regular",
+});
+
+export const berkeleyMonoVariable = localFont({
+  preload: true,
+  src: "../../public/fonts/BerkeleyMonoVariable-Regular.ttf",
+  display: "swap",
+  variable: "--font-berkeley-variable",
+});
 
 
 export default function Hero() {
@@ -63,21 +78,73 @@ export default function Hero() {
 
   return (
     <VStack zIndex={1} maxWidth="1080px" spacing={10} paddingTop={20} justifyContent="center" alignItems="center" alignContent="center" alignSelf="center" margin="0 auto">
-      <Heading as="h1" size="3xl" justifyContent={"center"}  textAlign={"center"} mb={4} style={{ textShadow: '0px 0px 10px white'}}>
-        Push your code to the stars
-      </Heading>
+ 
+        <Heading as="h1" fontSize={"100px"} w={"90%"} justifyContent={"center"} textAlign={"center"} mb={4}>
+          Flutter. Backend.{"\ "}
+          <Text as="span" >
+            Done. ✅
+          </Text>
+        </Heading>
 
-      <SwitchCodeBlocks />
+
+
+      <Text as="h1" fontSize={"30px"}  fontFamily={berkeleyMonoRegular.style.fontFamily} w={"120%"} letterSpacing={"-0.05em"} justifyContent={"center"} textAlign={"center"} mb={4}  >
+      Write your backend like your Flutter app &mdash; deploy it like magic 🚀
+      </Text>
+      <HStack spacing={10} w="70%">
+
       <Button
+      flex={1}
         className="px-6"
         onClick={() => {
           posthog.capture("cta_clicked", { location: "hero" });
           window.location.href = "http://localhost:3000/docs/download";
         }}
+        fontFamily={berkeleyMonoRegular.style.fontFamily}
+        bg={""}
+        fontSize={"35px"}
+
+        borderWidth={"2px"} // Set borderWidth instead of 'border'
+        borderColor={"#ffffff"} // Border color
+        color={"#ffffff"} // Text color
+        p={12}
+        borderRadius={"40px"} // Rounded corners
       >
-        Get Started
+        Learn More
       </Button>
-      <Spacer></Spacer>
+
+      <Button
+      flex={1}
+        className="px-6"
+        onClick={() => {
+          posthog.capture("cta_clicked", { location: "hero" });
+          window.location.href = "http://localhost:3000/docs/download";
+        }}
+        fontFamily={berkeleyMonoRegular.style.fontFamily}
+        fontSize={"35px"}
+        bg={""}
+        borderWidth={"2px"} // Set borderWidth instead of 'border'
+        borderColor={"#027DFD"} // Border color
+        color={"#027DFD"} // Text color
+        p={12}
+        borderRadius={"40px"} // Rounded corners
+      >
+        Docs
+      </Button>
+
+      </HStack>
+
+
+  <Spacer></Spacer>
+  
+  <Spacer></Spacer>
+  <Spacer></Spacer>
+  <Spacer></Spacer>  <Spacer></Spacer>  <Spacer></Spacer>  <Spacer></Spacer>  <Spacer></Spacer>  <Spacer></Spacer>  <Spacer></Spacer>
+
+        
+      <SwitchCodeBlocks />
+
+    
 
       <DartInfoPage boxHeight={boxHeight} />
 
@@ -112,9 +179,9 @@ export const Square1Sub = () => {
 
         <TestimonialCard
           title="Server-Side Widgets"
-          one="Build dynamic, reusable widgets for server-side rendering"
-          two="Leverage Flutter's widget system to enhance backend functionality"
-          three="Simplify server-side logic with modular components"
+          one="build and power your frontend with server-rendered Flutter widgets."
+          two=" "
+          three=" "
         />
       </Grid>
     </Container>
@@ -205,7 +272,7 @@ const TestimonialCard = ({ title, one, two, three }) => {
           transition="background-color 0.3s"
       >
           <VStack spacing={4}>
-              <Text fontSize="large" fontWeight="bold" style={{ textShadow: '0px 0px 10px white'}}>{title}</Text>
+              <Text fontSize="large" fontWeight="bold" >{title}</Text>
               <Text fontSize="small" >{one}</Text>
               <Text fontSize="small" >{two}</Text>
               <Text fontSize="small" >{three}</Text>          
@@ -215,14 +282,12 @@ const TestimonialCard = ({ title, one, two, three }) => {
 };
 
 import { Database, Fingerprint, Layers } from 'lucide-react'; // Lucide icons
+import { motion, px } from 'framer-motion';
 
 export function SwitchCodeBlocks() {
   const [selectedBlock, setSelectedBlock] = useState(1); // Default to block 1
 
   const codeBlock1 = `// Functions Example
-import 'package:celest/celest.dart';
-import 'package:celest_backend/src/database/task_database.dart';
-
 const project = Project(
   name: 'tasks',
 );
@@ -247,21 +312,17 @@ const auth = Auth(
 );
 `;
 
-  const codeBlock3 = `// Data Example
-import 'package:celest/celest.dart';
-import 'package:celest_backend/exceptions/bad_name_exception.dart';
-import 'package:celest_backend/models/person.dart';
-
-/// Says hello to a [person].
+const codeBlock3 = `// Data Example
 @cloud
 Future<String> sayHello({required Person person}) async {
   if (person.name.isEmpty) {
     throw BadNameException('Name cannot be empty');
   }
 
-  print('Saying hello to  ');
+  // Logging is handled automatically when you print to the console.
+  print('Saying hello to \${person.name}');
 
-  return 'Hello,  !';
+  return 'Hello, \${person.name}!';
 }`;
 
   const renderCodeBlock = () => {
@@ -276,18 +337,33 @@ Future<String> sayHello({required Person person}) async {
         return codeBlock1;
     }
   };
-
   return (
     <Box w="100%">
-      <Flex  mt={4} mb={4} justifyContent="space-between" alignItems="center">
+      <Box
+        bg="rgba(255, 255, 255, 0.1)"
+        borderRadius="20px"
+        justifyContent={"center"}
+        alignItems={"center"}
+        style={{ backdropFilter: 'blur(10px)' }}
+        h={550}
+      >
+        <CodeBlock code={renderCodeBlock()} />
+      </Box>
+      <Flex mt={4} mb={4} justifyContent="space-between" margin={8} alignItems="center">
         <Button
           onClick={() => setSelectedBlock(1)}
           flex={1}
           borderRadius="md"
-          p={6}
+          p={8}
+          fontSize={"25px"}
           bg={selectedBlock === 1 ? 'gray.700' : 'gray.800'}
           color="white"
-          mr={2}
+          mx={4}
+          fontFamily={berkeleyMonoRegular.style.fontFamily}
+          _hover={{
+            bg: selectedBlock === 1 ? 'gray.600' : 'gray.700', // Darken slightly on hover
+            boxShadow: '0px 0px 8px rgba(255, 255, 255, 0.2)' // Less bright glow
+          }}
         >
           <Box as="span" mr={2}>
             <Layers size={24} /> {/* Lucide icon for Functions */}
@@ -297,11 +373,17 @@ Future<String> sayHello({required Person person}) async {
         <Button
           onClick={() => setSelectedBlock(2)}
           flex={1}
+          fontSize={"25px"}
           borderRadius="md"
-          p={6}
+          p={8}
           bg={selectedBlock === 2 ? 'gray.700' : 'gray.800'}
           color="white"
-          mr={2}
+          mx={4}
+          fontFamily={berkeleyMonoRegular.style.fontFamily}
+          _hover={{
+            bg: selectedBlock === 2 ? 'gray.600' : 'gray.700',
+            boxShadow: '0px 0px 8px rgba(255, 255, 255, 0.2)' // Less bright glow
+          }}
         >
           <Box as="span" mr={2}>
             <Fingerprint size={24} /> {/* Lucide icon for Auth */}
@@ -312,9 +394,16 @@ Future<String> sayHello({required Person person}) async {
           onClick={() => setSelectedBlock(3)}
           flex={1}
           borderRadius="md"
-          p={6}
+          p={8}
+          fontSize={"25px"}
           bg={selectedBlock === 3 ? 'gray.700' : 'gray.800'}
           color="white"
+          mx={4}
+          fontFamily={berkeleyMonoRegular.style.fontFamily}
+          _hover={{
+            bg: selectedBlock === 3 ? 'gray.600' : 'gray.700',
+            boxShadow: '0px 0px 8px rgba(255, 255, 255, 0.2)' // Less bright glow
+          }}
         >
           <Box as="span" mr={2}>
             <Database size={24} /> {/* Lucide icon for Data */}
@@ -322,15 +411,9 @@ Future<String> sayHello({required Person person}) async {
           Data
         </Button>
       </Flex>
-
-      <Box bg="rgba(255, 255, 255, 0.1)" h={500} p={6} borderRadius="20px" justifyContent={"center"} alignItems={"center"}  style={{ backdropFilter: 'blur(10px)' }} >
-        <CodeBlock code={renderCodeBlock()} />
-      </Box>
     </Box>
   );
-}
-
-
+}  
 
 
 import { useState } from "react";
@@ -392,7 +475,7 @@ export function Square2({ boxHeight }) {
         />
       </Box>
       <Box flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>
-        <Heading as="h1" size="2xl" mb={4} style={{ textShadow: '0px 0px 10px white'}}>
+        <Heading as="h1" size="2xl" mb={4} >
           Simplicity
         </Heading>
         <Text fontSize="lg" mb={4}>
@@ -423,7 +506,7 @@ export function Square3({ boxHeight }) {
   {/* <Spacer /> */}
 
   <Box  flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>
-    <Heading as="h1" size="2xl" mb={4}  style={{ textShadow: '0px 0px 10px white'}}>
+    <Heading as="h1" size="2xl" mb={4}  >
       Developer Productivity
     </Heading>
     <Text fontSize="lg" mb={4}>
@@ -495,6 +578,18 @@ export function DartInfoPage({ boxHeight }) {
         display: true,
         text: 'Apps using Dart',
         color: 'white', // Set title text color to white
+        font: {
+          family: berkeleyMonoRegular.style.fontFamily, // Apply the custom font to the title
+          size: 18, // Adjust the font size if needed
+        },
+      },
+      tooltip: {
+        titleFont: {
+          family: berkeleyMonoRegular.style.fontFamily, // Apply the custom font to tooltips
+        },
+        bodyFont: {
+          family: berkeleyMonoRegular.style.fontFamily, // Apply the custom font to the tooltip body
+        },
       },
       afterDraw: function(chart) {
         const ctx = chart.ctx;
@@ -538,6 +633,10 @@ export function DartInfoPage({ boxHeight }) {
       x: {
         ticks: {
           color: 'white', // Change x-axis labels to white
+          font: {
+            family: berkeleyMonoRegular.style.fontFamily, // Apply the custom font to x-axis labels
+            size: 14, // Adjust size as needed
+          },
         },
         grid: {
           display: false, // Remove x-axis grid
@@ -546,6 +645,10 @@ export function DartInfoPage({ boxHeight }) {
       y: {
         ticks: {
           color: 'white', // Change y-axis labels to white
+          font: {
+            family: berkeleyMonoRegular.style.fontFamily, // Apply the custom font to y-axis labels
+            size: 14, // Adjust size as needed
+          },
         },
         grid: {
           display: false, // Remove y-axis grid
@@ -561,22 +664,22 @@ export function DartInfoPage({ boxHeight }) {
   
 
   return (
-    <Flex  h={boxHeight} direction={['column', 'column', 'row']} borderRadius="20px" // Added border-radius for smooth edges
+    <Flex padding={6} h={boxHeight} direction={['column', 'column', 'row']} borderRadius="20px" // Added border-radius for smooth edges
     bg="rgba(255, 255, 255, 0.1)" p={8} color={textColor} style={{ backdropFilter: 'blur(10px)' }}>
       <Box flex={1} mr={[0, 0, 8]} mb={[8, 8, 0]}>  
-        <Heading as="h1" size="2xl" mb={4}  style={{ textShadow: '0px 0px 10px white' }}>
-          Dart will take over the world
+        <Heading as="h1" color={"#92ebfe"} fontSize={"50px"}  mb={4}  >
+          Flutter is changing the game.
         </Heading>
-        <Text fontSize="lg" mb={4}>
-        Dart is revolutionizing both web and mobile development by providing a powerful, unified language with incredible flexibility. Its combination of speed, efficiency, and ease of use is rapidly making it the top choice for developers. Dart is set to dominate the future of development by streamlining both client and server codebases.
+        <Text fontSize={"25px"} mb={4}   fontFamily={berkeleyMonoRegular.style.fontFamily}>
+        Dart is revolutionizing both web and mobile development by providing a powerful, unified language with incredible flexibility. 
 
         </Text>
         <Link
           href="https://dillonnys.com/posts/why-im-betting-on-dart/"
           
         >
-          <Text           color="blue.200"
-          >Learn more about why Dart is the future</Text>
+          <Button marginLeft={"auto"}  justifyContent={"right"}   bg={""}    color="#40C4FF"
+          >Learn more</Button>
         </Link>
       </Box>
       <Box flex={1} display="flex" justifyContent="center" alignItems="center">

@@ -17,6 +17,9 @@ const poppins = localFont({
   variable: "--font-poppins",
 });
 
+
+
+
 export default function App({ Component, pageProps }) {
   const mainRef = useRef(null); // Create a ref for <main>
 
@@ -65,7 +68,7 @@ export default function App({ Component, pageProps }) {
         )}
         {/* <Stars mainRef={mainRef}/> */}
 
-        <div style={{ overflow: "hidden", background: 'linear-gradient(to bottom, #1e3a8a, #000000)' }}>
+        <div style={{ overflow: "hidden", background: 'linear-gradient(to bottom, #000000, #1e3a8a)' }}>
 
           <main ref={mainRef} className={`${poppins.variable}`}>
 
@@ -112,7 +115,7 @@ const MotionDiv = reactive(motion.div);
 function FineGrained({ containerRef }) {
   const [containerSize, setContainerSize] = useState({ width: 800, height: 500 });
   const stars$ = useObservable([]);
-  const [starsToSpawn, setStarsToSpawn] = useState(75); // Total number of stars to spawn
+  const [starsToSpawn, setStarsToSpawn] = useState(100); // Total number of stars to spawn
   const [starsSpawned, setStarsSpawned] = useState(0); // Track how many stars are spawned
 
 
@@ -169,8 +172,8 @@ function FineGrained({ containerRef }) {
 
     return {
       scale: randomSize,
-      maxScale: randomSize * 4,
-      minScale: randomSize / 2,
+      maxScale: randomSize * 1.5,
+      minScale: randomSize / 1,
       boxShadowBlur: randomBoxShadowBlur,
       maxBoxShadowBlur: randomBoxShadowBlur * 2,
       minBoxShadowBlur: randomBoxShadowBlur / 2,
@@ -294,7 +297,7 @@ function FineGrained({ containerRef }) {
             transform: `translate(${star$.get().x}px, ${star$.get().y}px) scale(${star$.get().scale / 30})`,
 
             // Change all properties of the box shadow dynamically
-            boxShadow: `0px 0px ${star$.get().boxShadowBlur}px ${star$.get().boxShadowSpread}px rgba(255, 255, 255, ${star$.get().boxShadowOpacity})`,
+            boxShadow: `0px 0px ${star$.get().boxShadowBlur}px ${star$.get().boxShadowSpread}px rgba(245, 244, 218, ${star$.get().boxShadowOpacity})`,
             transition: { duration: 0.2, ease: "linear" }
           })}
         />
