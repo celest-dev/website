@@ -14,7 +14,13 @@ export default async function handler(request: NextRequest) {
     ).then((res) => res.arrayBuffer());
     const poppinsBold = await fetch(
       new URL(
-        "../../public/fonts/Poppins/Poppins-SemiBold.ttf",
+        "../../public/fonts/Poppins/Poppins-Medium.ttf",
+        import.meta.url
+      )
+    ).then((res) => res.arrayBuffer());
+    const berkeleyMono = await fetch(
+      new URL(
+        "../../public/fonts/BerkeleyMono-Regular.ttf",
         import.meta.url
       )
     ).then((res) => res.arrayBuffer());
@@ -43,9 +49,9 @@ export default async function handler(request: NextRequest) {
             alignItems: "center",
             justifyContent: "center",
             background:
-              "linear-gradient(100deg, #027dfd 26.96%, #92ebfe 109.1%)",
+              "linear-gradient(115deg, #010512 26.96%, #121f30 80%)",
             color: "white",
-            fontFamily: "Poppins, sans-serif",
+            fontFamily: "Berkeley Mono, Poppins, sans-serif",
             textAlign: "center",
           }}
         >
@@ -70,15 +76,16 @@ export default async function handler(request: NextRequest) {
               style={{
                 paddingTop: 24,
                 marginLeft: 24,
-                fontSize: 100,
-                fontWeight: 600,
+                fontSize: 130,
+                fontWeight: 500,
+                fontFamily: 'Poppins',
               }}
             >
               Celest
             </div>
           </div>
           {title && (
-            <div style={{ marginTop: 24, fontSize: 56, maxWidth: "50%" }}>
+            <div style={{ marginTop: 28, fontSize: 56, maxWidth: "50%" }}>
               {title}
             </div>
           )}
@@ -103,6 +110,12 @@ export default async function handler(request: NextRequest) {
             data: poppinsBold,
             style: "normal",
             weight: 600,
+          },
+          {
+            name: "Berkeley Mono",
+            data: berkeleyMono,
+            style: "normal",
+            weight: 400,
           },
         ],
       }
