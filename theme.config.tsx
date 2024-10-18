@@ -3,6 +3,7 @@ import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 import { useRouter } from "next/router";
 import Logo from "@components/Logo";
 import Footer from "./components/Footer";
+import { Button } from "./components/ui/button";
 
 const config: DocsThemeConfig = {
   logo: <Logo />,
@@ -13,6 +14,7 @@ const config: DocsThemeConfig = {
   chat: {
     link: "https://discord.gg/KtMAfSDXGQ",
   },
+  darkMode: true,
   docsRepositoryBase: "https://github.com/celest-dev/website",
   useNextSeoProps() {
     return { titleTemplate: "%s | Celest" };
@@ -70,7 +72,7 @@ const config: DocsThemeConfig = {
     );
   },
   banner: {
-    key: '0.4-release',
+    key: '1.0-release',
     text: (
       <div className="banner">
       Celest 1.0 is officially released with a new Cloud and database! 🚀 <a href="/docs/cloud">Learn more →</a>

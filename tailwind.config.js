@@ -14,7 +14,14 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      mono: ['var(--font-berkeley-mono)', 'monospace'],
+    },
     extend: {
+      flex: {
+        '2': '2 2 0%',
+        '3': '3 3 0%',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

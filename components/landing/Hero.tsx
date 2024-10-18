@@ -8,23 +8,39 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="text-center flex flex-col items-center justify-center"
+      className="text-center flex flex-col items-center justify-center py-6"
     >
-      <YCLogo className="mt-4" />
-      <h1 className="text-4xl tracking-tighter font-extrabold md:text-5xl mt-8 mb-8">
-        The Vercel of Flutter
+      <h1 className="text-6xl tracking-tighter font-extrabold lg:text-8xl md:text-7xl mt-8 mb-8">
+        Flutter. Backend.
+        <br />
+        Done. ✅
       </h1>
       <p className="text-lg md:text-xl mb-8">
-        Build, deploy, and scale your app's backend. All in Dart. All without leaving your IDE.
+        Write your backend like a Flutter app &mdash; deploy it like magic 🚀
       </p>
-      <Link href="/docs/get-started">
-        <Button
-          className="px-6"
-          onClick={() => posthog.capture("cta_clicked", { location: "hero" })}
-        >
-          Get Started
-        </Button>
-      </Link>
+      <div className="flex flex-row justify-center items-center space-x-4 my-4">
+        <Link href="https://dash.celest.dev">
+          <Button
+            size="lg"
+            variant="default"
+            className="px-6"
+            onClick={() => posthog.capture("cta_clicked", { location: "hero", variant: "get_started" })}
+          >
+            Get Started
+          </Button>
+        </Link>
+
+        <Link href="/docs">
+          <Button
+            size="lg"
+            variant="secondary"
+            className="px-6"
+            onClick={() => posthog.capture("cta_clicked", { location: "hero", variant: "docs" })}
+          >
+            Docs
+          </Button>
+        </Link>
+      </div>
     </section>
   );
 }

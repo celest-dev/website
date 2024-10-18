@@ -12,6 +12,18 @@ const poppins = localFont({
   variable: "--font-poppins",
 });
 
+const berkeleyMono = localFont({
+  preload: true,
+  src: "../public/fonts/BerkeleyMono-Regular.ttf",
+  display: "swap",
+  variable: "--font-berkeley-mono",
+});
+
+// FA
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
+
 export default function App({ Component, pageProps }) {
   const { asPath } = useRouter();
   const isContactPage = asPath === "/contact";
@@ -52,7 +64,7 @@ export default function App({ Component, pageProps }) {
           />
         </>
       )}
-      <main className={`${poppins.variable}`}>
+      <main className={`${poppins.variable} ${berkeleyMono.variable}`}>
         <Component {...pageProps} />
         <SpeedInsights />
       </main>
