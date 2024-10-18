@@ -14,9 +14,11 @@ const poppins = localFont({
 
 const berkeleyMono = localFont({
   preload: true,
-  src: "../public/fonts/BerkeleyMono-Regular.ttf",
+  src: "../public/fonts/BerkeleyMono-Regular.woff2",
   display: "swap",
   variable: "--font-berkeley-mono",
+  weight: "400",
+  fallback: ["monospace"],
 });
 
 // FA
