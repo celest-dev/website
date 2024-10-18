@@ -10,6 +10,7 @@ const nextraConfig = {
   flexsearch: {
     codeblocks: false,
   },
+  codeHighlight: true,
 };
 
 /**

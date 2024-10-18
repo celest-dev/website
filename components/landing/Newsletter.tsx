@@ -4,7 +4,7 @@ import { cn } from "@/src/utils";
 
 export default function Newsletter({
   className,
-  header = "Celest Cloud is coming soon! 🚀",
+  header = "Stay in the loop",
 }: {
   header?: string;
 } & React.ComponentProps<"section">) {
@@ -16,17 +16,8 @@ export default function Newsletter({
         className
       )}
     >
-      <p className="font-bold max-w-lg my-4 text-2xl">{header}</p>
       <p className="text-md max-w-lg my-4">
-        Subscribe to our newsletter for product updates and to get notified when
-        we open up again!
-        <br />
-        <br />
-        And if you have any questions, feel free to{" "}
-        <Link className="text-blue-600" href="/contact">
-          give us a shout
-        </Link>
-        .
+        Subscribe to our newsletter for the latest product updates and news!
       </p>
       <EmailForm className="w-full" />
     </section>

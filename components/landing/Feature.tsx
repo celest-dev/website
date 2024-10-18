@@ -32,13 +32,13 @@ export type Feature = {
 export function Feature(feature: Feature) {
   return (
     <Card className="feature">
-      <CardContent className='flex flex-col items-center justify-center'>
-        <div className="p-4">{feature.children}</div>
-      </CardContent>
       <CardHeader className="text-center">
         <CardTitle>{feature.title}</CardTitle>
         <CardDescription>{feature.description}</CardDescription>
       </CardHeader>
+      <CardContent className="flex flex-col items-center justify-center">
+        <div className="p-4">{feature.children}</div>
+      </CardContent>
     </Card>
   );
 }
@@ -93,7 +93,9 @@ export function FeatureSet({
               key={index}
               onClick={() => onDotButtonClick(index)}
               className={`w-4 h-4 rounded-full mx-2 ${
-                index === selectedIndex ? "dark:bg-white bg-black" : "bg-gray-300/60"
+                index === selectedIndex
+                  ? "dark:bg-white bg-black"
+                  : "bg-gray-300/60"
               }`}
             />
           ))}

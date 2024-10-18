@@ -18,6 +18,10 @@ html {
   overflow-x: hidden;
 }
 
+pre, code {
+  font-family: var(--font-berkeley-mono), monospace;
+}
+
 /* Hide the word wrap and copy buttons which are overlaid on pre blocks for small screens */
 @media screen and (max-width: 768px) {
   pre + div > button {

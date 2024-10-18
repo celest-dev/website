@@ -10,6 +10,7 @@ import Image from 'next/image'
 
 import Hero from '@components/landing/Hero'
 import Newsletter from '@components/landing/Newsletter'
+import Content from '@components/landing/Content'
 import { Download } from '@components/Download'
 import { Feature, FeatureSet } from '@components/landing/Feature'
 
@@ -18,7 +19,7 @@ import { Feature, FeatureSet } from '@components/landing/Feature'
 <Bleed>
 <FeatureSet>
   <Feature 
-    title="Write your backend logic in Dart"
+    title="All your backend logic in Dart"
     description={<>Annotate any Dart function with <code>@cloud</code> to turn it into a serverless function.</>}
   >
 ```dart
@@ -29,116 +30,51 @@ Future<String> sayHello(String name) async {
 ```
   </Feature>
   <Feature 
-    title={<>No more <code>toJson</code>/<code>fromJson</code></>}
-    description="Celest automatically handles serialization for you so you can focus on writing your business logic."
+    title={<>Out-of-the-box database</>}
+    description="Celest takes your Drift schema and automatically creates a database for you."
   >
-  <div className="flex flex-row justify-center items-center flex-wrap">
+  <div className="flex flex-row justify-center items-stretch flex-wrap">
 
 <div className="h-full m-2">
-```dart
-class Person {
-  const Person(this.name);
+```dart filename="database.dart"
+import 'package:drift/drift.dart';
 
-  final String name;
+class Tasks extends Table {
+  late id = integer().autoIncrement()();
+  late title = text()();
+  late completed = boolean()();
 }
 ```
 </div>
 <div className="h-full m-2">
-```dart
-@cloud
-Future<String> sayHello(Person person) async {
-  return 'Hello, ${person.name}!';
-}
+```dart filename="project.dart"
+import 'package:celest/celest.dart';
+
+const tasks = Database(
+  schema: Schema.drift(TaskDatabase),
+);
 ```
 </div>
 </div>
   </Feature>
   <Feature 
-    title="Automatic Dart client"
-    description="A Dart client is automatically generated for you to call your functions from your Dart or Flutter app."
+    title="Deploy in a single command"
+    description="When you're ready to productionize, run `celest deploy`. That's it!"
   >
-```dart
-import 'package:celest_backend/client.dart';
-
-Future<void> main() async {
-  final result = 
-    await celest.functions.sayHello('Celest');
-  print(result); // Hello, Celest!
-}
+```ansi
+$ celest deploy
+[0m [0;32m✓ [0mInitializing Celest (5ms)
+[0m [0;32m✓ [0mProject successfully migrated (1.7s)
+[0m [0;32m✓ [0m🔥 Warming up the engines (12.3s)
+[0m [0;32m✓ [0m✨ Contacting the Celestials (10.0s)
+[0m [0;32m✓ [0m🚀 Deploying to Celest Cloud (38.7s)
+💙 [0m [0;32mYour Celest project has been deployed![0m
+https://my-project-a18bbb.us-south1.celest.cloud
 ```
   </Feature>
 </FeatureSet>
 
-<hr className="my-8" />
-
-<Newsletter className="px-12" />
 </Bleed>
 
-
-## How it works
-
-<Steps>
-
-### Install the CLI
-
-<span className="hidden sm:inline">Download</span>
-<span className="sm:hidden inline">[Download](/docs/download)</span> 
-the Celest CLI for your operating system. Open the installer and follow the instructions to install the CLI on your machine.
-
-<Download className="hidden sm:block" />
-
-### Create a project
-
-Start by creating a new Flutter project. If you have an existing Flutter project, you can use that instead. 
-
-Then, run `celest start` in your console to initialize your Celest project.
-
-```shell
-$ celest start
-```
-
-### Write your logic in Dart
-
-All your backend logic is written in Dart using the patterns you already know.
-
-<Tabs items={['Functions', 'Auth']}>
-  <Tabs.Tab>
-```dart copy filename="celest/functions/greeting.dart"
-import 'package:celest/celest.dart';
-
-@cloud
-Future<String> sayHello(String name) async {
-  return 'Hello, $name!';
-}
-```
-
-  Check out the full [docs](/docs/functions) to learn more about Celest Functions.
-  </Tabs.Tab>
-  <Tabs.Tab>
-```dart copy filename="celest/auth/auth.dart"
-import 'package:celest/celest.dart';
-
-const auth = Auth(
-  providers: [
-    AuthProvider.email(),
-  ],
-);
-```
-
-  Check out the full [docs](/docs/auth) to learn more about Celest Auth.
-  </Tabs.Tab>
-</Tabs>
-
-### Iterate locally
-
-A local dev environment is started by `celest start`. As you build your backend, Celest will watch for changes and hot-reload it instantly.
-
-<Image className='m-auto py-8' src="/img/celest-start.png" alt="Celest Start" width={600} height={600 / 1606 * 656} />
-
-### Deploy to the cloud
-
-When you're ready to productionize, run `celest deploy` to deploy your backend to the cloud. Celest will handle the deployment and management of your functions' underlying infrastructure.
-
-<Image className='m-auto py-8' src="/img/celest-deploy.png" alt="Celest Deploy" width={600} height={600 / 1490 * 838} />
-
-</Steps>
+<hr className="my-12" />
+<Content />
