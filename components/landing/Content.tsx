@@ -104,12 +104,12 @@ export default function Content() {
               Flutter is growing faster than ever before, all around the world.
             </CardDescription>
           </CardHeader>
-          <CardContent className="flex flex-row space-x-4 justify-center items-center">
+          <CardContent className="sm:flex flex-row sm:space-x-4 justify-center items-center">
             <p
               className="flex-2 text-2xl"
-              style={{ fontFamily: "Berkeley Mono" }}
+              style={{ fontFamily: "var(--font-berkeley-mono)" }}
             >
-              Flutter continues to solidy its place as the leading
+              Flutter continues to solidify its place as the leading
               cross-platform framework.
               <br />
               <Link
@@ -189,7 +189,7 @@ export default function Content() {
         </Card>
       </section>
       <hr className="my-12" />
-      <section id="celest-dart-flutter" className="max-w-[800px] m-auto">
+      <section id="celest-dart-flutter" className="max-w-[800px] m-auto text-center">
         <Card>
           <CardHeader>
             <CardTitle className="text-3xl font-bold text-center">
@@ -203,7 +203,7 @@ export default function Content() {
               <Link href="/docs">Get Started</Link>
             </Button>
           </CardHeader>
-          <CardContent style={{ fontFamily: "Berkeley Mono" }}>
+          <CardContent style={{ fontFamily: "var(--font-berkeley-mono)" }}>
             <div className="w-full h-full text-md font-semibold grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
               <HoverCard>
                 <HoverCardTrigger>
