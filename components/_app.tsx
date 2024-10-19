@@ -17,9 +17,6 @@ const poppins = localFont({
   variable: "--font-poppins",
 });
 
-
-
-
 export default function App({ Component, pageProps }) {
   const mainRef = useRef(null); // Create a ref for <main>
 

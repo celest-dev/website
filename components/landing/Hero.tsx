@@ -57,7 +57,7 @@ export const berkeleyMonoVariable = localFont({
 });
 
 
-export default function Hero() {
+export function Hero1() {
   const posthog = usePostHog();
 
   const [boxHeight, setBoxHeight] = useState(440);
@@ -77,7 +77,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <VStack zIndex={1} maxWidth="1200px" spacing={10} paddingTop={20} justifyContent="center" alignItems="center" alignContent="center" alignSelf="center" margin="0 auto">
+    <VStack zIndex={1} maxWidth="1200px" spacing={"1vh"}  marginTop={"200px"}  justifyContent="center" alignItems="center" alignContent="center" alignSelf="center">
  
         <Heading as="h1" fontSize={"9vh"} w={"90%"} justifyContent={"center"} textAlign={"center"} mb={4}>
           Flutter. Backend.{"\ "}
@@ -85,8 +85,6 @@ export default function Hero() {
             Done. ✅
           </Text>
         </Heading>
-
-
 
       <Text as="h1"  fontSize={"2vh"}  fontFamily={berkeleyMonoRegular.style.fontFamily} w={"100%"} letterSpacing={"-0.05em"} justifyContent={"center"} textAlign={"center"}   >
       Write your backend like a Flutter app &mdash; deploy it like magic 🚀
@@ -142,23 +140,59 @@ export default function Hero() {
 
   <Spacer></Spacer>
 
-        
-      <SwitchCodeBlocks />
-
-    
-
-      <DartInfoPage boxHeight={boxHeight} />
-
-      <Square1Sub />
-      <Square2 boxHeight={boxHeight} />
-      <Square2Sub />
-      <Square3 boxHeight={boxHeight} />
-
-      <Square3Sub />
 
     </VStack>
   );
 }
+
+
+export function Hero2() {
+  const posthog = usePostHog();
+
+  const [boxHeight, setBoxHeight] = useState(440);
+
+  // Function to check and set height based on screen resolution
+  const updateBoxHeight = () => {
+    const height = window.innerHeight;
+    const width = window.innerWidth;
+    setBoxHeight(height > width ? 880 : 440);
+  };
+
+  // Update box height on window resize
+  useEffect(() => {
+    updateBoxHeight();
+    window.addEventListener("resize", updateBoxHeight);
+    return () => window.removeEventListener("resize", updateBoxHeight);
+  }, []);
+
+  return (
+    <VStack zIndex={1} maxWidth="1200px"  marginTop={"200px"}  spacing={10} paddingTop={20} justifyContent="center" alignItems="center" alignContent="center" alignSelf="center" >
+      {/* <SwitchCodeBlocks /> */}
+
+          
+      <Spacer></Spacer>
+      <DartInfoPage boxHeight={boxHeight} />
+      <Spacer></Spacer>
+
+      <Square1Sub />
+      <Spacer></Spacer>
+
+      <Square2 boxHeight={boxHeight} />
+      <Spacer></Spacer>
+
+      <Square2Sub />
+      <Spacer></Spacer>
+
+      <Square3 boxHeight={boxHeight} />
+      <Spacer></Spacer>
+
+      <Square3Sub />
+      </VStack>
+  );
+}
+
+
+
 import { Server, Code, Shield, Rocket, Gauge, Users } from 'lucide-react'; // Import icons
 
 export const Square1Sub = () => {
@@ -503,7 +537,6 @@ export function Square2({ boxHeight }) {
   )
 }
 
-
 export function Square3({ boxHeight }) {
   const textColor = useColorModeValue('white', 'gray.100');
 
@@ -595,6 +628,10 @@ export function Square3({ boxHeight }) {
     </Flex>
   );
 }
+
+
+
+
 
 export function DartInfoPage({ boxHeight }) {
   const bgColor = useColorModeValue('gray.900', 'gray.800');

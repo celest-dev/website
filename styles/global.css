@@ -29,3 +29,30 @@ html {
   text-wrap: wrap; /* Safari fallback */
   text-wrap: pretty;
 }
+
+
+pre[class*="nx-bg-primary"],
+code[class*="nx-bg-primary"] {
+  background-color: #000 !important; /* Ensure black background */
+  color: #fff !important;            /* White text */
+  border-radius: 8px;                /* Rounded corners */
+  padding: 16px;                     /* Padding around the code */
+}
+
+pre {
+  overflow-x: auto;                  /* Ensure horizontal scroll */
+}
+
+pre code {
+  background-color: transparent !important; /* Remove nested code block background */
+}
+
+/* Additional dark mode specific styling */
+@media (prefers-color-scheme: dark) {
+  pre[class*="nx-bg-primary"],
+  code[class*="nx-bg-primary"] {
+    background-color: #1a1a1a !important; /* Darker background in dark mode */
+  }
+}
+
+

@@ -22,13 +22,12 @@ const config: DocsThemeConfig = {
     const { asPath } = router;
 
     const url = `https://www.celest.dev${asPath}`;
-
     const { frontMatter, title: defaultTitle } = useConfig();
     const title = frontMatter.title ?? defaultTitle;
     const fullTitle = `${title} | Celest`;
-
     const description = frontMatter.description || "The Flutter cloud platform";
 
+    // Conditional Open Graph image generation
     let ogImage = "https://www.celest.dev/api/og";
     if (asPath !== "/") {
       ogImage += `?title=${encodeURIComponent(title)}`;
@@ -73,7 +72,8 @@ const config: DocsThemeConfig = {
     key: '0.4-release',
     text: (
       <div className="banner">
-        Celest 0.4 is out with support for server-side Flutter! 🚀 <a href="/blog/fluttering-in-the-sky">Read more →</a>
+        Celest 0.4 is out with support for server-side Flutter! 🚀{" "}
+        <a href="/blog/fluttering-in-the-sky">Read more →</a>
       </div>
     ),
     dismissible: false,
@@ -87,10 +87,8 @@ const config: DocsThemeConfig = {
   sidebar: {
     defaultMenuCollapseLevel: 1,
   },
-
   // Disable theme switcher
   theme: undefined, // This will hide the light/dark mode switcher
-
   // Add the container with the backdrop and background styles
   components: {
     wrapper: ({ children }) => {

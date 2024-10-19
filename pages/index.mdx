@@ -8,7 +8,8 @@ import { Bleed } from 'nextra-theme-docs'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import Hero from '@components/landing/Hero'
+
+import { Hero1, Hero2 } from '@components/landing/Hero'
 import Newsletter from '@components/landing/Newsletter'
 
 
@@ -16,7 +17,60 @@ import { Download } from '@components/Download'
 import { Feature, FeatureSet } from '@components/landing/Feature'
 
   <div style={{ position: 'relative', zIndex: 1, width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflowX: 'hidden' }}>
-    <Hero />
+    <Hero1 />
+    <FeatureSet>
+  <Feature 
+    title="Write your backend logic in Dart"
+    description={<>Annotate any Dart function with <code>@cloud</code> to turn it into a serverless function.</>}
+  >
+```dart
+@cloud
+Future<String> sayHello(String name) async {
+  return 'Hello, $name!';
+}
+```
+  </Feature>
+  <Feature 
+    title={<>No more <code>toJson</code>/<code>fromJson</code></>}
+    description="Celest automatically handles serialization for you so you can focus on writing your business logic."
+  >
+  <div className="flex flex-row justify-center items-center flex-wrap">
+
+<div className="h-full m-2">
+```dart
+class Person {
+  const Person(this.name);
+
+  final String name;
+}
+```
+</div>
+<div className="h-full m-2">
+```dart
+@cloud
+Future<String> sayHello(Person person) async {
+  return 'Hello, ${person.name}!';
+}
+```
+</div>
+</div>
+  </Feature>
+  <Feature 
+    title="Automatic Dart client"
+    description="A Dart client is automatically generated for you to call your functions from your Dart or Flutter app."
+  >
+```dart
+import 'package:celest_backend/client.dart';
+
+Future<void> main() async {
+  final result = 
+    await celest.functions.sayHello('Celest');
+  print(result); // Hello, Celest!
+}
+```
+  </Feature>
+</FeatureSet>
+ <Hero2 />
 
   <Bleed >
 
