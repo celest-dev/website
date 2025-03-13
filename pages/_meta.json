@@ -21,35 +21,10 @@
             "sidebar": false
         }
     },
-    "contact": {
-        "title": "Contact",
-        "type": "page"
-    },
     "discord": {
         "title": "Discord",
         "type": "page",
         "display": "hidden"
-    },
-    "compliance": {
-        "title": "Discord",
-        "type": "page",
-        "display": "hidden"
-    },
-    "privacy": {
-        "title": "Privacy Policy",
-        "type": "page",
-        "display": "hidden",
-        "theme": {
-            "typesetting": "article"
-        }
-    },
-    "tos": {
-        "title": "Terms of Service",
-        "type": "page",
-        "display": "hidden",
-        "theme": {
-            "typesetting": "article"
-        }
     },
     "404": {
         "title": "404",
