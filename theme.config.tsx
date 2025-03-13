@@ -71,15 +71,6 @@ const config: DocsThemeConfig = {
       </>
     );
   },
-  banner: {
-    key: '1.0-release',
-    text: (
-      <div className="banner">
-      Celest 1.0 is officially released with a new Cloud and database! 🚀 <a href="/docs/cloud">Learn more →</a>
-      </div>
-    ),
-    dismissible: false,
-  },
   search: {
     placeholder: "Search the docs...",
   },

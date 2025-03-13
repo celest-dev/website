@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaLinux, FaWindows, FaApple } from "react-icons/fa";
-import { IconType } from "react-icons";
+import { IconBaseProps, IconType } from "react-icons";
 import { usePostHog } from "posthog-js/react";
 import { recordEvent } from "../src/analytics";
 import { Card, Link } from "nextra-theme-docs";
@@ -89,9 +89,7 @@ export function DownloadButton() {
   return <OSCard {...system} />;
 }
 
-// Component for detected OS Card
-function OSCard(props: DownloadState) {
-  const { os, architecture, downloadLink } = props;
+function renderIcon(os: OperatingSystem) {
   let Icon: IconType;
   switch (os) {
     case "Windows":
@@ -106,6 +104,17 @@ function OSCard(props: DownloadState) {
     default:
       return;
   }
+  const IconElement = (props: IconBaseProps) => {
+    const icon = Icon(props);
+    return <>{icon}</>;
+  };
+  return IconElement;
+}
+
+// Component for detected OS Card
+function OSCard(props: DownloadState) {
+  const { os, architecture, downloadLink } = props;
+  let Icon = renderIcon(os);
 
   const posthog = usePostHog();
   recordEvent(posthog, "detected_operating_system", {
@@ -146,20 +155,7 @@ function DownloadCard(
 ) {
   const { os, architectures, detected } = props;
 
-  let Icon: IconType;
-  switch (os) {
-    case "Windows":
-      Icon = FaWindows;
-      break;
-    case "Apple":
-      Icon = FaApple;
-      break;
-    case "Linux":
-      Icon = FaLinux;
-      break;
-    default:
-      return;
-  }
+  let Icon = renderIcon(os);
 
   const posthog = usePostHog();
   const isDetected = (architecture: Architecture) =>

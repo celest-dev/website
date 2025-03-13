@@ -59,7 +59,7 @@ export function PricingTier({
     <Card className="flex flex-col justify-between" {...props}>
       <CardHeader className="flex flex-col p-4 pt-2">
         <CardTitle className="flex flex-row items-center">
-          <Icon className="my-4" />
+          <>{Icon({ className: "my-4" })}</>
           <span className="text-xl ml-2">{name}</span>
         </CardTitle>
         <div
