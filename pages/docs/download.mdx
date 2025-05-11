@@ -3,10 +3,31 @@ title: Download
 description: Download the Celest CLI and get started building your backend in Dart today.
 ---
 
-import { Download } from '@components/Download'
+import { Callout } from 'nextra/components'
+import DownloadButton from '@components/DownloadButton'
 
 # Download Celest
 
-Use the links below to download the Celest CLI for your operating system. Open the installer and follow the instructions to install the CLI on your machine.
+You can download the Celest CLI by running the following command:
 
-<Download />
+<div className="flex flex-col items-center space-y-4 my-4">
+    <DownloadButton />
+</div>
+
+This will install the Celest CLI globally on your system, allowing you to use it from any directory.
+
+<Callout type="info">
+  To ensure that the Celest CLI is available in your PATH, you may need to add the Dart SDK's pub cache to your PATH.
+
+  On macOS and Linux, you can do this by adding the following line to your shell configuration file (e.g., `~/.bashrc`, `~/.zshrc`):
+
+  ```bash
+  export PATH="$PATH":"$HOME/.pub-cache/bin"
+  ```
+
+  On Windows, you can add the following location to your PATH environment variable:
+
+  ```
+  %LOCALAPPDATA%\Pub\Cache\bin
+  ```
+</Callout>
